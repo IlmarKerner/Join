@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    background-color: #F6F7F8 !important;
+}
+
+.start_logo {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start_logo img {
+    min-width: 30%;
+    min-height: 30%;
+}
+
+.login_section {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    padding: 48px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header img {
+    width: 100px;
+}
+
+.registry {
+    background: none;
+    border: none;
+    margin-right: 24px;
+}
+
+.registry:hover {
+    scale: 1.05;
+    transition: all 75ms ease-in-out;
+}
+
+.sign_up {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: #2A3647;
+    border: none;
+    color: white;
+    padding: 16px;
+}
+
+.sign_up:hover {
+    background-color: #29ABE2;
+    transition: all 75ms ease-in-out;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.login_window {
+    background-color: white;
+    width: 652px;
+    height: 513px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    transform: translate(-50%, -50%);
+}
+
+.login_window h1 {
+    margin-top: 24px;
+    font-weight: 700;
+    font-size: 61px;
+}
+
+.login_input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_email {
+    height: 51px;
+    border: 1px solid black;
+    margin-top: 59px;
+    width: 422px;
+    height: 51px;
+    padding: 13px 21px 13px 21px;
+    color: #D1D1D1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.input_email input {
+    width: 422px;
+    outline: none;
+    font-size: 21px;
+}
+
+.input_email img {
+    height: 18px;
+}
+
+.input_email input {
+    border: none;
+}
+
+.input_password {
+    height: 51px;
+    border: 1px solid black;
+    margin-top: 59px;
+    width: 422px;
+    height: 51px;
+    padding: 13px 21px 13px 21px;
+    color: #D1D1D1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.input_password input {
+    width: 422px;
+    outline: none;
+    font-size: 21px;
+}
+
+.input_password input {
+    border: none;
+}
+
+.checkbox {
+    width: 335px;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0px 30px 0px;
+}
+
+.checkbox span {
+    width: 154px;
+    height: 19px;
+}
+
+.forgot_password {
+    color: #29ABE2;
+    cursor: pointer;
+}
+
+.login_buttons {
+    width: 335px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login_button {
+    width: 145px;
+    font-weight: 700;
+    height: 51px;
+    border-radius: 8px;
+    padding: 4px 0px 4px 0px;
+    background-color: #2A3647;
+    color: white;
+    font-size: 25px;
+}
+
+.guest_login_button {
+    height: 51px;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 4px 13px 4px 13px;
+    font-size: 25px;
+    color: #2A3647;
+    background-color: white;
+    border: 2px solid #2A3647;
+}
