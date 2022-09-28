@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+    <script src="../JS/login.js"></script>
     <script src="../JS/addtask.js"></script>
     <script src="../JS/script.js"></script>
     <link rel="stylesheet" href="../styles/fonts.css">
@@ -20,18 +21,19 @@
         <img src="../img/Capa 1.png" alt="">
     </div>
     <div class="login_section">
-        <div class="header">
+        <div class="signup_window" id="signUpWindow">
             <div>
-                <button class="registry" id="registry">Not a Join User?</button>
-                <a href="sign_up.html"><button class="sign_up" id="signUp">Sign up</button></a>
+                <h1>Sign up</h1>
             </div>
-        </div>
-        <div class="login_window" id="loginWindow">
-            <div>
-                <h1>Log in</h1>
+            <div class="go_back_to_login" id="goBackToLogin">
+                <a href="index.html"><img src="../img/arrow_back.png"></a>
             </div>
             <form class="login_input" action="onsubmit">
                 <div class="input_fields">
+                    <div class="input_name">
+                        <input type="text" placeholder="Name" required>
+                        <img src="../img/profileicon.png">
+                    </div>
                     <div class="input_email">
                         <input type="email" placeholder="Email" required>
                         <img src="../img/mailicon.png">
@@ -41,16 +43,8 @@
                         <img src="../img/lock.png">
                     </div>
                 </div>
-                <div class="checkbox">
-                    <div>
-                        <input type="checkbox">
-                        <span>Remember me</span>
-                    </div>
-                    <span class="forgot_password">Forgot my password</span>
-                </div>
-                <div class="login_buttons">
-                    <button class="login_button" id="logInButton">Log in</button>
-                    <button class="guest_login_button" id="guestLogInButton">Guest Log in</button>
+                <div class="signup_container">
+                    <button class="signup_button" id="signUpButton">Log in</button>
                 </div>
             </form>
         </div>
