@@ -1,0 +1,154 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    width: 232px;
+    height: 1024px;
+    padding: 66px 20px 66px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2A3647;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 15px;
+    width: 232px;
+    height: 229px;
+    position: relative;
+}
+
+.dashboard img {
+    margin-left: 20%;
+}
+
+.dashboard span {
+    margin-right: 20%;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 232px;
+    height: 46px;
+    cursor: pointer;
+}
+
+.summary span {
+    color: #cdcdcd;
+    font-size: 16px;
+}
+
+.summary:hover {
+    background-color: #344459;
+    transition: all 125ms ease-in-out;
+}
+
+.board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 232px;
+    height: 46px;
+    cursor: pointer;
+}
+
+.board span {
+    color: #cdcdcd;
+    font-size: 16px;
+}
+
+.board:hover {
+    background-color: #344459;
+    transition: all 125ms ease-in-out;
+}
+
+.add_task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 232px;
+    height: 46px;
+    cursor: pointer;
+}
+
+.add_task span {
+    color: #cdcdcd;
+    font-size: 16px;
+}
+
+.add_task:hover {
+    background-color: #344459;
+    transition: all 125ms ease-in-out;
+}
+
+.contacts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 232px;
+    height: 46px;
+    cursor: pointer;
+}
+
+.contacts span {
+    color: #cdcdcd;
+    font-size: 16px;
+}
+
+.contacts:hover {
+    background-color: #344459;
+    transition: all 125ms ease-in-out;
+}
+
+.legal {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 243px 0px 0px;
+    gap: 15px;
+    width: 232px;
+    height: 289px;
+    margin-bottom: 10%;
+}
+
+.legal_notice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    gap: 20px;
+    width: 232px;
+    height: 46px;
+    cursor: pointer;
+}
+
+.legal_notice:hover {
+    background-color: #344459;
+    transition: all 125ms ease-in-out;
+}
+
+.legal_notice a {
+    color: #cdcdcd;
+    text-decoration: none;
+    font-weight: 400;
+    font: 16px;
+    line-height: 120%;
+}
+
+.legal_notice a:hover {
+    color: #cdcdcd;
+}
