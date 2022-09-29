@@ -1,0 +1,66 @@
+.legal_notice_page {
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+    background-color: #f6f7f8;
+}
+
+.headerbar {
+    position: absolute;
+    width: 1440px;
+    height: 89px;
+    left: 0px;
+    top: 0px;
+    background-color: #ffffff;
+}
+
+.legal_container {
+    width: 1440px;
+    height: 1024px;
+}
+
+.legal_container h1 {
+    margin-top: 171px;
+    margin-left: 355px;
+    font-size: 61px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.subtitle_one {
+    position: absolute;
+    top: 292px;
+    left: 355px;
+    height: 127px;
+    font-size: 27px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.subtitle_one p {
+    width: 969px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    font-style: normal;
+    margin-right: 124px;
+}
+
+.subtitle_two {
+    position: absolute;
+    top: 520px;
+    left: 355px;
+    height: 127px;
+    font-size: 27px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.subtitle_two p {
+    width: 969px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    font-style: normal;
+    margin-right: 124px;
+}
