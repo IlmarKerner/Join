@@ -339,7 +339,7 @@ body {
     from {
         opacity: 0;
     }
-    top {
+    to {
         opacity: 1;
     }
 }
@@ -351,7 +351,6 @@ body {
         left: 50%;
         min-height: 300;
     }
-    
     to {
         transform: translate(-50%, -50%);
         top: 48px;

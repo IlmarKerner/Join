@@ -10,6 +10,7 @@
         <title>Join</title>
         <script src="../JS/addtask.js"></script>
         <script src="../JS/script.js"></script>
+        <script src="../JS/includeHTML.js"></script>
         <link rel="stylesheet" href="../styles/response.css">
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/taskstyle.css">
@@ -19,9 +20,9 @@
     </head>
 </head>
 
-<body>
+<body onload="includeHTML()">
     <div class="legal_notice">
-        <div w3-include-html="menu" id="menu">
+        <div w3-include-html="menu.html"></div>
 
         </div>
     </div>
