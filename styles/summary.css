@@ -31,7 +31,7 @@ body {
     width: calc(100vw - 232px);
     height: calc(100vh - 89px);
     margin-left: calc(232px + 123px);
-    margin-top: 82px;
+    padding-top: 82px;
     background-color: #F6F7F8;
 }
 
