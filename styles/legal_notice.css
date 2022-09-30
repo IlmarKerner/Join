@@ -1,13 +1,13 @@
 .legal_notice_page {
-    width: 1440px;
-    height: 1024px;
+    width: 100vw;
+    height: 100vh;
     position: relative;
     background-color: #f6f7f8;
 }
 
 .legal_container {
-    width: 1440px;
-    height: 1024px;
+    width: 100vw;
+    height: 100vh;
 }
 
 .legal_container h1 {
