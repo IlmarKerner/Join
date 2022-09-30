@@ -8,7 +8,6 @@ body {
 
 .menu {
     width: 232px;
-    height: 1024px;
     padding: 66px 20px 66px 20px;
     display: flex;
     flex-direction: column;
@@ -16,6 +15,10 @@ body {
     justify-content: space-between;
     background-color: #2A3647;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
 }
 
 .dashboard {

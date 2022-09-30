@@ -57,11 +57,6 @@
     margin-right: 124px;
 }
 
-.menu {
-    position: absolute;
-    z-index: 3;
-}
-
 .arrow_back {
     position: absolute;
     top: 172px;
