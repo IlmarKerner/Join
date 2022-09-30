@@ -28,9 +28,12 @@ body {
 }
 
 .summary_content {
+    position: absolute;
+    top: 89px;
+    left: 232px;
     width: calc(100vw - 232px);
     height: calc(100vh - 89px);
-    margin-left: calc(232px + 123px);
+    margin-left: 123px;
     padding-top: 82px;
     background-color: #F6F7F8;
 }
