@@ -5,23 +5,15 @@
     background-color: #f6f7f8;
 }
 
-.headerbar {
-    position: absolute;
-    width: 1440px;
-    height: 89px;
-    left: 0px;
-    top: 0px;
-    background-color: #ffffff;
-}
-
 .legal_container {
     width: 1440px;
     height: 1024px;
 }
 
 .legal_container h1 {
-    margin-top: 171px;
-    margin-left: 355px;
+    position: absolute;
+    top: 171px;
+    left: 355px;
     font-size: 61px;
     font-weight: 700;
     color: #000000;
@@ -63,4 +55,17 @@
     color: #000000;
     font-style: normal;
     margin-right: 124px;
+}
+
+.menu {
+    position: absolute;
+    z-index: 3;
+}
+
+.arrow_back {
+    position: absolute;
+    top: 172px;
+    right: 128px;
+    cursor: pointer;
+    z-index: 3;
 }
