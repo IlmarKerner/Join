@@ -21,7 +21,8 @@
 
 <body onload="includeHTML()">
     <div w3-include-html="menu.html"></div>
-    <div w3-include-html="headerbar.html"></div>
+    
+
 
     <!-- <div class="test">
         <div class="test_menu">
@@ -31,90 +32,92 @@
 
         </div>
     </div> -->
+    <div class="summary_content_parent">
+        <div w3-include-html="headerbar.html"></div>
+        <div class="summary_content">
+            <span class="summary_header">
+                <h1><b>Summary</b></h1>
+                <h4>Everything in a nutshell!</h2>
+            </span>
 
-    <div class="summary_content">
-        <span class="summary_header">
-            <h1><b>Summary</b></h1>
-            <h4>Everything in a nutshell!</h2>
-        </span>
-
-        <div class="overview">
-            <div class="overview_tasks">
-                <div class="tasks_card">
-                    <h1 id="tasksInBoard">
-                        5
-                    </h1>
-                    <span>
-                        Tasks in Board
-                    </span>
-                </div>
-                <div class="tasks_card">
-                    <h1 id="tasksInProgress">
-                        2
-                    </h1>
-                    <span>
-                        Tasks in Progress
-                    </span>
-                </div>
-                <div class="tasks_card">
-                    <h1 id="awaitingFeedback">
-                        2
-                    </h1>
-                    <span>
-                        Tasks in Progress
-                    </span>
-                </div>
-            </div>
-
-            <div class="urgent_card">
-                <div class="sum_urgent_parent">
-                    <img src="../img/urgent_icon.png">
-                    <div class="sum_urgent">
-                        <h2 id="urgent">
-                            1
-                        </h2>
+            <div class="overview">
+                <div class="overview_tasks">
+                    <div class="tasks_card">
+                        <h1 id="tasksInBoard">
+                            5
+                        </h1>
                         <span>
-                            Urgent
+                            Tasks in Board
+                        </span>
+                    </div>
+                    <div class="tasks_card">
+                        <h1 id="tasksInProgress">
+                            2
+                        </h1>
+                        <span>
+                            Tasks in Progress
+                        </span>
+                    </div>
+                    <div class="tasks_card">
+                        <h1 id="awaitingFeedback">
+                            2
+                        </h1>
+                        <span>
+                            Tasks in Progress
                         </span>
                     </div>
                 </div>
-                <div class="date_urgent_parent">
-                    <span class="deadline_date" id="deadlineDate">
-                        October 16, 2022
-                    </span>
-                    <span class="upcoming_deadline">
-                        Upcoming Deadline
-                    </span>
-                </div>
-            </div>
 
-
-            <div class="progress_card_parent">
-                <div class="progress_card">
-                    <img src="../img/to-do_icon.png">
-                    <div class="progress_child">
-                        <h2 id="toDo">
-                            1
-                        </h2>
-                        <span>
-                            To-do
+                <div class="urgent_card">
+                    <div class="sum_urgent_parent">
+                        <img src="../img/urgent_icon.png">
+                        <div class="sum_urgent">
+                            <h2 id="urgent">
+                                1
+                            </h2>
+                            <span>
+                                Urgent
+                            </span>
+                        </div>
+                    </div>
+                    <div class="date_urgent_parent">
+                        <span class="deadline_date" id="deadlineDate">
+                            October 16, 2022
+                        </span>
+                        <span class="upcoming_deadline">
+                            Upcoming Deadline
                         </span>
                     </div>
                 </div>
-                <div class="progress_card">
-                    <img src="../img/done_icon.png">
-                    <div class="progress_child">
-                        <h2 id="done">
-                            1
-                        </h2>
-                        <span>
-                            Done
-                        </span>
+
+
+                <div class="progress_card_parent">
+                    <div class="progress_card">
+                        <img src="../img/to-do_icon.png">
+                        <div class="progress_child">
+                            <h2 id="toDo">
+                                1
+                            </h2>
+                            <span>
+                                To-do
+                            </span>
+                        </div>
+                    </div>
+                    <div class="progress_card">
+                        <img src="../img/done_icon.png">
+                        <div class="progress_child">
+                            <h2 id="done">
+                                1
+                            </h2>
+                            <span>
+                                Done
+                            </span>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
-
-
         </div>
     </div>
 

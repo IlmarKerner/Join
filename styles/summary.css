@@ -23,16 +23,18 @@
 body {
     font-family: 'Inter', sans-serif!important;
     display: flex;
-    padding-top: 89px;
-    padding-left: 232;
+}
+
+.summary_content_parent {
+    position: relative;
+    width: calc(100vw - 232px);
+    height: calc(100vh - 89px);
 }
 
 .summary_content {
     position: absolute;
     top: 89px;
     left: 232px;
-    width: calc(100vw - 232px);
-    height: calc(100vh - 89px);
     margin-left: 123px;
     padding-top: 82px;
     background-color: #F6F7F8;
