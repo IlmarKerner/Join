@@ -6,8 +6,8 @@
 }
 
 .legal_container {
-    width: 100vw;
-    height: 100vh;
+    width: calc(100vw -232px);
+    height: calc(100vh -89px);
 }
 
 .legal_container h1 {
