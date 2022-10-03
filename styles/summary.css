@@ -3,6 +3,10 @@ body {
     display: flex;
 }
 
+.dFlex {
+    display: flex;
+}
+
 .summary_content_parent {
     position: relative;
 }
@@ -179,6 +183,29 @@ body {
     font-size: 21px;
     font-weight: 400;
 }
+
+.greeting_parent {
+    position: absolute;
+    top: 520px;
+    left: calc(232px + 123px + 580px);
+    display: flex;
+    flex-direction: column;
+    margin-left: 67px;
+}
+
+.greeting  {
+    font-size: 47px;
+    font-weight: 500;
+    color: #2A3647;
+}
+
+.greeting_name {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+}
+
+
 
 
 

@@ -1,0 +1,112 @@
+.dFlex {
+    display: flex;
+}
+
+.board_content_parent {
+    position: absolute;
+    top: 89px;
+    left: 232px;
+    bottom: 0;
+    right: 0;
+}
+
+.board_content {
+    position: relative;
+    width: 100%;
+    
+    background-color: #F6F7F8;
+    margin-top: 82px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.board_headline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.board_headline h1 {
+    font-size: 61px;
+    font-weight: 700;
+    color: black;
+}
+
+.board_searchbar {
+    display: flex;
+    align-items: center;
+    height: 51px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 35px;
+    border: 1px solid #A8A8A8;
+}
+
+.board_searchbar input{
+    outline: none;
+    border: none;
+    border-right: 1px solid #D1D1D1;
+    margin-left: 21px;
+    font-size: 16px;
+}
+
+.board_searchbar img{
+    margin-right: 15px;
+    margin-left: 15px;   
+}
+
+.board_add_task {
+    display: flex;
+    align-items: center;
+    background-color: #2A3647;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 10px;
+}
+
+.board_add_task button{
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.board_add_task img{
+    padding-right: 10px; 
+}
+
+.board_add_task:hover {
+    background-color: #29ABE2;
+    transition: ease-in-out 100ms;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.board_overview{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.board_column {
+    width: 250px;
+    min-height: 400px;
+    
+}
+
+.board_column_headline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 21px;
+    font-weight: 700;
+    color: #2A3647;
+    margin-bottom: 35px;
+}
+
+.board_column img {
+    cursor: pointer;
+}
