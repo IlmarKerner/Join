@@ -1,0 +1,11 @@
+.contacts_container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #F6F7F8;
+}
+
+.contacts {
+    width: 100vw;
+    height: 100vh;
+}

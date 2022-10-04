@@ -24,8 +24,8 @@
 }
 
 .tasks {
-    width: 1440px;
-    height: 1024px;
+    width: 100vw;
+    height: 100vh;
     position: relative;
     display: flex;
 }
@@ -85,7 +85,7 @@
     background-color: white;
 }
 
-.category {
+.category1 {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -123,13 +123,58 @@
     display: block;
 }
 
+.category2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    isolation: isolate;
+    border-radius: 10px;
+    width: 422px;
+    margin-bottom: -35px !important;
+    margin-top: 30px !important;
+}
+
+.navbar2 {
+    width: 422px;
+    border-radius: 10px;
+    background: #d9d9d9;
+    margin: 40px auto;
+    background-color: white;
+    border: 1px solid #D1D1D1;
+}
+
+.navbar2 span {
+    background-color: white;
+    width: 420px;
+    height: 51px;
+    border-radius: 10px;
+    padding: 18px 21px;
+    color: black;
+}
+
 .navbar1 span::after {
     float: right;
     right: 10%;
     content: url(../img/down.png);
 }
 
+.navbar2 span::after {
+    float: right;
+    right: 10%;
+    content: url(../img/down.png);
+}
+
 .slide {
+    clear: both;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    text-align: center;
+    transition: height .4s ease;
+}
+
+.slide2 {
     clear: both;
     width: 100%;
     height: 0px;
@@ -149,6 +194,17 @@
     height: 120px;
 }
 
+#touch2 {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+    border-radius: 10px;
+}
+
+#touch2:checked+.slide {
+    height: 120px;
+}
+
 .slide div {
     height: 40px;
     display: flex;
@@ -159,6 +215,20 @@
 }
 
 .slide div:hover {
+    background-color: #D1D1D1;
+    transition: all 150ms ease-in-out;
+}
+
+.slide2 div {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.slide2 div:hover {
     background-color: #D1D1D1;
     transition: all 150ms ease-in-out;
 }
