@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join - help</title>
+    <title>Join - Add Task</title>
     <script src="../JS/addtask.js"></script>
     <script src="../JS/script.js"></script>
     <script src="../JS/includeHTML.js"></script>
@@ -39,7 +39,57 @@
                     </div>
                     <div class="description">
                         <p>Description</p>
-                        <input type="text" placeholder="Enter a title">
+                        <textarea type="text" placeholder="Enter a description"></textarea>
+                    </div>
+                    <div>
+                        <p class="category">Category</p>
+                        <nav class="navbar1">
+                            <label for="touch"><span>Select task category</span></label>
+                            <input type="checkbox" id="touch">
+                            <div class="slide">
+                                <div onclick="newCategory()">New Category</div>
+                                <div onclick="sales()">Sales</div>
+                                <div onclick="backoffice()">Backoffice</div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div>
+                        <p class="category">Assignet to</p>
+                        <nav class="navbar2">
+                            <label for="touch"><span>Select contacts to assign</span></label>
+                            <input type="checkbox">
+                            <div class="slide">
+                                <div onclick="">New Category</div>
+                                <div onclick="">Sales</div>
+                                <div onclick="">Backoffice</div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="bar">
+                    <img src="../img/bar.png" alt="">
+                </div>
+                <div class="right-task">
+                    <div class="date">
+                        <p>Due date</p>
+                        <input type="date" placeholder="dd/mm/yyyy">
+                    </div>
+                    <div class="prio">
+                        <p>Prio</p>
+                        <div class="devision">
+                            <div class="urgent">Urgent<img src="../img/urgent.png"></div>
+                            <div class="medium">Medium <img src="../img/medium.png"></div>
+                            <div class="low">Low <img src="../img/low.png"></div>
+                        </div>
+                    </div>
+                    <p class="subtaskheader">Subtasks</p>
+                    <div class="subtask">
+                        <p></p>
+                        <input type="text" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addTask()">
+                    </div>
+
+                    <div class="subtasks">
+                        <div><input type="checkbox">Subtask 1</div>
                     </div>
                 </div>
             </div>
