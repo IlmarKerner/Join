@@ -397,3 +397,58 @@
     margin-top: 20px;
     margin-bottom: -15px;
 }
+
+.task_buttons {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 338px;
+    height: 61px;
+    top: 889px;
+    left: 984px;
+    z-index: 5;
+}
+
+.clear_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.clear_button:hover {
+    background-color: #ffffff;
+    transition: all 150ms ease-in-out;
+}
+
+.create_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 6px;
+    width: 177px;
+    height: 61px;
+    background: #2A3647;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.create_button:hover {
+    background-color: #3c4d65;
+    transition: all 150ms ease-in-out;
+}
