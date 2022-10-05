@@ -31,6 +31,10 @@
     margin-right: 20%;
 }
 
+.dashboard a {
+    text-decoration: none;
+}
+
 .summary {
     display: flex;
     justify-content: space-between;

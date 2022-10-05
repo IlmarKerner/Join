@@ -9,3 +9,39 @@
     width: 100vw;
     height: 100vh;
 }
+
+.listning {
+    position: absolute;
+    top: 89px;
+    left: 232px;
+    width: 453px;
+    height: calc(100vh - 89px);
+    background-color: white;
+}
+
+.right_side_contacts {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 30px;
+    position: absolute;
+    width: 569px;
+    height: 73px;
+    left: 743px;
+    top: 171px;
+}
+
+.right_side_contacts p {
+    width: 274px;
+    height: 73px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    color: #000000;
+}
+
+.right_side_contacts {}
