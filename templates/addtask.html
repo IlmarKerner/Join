@@ -56,6 +56,12 @@
                             <p>Sales</p> <img src="../img/rosa.png"></div>
                         <div class="backoffice" onclick="event.stopPropagation()">
                             <p>Backoffice</p><img src="../img/hellblau.png"></div>
+                        <div class="design" onclick="event.stopPropagation()">
+                            <p>Design</p><img src="../img/orange.png"></div>
+                        <div class="marketing" onclick="event.stopPropagation()">
+                            <p>Marketing</p><img src="../img/blau.png"></div>
+                        <div class="media" onclick="event.stopPropagation()">
+                            <p>Media</p><img src="../img/green.png"></div>
                     </div>
                     <div class="margin-top50">
                         <p>Assignet to</p>
@@ -73,7 +79,7 @@
                             <p>Maximilian Mustermann</p>
                             <input type="checkbox">
                         </div>
-                        <div id="invite" class="invite" onclick="event.stopPropagation()">
+                        <div id="invite" class="invite" onclick="invite(); event.stopPropagation()">
                             <p>Invite new contact</p>
                             <img src="../img/contactsblack.png">
                         </div>
@@ -90,9 +96,9 @@
                     <div class="prio">
                         <p>Prio</p>
                         <div class="devision" id="devision">
-                            <div onclick="changeImgUrgent()" id="urgent" class="urgent"><img src="../img/urgentbutton.png" alt=""></div>
-                            <div onclick="changeImgMedium()" id="medium" class="medium"></div>
-                            <div onclick="changeImgLow()" id="low" class="low"></div>
+                            <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="../img/Urgentbuttonwhite.png"></div>
+                            <div onclick="changeImgMedium()" class="medium"><img id="medium" src="../img/mediumbuttonwhite.png"></div>
+                            <div onclick="changeImgLow()" class="low"><img id="low" src="../img/lowbuttonwhite.png"></div>
                         </div>
                     </div>
                     <p class="subtaskheader">Subtasks</p>
