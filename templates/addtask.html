@@ -41,33 +41,46 @@
                         <p>Description</p>
                         <textarea type="text" placeholder="Enter a description"></textarea>
                     </div>
-                    <div>
-                        <p class="category">Category</p>
-                        <nav class="navbar1">
-                            <label for="touch"><span>Select task category</span></label>
-                            <input type="checkbox" id="touch">
-                            <div class="slide">
-                                <div onclick="newCategory()">New Category</div>
-                                <div onclick="sales()">Sales</div>
-                                <div onclick="backoffice()">Backoffice</div>
-                            </div>
-                        </nav>
+                    <div class="margin-top50 ">
+                        <p>Category</p>
                     </div>
-                    <div>
-                        <p class="category2">Assignet to</p>
-                        <nav class="navbar2">
-                            <label for="touch2"><span>Select contacts to assign</span></label>
-                            <input type="checkbox" id="touch2">
-                            <div class="slide2">
-                                <div onclick="">New Category</div>
-                                <div onclick="">Sales</div>
-                                <div onclick="">Backoffice</div>
-                            </div>
-                        </nav>
+                    <div class="select_task" id="selectTask" onclick="selectTask()">
+                        <div class="task">
+                            <p>Select task category</p>
+                            <img src="../img/down.png">
+                        </div>
+                        <div class="new_category" onclick="newCategory()">
+                            <p>New Category</p>
+                        </div>
+                        <div class="sales" onclick="sales()">
+                            <p>Sales</p> <img src="../img/rosa.png"></div>
+                        <div class="backoffice" onclick="backoffice()">
+                            <p>Backoffice</p><img src="../img/hellblau.png"></div>
+                    </div>
+                    <div class="margin-top50">
+                        <p>Assignet to</p>
+                    </div>
+                    <div class="assignet" id="assignet" onclick="showSelctedContacts()">
+                        <div class="select">
+                            <p>Select contacts to assgign</p>
+                            <img src="../img/down.png">
+                        </div>
+                        <div class="you">
+                            <p>You</p>
+                            <input type="checkbox">
+                        </div>
+                        <div id="invitedContact" class="invited_contact">
+                            <p>Maximilian Mustermann</p>
+                            <input type="checkbox">
+                        </div>
+                        <div id="invite" class="invite">
+                            <p>Invite new contact</p>
+                            <img src="../img/contactsblack.png">
+                        </div>
                     </div>
                 </div>
                 <div class="bar">
-                    <img src="../img/bar.png" alt="">
+                    <img src="../img/bar.png">
                 </div>
                 <div class="right-task">
                     <div class="date">
