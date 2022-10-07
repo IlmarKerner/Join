@@ -5,12 +5,14 @@ setURL('http://gruppe-329.developerakademie.net/Join/smallest_backend_ever');
 let users = [];
 
 async function init() {
+    enableLoadingAnimation()
     await downloadFromServer();
     let allUsersAsString = localStorage.getItem('users'); //ändern zu backend
     users = JSON.parse(allUsersAsString);
     // users = JSON.parse(backend.getItem('users')) || []; // load all users
     renderContent();
     checkIfAutocomplete();
+    disableLoadingAnimation();
 }
 
 function addUser() {
@@ -86,9 +88,22 @@ function checkIfAutocomplete() {
 
     let email = document.getElementById('login_email');
     let password = document.getElementById('login_password');
+    let checkBox = document.getElementById('remember_me');
 
     if (localStorage.getItem('email') !== null) {
         email.value = localStorage.email.toLowerCase();
         password.value = localStorage.password;
+
+        if(!checkBox.checked) {
+            checkBox.click();
+        }
     }
+}
+
+function enableLoadingAnimation() {
+    document.getElementById('loading_animation').classList.remove('d-none');
+}
+
+function disableLoadingAnimation() {
+    document.getElementById('loading_animation').classList.add('d-none');
 }

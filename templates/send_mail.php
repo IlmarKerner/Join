@@ -3,7 +3,7 @@
 ########### CONFIG ###############
 
 $recipient = $_POST['name'];
-// $redirect = 'success.html';
+$redirect = 'http://gruppe-329.developerakademie.net/Join/templates/success.html';
 
 $htmlContent = ' 
     <html> 
@@ -73,7 +73,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 
         mail($recipient, $subject, $htmlContent, $headers);
-        // header("Location: " . $redirect); 
+        header("Location: " . $redirect); 
 
         break;
     default: //Reject any non POST or OPTIONS requests.
