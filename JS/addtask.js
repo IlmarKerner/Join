@@ -1,25 +1,44 @@
+let contactSectionOpen = false;
+let selectTaskBoxOpen = false;
+let urgentImage = false;
+
 function showSelctedContacts() {
-    let selectBox = document.getElementById('assignet');
-    if (!selectBox.isonclicked) {
-        selectBox.classList.add('height200');
-        selectBox.classList.add('transition');
-        selectBox = true;
+    let selectbox = document.getElementById('assigned');
+    if (!contactSectionOpen) {
+        selectbox.classList.add('height200');
+        selectbox.classList.add('transition');
+        contactSectionOpen = true;
     } else {
-        selectBox.classList.remove('height200');
-        selectBox.classList.add('height51');
-        selectBox = false;
+        selectbox.classList.remove('height200');
+        selectbox.classList.add('height51');
+        contactSectionOpen = false;
     }
 }
 
-function selectTask() {
+function selectTaskCategory() {
     let selectTaskBox = document.getElementById('selectTask');
-    if (!selectTaskBox.isonclicked) {
+    if (!selectTaskBoxOpen) {
         selectTaskBox.classList.add('height200');
         selectTaskBox.classList.add('transition');
-        selectTaskBox = true;
+        selectTaskBoxOpen = true;
     } else {
         selectTaskBox.classList.remove('height200');
         selectTaskBox.classList.add('height51');
-        selectTaskBox = false;
+        selectTaskBoxOpen = false;
     }
+}
+
+function changeImgUrgent() {
+    let urgent = document.getElementById('urgent');
+    urgent.scr = "../img/urgentbuttonwhite.png";
+
+    // let urgent = document.getElementById('urgent');
+    // if (!urgentImage) {
+    //     urgent.style = "background: none;"
+    //     urgent.style = "background: "
+    //     urgentImage = false;
+    // } else {
+    //     urgent.src = "../img/urgentbuttonwhite.png"
+    //     urgentImage = true;
+    // }
 }

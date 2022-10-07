@@ -41,39 +41,39 @@
                         <p>Description</p>
                         <textarea type="text" placeholder="Enter a description"></textarea>
                     </div>
-                    <div class="margin-top50 ">
+                    <div class="margin-top50">
                         <p>Category</p>
                     </div>
-                    <div class="select_task" id="selectTask" onclick="selectTask()">
-                        <div class="task">
+                    <div class="select_task" id="selectTask" onclick="selectTaskCategory()">
+                        <div class="task" id="task">
                             <p>Select task category</p>
                             <img src="../img/down.png">
                         </div>
-                        <div class="new_category" onclick="newCategory()">
+                        <div class="new_category" id="new_category" onclick="event.stopPropagation()">
                             <p>New Category</p>
                         </div>
-                        <div class="sales" onclick="sales()">
+                        <div class="sales" id="sales" onclick="event.stopPropagation()">
                             <p>Sales</p> <img src="../img/rosa.png"></div>
-                        <div class="backoffice" onclick="backoffice()">
+                        <div class="backoffice" onclick="event.stopPropagation()">
                             <p>Backoffice</p><img src="../img/hellblau.png"></div>
                     </div>
                     <div class="margin-top50">
                         <p>Assignet to</p>
                     </div>
-                    <div class="assignet" id="assignet" onclick="showSelctedContacts()">
+                    <div class="assigned" id="assigned" onclick="showSelctedContacts()">
                         <div class="select">
-                            <p>Select contacts to assgign</p>
+                            <p>Select contacts to assign</p>
                             <img src="../img/down.png">
                         </div>
-                        <div class="you">
+                        <div class="you" onclick="event.stopPropagation()">
                             <p>You</p>
                             <input type="checkbox">
                         </div>
-                        <div id="invitedContact" class="invited_contact">
+                        <div id="invitedContact" class="invited_contact" onclick="event.stopPropagation()">
                             <p>Maximilian Mustermann</p>
                             <input type="checkbox">
                         </div>
-                        <div id="invite" class="invite">
+                        <div id="invite" class="invite" onclick="event.stopPropagation()">
                             <p>Invite new contact</p>
                             <img src="../img/contactsblack.png">
                         </div>
@@ -89,10 +89,10 @@
                     </div>
                     <div class="prio">
                         <p>Prio</p>
-                        <div class="devision">
-                            <div class="urgent">Urgent<img src="../img/urgent.png"></div>
-                            <div class="medium">Medium <img src="../img/medium.png"></div>
-                            <div class="low">Low <img src="../img/low.png"></div>
+                        <div class="devision" id="devision">
+                            <div onclick="changeImgUrgent()" id="urgent" class="urgent"><img src="../img/urgentbutton.png" alt=""></div>
+                            <div onclick="changeImgMedium()" id="medium" class="medium"></div>
+                            <div onclick="changeImgLow()" id="low" class="low"></div>
                         </div>
                     </div>
                     <p class="subtaskheader">Subtasks</p>

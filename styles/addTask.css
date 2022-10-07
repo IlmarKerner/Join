@@ -172,60 +172,47 @@
 
 .urgent {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    background-color: white;
-    padding: 10px 15px 10px 15px;
+    width: 136px;
     border-radius: 10px;
-    font-size: 21px;
-    font-weight: 400;
+    background: url(../img/Urgentbuttonwhite.png);
     cursor: pointer;
-    border: 1px solid #D1D1D1;
-}
-
-.urgent:hover {
-    background-color: #FF4910;
-    color: white;
-    transition: all 125ms ease-in-out;
 }
 
 .urgent img {
-    margin-left: 20px;
-}
-
-.urgent img:hover {
-    filter: invert();
+    cursor: pointer;
 }
 
 .medium {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    background-color: white;
-    padding: 10px 15px 10px 15px;
+    width: 136px;
     border-radius: 10px;
-    font-size: 21px;
-    font-weight: 400;
+    background: url(../img/mediumbuttonwhite.png);
     cursor: pointer;
-    border: 1px solid #D1D1D1;
 }
 
 .medium img {
-    margin-left: 20px;
+    cursor: pointer;
 }
 
 .low {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    background-color: white;
-    padding: 10px 15px 10px 15px;
+    width: 136px;
     border-radius: 10px;
-    font-size: 21px;
-    font-weight: 400;
+    background: url(../img/lowbuttonwhite.png);
     cursor: pointer;
-    border: 1px solid #D1D1D1;
 }
 
 .low img {
-    margin-left: 20px;
+    cursor: pointer;
 }
 
 .subtask {
@@ -275,8 +262,8 @@
     justify-content: space-between;
     width: 338px;
     height: 61px;
-    top: 889px;
-    right: 5%;
+    bottom: 2%;
+    right: 10%;
     z-index: 5;
 }
 
@@ -425,7 +412,7 @@
     margin-left: 25px;
 }
 
-.assignet {
+.assigned {
     display: flex;
     flex-direction: column;
     width: 422px;
@@ -545,5 +532,5 @@
 }
 
 .transition {
-    transition: all ease-in-out 500ms;
+    transition: all ease-in-out 225ms;
 }
