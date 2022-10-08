@@ -65,3 +65,7 @@ function changeImgLow() {
         lowImage = true;
     }
 }
+
+function openNewContactWindow() {
+
+}

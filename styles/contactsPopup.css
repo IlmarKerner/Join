@@ -1,0 +1,153 @@
+.popup_window {
+    position: relative;
+    width: 1212px;
+    height: 594px;
+    background: #FFFFFF;
+    border-radius: 30px;
+}
+
+.popup_left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 66px 46px;
+    isolation: isolate;
+    position: absolute;
+    border-radius: 30px 0px 0px 30px;
+    width: 463px;
+    height: 594px;
+    left: 0px;
+    top: 0px;
+    background: #2A3647;
+}
+
+.popup_left_img img {
+    position: absolute;
+    left: 10.04%;
+    right: 78.05%;
+    top: 25.93%;
+    bottom: 62.88%;
+}
+
+.popup_left h1 {
+    width: 366px;
+    height: 73px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.popup_left p {
+    width: 371px;
+    height: 32px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.popup_right_profile {
+    width: 120px;
+    height: 120px;
+    background-color: #d1d1dd;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 204px;
+    left: 533px;
+}
+
+.close_contact_popup {
+    position: absolute;
+    right: 3%;
+    top: 4%;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.close_contact_popup img {
+    width: 40px;
+}
+
+.popup_right_buttons {
+    display: flex;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 369px;
+    height: 61px;
+}
+
+.cancel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 18px 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cancel p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #2A3647;
+    margin: 0px;
+}
+
+.create_contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.create_contact p {
+    width: 154px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin: 0px;
+}
+
+.fill_in_fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    padding: 0px;
+    gap: 29px;
+    width: 422px;
+    height: 271px;
+    left: 737px;
+    top: 129px;
+}
