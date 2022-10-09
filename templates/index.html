@@ -11,6 +11,7 @@
     <script src="../JS/register_login.js"></script>
     <script src="../JS/script.js"></script>
     <script src="../JS/addtask.js"></script>
+    <script src="../JS/addcontact.js"></script>
     <link rel="stylesheet" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/response.css">
     <link rel="stylesheet" href="../styles/style.css">
@@ -33,7 +34,7 @@
             <div>
                 <h1>Log in</h1>
             </div>
-            <form class="login_input"  onsubmit="login(); return false;">
+            <form class="login_input" onsubmit="login(); return false;">
                 <div class="input_fields">
                     <div class="input_email">
                         <input id="login_email" type="email" placeholder="Email" required>
@@ -59,7 +60,16 @@
             <div class="wrong_login d-none" id="wrong_login">
                 <span>Wrong email or password.</span>
             </div>
-            <div id="loading_animation" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div id="loading_animation" class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
 

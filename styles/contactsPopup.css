@@ -81,7 +81,7 @@
     display: flex;
     position: absolute;
     bottom: 5%;
-    right: 5%;
+    right: 3%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -147,7 +147,87 @@
     padding: 0px;
     gap: 29px;
     width: 422px;
-    height: 271px;
+    height: 292px;
     left: 737px;
     top: 129px;
+}
+
+.first_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.first_name input {
+    width: 350px;
+    border: none;
+    outline: none;
+}
+
+.last_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.last_name input {
+    width: 350px;
+    border: none;
+    outline: none;
+}
+
+.email_field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.email_field input {
+    width: 350px;
+    border: none;
+    outline: none;
+}
+
+.phone_field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.phone_field input {
+    width: 350px;
+    border: none;
+    outline: none;
 }
