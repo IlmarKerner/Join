@@ -1,25 +1,71 @@
+let contactSectionOpen = false;
+let selectTaskBoxOpen = false;
+let urgentImage = false;
+let mediumImage = false;
+let lowImage = false;
+
 function showSelctedContacts() {
-    let selectBox = document.getElementById('assignet');
-    if (!selectBox.isonclicked) {
-        selectBox.classList.add('height200');
-        selectBox.classList.add('transition');
-        selectBox = true;
+    let selectbox = document.getElementById('assigned');
+    if (!contactSectionOpen) {
+        selectbox.classList.add('height210');
+        selectbox.classList.add('transition');
+        contactSectionOpen = true;
     } else {
-        selectBox.classList.remove('height200');
-        selectBox.classList.add('height51');
-        selectBox = false;
+        selectbox.classList.remove('height210');
+        selectbox.classList.add('height51');
+        contactSectionOpen = false;
     }
 }
 
-function selectTask() {
+function selectTaskCategory() {
     let selectTaskBox = document.getElementById('selectTask');
-    if (!selectTaskBox.isonclicked) {
-        selectTaskBox.classList.add('height200');
+    if (!selectTaskBoxOpen) {
+        selectTaskBox.classList.add('height360');
         selectTaskBox.classList.add('transition');
-        selectTaskBox = true;
+        selectTaskBoxOpen = true;
     } else {
-        selectTaskBox.classList.remove('height200');
+        selectTaskBox.classList.remove('height360');
         selectTaskBox.classList.add('height51');
-        selectTaskBox = false;
+        selectTaskBoxOpen = false;
     }
+}
+
+function changeImgUrgent() {
+    let urgent = document.getElementById('urgent');
+    urgent.src = "../img/urgentbutton.png";
+    if (urgentImage) {
+        urgent.src = "../img/urgentbutton.png";
+        urgentImage = false;
+    } else {
+        urgent.src = "../img/urgentbuttonwhite.png";
+        urgentImage = true;
+    }
+}
+
+function changeImgMedium() {
+    let medium = document.getElementById('medium');
+    medium.src = "../img/mediumbutton.png";
+    if (mediumImage) {
+        medium.src = "../img/mediumbutton.png";
+        mediumImage = false;
+    } else {
+        medium.src = "../img/mediumbuttonwhite.png";
+        mediumImage = true;
+    }
+}
+
+function changeImgLow() {
+    let low = document.getElementById('low');
+    low.src = "../img/lowbutton.png";
+    if (lowImage) {
+        low.src = "../img/lowbutton.png";
+        lowImage = false;
+    } else {
+        low.src = "../img/lowbuttonwhite.png";
+        lowImage = true;
+    }
+}
+
+function openNewContactWindow() {
+
 }
