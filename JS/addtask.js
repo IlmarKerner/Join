@@ -66,6 +66,12 @@ function changeImgLow() {
     }
 }
 
-function openNewContactWindow() {
+function openAddTaskPopup() {
+    document.getElementById('addtaskPopupWindow').classList.remove('d-none');
+    document.getElementById('boardContentParent').style = "filter: blur(10px);";
+}
 
+function closeAddTaskPopup() {
+    document.getElementById('addtaskPopupWindow').classList.add('d-none');
+    document.getElementById('boardContentParent').style = "filter: none;";
 }

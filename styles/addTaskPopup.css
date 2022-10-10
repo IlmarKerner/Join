@@ -1,10 +1,17 @@
-.add_task_container {
-    position: relative;
+.addtask_popup_window {
     width: 100vw;
-    background: #F6F7F8;
+    height: calc(100vh - 89px);
+    position: absolute;
+    z-index: 10;
 }
 
-.addtask h1 {
+.addtask_popup {
+    position: absolute;
+    top: 15%;
+    left: 18%;
+}
+
+.addtask_popup h1 {
     width: 466px;
     height: 78px;
     font-family: 'Inter';
@@ -14,21 +21,23 @@
     line-height: 120%;
     color: black;
     position: absolute;
-    top: 171px;
-    left: 355px;
+    top: 63px;
+    left: 74px;
+    z-index: 5;
 }
 
-.tasks {
-    width: calc(100vw - 232px);
-    height: 100vh;
-    left: 232px;
-    position: relative;
+.tasks_popup {
+    width: 1116px;
+    height: 914px;
+    position: absolute;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: white;
+    border-radius: 30px;
 }
 
-.left_task {
+.left_task_popup {
     /* position: absolute; */
     /* width: 422px; */
     height: 506px;
@@ -36,7 +45,7 @@
     top: 290px; */
 }
 
-.left_task p {
+.left_task_popup p {
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
@@ -47,7 +56,7 @@
     margin-bottom: 2px;
 }
 
-.title {
+.title_popup {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,11 +65,11 @@
     height: 104px;
 }
 
-.title p {
+.title_popup p {
     width: 120px;
 }
 
-.title input {
+.title_popup input {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -73,7 +82,7 @@
     background-color: white;
 }
 
-.description textarea {
+.description_popup textarea {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -86,11 +95,11 @@
     background-color: white;
 }
 
-.description p {
+.description_popup p {
     width: 120px;
 }
 
-.left_task span {
+.left_task_popup span {
     padding: 14px 11px 11px 24px;
     background: white;
     color: #D1D1D1;
@@ -107,7 +116,7 @@
     border: 1px solid #D1D1D1;
 }
 
-.right-task {
+.right-task_popup {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -257,7 +266,7 @@
     justify-content: space-between;
     width: 338px;
     height: 61px;
-    bottom: 6%;
+    bottom: 2%;
     right: 10%;
     z-index: 5;
 }
@@ -309,7 +318,7 @@
     margin-top: 50px;
 }
 
-.select_task {
+.select_task_popup {
     display: flex;
     flex-direction: column;
     width: 422px;
@@ -601,4 +610,15 @@
 
 .height210 {
     height: 210px;
+}
+
+.close_addtask_popup {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+}
+
+.close_addtask_popup img {
+    width: 35px;
 }
