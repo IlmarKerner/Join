@@ -10,6 +10,7 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/includeHTML.js"></script>
     <script src="../JS/login.js"></script>
+    <script src="../JS/addcontact.js"></script>
     <link rel="stylesheet" href="../styles/contactsPopup.css">
     <link rel="stylesheet" href="../styles/contacts.css">
     <link rel="stylesheet" href="../styles/help.css">
@@ -24,7 +25,7 @@
 </head>
 
 <body onload="includeHTML()">
-    <div class="contacts_container">
+    <div class="contacts_container" id="contactsContainer">
         <div class="menubar">
             <div w3-include-html="menu.html"></div>
         </div>
@@ -45,6 +46,59 @@
                 <img src="../img/addcontact.png">
             </div>
         </div>
+    </div>
+    <div id="contact_popup_window">
+
+    </div>
+    <div class="popup d-none" id="popupAddContact">
+        <div class="popup_window">
+            <div class="popup_left">
+                <div class="popup_left_img">
+                    <img src="../img/joinlogo4.png">
+                </div>
+                <h1>Add contact</h1>
+                <p>Tasks are better with a team!</p>
+                <img src="../img/underline.png">
+            </div>
+            <div class="close_contact_popup" id="closeContactWindow" onclick="closeNewContactWindow()">
+                <img src="../img/clear.png">
+            </div>
+            <div class="popup_right">
+                <div class="popup_right_profile">
+                    <img src="../img/profileicon2.png">
+                </div>
+                <div class="popup_right_buttons">
+                    <div class="cancel">
+                        <p>Cancel</p>
+                        <img src="../img/clear.png">
+                    </div>
+                    <div class="create_contact">
+                        <p>Create contact</p>
+                        <img src="../img/create_task.png">
+                    </div>
+
+                </div>
+                <div class="fill_in_fields">
+                    <div class="first_name">
+                        <input type="text" placeholder="First name" required>
+                        <img src="../img/profileicon3.png">
+                    </div>
+                    <div class="last_name">
+                        <input type="text" placeholder="Last name" required>
+                        <img src="../img/profileicon3.png">
+                    </div>
+                    <div class="email_field">
+                        <input type="email" placeholder="Email" required>
+                        <img src="../img/mailicon.png">
+                    </div>
+                    <div class="phone_field">
+                        <input type="tel" placeholder="Phone" required>
+                        <img src="../img/phone-line.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
