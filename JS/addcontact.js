@@ -1,14 +1,19 @@
-let contacts = [];
+let contacts = [{
+    "first_name": "Max",
+    "second_name": "Mustermann",
+    "email": "maxmustermann@gmail.com",
+    "phone": "1234566",
+}];
 
-function getInfoFromNewContactField() {
+function getInfoFromNewContactField(i) {
     let firstname = document.getElementById('firstname');
     let secondname = document.getElementById('secondname');
     let email = document.getElementById('email');
     let phone = document.getElementById('phone');
 
     let contactInfo = {
-        "first name": firstname.value,
-        "second name": secondname.value,
+        "first_name": firstname.value,
+        "second_name": secondname.value,
         "email": email.value,
         "phone": phone.value,
     };
@@ -21,6 +26,14 @@ function getInfoFromNewContactField() {
     phone.value = '';
 
     console.log(contactInfo);
+    document.getElementById('listning').innerHTML = '';
+    for (let i = 0; i < contacts.length; i++) {
+        document.getElementById('listning').innerHTML += `
+        <div class="contact_name">
+        <h2>${contacts[i]['first_name' + i]['second_name' + i]}</h2>
+        <p>
+        </div>`;
+    }
 }
 
 
