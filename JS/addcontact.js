@@ -30,8 +30,8 @@ function getInfoFromNewContactField(i) {
     for (let i = 0; i < contacts.length; i++) {
         document.getElementById('listning').innerHTML += `
         <div class="contact_name">
-        <h2>${contacts[i]['first_name' + i]['second_name' + i]}</h2>
-        <p>${contacts[i]['email' + i]}</p>
+            <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
+            <p>${contacts[i]['email']}</p>
         </div>`;
     }
 }
