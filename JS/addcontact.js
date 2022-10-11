@@ -35,3 +35,23 @@ function getInfoFromNewContactField(i) {
         </div>`;
     }
 }
+
+
+function openNewContactWindow() {
+    document.getElementById('popupAddContact').classList.remove('d-none');
+    document.getElementById('contactsContainer').style = "filter: blur(10px)";
+    document.getElementById('popupAddContact').classList.remove('popup_window_slideout');
+    document.getElementById('popupAddContact').classList.add('popup_window_slidein');
+}
+
+function closeNewContactWindow() {
+    // document.getElementById('popupAddContact').classList.remove('popup_window_slidein');
+    document.getElementById('contactsContainer').classList.add('popupslideout');
+    document.getElementById('popupAddContact').classList.add('popup_window_slideout');
+    document.getElementById('contactsContainer').style = "filter: none;";
+    setTimeout(() => {
+        document.getElementById('popupAddContact').classList.add('d-none');
+        document.getElementById('contactsContainer').classList.remove('popupslideout');
+        document.getElementById('popupAddContact').classList.remove('popup_window_slideout');
+    }, "1000");
+}
