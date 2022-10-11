@@ -1,8 +1,10 @@
 .addtask_popup_window {
     width: 100vw;
-    height: calc(100vh - 89px);
+    height: 100vh;
     position: absolute;
     z-index: 10;
+    top: 0;
+    left: 0;
 }
 
 .addtask_popup {

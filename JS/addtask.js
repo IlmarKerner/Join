@@ -68,10 +68,15 @@ function changeImgLow() {
 
 function openAddTaskPopup() {
     document.getElementById('addtaskPopupWindow').classList.remove('d-none');
-    document.getElementById('boardContentParent').style = "filter: blur(10px);";
+    document.getElementById('boardContentParent').style = "filter: blur(5px);";
+    document.getElementById('profilebar').style = "filter: blur(5px);";
+    document.getElementById('menu').style = "filter: blur(5px);";
 }
 
 function closeAddTaskPopup() {
     document.getElementById('addtaskPopupWindow').classList.add('d-none');
     document.getElementById('boardContentParent').style = "filter: none;";
+    document.getElementById('profilebar').style = "filter: none;";
+    document.getElementById('menu').style = "filter: none;";
+
 }
