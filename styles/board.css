@@ -243,8 +243,11 @@
     height: 205px;
     width: 250px;
     border-radius: 30px;
-    border: 1px dashed lightgrey;
-    
+    border: 1px dashed lightgrey;   
+}
+
+.tilt {
+    transform: rotate(4deg);
 }
 
 
