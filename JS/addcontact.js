@@ -27,13 +27,14 @@ function getInfoFromNewContactField() {
 function openNewContactWindow() {
     document.getElementById('popupAddContact').classList.remove('d-none');
     document.getElementById('contactsContainer').style = "filter: blur(10px)";
-    document.getElementById('popupAddContact').classList.add('popup_window_slidein');
     document.getElementById('popupAddContact').classList.remove('popup_window_slideout');
+    document.getElementById('popupAddContact').classList.add('popup_window_slidein');
 }
 
 function closeNewContactWindow() {
     // document.getElementById('popupAddContact').classList.remove('popup_window_slidein');
-    document.getElementById('contactsContainer').classList.add('popupslideout');
+    // document.getElementById('contactsContainer').classList.add('popupslideout');
+    document.getElementById('popupAddContact').classList.remove('popup_window_slidein');
     document.getElementById('popupAddContact').classList.add('popup_window_slideout');
     document.getElementById('contactsContainer').style = "filter: none;";
     setTimeout(() => {
