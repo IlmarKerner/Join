@@ -10,7 +10,7 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/includeHTML.js"></script>
     <script src="../JS/addcontact.js"></script>
-    
+    <script src="../JS/board.js"></script>
     <link rel="stylesheet" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/response.css">
     <link rel="stylesheet" href="../styles/addTask.css">
@@ -26,7 +26,7 @@
 
 
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); init()">
     <div w3-include-html="menu.html"></div>
     <div w3-include-html="headerbar.html"></div>
 
@@ -57,11 +57,12 @@
                         <span>To Do</span>
                         <img src="../img/plus_button.png">
                     </div>
-                    <div id="toDo" ondrop="moveTo('toDo')" ondragover="ondragover=(event)"
-                        ondragend="removeDropPosition()">
+                    <div id="toDo" ondrop="moveTo('toDo')" ondragover="ondragover=(event)">
                         <!-- Cards get filled here -->
 
-                        <div id="toDoDropPosition" class="div_border dNone"></div>
+                        <div id="toDoDropPosition" class="div_border dNone">
+
+                        </div>
                     </div>
 
                 </div>
@@ -74,7 +75,9 @@
 
                     <div id="inProgress" ondrop="moveTo('inProgress')" ondragover="ondragover=(event)">
                         <!-- Cards get filled here -->
-                        <div id="testID" draggable="true" ondragstart="addDropPosition()"
+                        
+                        
+                        <!-- <div id="testID" draggable="true" ondragstart="addDropPosition()"
                             ondragend="removeDropPosition()" class="task_card">
                             <span class="card_category" id="cardCategory">
                                 Design
@@ -106,7 +109,8 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
+
 
                         <div id="inProgressDropPosition" class="div_border dNone"></div>
 
@@ -145,11 +149,9 @@
 
 </body>
 
-<<<<<<< HEAD
-<script src="../JS/board.js"></script>
 
 
 
-=======
->>>>>>> f94e6ded101c88078b75d8cfee28e61f34e11c6c
+
+
 </html>
