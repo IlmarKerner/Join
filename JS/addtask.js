@@ -71,12 +71,20 @@ function openAddTaskPopup() {
     document.getElementById('boardContentParent').style = "filter: blur(5px);";
     document.getElementById('profilebar').style = "filter: blur(5px);";
     document.getElementById('menu').style = "filter: blur(5px);";
+    document.getElementById('addtaskPopupWindow').classList.add('popup_window_slidein');
+    setTimeout(() => {
+        document.getElementById('addtaskPopupWindow').style = "transform: translateX(0vw)";
+    }, 300);
 }
 
 function closeAddTaskPopup() {
-    document.getElementById('addtaskPopupWindow').classList.add('d-none');
-    document.getElementById('boardContentParent').style = "filter: none;";
-    document.getElementById('profilebar').style = "filter: none;";
-    document.getElementById('menu').style = "filter: none;";
-
+    document.getElementById('addtaskPopupWindow').style = "animation: slideout 0.3s;"
+    document.getElementById('addtaskPopupWindow').classList.remove('popup_window_slidein');
+    setTimeout(() => {
+        document.getElementById('addtaskPopupWindow').classList.add('d-none');
+        document.getElementById('boardContentParent').style = "filter: none;";
+        document.getElementById('menu').style = "filter: none;";
+        document.getElementById('profilebar').style = "filter: none;";
+        document.getElementById('addtaskPopupWindow').style = "transform: translateX(100vw)";
+    }, 300);
 }

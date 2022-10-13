@@ -602,3 +602,15 @@
 .height210 {
     height: 210px;
 }
+
+.close_addtask_popup {
+    position: absolute;
+    right: 3%;
+    top: 4%;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.close_addtask_popup img {
+    width: 40px;
+}

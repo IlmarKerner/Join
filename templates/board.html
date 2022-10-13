@@ -10,7 +10,7 @@
     <script src="../JS/script.js"></script>
     <script src="../JS/includeHTML.js"></script>
     <script src="../JS/addcontact.js"></script>
-    
+
     <link rel="stylesheet" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/response.css">
     <link rel="stylesheet" href="../styles/addTask.css">
@@ -18,8 +18,7 @@
     <link rel="stylesheet" href="../styles/taskstyle.css">
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/board.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 
@@ -57,8 +56,7 @@
                         <span>To Do</span>
                         <img src="../img/plus_button.png">
                     </div>
-                    <div id="toDo" ondrop="moveTo('toDo')" ondragover="ondragover=(event)"
-                        ondragend="removeDropPosition()">
+                    <div id="toDo" ondrop="moveTo('toDo')" ondragover="ondragover=(event)" ondragend="removeDropPosition()">
                         <!-- Cards get filled here -->
 
                         <div id="toDoDropPosition" class="div_border dNone"></div>
@@ -74,8 +72,7 @@
 
                     <div id="inProgress" ondrop="moveTo('inProgress')" ondragover="ondragover=(event)">
                         <!-- Cards get filled here -->
-                        <div id="testID" draggable="true" ondragstart="addDropPosition()"
-                            ondragend="removeDropPosition()" class="task_card">
+                        <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
                             <span class="card_category" id="cardCategory">
                                 Design
                             </span>
@@ -87,8 +84,7 @@
                             </span>
                             <div class="board_progress_row">
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-label="Basic example"
-                                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="board_progress">
                                     1/2 Done
@@ -141,15 +137,97 @@
 
         </div>
     </div>
+    <div class="addtask_popup d-none" id="addtaskPopupWindow">
+        <div class="tasks_popup">
+            <div class="close_addtask_popup" id="closeAddTaskWindow" onclick="closeAddTaskPopup()">
+                <img src="../img/clear.png">
+            </div>
+            <h1>Add Task</h1>
+            <div class="left_task_popup">
+                <div class="title_popup">
+                    <p>Title</p>
+                    <input type="text" placeholder="Enter a title">
+                </div>
+                <div class="description_popup">
+                    <p>Description</p>
+                    <textarea type="text" placeholder="Enter a description"></textarea>
+                </div>
+                <div class="margin-top50">
+                    <p>Category</p>
+                </div>
+                <div class="select_task_popup" id="selectTask" onclick="selectTaskCategory()">
+                    <div class="task" id="task">
+                        <p>Select task category</p>
+                        <img src="../img/down.png">
+                    </div>
+                    <div class="new_category" id="new_category" onclick="event.stopPropagation()">
+                        <p>New Category</p>
+                    </div>
+                    <div class="sales" id="sales" onclick="event.stopPropagation()">
+                        <p>Sales</p> <img src="../img/rosa.png"></div>
+                    <div class="backoffice" onclick="event.stopPropagation()">
+                        <p>Backoffice</p><img src="../img/hellblau.png"></div>
+                    <div class="design" onclick="event.stopPropagation()">
+                        <p>Design</p><img src="../img/orange.png"></div>
+                    <div class="marketing" onclick="event.stopPropagation()">
+                        <p>Marketing</p><img src="../img/blau.png"></div>
+                    <div class="media" onclick="event.stopPropagation()">
+                        <p>Media</p><img src="../img/green.png"></div>
+                </div>
+                <div class="margin-top50">
+                    <p>Assignet to</p>
+                </div>
+                <div class="assigned" id="assigned" onclick="showSelctedContacts()">
+                    <div class="select">
+                        <p>Select contacts to assign</p>
+                        <img src="../img/down.png">
+                    </div>
+                    <div class="you" onclick="event.stopPropagation()">
+                        <p>You</p>
+                        <input type="checkbox">
+                    </div>
+                    <div id="invitedContact" class="invited_contact" onclick="event.stopPropagation()">
+                        <p>Maximilian Mustermann</p>
+                        <input type="checkbox">
+                    </div>
+                    <div id="invite" class="invite" onclick="invite(); event.stopPropagation()">
+                        <p>Invite new contact</p>
+                        <img src="../img/contactsblack.png">
+                    </div>
+                </div>
+            </div>
+            <div class="bar">
+                <img src="../img/bar.png">
+            </div>
+            <div class="right-task_popup">
+                <div class="date">
+                    <p>Due date</p>
+                    <input type="date" placeholder="dd/mm/yyyy">
+                </div>
+                <div class="prio">
+                    <p>Prio</p>
+                    <div class="devision" id="devision">
+                        <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="../img/Urgentbuttonwhite.png"></div>
+                        <div onclick="changeImgMedium()" class="medium"><img id="medium" src="../img/mediumbuttonwhite.png"></div>
+                        <div onclick="changeImgLow()" class="low"><img id="low" src="../img/lowbuttonwhite.png"></div>
+                    </div>
+                </div>
+                <p class="subtaskheader">Subtasks</p>
+                <div class="subtask">
+                    <p></p>
+                    <input type="text" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addTask()">
+                </div>
 
-
+                <div class="subtasks">
+                    <div><input type="checkbox">Subtask 1</div>
+                </div>
+            </div>
+            <div class="task_buttons">
+                <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img src="../img/clear.png"></button>
+                <button class="create_button" id="createButton" onclick="createTask()">Create Task <img src="..//img/create_task.png"></button>
+            </div>
+        </div>
+    </div>
 </body>
 
-<<<<<<< HEAD
-<script src="../JS/board.js"></script>
-
-
-
-=======
->>>>>>> f94e6ded101c88078b75d8cfee28e61f34e11c6c
 </html>
