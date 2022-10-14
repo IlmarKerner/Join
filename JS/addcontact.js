@@ -50,6 +50,9 @@ function openNewContactWindow() {
 function closeNewContactWindow() {
     document.getElementById('popupAddContact').style = "animation: slideout 0.3s;"
     document.getElementById('popupAddContact').classList.remove('popup_window_slidein');
+    document.getElementById('popupAddContact').classList.remove('popup_window_slidein');
+    document.getElementById('popupAddContact').classList.add('popup_window_slideout');
+    document.getElementById('contactsContainer').style = "filter: none;";
     setTimeout(() => {
         document.getElementById('popupAddContact').classList.add('d-none');
         document.getElementById('contactsContainer').style = "filter: none;";
