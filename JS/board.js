@@ -1,50 +1,152 @@
 let currentDraggedItem
 let tasks = [{
-    "id": "1",
+    "id": 0,
     "progress": "toDo",
     "category": "Sales",
+    "headline": "Test mit ID0",
+    "description": "Modify the contents of the main website test test test test",
+    "assignet": "",
+    "dueDate": "22.12.2022",
+    "prio": "medium",
+    "subTask": "Make Icon",
+},
+{
+    "id": 1,
+    "progress": "inProgress",
+    "category": "Sales",
+    "headline": "Test mit ID1",
     "description": "Modify the contents of the main website test test test test",
     "assignet": "",
     "dueDate": "22.12.2022",
     "prio": "urgent",
     "subTask": "Make Icon",
 },
-]
+{
+    "id": 2,
+    "progress": "done",
+    "category": "Sales",
+    "headline": "Test mit ID2",
+    "description": "Modify the contents of the main website test test test test",
+    "assignet": "",
+    "dueDate": "22.12.2022",
+    "prio": "urgent",
+    "subTask": "Make Icon",
+},
+{
+    "id": 3,
+    "progress": "awaitingFeedback",
+    "category": "Design",
+    "headline": "Test mit ID3",
+    "description": "Modify the contents of the main website test test test test",
+    "assignet": "",
+    "dueDate": "22.12.2022",
+    "prio": "medium",
+    "subTask": "Make Icon",
+}];
 
 
 function init() {
-    updateCards();
-
-
-
+    updateToDo();
+    updateInProgress();
+    updateAwaitingFeedback();
+    updateDone();
 }
 
 
-function updateCards() {
-    document.getElementById('inProgress').innerHTML = ``;
-    for (let i = 0; i < tasks.length; i++) {
-        document.getElementById('toDo').innerHTML = cardContent(i);
-
+function updateToDo() {
+    let todos = tasks.filter(t => t['progress'] == 'toDo');
+    document.getElementById('toDo').innerHTML = '';
+    for (let i = 0; i < todos.length; i++) {
+        let element = todos[i];
+        document.getElementById('toDo').innerHTML += cardContent(element);
     }
-
-
 }
 
 
+function updateInProgress() {
+    let inProgress = tasks.filter(t => t['progress'] == 'inProgress');
+    document.getElementById('inProgress').innerHTML = '';
+    for (let i = 0; i < inProgress.length; i++) {
+        let element = inProgress[i];
+        document.getElementById('inProgress').innerHTML += cardContent(element);
+    }
+}
 
 
-function cardContent(ID) {
+function updateAwaitingFeedback() {
+    let awaitingFeedbacks = tasks.filter(t => t['progress'] == 'awaitingFeedback');
+    document.getElementById('awaitingFeedback').innerHTML = '';
+    for (let i = 0; i < awaitingFeedbacks.length; i++) {
+        let element = awaitingFeedbacks[i];
+        document.getElementById('awaitingFeedback').innerHTML += cardContent(element);
+    }
+}
+
+
+function updateDone() {
+    let dones = tasks.filter(t => t['progress'] == 'done');
+    document.getElementById('done').innerHTML = '';
+    for (let i = 0; i < dones.length; i++) {
+        let element = dones[i];
+        document.getElementById('done').innerHTML += cardContent(element);
+    }
+}
+
+
+function addDropPosition() {
+    document.getElementById('toDoDropPosition').classList.remove('dNone');
+    document.getElementById('inProgressDropPosition').classList.remove('dNone');
+    document.getElementById('awaitingFeedbackDropPosition').classList.remove('dNone');
+    document.getElementById('doneDropPosition').classList.remove('dNone');
+}
+
+
+function removeDropPosition() {
+    document.getElementById('toDoDropPosition').classList.add('dNone');
+    document.getElementById('inProgressDropPosition').classList.add('dNone');
+    document.getElementById('awaitingFeedbackDropPosition').classList.add('dNone');
+    document.getElementById('doneDropPosition').classList.add('dNone');
+}
+
+
+function startDragging(id) {
+    currentDraggedItem = id;
+    addDropPosition();
+     
+    console.log(currentDraggedItem);
+    console.log('start');
+}
+
+
+function endDragging() {
+    removeDropPosition();
+    console.log('end');
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+function drop(progress) {
+    tasks[currentDraggedItem]['progress'] = progress;
+    init();
+}
+
+
+function cardContent(Element) {
     return `
-    <div id="${ID}" draggable="true" ondragstart="dragStart(${ID})"
-        ondragend="dragEnd()" class="task_card">
+    <div id="${Element['id']}" draggable="true" ondragstart="startDragging(${Element['id']})"
+        ondragend="endDragging()" class="task_card">
     <span class="card_category" id="cardCategory">
-        Design
+        ${Element['category']}
     </span>
     <span class="card_headline">
-        Website redesign
+        ${Element['headline']}
     </span>
     <span class="card_description">
-        Modify the contents of the main website test test test test
+        ${Element['description']}
     </span>
     <div class="board_progress_row">
         <div class="progress">
@@ -71,36 +173,7 @@ function cardContent(ID) {
 }
 
 
-function addDropPosition() {
-    document.getElementById('toDoDropPosition').classList.remove('dNone');
-    document.getElementById('inProgressDropPosition').classList.remove('dNone');
-    document.getElementById('awaitingFeedbackDropPosition').classList.remove('dNone');
-    document.getElementById('doneDropPosition').classList.remove('dNone');
-}
 
-
-// function removeDropPosition() {
-//     document.getElementById('toDoDropPosition').classList.add('dNone');
-//     document.getElementById('inProgressDropPosition').classList.add('dNone');
-//     document.getElementById('awaitingFeedbackDropPosition').classList.add('dNone');
-//     document.getElementById('doneDropPosition').classList.add('dNone');
-// }
-
-
-
-
-function dragStart(ID) {
-    // this.className += ' tilt';
-    currentDraggedItem = document.getElementById(ID);
-    addDropPosition();
-
-    setTimeout(() => (currentDraggedItem.classList.add('dNone')), 0);
-    console.log('start');
-}
-
-function dragEnd() {
-    console.log('end');
-}
 
 
 
