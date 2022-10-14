@@ -46,7 +46,7 @@ let tasks = [{
 ];
 
 
-function init() {
+function initBoard() {
     updateToDo();
     updateInProgress();
     updateAwaitingFeedback();
@@ -133,7 +133,7 @@ function allowDrop(ev) {
 
 function drop(progress) {
     tasks[currentDraggedItem]['progress'] = progress;
-    init();
+    initBoard();
 }
 
 
