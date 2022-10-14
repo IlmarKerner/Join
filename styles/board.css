@@ -96,8 +96,16 @@
 
 .board_column {
     width: 250px;
-    max-height: calc(100vh - 89px - 82px - 82px - 100px - 10px);
-    overflow: hidden;
+    
+}
+
+.board_column_content {
+    max-height: calc(100vh - 89px - 82px - 82px - 100px - 70px);
+    overflow: scroll;
+}
+
+.board_column_content::-webkit-scrollbar {
+    display: none;
 }
 
 .board_column_headline {
