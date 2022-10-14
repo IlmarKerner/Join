@@ -1,48 +1,49 @@
 let currentDraggedItem
 let tasks = [{
-    "id": 0,
-    "progress": "toDo",
-    "category": "Sales",
-    "headline": "Test mit ID0",
-    "description": "Modify the contents of the main website test test test test",
-    "assignet": "",
-    "dueDate": "22.12.2022",
-    "prio": "medium",
-    "subTask": "Make Icon",
-},
-{
-    "id": 1,
-    "progress": "inProgress",
-    "category": "Sales",
-    "headline": "Test mit ID1",
-    "description": "Modify the contents of the main website test test test test",
-    "assignet": "",
-    "dueDate": "22.12.2022",
-    "prio": "urgent",
-    "subTask": "Make Icon",
-},
-{
-    "id": 2,
-    "progress": "done",
-    "category": "Sales",
-    "headline": "Test mit ID2",
-    "description": "Modify the contents of the main website test test test test",
-    "assignet": "",
-    "dueDate": "22.12.2022",
-    "prio": "urgent",
-    "subTask": "Make Icon",
-},
-{
-    "id": 3,
-    "progress": "awaitingFeedback",
-    "category": "Design",
-    "headline": "Test mit ID3",
-    "description": "Modify the contents of the main website test test test test",
-    "assignet": "",
-    "dueDate": "22.12.2022",
-    "prio": "medium",
-    "subTask": "Make Icon",
-}];
+        "id": 0,
+        "progress": "toDo",
+        "category": "Sales",
+        "headline": "Test mit ID0",
+        "description": "Modify the contents of the main website test test test test",
+        "assignet": "",
+        "dueDate": "22.12.2022",
+        "prio": "medium",
+        "subTask": "Make Icon",
+    },
+    {
+        "id": 1,
+        "progress": "inProgress",
+        "category": "Sales",
+        "headline": "Test mit ID1",
+        "description": "Modify the contents of the main website test test test test",
+        "assignet": "",
+        "dueDate": "22.12.2022",
+        "prio": "urgent",
+        "subTask": "Make Icon",
+    },
+    {
+        "id": 2,
+        "progress": "done",
+        "category": "Sales",
+        "headline": "Test mit ID2",
+        "description": "Modify the contents of the main website test test test test",
+        "assignet": "",
+        "dueDate": "22.12.2022",
+        "prio": "urgent",
+        "subTask": "Make Icon",
+    },
+    {
+        "id": 3,
+        "progress": "awaitingFeedback",
+        "category": "Design",
+        "headline": "Test mit ID3",
+        "description": "Modify the contents of the main website test test test test",
+        "assignet": "",
+        "dueDate": "22.12.2022",
+        "prio": "medium",
+        "subTask": "Make Icon",
+    }
+];
 
 
 function init() {
@@ -50,6 +51,7 @@ function init() {
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
+    renderContacts();
 }
 
 
@@ -112,7 +114,7 @@ function removeDropPosition() {
 function startDragging(id) {
     currentDraggedItem = id;
     addDropPosition();
-     
+
     console.log(currentDraggedItem);
     console.log('start');
 }
@@ -171,10 +173,3 @@ function cardContent(Element) {
     </div>
     `;
 }
-
-
-
-
-
-
-
