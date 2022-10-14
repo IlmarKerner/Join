@@ -11,6 +11,7 @@
     position: absolute;
     top: 15%;
     left: 18%;
+    transform: translateX(100vw);
 }
 
 .addtask_popup h1 {
@@ -26,6 +27,35 @@
     top: 63px;
     left: 74px;
     z-index: 5;
+}
+
+.popup_window_slideout {
+    animation: slideout 0.3s;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideout {
+    from {
+        transform: translateX(0vw);
+    }
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+.popup_window_slidein {
+    animation: slidein 0.3s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(0vw);
+    }
 }
 
 .tasks_popup {

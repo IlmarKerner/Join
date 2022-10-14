@@ -34,10 +34,10 @@ function changeImgUrgent() {
     let urgent = document.getElementById('urgent');
     urgent.src = "../img/urgentbutton.png";
     if (urgentImage) {
-        urgent.src = "../img/urgentbutton.png";
+        urgent.src = "../img/urgentbuttonwhite.png";
         urgentImage = false;
     } else {
-        urgent.src = "../img/urgentbuttonwhite.png";
+        urgent.src = "../img/urgentbutton.png ";
         urgentImage = true;
     }
 }
@@ -46,10 +46,10 @@ function changeImgMedium() {
     let medium = document.getElementById('medium');
     medium.src = "../img/mediumbutton.png";
     if (mediumImage) {
-        medium.src = "../img/mediumbutton.png";
+        medium.src = "../img/mediumbuttonwhite.png";
         mediumImage = false;
     } else {
-        medium.src = "../img/mediumbuttonwhite.png";
+        medium.src = "../img/mediumbutton.png ";
         mediumImage = true;
     }
 }
@@ -58,10 +58,10 @@ function changeImgLow() {
     let low = document.getElementById('low');
     low.src = "../img/lowbutton.png";
     if (lowImage) {
-        low.src = "../img/lowbutton.png";
+        low.src = "../img/lowbuttonwhite.png";
         lowImage = false;
     } else {
-        low.src = "../img/lowbuttonwhite.png";
+        low.src = "../img/lowbutton.png ";
         lowImage = true;
     }
 }
@@ -71,12 +71,44 @@ function openAddTaskPopup() {
     document.getElementById('boardContentParent').style = "filter: blur(5px);";
     document.getElementById('profilebar').style = "filter: blur(5px);";
     document.getElementById('menu').style = "filter: blur(5px);";
+    document.getElementById('addtaskPopupWindow').classList.add('popup_window_slidein');
+    setTimeout(() => {
+        document.getElementById('addtaskPopupWindow').style = "transform: translateX(0vw)";
+    }, 300);
 }
 
 function closeAddTaskPopup() {
-    document.getElementById('addtaskPopupWindow').classList.add('d-none');
-    document.getElementById('boardContentParent').style = "filter: none;";
-    document.getElementById('profilebar').style = "filter: none;";
-    document.getElementById('menu').style = "filter: none;";
+    document.getElementById('addtaskPopupWindow').style = "animation: slideout 0.3s;"
+    document.getElementById('addtaskPopupWindow').classList.remove('popup_window_slidein');
+    setTimeout(() => {
+        document.getElementById('addtaskPopupWindow').classList.add('d-none');
+        document.getElementById('boardContentParent').style = "filter: none;";
+        document.getElementById('menu').style = "filter: none;";
+        document.getElementById('profilebar').style = "filter: none;";
+        document.getElementById('addtaskPopupWindow').style = "transform: translateX(100vw)";
+    }, 300);
+}
 
+
+function openAddTaskPopupForContact() {
+    document.getElementById('addtaskPopupWindowForContact').classList.remove('d-none');
+    document.getElementById('contactsContainer').style = "filter: blur(5px);";
+    document.getElementById('profilebar').style = "filter: blur(5px);";
+    document.getElementById('menu').style = "filter: blur(5px);";
+    document.getElementById('addtaskPopupWindowForContact').classList.add('popup_window_slidein');
+    setTimeout(() => {
+        document.getElementById('addtaskPopupWindowForContact').style = "transform: translateX(0vw)";
+    }, 300);
+}
+
+function closeAddTaskPopupForContact() {
+    document.getElementById('addtaskPopupWindowForContact').style = "animation: slideout 0.3s;"
+    document.getElementById('addtaskPopupWindowForContact').classList.remove('popup_window_slidein');
+    setTimeout(() => {
+        document.getElementById('addtaskPopupWindowForContact').classList.add('d-none');
+        document.getElementById('contactsContainer').style = "filter: none;";
+        document.getElementById('menu').style = "filter: none;";
+        document.getElementById('profilebar').style = "filter: none;";
+        document.getElementById('addtaskPopupWindowForContact').style = "transform: translateX(100vw)";
+    }, 300);
 }

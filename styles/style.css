@@ -20,6 +20,7 @@ body {
 
 .mobile-header {
     display: none;
+    animation: fadeIn 1.7s;
 }
 
 .header img {
@@ -341,6 +342,8 @@ body {
 
 /* ---------------------- MEDIA QUERYS ---------------------- */
 
+/* ---------------------- Index Start ---------------------- */
+
 @media (max-width: 1200px) {
     .login_window {
         width: 552px;
@@ -355,7 +358,7 @@ body {
     .mobile-header {
         display: block;
         position: absolute;
-        bottom: -100px;
+        bottom: -80px;
         right: 50%;
         transform: translate(50%, 0);
     }
@@ -511,3 +514,4 @@ body {
     
 }
 
+/* ---------------------- Index End ---------------------- */
