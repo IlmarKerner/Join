@@ -7,7 +7,6 @@ body {
 .login_section {
     display: flex;
     width: 100vw;
-    height: 100vh;
     flex-direction: column;
     padding: 48px;
 }
@@ -16,6 +15,11 @@ body {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    animation: fadeIn 1.7s;
+}
+
+.mobile-header {
+    display: none;
     animation: fadeIn 1.7s;
 }
 
@@ -220,7 +224,7 @@ body {
 }
 
 .checkbox {
-    width: 335px;
+    gap: 50px;
     display: flex;
     justify-content: space-between;
     margin: 30px 0px 30px 0px;
@@ -241,7 +245,7 @@ body {
 }
 
 .login_buttons {
-    width: 335px;
+    gap: 12px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
@@ -336,3 +340,178 @@ body {
     font-size: .8rem;
 }
 
+/* ---------------------- MEDIA QUERYS ---------------------- */
+
+/* ---------------------- Index Start ---------------------- */
+
+@media (max-width: 1200px) {
+    .login_window {
+        width: 552px;
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        display: none;
+    }
+
+    .mobile-header {
+        display: block;
+        position: absolute;
+        bottom: -80px;
+        right: 50%;
+        transform: translate(50%, 0);
+    }
+
+    .registry {
+        margin: 0;
+    }
+
+    .login_window {
+        margin-top: 64px;
+    }
+
+    .signup_window {
+        margin-top: 64px;
+    }
+
+    .forgot_window {
+        width: 700px;
+    }
+
+    .forgot_window h1 {
+        margin-top: 60px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .signup_window {
+        width: 500px;
+    }
+
+    .forgot_window {
+        width: 550px;
+    }
+
+    .forgot_window h1 {
+        font-size: 50px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .login_window {
+        width: 372px;
+    }
+
+    .signup_window {
+        width: 372px;
+    }
+
+    .forgot_window {
+        width: 372px;
+    }
+
+    .forgot_window h1 {
+        font-size: 32px;
+    }
+
+    .input_email {
+        width: 350px;
+    }
+
+    .input_email input {
+        width: 300px;
+    }
+
+    .input_password {
+        width: 350px;
+    }
+
+    .input_password input {
+        width: 300px;
+    }
+
+    .input_name {
+        width: 350px;
+    }
+
+    .input_name input {
+        width: 300px;
+    }
+
+    .mobile-header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+}
+
+@media (max-width: 450px) {
+
+    .login_window {
+        width: 322px;
+    }
+
+    .signup_window {
+        width: 322px;
+    }
+
+    .forgot_window {
+        width: 322px;
+    }
+
+    .forgot_window h1 {
+        font-size: 29px;
+    }
+
+    .input_email {
+        width: 300px;
+    }
+
+    .input_email input {
+        width: 250px;
+    }
+
+    .input_password {
+        width: 300px;
+    }
+
+    .input_password input {
+        width: 250px;
+    }
+
+    .input_name {
+        width: 300px;
+        margin-top: 32px;
+    }
+
+    .input_name input {
+        width: 250px;
+    }
+
+    .mobile-header {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .checkbox {
+        gap: 12px;
+    }
+
+    .login_button {
+        width: 111px;
+    }
+
+    .signup_window h1 {
+        margin-top: 50px;
+    }
+    
+}
+
+/* ---------------------- Index End ---------------------- */

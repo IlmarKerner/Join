@@ -96,8 +96,8 @@
 
 .board_column {
     width: 250px;
-    min-height: 400px;
-    
+    max-height: calc(100vh - 89px - 82px - 82px - 100px - 10px);
+    overflow: hidden;
 }
 
 .board_column_headline {
@@ -243,8 +243,8 @@
     height: 205px;
     width: 250px;
     border-radius: 30px;
-    border: 1px dashed lightgrey;
-    
+    border: 1px dashed lightgrey;   
 }
+
 
 
