@@ -1,5 +1,5 @@
 let contacts = [];
-let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red'];
+let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 
 function getInfoFromNewContactField() {
     let firstname = document.getElementById('firstname');
@@ -10,34 +10,51 @@ function getInfoFromNewContactField() {
     let contactInfo = {
         "first_name": firstname.value,
         "second_name": secondname.value,
+        "initials": (firstname.value.charAt(0) + secondname.value.charAt(0)).toUpperCase(),
         "email": email.value,
         "phone": phone.value,
+        "addetAt": new Date().getTime(),
     };
 
     contacts.push(contactInfo);
+
+    let allTasksAsString = JSON.stringify(contacts);
+    localStorage.setItem('allTasks', allTasksAsString);
+
 
     firstname.value = '';
     secondname.value = '';
     email.value = '';
     phone.value = '';
 
+    closeNewContactWindow();
+    renderContacts();
+}
+
+function renderContacts() {
     document.getElementById('listning').innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
+        let initials = contacts[i]['initials'];
         document.getElementById('listning').innerHTML += `
-        <div class="test">
-            <div class="contact_name_container" onclick="showFullContactInfo()">
-                <span>${contacts[i]['first_name'].charAt(0)} ${contacts[i]['second_name'].charAt(0)}</span>
+        <div class="full_listner">
+            <div class="contact_name_container" onclick="showFullContactInfo(${i})">
+                <span style="background-color:${getColorForName(initials)}">${initials}</span>
                 <div class="contact_name">
                     <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
                     <a href="#"><p>${contacts[i]['email']}</p></a>
                 </div>
             </div>
-            <p>|</p>
+            <p style="font-size: 50px !important; margin: 0px">|</p>
             <img src="../img/trash-can.png" onclick="removeContact()">
         </div>
         `;
     }
-    closeNewContactWindow();
+}
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('allTasks');
+    contacts = JSON.parse(allTasksAsString);
+
 }
 
 function openNewContactWindow() {
@@ -64,16 +81,15 @@ function closeNewContactWindow() {
 
 function removeContact(i) {
     contacts.splice(i, 1);
-    includeHTML();
+    renderContacts();
 }
 
 function showFullContactInfo() {
     let fullContactInfo = document.getElementById('full_contact_Info_Container');
     fullContactInfo.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        fullContactInfo.innerHTML += `
+    fullContactInfo.innerHTML += `
     <div class="full_contact_info">
-        <h2>${contacts[i]['first_name'].charAt(0)} ${contacts[i]['second_name'].charAt(0)}</h2>
+        <h2 style="background-color:${getColorForName(initials)}">${initials}</h2>
         <h1>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h1>
         <p onclick="openAddTaskPopupForContact()">+ Add Task</p>
     </div>
@@ -92,6 +108,9 @@ function showFullContactInfo() {
         <h2>Phone</h2>
         <p>${contacts[i]['phone']}</p>
     </div>`;
-    }
+}
 
+function getColorForName(initials) {
+    let number = (initials.charCodeAt(0) + initials.charCodeAt(1)) % contactColors.length;
+    return contactColors[number];
 }

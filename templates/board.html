@@ -63,7 +63,7 @@
                     </div>
                     <div id="inProgress" ondrop="moveTo('inProgress')" ondragover="ondragover=(event)">
                         <!-- Cards get filled here -->
-                        <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
+                        <!-- <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
                             <span class="card_category" id="cardCategory">
                                 Design
                             </span>
@@ -93,7 +93,7 @@
                             </div>
                         </div>
 
-                        <div id="inProgressDropPosition" class="div_border dNone"></div>
+                        <div id="inProgressDropPosition" class="div_border dNone"></div> -->
                     </div>
                 </div>
                 <div class="board_column">
@@ -130,16 +130,16 @@
             <div class="left_task_popup">
                 <div class="title_popup">
                     <p>Title</p>
-                    <input type="text" placeholder="Enter a title">
+                    <input type="text" placeholder="Enter a title" id="title">
                 </div>
                 <div class="description_popup">
                     <p>Description</p>
-                    <textarea type="text" placeholder="Enter a description"></textarea>
+                    <textarea type="text" placeholder="Enter a description" id="description"></textarea>
                 </div>
                 <div class="margin-top50">
                     <p>Category</p>
                 </div>
-                <div class="select_task_popup" id="selectTask" onclick="selectTaskCategory()">
+                <!-- <div class="select_task_popup" id="selectTask" onclick="selectTaskCategory()">
                     <div class="task" id="task">
                         <p>Select task category</p>
                         <img src="../img/down.png">
@@ -157,11 +157,19 @@
                         <p>Marketing</p><img src="../img/blau.png"></div>
                     <div class="media" onclick="event.stopPropagation()">
                         <p>Media</p><img src="../img/green.png"></div>
-                </div>
+                </div> -->
+                <select class="select_task" id="category" placeholder="Select task category" required>
+                    <option>Select task category</option>
+                    <option>New Category</option>
+                    <option>Backoffice</option>
+                    <option>Design</option>
+                    <option>Marketing</option>
+                    <option>Media</option>
+                </select>
                 <div class="margin-top50">
                     <p>Assignet to</p>
                 </div>
-                <div class="assigned" id="assigned" onclick="showSelctedContacts()">
+                <!-- <div class="assigned" id="assigned" onclick="showSelctedContacts()">
                     <div class="select">
                         <p>Select contacts to assign</p>
                         <img src="../img/down.png">
@@ -178,7 +186,13 @@
                         <p>Invite new contact</p>
                         <img src="../img/contactsblack.png">
                     </div>
-                </div>
+                </div> -->
+                <select class="select_assign" id="assign" placeholder="Assignet to" required>
+                    <option>Select contacts to assign</option>
+                    <option>Janine Muster</option>
+                    <option>Max Mustermann</option>
+                    <option>Ilmar Kerner</option>
+                </select>
             </div>
             <div class="bar">
                 <img src="../img/bar.png">
@@ -186,7 +200,7 @@
             <div class="right-task_popup">
                 <div class="date">
                     <p>Due date</p>
-                    <input type="date" placeholder="dd/mm/yyyy">
+                    <input type="date" placeholder="dd/mm/yyyy" id="date">
                 </div>
                 <div class="prio">
                     <p>Prio</p>
@@ -198,11 +212,10 @@
                 </div>
                 <p class="subtaskheader">Subtasks</p>
                 <div class="subtask">
-                    <p></p>
-                    <input type="text" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addTask()">
+                    <input type="text" id="addNewSubtask" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addSubTask()">
                 </div>
-                <div class="subtasks">
-                    <div><input type="checkbox">Subtask 1</div>
+                <div class="subtasks" id="subtask">
+
                 </div>
             </div>
             <div class="task_buttons">
@@ -213,11 +226,7 @@
     </div>
 </body>
 
-<<<<<<< HEAD <script src="../JS/board.js">
-    </script>
-
-
-
-    ======= >>>>>>> f94e6ded101c88078b75d8cfee28e61f34e11c6c
+<script src="../JS/board.js">
+</script>
 
 </html>
