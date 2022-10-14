@@ -3,6 +3,81 @@ let selectTaskBoxOpen = false;
 let urgentImage = false;
 let mediumImage = false;
 let lowImage = false;
+let taskCard = [{
+    "id": "1",
+    "title": "toDo",
+    "category": "Sales",
+    "description": "",
+    "assignet": "",
+    "date": "22.12.2022",
+    "prio": "urgent",
+    "subTask": "Make Icon",
+}, ];
+let subtask = [];
+
+function addSubTask() {
+    subtasks = document.getElementById('addNewSubtask').value;
+    subtask.push(subtasks);
+    subtasks.value = '';
+    document.getElementById('subtask').innerHTML = '';
+    for (let i = 0; i < subtask.length; i++) {
+        document.getElementById('subtask').innerHTML = `
+        <div><input type="checkbox">${subtask[i]}</div>`;
+    }
+
+}
+
+function createTask(i) {
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let category = document.getElementById('category');
+    let assign = document.getElementById('assign');
+    let date = document.getElementById('date');
+
+    let taskCardInfo = {
+        "title": title.value,
+        "description": description.value,
+        "category": category.value,
+        "assign": assign.value,
+        "date": date.value,
+    }
+
+    taskCard.push(taskCardInfo);
+
+    title.value = '';
+    description.value = '';
+    category.value = '';
+    assign.value = '';
+    date.value = '';
+
+    document.getElementById('inProgress').innerHTML = '';
+    for (let i = 0; i < taskCard.length; i++) {
+        document.getElementById('inProgress').innerHTML = `
+        <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
+            <span class="card_category" id="cardCategory">${category[i]}</span>
+            <span class="card_headline">${title[i]}</span>
+            <span class="card_description">${description[i]}</span>
+                <div class="board_progress_row">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                        <div class="board_progress"> 1/2 Done</div>
+                </div>
+                <div class="assinged_contacts_row">
+                    <div class="initials_contacts">
+                        <div class="assinged_contacts1">${taskCard[i]['assignet'].charAt(0)}</div>
+                        <div class="assinged_contacts2">DF</div>
+                        <div class="assinged_contacts3">LN</div>
+                    </div>
+                     <div class="urgency_icon">
+                        <img src="../img/medium.png">
+                    </div>
+                </div>
+            </div>
+            <div id="inProgressDropPosition" class="div_border dNone"></div>`;
+    }
+    closeAddTaskPopup();
+}
 
 function showSelctedContacts() {
     let selectbox = document.getElementById('assigned');

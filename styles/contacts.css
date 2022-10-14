@@ -35,6 +35,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    background-color:
 }
 
 .contact_name_container span {
@@ -55,19 +56,19 @@
     font-size: 16px !important;
 }
 
-.test {
+.full_listner {
     display: flex;
     align-items: center;
 }
 
-.test img {
+.full_listner img {
     width: 40px;
     height: 40px;
     margin-left: 16px;
     cursor: pointer;
 }
 
-.test p {
+.full_listnert p {
     font-size: 45px;
     margin-bottom: 0px;
 }
@@ -144,7 +145,7 @@
 
 .full_contact_info h1 {
     position: absolute;
-    width: 287px;
+    width: 420px;
     height: 56px;
     font-family: 'Inter';
     font-style: normal;
