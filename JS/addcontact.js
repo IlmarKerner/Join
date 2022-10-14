@@ -1,5 +1,5 @@
 let contacts = [];
-let contactColors = [''];
+let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red'];
 
 function getInfoFromNewContactField() {
     let firstname = document.getElementById('firstname');
@@ -24,19 +24,21 @@ function getInfoFromNewContactField() {
     document.getElementById('listning').innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
         document.getElementById('listning').innerHTML += `
-        <div class="contact_name_container" onclick="showFullContactInfo()">
-            <span>${contacts[i]['first_name'].charAt(0)} ${contacts[i]['second_name'].charAt(0)}</span>
-            <div class="contact_name">
-                <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
-                <a href="#"><p>${contacts[i]['email']}</p></a>
+        <div class="test">
+            <div class="contact_name_container" onclick="showFullContactInfo()">
+                <span>${contacts[i]['first_name'].charAt(0)} ${contacts[i]['second_name'].charAt(0)}</span>
+                <div class="contact_name">
+                    <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
+                    <a href="#"><p>${contacts[i]['email']}</p></a>
+                </div>
             </div>
+            <p>|</p>
             <img src="../img/trash-can.png" onclick="removeContact()">
         </div>
         `;
     }
     closeNewContactWindow();
 }
-
 
 function openNewContactWindow() {
     document.getElementById('popupAddContact').classList.remove('d-none');
@@ -58,6 +60,11 @@ function closeNewContactWindow() {
         document.getElementById('contactsContainer').style = "filter: none;";
         document.getElementById('popupAddContact').style = "transform: translateX(100vw)";
     }, 300);
+}
+
+function removeContact(i) {
+    contacts.splice(i, 1);
+    includeHTML();
 }
 
 function showFullContactInfo() {

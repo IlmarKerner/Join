@@ -30,7 +30,7 @@
 
 .contact_name_container {
     display: flex;
-    width: 100%;
+    width: 350px;
     height: 120px;
     justify-content: space-between;
     align-items: center;
@@ -51,10 +51,25 @@
     border-radius: 50%;
 }
 
-.contact_name_container img {
-    width: 30px;
-    margin-right: 20px;
+.contact_name_container p {
+    font-size: 16px !important;
+}
+
+.test {
+    display: flex;
+    align-items: center;
+}
+
+.test img {
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
     cursor: pointer;
+}
+
+.test p {
+    font-size: 45px;
+    margin-bottom: 0px;
 }
 
 .listning {
