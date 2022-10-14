@@ -312,13 +312,21 @@
 .select_task {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 422px;
     height: 51px;
     background-color: white;
     font-size: 21px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    overflow: hidden;
+}
+
+.test {
+    height: 150px;
+}
+
+.select_task p {
+    height: 100px;
 }
 
 .task {
