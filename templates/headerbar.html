@@ -1,24 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Headerbar</title>
-    <script src="../JS/addtask.js"></script>
-    <script src="../JS/script.js"></script>
-    <script src="../JS/includeHTML.js"></script>
-    <script src="../JS/login.js"></script>
-    <script src="../JS/addcontact.js"></script>
-    <link rel="stylesheet" href="../styles/response.css">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/taskstyle.css">
-    <link rel="stylesheet" href="../styles/menu.css">
-    <link rel="stylesheet" href="../styles/fonts.css">
-    <link rel="stylesheet" href="../styles/legal_notice.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
 <style>
     .headerbar {
         position: absolute;
@@ -62,11 +44,43 @@
         height: 49px;
         border-radius: 100%;
     }
+
+    .profilebar_logo {
+        display: none;
+    }
+
+    @media (max-width: 992px) {
+
+        .profilebar {
+            height: 80px;
+        }
+
+        .profilebar p {
+            display: none;
+        }
+
+        .q_image {
+            display: none;
+        }
+
+        .profilebar_logo {
+            display: block;
+            width: 32px;
+            position: absolute;
+            left: 5%;
+        }
+
+        .profile {
+            right: 5%;
+            width: unset;
+        }
+
+    }
 </style>
-</head>
 
 <body>
     <div class="profilebar" id="profilebar">
+        <img class="profilebar_logo" src="../img/Capa 1.png">
         <p>Kanban Project Management Tool</p>
         <div class="profile">
             <div class="q_image">
