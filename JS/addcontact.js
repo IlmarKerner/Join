@@ -84,8 +84,9 @@ function removeContact(i) {
     renderContacts();
 }
 
-function showFullContactInfo() {
+function showFullContactInfo(i) {
     let fullContactInfo = document.getElementById('full_contact_Info_Container');
+    let initials = contacts[i]['initials'];
     fullContactInfo.innerHTML = '';
     fullContactInfo.innerHTML += `
     <div class="full_contact_info">
