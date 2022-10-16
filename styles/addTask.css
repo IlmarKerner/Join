@@ -1,6 +1,6 @@
 .add_task_container {
     position: relative;
-    width: 100vw;
+    width: 100%;
     background: #F6F7F8;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .tasks {
-    width: calc(100vw - 232px);
+    width: calc(100% - 232px);
     height: 100vh;
     left: 232px;
     position: relative;

@@ -1,3 +1,7 @@
+html {
+    background-color: #F6F7F8;
+}
+
 body {
     font-family: 'Inter', sans-serif!important;
     display: flex;
@@ -11,6 +15,8 @@ body {
 .summary_content_parent {
     position: relative;
     background-color: #F6F7F8;
+    width: 100%;
+    height: 100%;
 }
 
 .summary_content {
@@ -38,6 +44,7 @@ body {
 
 .overview {
     width: 580px;
+    padding: 16px;
 }
 
 .overview_tasks {
@@ -223,7 +230,7 @@ body {
     .summary_content {
         position: relative;
         margin: 0;
-        height: calc(100% - 90px);
+        height: calc(100% - 90px - 79px);
         background-color: #F6F7F8;
         display: flex;
         flex-direction: column;
@@ -231,6 +238,7 @@ body {
         top: unset;
         left: unset;
         margin-top: 10px;
+        overflow-y: scroll;
     }
     .summary_header {
         flex-direction: column;
