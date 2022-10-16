@@ -23,8 +23,7 @@ html {
     width: 100%;
     background-color: #F6F7F8;
     margin-top: 82px;
-    padding-left: 70px;
-    padding-right: 70px;
+    padding: 0 50px;
 }
 
 .board_headline {
@@ -260,4 +259,61 @@ html {
     width: 250px;
     border-radius: 30px;
     border: 1px dashed lightgrey;
+}
+
+.tool_description {
+    display: none;
+}
+
+/* ---------------------- Summary Start ---------------------- */
+
+@media (max-width: 1350px) {
+
+    .board_column {
+        width: 22%;
+      }
+
+      .board_column_headline {
+        font-size: 17px;
+      }
+
+}
+
+@media (max-width: 1200px) {
+
+    .board_column_headline {
+    font-size: 13px;
+    }
+
+    .board_column img {
+        width: 20px;
+    }
+
+}
+
+@media (max-width: 992px) {
+
+    .board_content_parent {
+        left: 0;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+
+}
+
+@media (max-width: 600px) {
+
+    .tool_description {
+        display: block;
+        margin: 20px 0;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+
 }
