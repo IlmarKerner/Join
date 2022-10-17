@@ -40,7 +40,7 @@ let tasks = [{
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
         "dueDate": "22.12.2022",
-        "prio": "medium",
+        "prio": "low",
         "subTask": "Make Icon",
     }
 ];
@@ -152,7 +152,7 @@ function cardContent(Element) {
     </span>
     <div class="board_progress_row">
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-label="Basic example"
+            <div class="progress-bar w-50" role="progressbar" aria-label="Basic example"
                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <div class="board_progress">
@@ -167,7 +167,7 @@ function cardContent(Element) {
             <div class="assinged_contacts3">LN</div>
         </div>
         <div class="urgency_icon">
-            <img src="../img/medium.png">
+            <img src="../img/${Element['prio']}.png">
         </div>
 
     </div>
