@@ -1,3 +1,5 @@
+
+
 .add_task_container {
     position: relative;
     width: 100%;
@@ -13,9 +15,8 @@
     font-size: 61px;
     line-height: 120%;
     color: black;
-    position: absolute;
-    top: 171px;
-    left: 355px;
+    margin-left: 355px;
+    margin-top: 171px;
 }
 
 .tasks {

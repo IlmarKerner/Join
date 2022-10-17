@@ -31,6 +31,7 @@ html {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    position: relative;
 }
 
 .board_headline h1 {
@@ -297,18 +298,60 @@ html {
         left: 0;
     }
 
+    .tool_description {
+        display: block;
+        padding: 0 50px;
+        font-size: 16px;
+    }
+
 }
 
 @media (max-width: 768px) {
 
+    .board_searchbar {
+        position: absolute;
+        top: 90px;
+        left: 0;
+    }
 
+    .board_add_task {
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+    }
+
+    .board_add_task button {
+        display: none;
+    }
+
+    .board_add_task img {
+        padding: 0;
+        width: 20px;
+    }
+
+    .board_overview {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px;
+    }
+
+    .board_column {
+        width: 70%;
+    }
+
+    .board_column img {
+        width: 30px;
+    }
+
+    .board_column_headline {
+        font-size: 21px;
+    }
 }
 
 @media (max-width: 600px) {
 
-    .tool_description {
-        display: block;
-        margin: 20px 0;
+    .board_column {
+        width: 90%;
     }
 
 }
