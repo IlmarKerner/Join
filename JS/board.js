@@ -6,7 +6,7 @@ let tasks = [{
         "headline": "Test mit ID0",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "22.12.2022",
+        "dueDate": "01.12.2022",
         "prio": "medium",
         "subTask": "Make Icon",
         "tasksOverall": 3,
@@ -20,7 +20,7 @@ let tasks = [{
         "headline": "Test mit ID1",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "22.12.2022",
+        "dueDate": "02.12.2022",
         "prio": "urgent",
         "subTask": "Make Icon",
         "tasksOverall": 2,
@@ -34,7 +34,7 @@ let tasks = [{
         "headline": "Test mit ID2",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "22.12.2022",
+        "dueDate": "03.12.2022",
         "prio": "urgent",
         "subTask": "Make Icon",
         "tasksOverall": 2,
@@ -48,7 +48,7 @@ let tasks = [{
         "headline": "Test mit ID3",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "22.12.2022",
+        "dueDate": "04.12.2022",
         "prio": "low",
         "subTask": "Make Icon",
         "tasksOverall": 3,
@@ -160,9 +160,21 @@ function drop(progress) {
 }
 
 
+function openPopUp(id) {
+    document.getElementById('popUpArea').classList.remove('dNone');
+    document.getElementById('popUpArea').innerHTML = '';
+    document.getElementById('popUpArea').innerHTML = popUpContent(id);
+}
+
+
+function closePopUp() {
+    document.getElementById('popUpArea').classList.add('dNone');
+}
+
+
 function cardContent(Element) {
     return `
-    <div id="${Element['id']}" draggable="true" ondragstart="startDragging(${Element['id']})"
+    <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
         ondragend="endDragging()" class="task_card">
     <span class="card_category" id="cardCategory">
         ${Element['category']}
@@ -191,6 +203,49 @@ function cardContent(Element) {
             <img src="../img/${Element['prio']}.png">
         </div>
 
+    </div>
+    `;
+}
+
+
+function popUpContent(id) {
+    Element = tasks[id];
+    return `
+    <div class="dragcard_popup">
+        <div class="categorycard">
+            <p>${Element['category']}</p>
+        </div>
+        <div onclick="closePopUp()" class="closebutton">
+            <img src="../img/clear.png">
+        </div>
+        <div class="headerdescription">
+            <h1>${Element['headline']}</h1>
+        </div>
+        <div class="description_dragcard_pupup">
+            <p>${Element['description']}</p>
+        </div>
+        <div class="dragcard_popup_frame_1">
+            <h2>Due date:</h2>
+            <p id="dueDate">${Element['dueDate']}</p>
+        </div>
+        <div class="dragcard_popup_frame_2">
+            <h2>Priority:</h2>
+            <img src="../img/${Element['prio']}button.png">
+        </div>
+        <div class="dragcard_popup_frame_3">
+            <h2>Assignet To:</h2>
+        </div>
+        <div class="dragcard_popup_frame_4" id="dragcardPopupListning">
+            <div class="underframe1">
+                <div>
+                    <h4>DE</h4>
+                </div>
+                <p>David Eisenberg</p>
+            </div>
+        </div>
+        <div class="edit_button_dragcard_popup">
+            <img src="../img/edit button.png">
+        </div>
     </div>
     `;
 }

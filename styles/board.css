@@ -142,6 +142,7 @@ html {
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: 35px;
+    cursor: pointer;
 }
 
 .card_category {
@@ -264,6 +265,13 @@ html {
 
 .tool_description {
     display: none;
+}
+
+.pop_up_area {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 /* ---------------------- Summary Start ---------------------- */
