@@ -9,6 +9,9 @@ let tasks = [{
         "dueDate": "22.12.2022",
         "prio": "medium",
         "subTask": "Make Icon",
+        "tasksOverall": 3,
+        "tasksDone": 1,
+        "tasksPercent": '',
     },
     {
         "id": 1,
@@ -20,6 +23,9 @@ let tasks = [{
         "dueDate": "22.12.2022",
         "prio": "urgent",
         "subTask": "Make Icon",
+        "tasksOverall": 2,
+        "tasksDone": 1,
+        "tasksPercent": '',
     },
     {
         "id": 2,
@@ -31,6 +37,9 @@ let tasks = [{
         "dueDate": "22.12.2022",
         "prio": "urgent",
         "subTask": "Make Icon",
+        "tasksOverall": 2,
+        "tasksDone": 1,
+        "tasksPercent": '',
     },
     {
         "id": 3,
@@ -42,11 +51,15 @@ let tasks = [{
         "dueDate": "22.12.2022",
         "prio": "low",
         "subTask": "Make Icon",
+        "tasksOverall": 3,
+        "tasksDone": 2,
+        "tasksPercent": '',
     }
 ];
 
 
 function initBoard() {
+    updateTasksPercent();
     updateToDo();
     updateInProgress();
     updateAwaitingFeedback();
@@ -111,6 +124,16 @@ function removeDropPosition() {
 }
 
 
+function updateTasksPercent() {
+    for (let i = 0; i < tasks.length; i++) {
+        let element = tasks[i];
+        element['tasksPercent'] = '';
+        element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
+        
+    }
+}
+
+
 function startDragging(id) {
     currentDraggedItem = id;
     addDropPosition();
@@ -152,13 +175,11 @@ function cardContent(Element) {
     </span>
     <div class="board_progress_row">
         <div class="progress">
-            <div class="progress-bar w-50" role="progressbar" aria-label="Basic example"
-                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" role="progressbar" style="width: ${Element['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <div class="board_progress">
-            1/2 Done
+            ${Element['tasksDone']}/${Element['tasksOverall']} Done
         </div>
-
     </div>
     <div class="assinged_contacts_row">
         <div class="initials_contacts">
