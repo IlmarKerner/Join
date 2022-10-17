@@ -395,3 +395,41 @@
 .task_popup_window_2_prio_images img {
     cursor: pointer;
 }
+
+.task_popup_window_2_assign {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 5px;
+    position: absolute;
+    width: 422px;
+    height: 159px;
+    left: 101px;
+    top: 578px;
+}
+
+.task_popup_window_2_assign select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 18px 21px;
+    gap: 10px;
+    isolation: isolate;
+    width: 422px;
+    height: 57px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.task_popup_window_2_assign h3 {
+    width: 118px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #000000;
+}
