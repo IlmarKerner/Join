@@ -53,7 +53,6 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    width: 422px;
     height: 104px;
 }
 
@@ -634,4 +633,47 @@
 
 .close_addtask_popup img {
     width: 40px;
+}
+
+/* ---------------------- Summary Start ---------------------- */
+
+@media (max-width: 1350px) {
+
+
+
+}
+
+@media (max-width: 1200px) {
+
+    .title input, .description textarea, .select_task, .select_assign, .date input, .subtask, .subtask input {
+        width: 350px;
+    }
+
+}
+
+@media (max-width: 992px) {
+
+    .tool_description {
+        display: block;
+        padding: 0 50px;
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+
+
+}
+
+@media (max-width: 600px) {
+
+
+
+}
+
+@media (max-width: 450px) {
+
+
 }
