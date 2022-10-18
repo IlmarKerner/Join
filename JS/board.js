@@ -129,7 +129,7 @@ function updateTasksPercent() {
         let element = tasks[i];
         element['tasksPercent'] = '';
         element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
-        
+
     }
 }
 
@@ -257,7 +257,7 @@ function popUpContent(id) {
 }
 
 
-function popUpEditContent(id)  {
+function popUpEditContent(id) {
     Element = tasks[id];
     return `
     <div class="task_popup_window_2">
@@ -279,9 +279,9 @@ function popUpEditContent(id)  {
         <div class="task_popup_window_2_prio">
             <h3>Prio</h3>
             <div class="task_popup_window_2_prio_images">
-                <img src="../img/Urgentbuttonwhite.png">
-                <img src="../img/mediumbuttonwhite.png">
-                <img src="../img/lowbuttonwhite.png">
+                <div onclick="changeUrgent()"><img src="../img/Urgentbuttonwhite.png" id="urgentimg"></div>
+                <div onclick="changeMedium()"><img src="../img/mediumbuttonwhite.png" id="mediumimg"></div>
+                <div onclick="changeLow()"><img src="../img/lowbuttonwhite.png" id="lowimg"></div>
             </div>
         </div>
         <div class="task_popup_window_2_assign">
@@ -295,4 +295,40 @@ function popUpEditContent(id)  {
         </div>
     </div>
     `;
+}
+
+function changeUrgent() {
+    let urgent = document.getElementById('urgentimg');
+    urgent.src = "../img/urgentbutton.png";
+    if (urgentImage) {
+        urgent.src = "../img/urgentbuttonwhite.png";
+        urgentImage = false;
+    } else {
+        urgent.src = "../img/urgentbutton.png ";
+        urgentImage = true;
+    }
+}
+
+function changeMedium() {
+    let medium = document.getElementById('mediumimg');
+    medium.src = "../img/mediumbutton.png";
+    if (mediumImage) {
+        medium.src = "../img/mediumbuttonwhite.png";
+        mediumImage = false;
+    } else {
+        medium.src = "../img/mediumbutton.png ";
+        mediumImage = true;
+    }
+}
+
+function changeLow() {
+    let low = document.getElementById('lowimg');
+    low.src = "../img/lowbutton.png";
+    if (lowImage) {
+        low.src = "../img/lowbuttonwhite.png";
+        lowImage = false;
+    } else {
+        low.src = "../img/lowbutton.png ";
+        lowImage = true;
+    }
 }
