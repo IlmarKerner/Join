@@ -343,10 +343,3 @@ function popUpEditSave(id) {
     savePrio(element);
     closePopUp();
 }
-
-
-function savePrio(element) {
-    if (document.getElementById('urgentimg').src == "../img/urgentbutton.png") {
-        element['prio'] = 'urgent';
-    }
-}
