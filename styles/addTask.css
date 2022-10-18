@@ -1,6 +1,11 @@
 
 
+.tool_description {
+    display: none;
+}
+
 .add_task_container {
+    margin-top: 80px;
     position: relative;
     width: 100%;
     background: #F6F7F8;
@@ -21,7 +26,6 @@
 
 .tasks {
     width: calc(100% - 232px);
-    height: 100vh;
     left: 232px;
     position: relative;
     display: flex;
@@ -99,11 +103,8 @@
 }
 
 .bar {
-    position: absolute;
     width: 0px;
     height: 551px;
-    /* left: 836px; */
-    top: 290px;
     border: 1px solid #D1D1D1;
 }
 
@@ -172,7 +173,7 @@
     align-items: center;
     width: 136px;
     border-radius: 10px;
-    background: url(../img/Urgentbuttonwhite.png);
+    /* background: url(../img/Urgentbuttonwhite.png); */
     cursor: pointer;
 }
 
@@ -187,7 +188,7 @@
     align-items: center;
     width: 136px;
     border-radius: 10px;
-    background: url(../img/mediumbuttonwhite.png);
+    /* background: url(../img/mediumbuttonwhite.png); */
     cursor: pointer;
 }
 
@@ -202,12 +203,19 @@
     align-items: center;
     width: 136px;
     border-radius: 10px;
-    background: url(../img/lowbuttonwhite.png);
+    /* background: url(../img/lowbuttonwhite.png); */
     cursor: pointer;
 }
 
 .low img {
     cursor: pointer;
+}
+
+.subtask_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
 }
 
 .subtask {
@@ -247,19 +255,14 @@
 .subtaskheader {
     font-size: 21px;
     margin-top: 20px;
-    margin-bottom: -15px;
+    margin-bottom: 0;
 }
 
 .task_buttons {
-    position: absolute;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 338px;
-    height: 61px;
-    bottom: 6%;
-    right: 10%;
-    z-index: 5;
+    justify-content: flex-end;
+    margin-right: 12%;
+    gap: 12px;
 }
 
 .clear_button {
@@ -645,8 +648,32 @@
 
 @media (max-width: 1200px) {
 
-    .title input, .description textarea, .select_task, .select_assign, .date input, .subtask, .subtask input {
-        width: 350px;
+    .title input, .description textarea, .select_task, .select_assign, .date input, .subtasks, .devision, .task_buttons {
+        width: 300px;
+    }
+
+    .urgent img, .medium img, .low img{
+        width: 100px;
+    }
+
+    .date, .subtask {
+        width: 100%;
+    }
+
+    .task_buttons {
+        width: 97%;
+    }
+
+    .clear_button {
+        width: 115px;
+    }
+
+    .create_button {
+        width: 177px;
+    }
+
+    .subtask_container {
+        width: 300px;
     }
 
 }
@@ -655,8 +682,99 @@
 
     .tool_description {
         display: block;
-        padding: 0 50px;
+        padding: 20px 0;
         font-size: 16px;
+        width: 80%;
+    }
+
+    .add_task_container {
+        position: unset;
+        margin-bottom: 80px;
+    }
+
+    .addtask h1 {
+        margin-top: 24px;
+        margin: 0;
+    }
+
+    .tasks {
+        width: 100%;
+        justify-content: flex-start;
+        left: unset;
+        top: unset;
+        flex-direction: column;
+        align-items: flex-start;
+        position: unset;
+    }
+
+    .task_buttons {
+        position: fixed;
+        top: -2px;
+        right: 10px;
+        z-index: 6;
+        margin-right: 0;
+    }
+
+    .bar {
+        display: none;
+    }
+
+    .left_task {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
+
+    .right-task {
+        width: 100%;
+    }
+
+    .title input, .description textarea, .select_task, .select_assign, .date input, .subtasks, .subtask, .devision, .task_buttons, .title, .description {
+        width: 100%;
+    }
+
+    .margin-top50 {
+        width: 100%;
+    }
+
+    .title {
+        height: unset;
+    }
+
+    .margin-top50 {
+        margin-top: 0;
+    }
+
+    .right-task {
+        height: unset;
+    }
+
+    .clear_button {
+        display: none;
+    }
+
+    .create_button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .subtask_container {
+        width: 100%;
+    }
+
+    .subtask input {
+        width: 100%;
+    }
+
+    .urgent img, .medium img, .low img {
+        width: 150px;
+    }
+
+    .prio {
+        width: 100%;
     }
 
 }
@@ -669,7 +787,9 @@
 
 @media (max-width: 600px) {
 
-
+    .urgent img, .medium img, .low img {
+        width: 100px;
+    }
 
 }
 

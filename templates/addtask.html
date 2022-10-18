@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/taskstyle.css">
     <link rel="stylesheet" href="../styles/menu.css">
-    <link rel="stylesheet" href="../styles/addTaskPopup.css">
+    <!-- <link rel="stylesheet" href="../styles/addTaskPopup.css"> -->
     <link rel="stylesheet" href="../styles/addTask.css">
     <link rel="stylesheet" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/legal_notice.css">
@@ -31,7 +31,7 @@
         <div w3-include-html="headerbar.html"></div>
     </div>
     <div class="add_task_container">
-
+        <span class="tool_description">Kanban Project Management Tool</span>
         <div class="addtask">
             <h1>Add Task</h1>
             <div class="tasks">
@@ -121,22 +121,24 @@
                             <div onclick="changeImgLow()" class="low"><img id="low" src="../img/lowbuttonwhite.png"></div>
                         </div>
                     </div>
-                    <p class="subtaskheader">Subtasks</p>
-                    <div class="subtask">
-                        <p></p>
-                        <input type="text" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addTask()">
-                    </div>
 
-                    <div class="subtasks">
-                        <div><input type="checkbox">Subtask 1</div>
+                    <div class="subtask_container">
+                        <p class="subtaskheader">Subtasks</p>
+                        <div class="subtask">
+                            <input type="text" placeholder="Add new subtask">
+                            <img src="../img/addsubtask.png" id="addTask" onclick="addTask()">
+                        </div>
+                        <div class="subtasks">
+                            <div><input type="checkbox">Subtask 1</div>
+                        </div>
                     </div>
-                </div>
-                <div class="task_buttons">
-                    <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img src="../img/clear.png"></button>
-                    <button class="create_button" id="createButton" onclick="createTask()">Create Task <img src="..//img/create_task.png"></button>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="task_buttons">
+        <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img src="../img/clear.png"></button>
+        <button class="create_button" id="createButton" onclick="createTask()">Create Task <img src="..//img/create_task.png"></button>
     </div>
 </body>
 
