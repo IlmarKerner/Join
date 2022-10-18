@@ -324,14 +324,12 @@ function changeUrgent() {
 function changeMedium() {
     document.getElementById('mediumimg').src = "../img/mediumbutton.png";
     document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
-    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
-    
+    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";  
 }
 
 
 function changeLow() {
     document.getElementById('lowimg').src = "../img/lowbutton.png";
     document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
-    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
-    
+    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png"; 
 }
