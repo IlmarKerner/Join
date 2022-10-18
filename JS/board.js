@@ -293,6 +293,9 @@ function popUpEditContent(id) {
                 <option value="invite">Invite new Contact</option>
             </select>
         </div>
+        <div class="accept_button">
+            <img src="../img/Primary check button V1.png">
+        </div>
     </div>
     `;
 }

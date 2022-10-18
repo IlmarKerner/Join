@@ -1,10 +1,25 @@
 let contacts = [{
-    "first_name": "Ilmar",
-    "second_name": "Kerner",
-    "initials": "IK",
-    "email": "kernerilmar@gmail.com",
-    "phone": "+49 123456789",
-}];
+        "first_name": "Ilmar",
+        "second_name": "Kerner",
+        "initials": "IK",
+        "email": "kernerilmar@gmail.com",
+        "phone": "+49 123456789",
+    },
+    {
+        "first_name": "Dennis",
+        "second_name": "Frese",
+        "initials": "DF",
+        "email": "dennis.freeze@gmail.com",
+        "phone": "+49 123456789",
+    },
+    {
+        "first_name": "Lukas",
+        "second_name": "Neureiter",
+        "initials": "LN",
+        "email": "lukas.neureiter@gmail.com",
+        "phone": "+49 123456789",
+    }
+];
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 
 function getInfoFromNewContactField() {
@@ -22,7 +37,9 @@ function getInfoFromNewContactField() {
         "addetAt": new Date().getTime(),
     };
 
-    contacts.push(contactInfo);
+    if (!firstname.value == '') {
+        contacts.push(contactInfo);
+    }
 
     let allTasksAsString = JSON.stringify(contacts);
     localStorage.setItem('allTasks', allTasksAsString);
@@ -51,7 +68,7 @@ function renderContacts() {
                 </div>
             </div>
             <p style="font-size: 50px !important; margin: 0px">|</p>
-            <img src="../img/trash-can.png" onclick="removeContact()">
+            <img src="../img/trash-can.png" onclick="removeContact(${i})">
         </div>
         `;
     }
