@@ -176,7 +176,7 @@ function openPopUpEdit(id) {
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
     updatePrio(id);
-    
+
 }
 
 
@@ -327,25 +327,26 @@ function changeUrgent() {
 function changeMedium() {
     document.getElementById('mediumimg').src = "../img/mediumbutton.png";
     document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
-    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";  
+    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
 }
 
 
 function changeLow() {
     document.getElementById('lowimg').src = "../img/lowbutton.png";
     document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
-    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png"; 
+    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
 }
 
 
 function popUpEditSave(id) {
     let element = tasks[id]
     savePrio(element);
+    closePopUp();
 }
 
 
 function savePrio(element) {
     if (document.getElementById('urgentimg').src == "../img/urgentbutton.png") {
-        element['prio'] = 'urgent';       
+        element['prio'] = 'urgent';
     }
 }
