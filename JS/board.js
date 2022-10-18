@@ -336,3 +336,15 @@ function changeLow() {
     document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
     document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png"; 
 }
+
+
+function popUpEditSave() {
+    savePrio();
+}
+
+
+function savePrio() {
+    if (document.getElementById('urgentimg').src == "../img/urgentbutton.png") {
+        
+    }
+}
