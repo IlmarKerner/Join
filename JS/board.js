@@ -295,7 +295,7 @@ function popUpEditContent(id) {
                 <option value="invite">Invite new Contact</option>
             </select>
         </div>
-        <div class="accept_button">
+        <div onclick="popUpEditSave(${id})"class="accept_button">
             <img src="../img/Primary check button V1.png">
         </div>
     </div>
@@ -338,13 +338,14 @@ function changeLow() {
 }
 
 
-function popUpEditSave() {
-    savePrio();
+function popUpEditSave(id) {
+    let element = tasks[id]
+    savePrio(element);
 }
 
 
-function savePrio() {
+function savePrio(element) {
     if (document.getElementById('urgentimg').src == "../img/urgentbutton.png") {
-        
+        element['prio'] = 'urgent';       
     }
 }
