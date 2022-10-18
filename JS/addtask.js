@@ -198,6 +198,6 @@ function closeAddTaskPopupForContact() {
 }
 
 function clearAddTask() {
-    closeAddTaskPopupForContact();
+
     openAddTaskPopup();
 }
