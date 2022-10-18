@@ -6,7 +6,7 @@ let tasks = [{
         "headline": "Test mit ID0",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "01.12.2022",
+        "dueDate": "2022-12-01",
         "prio": "medium",
         "subTask": "Make Icon",
         "tasksOverall": 3,
@@ -20,7 +20,7 @@ let tasks = [{
         "headline": "Test mit ID1",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "02.12.2022",
+        "dueDate": "2022-12-02",
         "prio": "urgent",
         "subTask": "Make Icon",
         "tasksOverall": 2,
@@ -34,7 +34,7 @@ let tasks = [{
         "headline": "Test mit ID2",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "03.12.2022",
+        "dueDate": "2022-12-03",
         "prio": "urgent",
         "subTask": "Make Icon",
         "tasksOverall": 2,
@@ -48,7 +48,7 @@ let tasks = [{
         "headline": "Test mit ID3",
         "description": "Modify the contents of the main website test test test test",
         "assignet": "",
-        "dueDate": "04.12.2022",
+        "dueDate": "2022-12-04",
         "prio": "low",
         "subTask": "Make Icon",
         "tasksOverall": 3,
@@ -64,7 +64,7 @@ function initBoard() {
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
-    renderContacts();
+    // renderContacts();
 }
 
 
@@ -172,6 +172,12 @@ function closePopUp() {
 }
 
 
+function openPopUpEdit(id) {
+    document.getElementById('popUpArea').innerHTML = '';
+    document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
+}
+
+
 function cardContent(Element) {
     return `
     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
@@ -243,8 +249,49 @@ function popUpContent(id) {
                 <p>David Eisenberg</p>
             </div>
         </div>
-        <div class="edit_button_dragcard_popup">
+        <div onclick="openPopUpEdit(${id})" class="edit_button_dragcard_popup">
             <img src="../img/edit button.png">
+        </div>
+    </div>
+    `;
+}
+
+
+function popUpEditContent(id)  {
+    Element = tasks[id];
+    return `
+    <div class="task_popup_window_2">
+        <div onclick="closePopUp()" class="closebutton">
+            <img src="../img/clear.png">
+        </div>
+        <div class="task_popup_window_2_title">
+            <h3>Title</h3>
+            <input value="${Element['headline']}" type="text" placeholder="Title....">
+        </div>
+        <div class="task_popup_window_2_description">
+            <h3>Description</h3>
+            <textarea id="descriptionTaskPopup" cols="30" rows="10" placeholder="Description....">${Element['description']}</textarea>
+        </div>
+        <div class="task_popup_window_2_date">
+            <h3>Due date</h3>
+            <input value="${Element['dueDate']}" type="date">
+        </div>
+        <div class="task_popup_window_2_prio">
+            <h3>Prio</h3>
+            <div class="task_popup_window_2_prio_images">
+                <img src="../img/Urgentbuttonwhite.png">
+                <img src="../img/mediumbuttonwhite.png">
+                <img src="../img/lowbuttonwhite.png">
+            </div>
+        </div>
+        <div class="task_popup_window_2_assign">
+            <h3>Assigned to</h3>
+            <select>
+                <option value="select">Select contacts to assign</option>
+                <option value="you">You</option>
+                <option value="max">Max Mustermann</option>
+                <option value="invite">Invite new Contact</option>
+            </select>
         </div>
     </div>
     `;

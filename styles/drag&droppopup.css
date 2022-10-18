@@ -227,11 +227,11 @@
 }
 
 .task_popup_window_2 {
-    position: absolute;
+    /* position: absolute; */
     width: 623px;
     height: 824px;
-    left: 725px;
-    top: 20px;
+    /* left: 725px;
+    top: 20px; */
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
