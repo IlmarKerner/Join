@@ -1,3 +1,6 @@
+let urgent = false;
+let medium = false;
+let low = false;
 let currentDraggedItem
 let tasks = [{
         "id": 0,
@@ -314,6 +317,7 @@ function updatePrio(id) {
     if (element['prio'] == "low") {
         document.getElementById('lowimg').src = "../img/lowbutton.png";
     }
+    console.log(document.getElementById('urgentimg').src);
 }
 
 
@@ -321,6 +325,9 @@ function changeUrgent() {
     document.getElementById('urgentimg').src = "../img/urgentbutton.png";
     document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
     document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
+    urgent = true;
+    medium = false;
+    low = false;
 }
 
 
@@ -328,6 +335,9 @@ function changeMedium() {
     document.getElementById('mediumimg').src = "../img/mediumbutton.png";
     document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
     document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
+    urgent = false;
+    medium = true;
+    low = false;
 }
 
 
@@ -335,6 +345,9 @@ function changeLow() {
     document.getElementById('lowimg').src = "../img/lowbutton.png";
     document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
     document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
+    urgent = false;
+    medium = false;
+    low = true;
 }
 
 
@@ -346,7 +359,14 @@ function popUpEditSave(id) {
 
 
 function savePrio(element) {
-    if (document.getElementById('urgentimg').src == "../img/urgentbutton.png") {
+    if (urgent == true) {
         element['prio'] = 'urgent';
     }
+    if (medium == true) {
+        element['prio'] = 'medium';
+    }
+    if (low == true) {
+        element['prio'] = 'low';
+    }
+    initBoard();
 }
