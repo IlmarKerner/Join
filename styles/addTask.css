@@ -1,5 +1,3 @@
-
-
 .tool_description {
     display: none;
 }
@@ -173,7 +171,6 @@
     align-items: center;
     width: 136px;
     border-radius: 10px;
-    /* background: url(../img/Urgentbuttonwhite.png); */
     cursor: pointer;
 }
 
@@ -188,7 +185,6 @@
     align-items: center;
     width: 136px;
     border-radius: 10px;
-    /* background: url(../img/mediumbuttonwhite.png); */
     cursor: pointer;
 }
 
@@ -203,7 +199,6 @@
     align-items: center;
     width: 136px;
     border-radius: 10px;
-    /* background: url(../img/lowbuttonwhite.png); */
     cursor: pointer;
 }
 
@@ -638,65 +633,60 @@
     width: 40px;
 }
 
+
 /* ---------------------- Summary Start ---------------------- */
 
-@media (max-width: 1350px) {
-
-
-
-}
+@media (max-width: 1350px) {}
 
 @media (max-width: 1200px) {
-
-    .title input, .description textarea, .select_task, .select_assign, .date input, .subtasks, .devision, .task_buttons {
+    .title input,
+    .description textarea,
+    .select_task,
+    .select_assign,
+    .date input,
+    .subtasks,
+    .devision,
+    .task_buttons {
         width: 300px;
     }
-
-    .urgent img, .medium img, .low img{
+    .urgent img,
+    .medium img,
+    .low img {
         width: 100px;
     }
-
-    .date, .subtask {
+    .date,
+    .subtask {
         width: 100%;
     }
-
     .task_buttons {
         width: 97%;
     }
-
     .clear_button {
         width: 115px;
     }
-
     .create_button {
         width: 177px;
     }
-
     .subtask_container {
         width: 300px;
     }
-
 }
 
 @media (max-width: 992px) {
-
     .tool_description {
         display: block;
         padding: 20px 0;
         font-size: 16px;
         width: 80%;
     }
-
     .add_task_container {
         position: unset;
         margin-bottom: 80px;
     }
-
     .addtask h1 {
         margin-top: 24px;
         margin: 0;
     }
-
     .tasks {
         width: 100%;
         justify-content: flex-start;
@@ -706,7 +696,6 @@
         align-items: flex-start;
         position: unset;
     }
-
     .task_buttons {
         position: fixed;
         top: -2px;
@@ -714,11 +703,9 @@
         z-index: 6;
         margin-right: 0;
     }
-
     .bar {
         display: none;
     }
-
     .left_task {
         width: 100%;
         display: flex;
@@ -726,74 +713,66 @@
         gap: 14px;
         align-items: center;
     }
-
     .right-task {
         width: 100%;
     }
-
-    .title input, .description textarea, .select_task, .select_assign, .date input, .subtasks, .subtask, .devision, .task_buttons, .title, .description {
+    .title input,
+    .description textarea,
+    .select_task,
+    .select_assign,
+    .date input,
+    .subtasks,
+    .subtask,
+    .devision,
+    .task_buttons,
+    .title,
+    .description {
         width: 100%;
     }
-
     .margin-top50 {
         width: 100%;
     }
-
     .title {
         height: unset;
     }
-
     .margin-top50 {
         margin-top: 0;
     }
-
     .right-task {
         height: unset;
     }
-
     .clear_button {
         display: none;
     }
-
     .create_button {
         position: absolute;
         top: 10px;
         right: 10px;
     }
-
     .subtask_container {
         width: 100%;
     }
-
     .subtask input {
         width: 100%;
     }
-
-    .urgent img, .medium img, .low img {
+    .urgent img,
+    .medium img,
+    .low img {
         width: 150px;
     }
-
     .prio {
         width: 100%;
     }
-
 }
 
-@media (max-width: 768px) {
-
-
-
-}
+@media (max-width: 768px) {}
 
 @media (max-width: 600px) {
-
-    .urgent img, .medium img, .low img {
+    .urgent img,
+    .medium img,
+    .low img {
         width: 100px;
     }
-
 }
 
-@media (max-width: 450px) {
-
-
-}
+@media (max-width: 450px) {}

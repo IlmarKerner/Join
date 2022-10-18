@@ -1,4 +1,10 @@
-let contacts = [];
+let contacts = [{
+    "first_name": "Ilmar",
+    "second_name": "Kerner",
+    "initials": "IK",
+    "email": "kernerilmar@gmail.com",
+    "phone": "+49 123456789",
+}];
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 
 function getInfoFromNewContactField() {
