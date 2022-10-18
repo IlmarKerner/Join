@@ -175,6 +175,8 @@ function closePopUp() {
 function openPopUpEdit(id) {
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
+    updatePrio(id);
+    
 }
 
 
@@ -279,9 +281,9 @@ function popUpEditContent(id) {
         <div class="task_popup_window_2_prio">
             <h3>Prio</h3>
             <div class="task_popup_window_2_prio_images">
-                <div onclick="changeUrgent()"><img src="../img/Urgentbuttonwhite.png" id="urgentimg"></div>
-                <div onclick="changeMedium()"><img src="../img/mediumbuttonwhite.png" id="mediumimg"></div>
-                <div onclick="changeLow()"><img src="../img/lowbuttonwhite.png" id="lowimg"></div>
+                <div onclick="changeUrgent(${id})"><img src="../img/Urgentbuttonwhite.png" id="urgentimg"></div>
+                <div onclick="changeMedium(${id})"><img src="../img/mediumbuttonwhite.png" id="mediumimg"></div>
+                <div onclick="changeLow(${id})"><img src="../img/lowbuttonwhite.png" id="lowimg"></div>
             </div>
         </div>
         <div class="task_popup_window_2_assign">
@@ -297,38 +299,39 @@ function popUpEditContent(id) {
     `;
 }
 
-function changeUrgent() {
-    let urgent = document.getElementById('urgentimg');
-    urgent.src = "../img/urgentbutton.png";
-    if (urgentImage) {
-        urgent.src = "../img/urgentbuttonwhite.png";
-        urgentImage = false;
-    } else {
-        urgent.src = "../img/urgentbutton.png ";
-        urgentImage = true;
+
+function updatePrio(id) {
+    let element = tasks[id];
+    if (element['prio'] == "urgent") {
+        document.getElementById('urgentimg').src = "../img/urgentbutton.png";
+    }
+    if (element['prio'] == "medium") {
+        document.getElementById('mediumimg').src = "../img/mediumbutton.png";
+    }
+    if (element['prio'] == "low") {
+        document.getElementById('lowimg').src = "../img/lowbutton.png";
     }
 }
+
+
+function changeUrgent() {
+    document.getElementById('urgentimg').src = "../img/urgentbutton.png";
+    document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
+    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
+}
+
 
 function changeMedium() {
-    let medium = document.getElementById('mediumimg');
-    medium.src = "../img/mediumbutton.png";
-    if (mediumImage) {
-        medium.src = "../img/mediumbuttonwhite.png";
-        mediumImage = false;
-    } else {
-        medium.src = "../img/mediumbutton.png ";
-        mediumImage = true;
-    }
+    document.getElementById('mediumimg').src = "../img/mediumbutton.png";
+    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
+    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
+    
 }
 
+
 function changeLow() {
-    let low = document.getElementById('lowimg');
-    low.src = "../img/lowbutton.png";
-    if (lowImage) {
-        low.src = "../img/lowbuttonwhite.png";
-        lowImage = false;
-    } else {
-        low.src = "../img/lowbutton.png ";
-        lowImage = true;
-    }
+    document.getElementById('lowimg').src = "../img/lowbutton.png";
+    document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
+    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
+    
 }
