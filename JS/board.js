@@ -271,15 +271,15 @@ function popUpEditContent(id) {
         </div>
         <div class="task_popup_window_2_title">
             <h3>Title</h3>
-            <input value="${Element['headline']}" type="text" placeholder="Title....">
+            <input id="title${id}" value="${Element['headline']}" type="text" placeholder="Title....">
         </div>
         <div class="task_popup_window_2_description">
             <h3>Description</h3>
-            <textarea id="descriptionTaskPopup" cols="30" rows="10" placeholder="Description....">${Element['description']}</textarea>
+            <textarea id="description${id}" cols="30" rows="10" placeholder="Description....">${Element['description']}</textarea>
         </div>
         <div class="task_popup_window_2_date">
             <h3>Due date</h3>
-            <input value="${Element['dueDate']}" type="date">
+            <input id="dueDate${id}" value="${Element['dueDate']}" type="date">
         </div>
         <div class="task_popup_window_2_prio">
             <h3>Prio</h3>
@@ -354,7 +354,11 @@ function changeLow() {
 function popUpEditSave(id) {
     let element = tasks[id]
     savePrio(element);
+    saveHeadline(id, element);
+    saveDescription(id, element);
+    saveDate(id, element);
     closePopUp();
+    initBoard();
 }
 
 
@@ -367,6 +371,20 @@ function savePrio(element) {
     }
     if (low == true) {
         element['prio'] = 'low';
-    }
-    initBoard();
+    }    
+}
+
+
+function saveHeadline(id, element) {
+    element['headline'] = document.getElementById(`title${id}`).value;
+}
+
+
+function saveDescription(id, element) {
+    element['description'] = document.getElementById(`description${id}`).value;
+}
+
+
+function saveDate(id, element) {
+    element['dueDate'] = document.getElementById(`dueDate${id}`).value;
 }
