@@ -79,7 +79,14 @@
     width: 453px;
     height: calc(100vh - 89px);
     background-color: white;
+    overflow-y: scroll;
+    /* -ms-overflow-style: none;
+    scrollbar-width: none; */
 }
+
+/* .listning::-webkit-scrollbar {
+    display: none;
+  } */
 
 .right_side_contacts {
     display: flex;
