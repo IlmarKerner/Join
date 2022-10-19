@@ -15,15 +15,16 @@ let tasks = [{
         "tasksDone": 1,
         "tasksPercent": '',
         "assignet": [{
-            "firstName": 'Lukas',
-            "lastName": 'Neureiter',
-            "initials": 'LN',
-        },
-        {
-            "firstName": 'Ilmar',
-            "lastName": 'Kerner',
-            "initials": 'IK',
-        }],
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            }
+        ],
     },
     {
         "id": 1,
@@ -195,7 +196,7 @@ function openPopUpEdit(id) {
 }
 
 
-function cardContent(Element) {
+function cardContent(Element, i) {
     return `
     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
         ondragend="endDragging()" class="task_card">
@@ -218,9 +219,9 @@ function cardContent(Element) {
     </div>
     <div class="assinged_contacts_row">
         <div class="initials_contacts">
-            <div class="assinged_contacts1">IK</div>
-            <div class="assinged_contacts2">DF</div>
-            <div class="assinged_contacts3">LN</div>
+            <div class="assinged_contacts1">${tasks['assignet']['initials'][0]}</div>
+            <div class="assinged_contacts2">IK</div>
+            <div class="assinged_contacts3">DF}</div>
         </div>
         <div class="urgency_icon">
             <img src="../img/${Element['prio']}.png">
@@ -304,10 +305,10 @@ function popUpEditContent(id) {
         <div class="task_popup_window_2_assign">
             <h3>Assigned to</h3>
             <select>
-                <option value="select">Select contacts to assign</option>
-                <option value="you">You</option>
-                <option value="max">Max Mustermann</option>
-                <option value="invite">Invite new Contact</option>
+                <option>Select contacts to assign</option>
+                <option value="ilmar">Ilmar Kerner</option>
+                <option value="max">Lucas Neureiter</option>
+                <option value="dennis">Dennis Frese</option>
             </select>
         </div>
         <div onclick="popUpEditSave(${id})"class="accept_button">
@@ -383,7 +384,7 @@ function savePrio(element) {
     }
     if (low == true) {
         element['prio'] = 'low';
-    }    
+    }
 }
 
 

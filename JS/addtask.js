@@ -1,4 +1,3 @@
-let assingeds = [];
 let contactSectionOpen = false;
 let selectTaskBoxOpen = false;
 let urgentImage = false;
