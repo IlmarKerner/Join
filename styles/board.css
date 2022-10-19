@@ -274,7 +274,7 @@ html {
     transform: translate(-50%, 0);
 }
 
-/* ---------------------- Summary Start ---------------------- */
+/* ---------------------- Board Start ---------------------- */
 
 @media (max-width: 1350px) {
 
@@ -354,6 +354,23 @@ html {
     .board_column_headline {
         font-size: 21px;
     }
+}
+
+@media (max-height: 768px) {
+
+    .board_content {
+        margin-top: 30px;
+    }
+
+    .board_overview {
+        margin-top: 50px;
+        height: calc(100vh - 50px - 81.2px - 30px - 89px);
+    }
+
+    .board_column_content {
+        height: 100%;
+    }
+
 }
 
 @media (max-width: 600px) {
