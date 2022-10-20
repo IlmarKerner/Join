@@ -151,12 +151,12 @@ body {
 .input_fields {
     display: flex;
     flex-direction: column;
+    gap: 24px;
 }
 
 .input_email {
     height: 51px;
     border: 1px solid black;
-    margin-top: 59px;
     width: 422px;
     height: 51px;
     padding: 13px 21px 13px 21px;
@@ -184,7 +184,6 @@ body {
 .input_password, .input_confirm_password {
     height: 51px;
     border: 1px solid black;
-    margin-top: 59px;
     width: 422px;
     height: 51px;
     padding: 13px 21px 13px 21px;
@@ -325,7 +324,7 @@ body {
 
 .no_panic {
     text-align: center;
-    margin-top: 36px;
+    margin: 36px;
 }
 
 .forgot_password_form {
@@ -368,7 +367,11 @@ body {
     }
 
     .login_window {
-        margin-top: 64px;
+        margin-top: 20px;
+    }
+
+    .login_window h1 {
+        font-size: 50px;
     }
 
     .signup_window {
@@ -382,6 +385,8 @@ body {
     .forgot_window h1 {
         margin-top: 60px;
     }
+
+
 
 }
 
@@ -397,6 +402,41 @@ body {
 
     .forgot_window h1 {
         font-size: 50px;
+    }
+}
+
+@media (max-height: 768px) {
+
+    .input_email {
+        margin-top: 0;
+    }
+
+    .input_name {
+        margin-top: 0;
+    }
+
+    .forgot_window {
+        height: unset;
+    }
+
+    .signup_window {
+        height: unset;
+        padding: 20px 0;
+        margin-top: 10px !important;
+    }
+
+    .login_window {
+        height: unset;
+        padding: 20px 0;
+    }
+
+    .signup_window h1 {
+        margin-top: 32px !important;
+        font-size: 50px;
+    }
+
+    .signup_container {
+        margin: 24px;
     }
 
 }
@@ -511,7 +551,92 @@ body {
     .signup_window h1 {
         margin-top: 50px;
     }
+}
+
+@media (max-width: 360px) {
+
+    .login_window h1 {
+        margin-top: 12px;
+    }
+
+    .forgot_window h1 {
+        font-size: 24px;
+    }
     
+    .login_window {
+        width: 260px;
+        margin-top: 0;
+    }
+
+    .forgot_window {
+        width: 260px;
+        margin-top: 0;
+    }
+
+    .signup_window {
+        width: 260px;
+        margin-top: 0;
+    }
+
+    .input_name {
+        width: 230px;
+    }
+
+    .input_name input {
+        width: 130px;
+    }
+
+    .input_email {
+        width: 230px;
+    }
+
+    .input_email input {
+        width: 130px;
+    }
+
+    .input_password {
+        width: 230px;
+        margin: 0;
+    }
+
+    .input_password input {
+        width: 130px;
+    }
+
+    .checkbox {
+        flex-direction: column;
+    }
+
+    .login_buttons {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .login_buttons button {
+        width: 100%;
+    }
+
+    .login_window h1 {
+        margin-top: 0;
+    }
+
+    .login_window {
+        padding: 10px 0;
+    }
+
+    .checkbox {
+        gap: 8px;
+        margin: 20px 0;
+    }
+
+    .signup_container, .continue_container {
+        width: 230px;
+    }
+
+    .forgot_button {
+        font-size: 18px;
+    }
 }
 
 /* ---------------------- Index End ---------------------- */

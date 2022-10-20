@@ -241,7 +241,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        top: unset;
+        top: unset !important;
         left: unset;
         margin-top: 10px;
         overflow-y: scroll;
@@ -320,9 +320,40 @@ body {
     }
 }
 
+@media (max-height: 900px) {
+
+    .summary_content {
+        top: 70px;
+    }
+
+    .summary_header {
+        margin: 0 20px 0 20px;
+    }
+
+    .tasks_card {
+        margin-top: 16px;
+    }
+
+    .overview {
+        margin-top: 0;
+        padding: 0 16px 0 16px;
+    }
+
+    .progress_card_parent {
+        margin-top: 16px;
+    }
+}
+
+@media (max-height: 800px) {
+
+    
+
+}
+
 @media (max-width: 768px) {}
 
 @media (max-width: 600px) {
+
     .overview {
         width: 363px;
     }
@@ -330,8 +361,89 @@ body {
         width: 180px;
     }
     .tasks_card {
-        width: 110px;
+        width: 100px;
+    }
+
+    .progress_card {
+        width: 160px;
+    }
+
+    .tool_description {
+        margin: 14px 0;
+        font-size: 14px;
     }
 }
 
-@media (max-width: 450px) {}
+@media (max-width: 400px) {
+
+    .tool_description {
+        font-size: 14px;
+    }
+
+    .summary_header h4 {
+        font-size: 18px;
+    }
+
+    .overview {
+        width: 90%;
+    }
+
+    .tasks_card {
+        width: 30%;
+        justify-content: center;
+        height: 84px;
+    }
+
+    .progress_card {
+        width: 45%;
+        height: 100px;
+    }
+
+    .tasks_card h1 {
+        font-size: 24px;
+    }
+
+    .tasks_card span {
+        font-size: 12px;
+    }
+
+    .urgent_card {
+        margin-top: 16px;
+    }
+
+    .sum_urgent_parent img {
+        width: 30px;
+    }
+
+    .sum_urgent h2 {
+        font-size: 30px;
+    }
+
+    .sum_urgent span {
+        font-size: 12px;
+    }
+
+    .sum_urgent {
+        padding-left: 10px;
+    }
+
+    .upcoming_deadline  {
+        font-size: 12px;
+    }
+
+    .progress_card img {
+        width: 30px;
+    }
+
+    .progress_card h2 {
+        font-size: 30px;
+    }
+
+    .progress_card span {
+        font-size: 12px;
+    }
+
+    .progress_child {
+        padding-left: 10px;
+    }
+}
