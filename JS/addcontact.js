@@ -112,26 +112,28 @@ function showFullContactInfo(i) {
     let initials = contacts[i]['initials'];
     fullContactInfo.innerHTML = '';
     fullContactInfo.innerHTML += `
-    <div class="full_contact_info">
-        <h2 style="background-color:${getColorForName(initials)}">${initials}</h2>
-        <h1>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h1>
-        <p onclick="openAddTaskPopupForContact()">+ Add Task</p>
-    </div>
-    <div class="contact_information_header">
-        <h2>Contact Information</h2>
-        <div class="edit_contact">
-            <img src="../img/pencil.png">
-            <p>Edit Contact</p>
+        <div class="full_contact_info">
+            <h2 style="background-color:${getColorForName(initials)}">${initials}</h2>
+            <div class="contact_info_add_task">
+                <h1>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h1>
+                <p onclick="openAddTaskPopupForContact()">+ Add Task</p>
+            </div>
         </div>
-    </div>
-    <div class="contact_information">
-        <h2>Email</h2>
-        <a href="#">
-            <p>${contacts[i]['email']}</p>
-        </a>
-        <h2>Phone</h2>
-        <p>${contacts[i]['phone']}</p>
-    </div>`;
+        <div class="contact_information_header">
+            <h2>Contact Information</h2>
+            <div class="edit_contact">
+                <img src="../img/pencil.png">
+                <p>Edit Contact</p>
+            </div>
+        </div>
+        <div class="contact_information">
+            <h2>Email</h2>
+            <a href="#">
+                <p>${contacts[i]['email']}</p>
+            </a>
+            <h2>Phone</h2>
+            <p>${contacts[i]['phone']}</p>
+        </div>`;
 }
 
 function getColorForName(initials) {
