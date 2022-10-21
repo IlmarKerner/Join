@@ -219,9 +219,9 @@ function cardContent(Element, i) {
     </div>
     <div class="assinged_contacts_row">
         <div class="initials_contacts">
-            <div class="assinged_contacts1">${tasks['assignet']['initials'][0]}</div>
+            <div class="assinged_contacts1">LH</div>
             <div class="assinged_contacts2">IK</div>
-            <div class="assinged_contacts3">DF}</div>
+            <div class="assinged_contacts3">DF</div>
         </div>
         <div class="urgency_icon">
             <img src="../img/${Element['prio']}.png">
