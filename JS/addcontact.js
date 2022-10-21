@@ -116,7 +116,7 @@ function showFullContactInfo(i) {
             <h2 style="background-color:${getColorForName(initials)}">${initials}</h2>
             <div class="contact_info_add_task">
                 <h1>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h1>
-                <p onclick="openAddTaskPopupForContact()" style="cursor: pointer;">+ Add Task</p>
+                <p onclick="openAddTaskPopup()" style="cursor: pointer;">+ Add Task</p>
             </div>
         </div>
         <div class="contact_information_header">

@@ -150,17 +150,39 @@ function changeImgLow() {
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
 }
 
-function openAddTaskPopup() {
-    document.getElementById('addtaskPopupWindow').classList.remove('d-none');
-    document.getElementById('boardContentParent').style = "filter: blur(5px);";
-    document.getElementById('profilebar').style = "filter: blur(5px);";
-    document.getElementById('menu').style = "filter: blur(5px);";
+function openAddTaskPopup(progress) {
+    checkProgress(progress);
+    document.querySelector('.addtask_popup').classList.remove('d-none');
+    document.querySelector('.blur_container').style = "filter: blur(5px);";
+    document.querySelector('.profilebar').style = "filter: blur(5px);";
+    document.querySelector('.menu').style = "filter: blur(5px);";
     loadAddTaskPopupWindow();
-    document.getElementById('addtaskPopupWindow').classList.add('popup_window_slidein');
+    document.querySelector('.addtask_popup').classList.add('popup_window_slidein');
     setTimeout(() => {
-        document.getElementById('addtaskPopupWindow').style = "transform: translateX(0vw)";
+        document.querySelector('.addtask_popup').style = "transform: translateX(0vw)";
     }, 300);
 
+}
+
+function closeAddTaskPopup() {
+    document.querySelector('.addtask_popup').style = "animation: slideout 0.3s;"
+    document.querySelector('.addtask_popup').classList.remove('popup_window_slidein');
+    setTimeout(() => {
+        document.querySelector('.addtask_popup').classList.add('d-none');
+        document.querySelector('.blur_container').style = "filter: none;";
+        document.querySelector('.menu').style = "filter: none;";
+        document.querySelector('.profilebar').style = "filter: none;";
+        document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";
+    }, 300);
+}
+
+let taskProgress;
+
+function checkProgress(progress) {
+    progress = taskProgress;
+    console.log(progress);
+    // hier noch weiter machen damit der task in der richtigen Spalte eingefügt wird.
+    // funktion soweit in ordnung. progress wird richtig erkannt aber nicht richtig ausgegeben.
 }
 
 function loadAddTaskPopupWindow() {
@@ -234,42 +256,6 @@ function addTaskPopupWindowContent() {
                 src="..//img/create_task.png"></button>
     </div>
 </div>`
-}
-
-function closeAddTaskPopup() {
-    document.getElementById('addtaskPopupWindow').style = "animation: slideout 0.3s;"
-    document.getElementById('addtaskPopupWindow').classList.remove('popup_window_slidein');
-    setTimeout(() => {
-        document.getElementById('addtaskPopupWindow').classList.add('d-none');
-        document.getElementById('boardContentParent').style = "filter: none;";
-        document.getElementById('menu').style = "filter: none;";
-        document.getElementById('profilebar').style = "filter: none;";
-        document.getElementById('addtaskPopupWindow').style = "transform: translateX(100vw)";
-    }, 300);
-}
-
-
-function openAddTaskPopupForContact() {
-    document.getElementById('addtaskPopupWindowForContact').classList.remove('d-none');
-    document.getElementById('contactsContainer').style = "filter: blur(5px);";
-    document.getElementById('profilebar').style = "filter: blur(5px);";
-    document.getElementById('menu').style = "filter: blur(5px);";
-    document.getElementById('addtaskPopupWindowForContact').classList.add('popup_window_slidein');
-    setTimeout(() => {
-        document.getElementById('addtaskPopupWindowForContact').style = "transform: translateX(0vw)";
-    }, 300);
-}
-
-function closeAddTaskPopupForContact() {
-    document.getElementById('addtaskPopupWindowForContact').style = "animation: slideout 0.3s;"
-    document.getElementById('addtaskPopupWindowForContact').classList.remove('popup_window_slidein');
-    setTimeout(() => {
-        document.getElementById('addtaskPopupWindowForContact').classList.add('d-none');
-        document.getElementById('contactsContainer').style = "filter: none;";
-        document.getElementById('menu').style = "filter: none;";
-        document.getElementById('profilebar').style = "filter: none;";
-        document.getElementById('addtaskPopupWindowForContact').style = "transform: translateX(100vw)";
-    }, 300);
 }
 
 function clearAddTask() {
