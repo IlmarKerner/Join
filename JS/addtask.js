@@ -164,7 +164,7 @@ function openAddTaskPopup() {
 }
 
 function loadAddTaskPopupWindow() {
-    document.getElementsByClassName('addtask_popup').innerHTML = addTaskPopupWindowContent();
+    document.querySelector('.addtask_popup').innerHTML = addTaskPopupWindowContent();
 }
 
 function addTaskPopupWindowContent() {
