@@ -196,6 +196,42 @@ function openPopUpEdit(id) {
 }
 
 
+// function cardContent(Element, i) {
+//     return `
+//     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
+//         ondragend="endDragging()" class="task_card">
+//     <span class="card_category" id="cardCategory">
+//         ${Element['category']}
+//     </span>
+//     <span class="card_headline">
+//         ${Element['headline']}
+//     </span>
+//     <span class="card_description">
+//         ${Element['description']}
+//     </span>
+//     <div class="board_progress_row">
+//         <div class="progress">
+//             <div class="progress-bar" role="progressbar" style="width: ${Element['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+//         </div>
+//         <div class="board_progress">
+//             ${Element['tasksDone']}/${Element['tasksOverall']} Done
+//         </div>
+//     </div>
+//     <div class="assinged_contacts_row">
+//         <div class="initials_contacts">
+//             <div class="assinged_contacts1">LH</div>
+//             <div class="assinged_contacts2">IK</div>
+//             <div class="assinged_contacts3">DF</div>
+//         </div>
+//         <div class="urgency_icon">
+//             <img src="../img/${Element['prio']}.png">
+//         </div>
+
+//     </div>
+//     `;
+// }
+
+
 function cardContent(Element, i) {
     return `
     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
@@ -230,7 +266,6 @@ function cardContent(Element, i) {
     </div>
     `;
 }
-
 
 function popUpContent(id) {
     Element = tasks[id];
