@@ -104,7 +104,7 @@ html {
 }
 
 .board_column_content {
-    max-height: calc(100vh - 89px - 82px - 82px - 100px - 70px);
+    /* max-height: calc(100vh - 89px - 82px - 82px - 100px - 70px); */
     overflow: scroll;
     -ms-overflow-style: none;
     /* IE and Edge */

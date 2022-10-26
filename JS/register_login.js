@@ -52,6 +52,10 @@ function login() {
     }
 }
 
+function guestLogin() {
+    location.href = 'https://gruppe-329.developerakademie.net/Join/templates/board.html';
+}
+
 function animateForgotPassword() {
     document.getElementById('forgot_password_link').animate(
         [

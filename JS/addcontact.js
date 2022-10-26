@@ -21,6 +21,7 @@ let contacts = [{
     }
 ];
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
+let media = window.matchMedia("(max-width: 992px)");
 
 function getInfoFromNewContactField() {
     let firstname = document.getElementById('firstname');
@@ -52,6 +53,7 @@ function getInfoFromNewContactField() {
 
     closeNewContactWindow();
     renderContacts();
+    checkMediaforExitButton(media);
 }
 
 function renderContacts() {
@@ -140,3 +142,13 @@ function getColorForName(initials) {
     let number = (initials.charCodeAt(0) + initials.charCodeAt(1)) % contactColors.length;
     return contactColors[number];
 }
+
+function checkMediaforExitButton(media) {
+    let btn = document.getElementById('close_contact_btn');
+
+    if (media.matches) {
+      btn.src = '../img/clear_white.png';
+    } else {
+        btn.src = '../img/clear.png';
+    }
+  }
