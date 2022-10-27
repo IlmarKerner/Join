@@ -417,6 +417,10 @@ body::-webkit-scrollbar {
         height: 80px;
     }
 
+    .contact_name {
+        width: 124px;
+    }
+
     .contact_name_container span {
         width: 60px;
         height: 60px;
