@@ -409,3 +409,25 @@ body::-webkit-scrollbar {
     }
 
   }
+
+  @media(max-width: 400px) {
+
+    .contact_name_container {
+        width: 200px;
+        height: 80px;
+    }
+
+    .contact_name_container span {
+        width: 60px;
+        height: 60px;
+    }
+
+    .contact_name h3 {
+        font-size: 20px;
+    }
+
+    .contact_name_container p {
+        font-size: 10px;
+    }
+
+  }
