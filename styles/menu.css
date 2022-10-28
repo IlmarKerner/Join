@@ -107,7 +107,7 @@
         flex-direction: row;
         background-color: #2A3647;
         position: fixed;
-        z-index: 3;
+        z-index: 4;
         left: 0;
         bottom: 0;
         right: 0;
@@ -116,6 +116,7 @@
         padding: 0;
         top: unset;
         box-shadow: none;
+        filter: none !important;
     }
     .menu_logo {
         display: none;

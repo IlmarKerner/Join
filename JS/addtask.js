@@ -157,6 +157,7 @@ function openAddTaskPopup(progress) {
     document.querySelector('.profilebar').style = "filter: blur(5px);";
     document.querySelector('.menu').style = "filter: blur(5px);";
     loadAddTaskPopupWindow();
+    checkMediaforBoard(mediaforBoard);
     document.querySelector('.addtask_popup').classList.add('popup_window_slidein');
     setTimeout(() => {
         document.querySelector('.addtask_popup').style = "transform: translateX(0vw)";
@@ -173,6 +174,7 @@ function closeAddTaskPopup() {
         document.querySelector('.menu').style = "filter: none;";
         document.querySelector('.profilebar').style = "filter: none;";
         document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";
+        restoreBoardContent();
     }, 300);
 }
 
@@ -190,72 +192,79 @@ function loadAddTaskPopupWindow() {
 }
 
 function addTaskPopupWindowContent() {
-    return `<div class="tasks_popup">
-    <div class="close_addtask_popup" id="closeAddTaskWindow" onclick="closeAddTaskPopup()">
-        <img src="../img/clear.png">
-    </div>
+    return /*html*/`
+
+<div class="tasks_popup">
     <h1>Add Task</h1>
-    <div class="left_task_popup">
-        <div class="title_popup">
-            <p>Title</p>
-            <input type="text" placeholder="Enter a title" id="title">
+    <div class="tasks_content">
+        <div class="close_addtask_popup" id="closeAddTaskWindow" onclick="closeAddTaskPopup()">
+            <img src="../img/clear.png">
         </div>
-        <div class="description_popup">
-            <p>Description</p>
-            <textarea type="text" placeholder="Enter a description" id="description"></textarea>
+        <div class="left_task">
+            <div class="title">
+                <p>Title</p>
+                <input type="text" placeholder="Enter a title" id="title">
+            </div>
+            <div class="description">
+                <p>Description</p>
+                <textarea type="text" placeholder="Enter a description" id="description"></textarea>
+            </div>
+            <div class="margin-top50">
+                <p>Category</p>
+            </div>
+            <select class="select_task" id="category" placeholder="Select task category" required>
+                <option>Select task category</option>
+                <option>New Category</option>
+                <option>Backoffice</option>
+                <option>Design</option>
+                <option>Marketing</option>
+                <option>Media</option>
+            </select>
+            <div class="margin-top50">
+                <p>Assignet to</p>
+            </div>
+            <select class="select_assign" id="assign" placeholder="Assignet to" required>
+                <option>Select contacts to assign</option>
+                <option>Lukas Neureiter</option>
+                <option>Dennis Frese</option>
+                <option>Ilmar Kerner</option>
+            </select>
         </div>
-        <div class="margin-top50">
-            <p>Category</p>
+        <div class="bar">
+            <img src="../img/bar.png">
         </div>
-        <select class="select_task" id="category" placeholder="Select task category" required>
-            <option>Select task category</option>
-            <option>New Category</option>
-            <option>Backoffice</option>
-            <option>Design</option>
-            <option>Marketing</option>
-            <option>Media</option>
-        </select>
-        <div class="margin-top50">
-            <p>Assignet to</p>
-        </div>
-        <select class="select_assign" id="assign" placeholder="Assignet to" required>
-            <option>Select contacts to assign</option>
-            <option>Lukas Neureiter</option>
-            <option>Dennis Frese</option>
-            <option>Ilmar Kerner</option>
-        </select>
-    </div>
-    <div class="bar">
-        <img src="../img/bar.png">
-    </div>
-    <div class="right-task_popup">
-        <div class="date">
-            <p>Due date</p>
-            <input type="date" placeholder="dd/mm/yyyy" id="date">
-        </div>
-        <div class="prio">
-            <p>Prio</p>
-            <div class="devision" id="devision">
-                <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="../img/Urgentbuttonwhite.png"></div>
-                <div onclick="changeImgMedium()" class="medium"><img id="medium" src="../img/mediumbuttonwhite.png"></div>
-                <div onclick="changeImgLow()" class="low"><img id="low" src="../img/lowbuttonwhite.png"></div>
+        <div class="right-task">
+            <div class="date">
+                <p>Due date</p>
+                <input type="date" placeholder="dd/mm/yyyy" id="date">
+            </div>
+            <div class="prio">
+                <p>Prio</p>
+                <div class="devision" id="devision">
+                    <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="../img/Urgentbuttonwhite.png"></div>
+                    <div onclick="changeImgMedium()" class="medium"><img id="medium" src="../img/mediumbuttonwhite.png"></div>
+                    <div onclick="changeImgLow()" class="low"><img id="low" src="../img/lowbuttonwhite.png"></div>
+                </div>
+            </div>
+                <div class="subtask_container">
+                <p class="subtaskheader">Subtasks</p>
+                <div class="subtask">
+                    <input type="text" id="addNewSubtask" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addSubTask()">
+                </div>
+                <div class="subtasks" id="subtask">
+                    
+                </div>
             </div>
         </div>
-        <p class="subtaskheader">Subtasks</p>
-        <div class="subtask">
-            <input type="text" id="addNewSubtask" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addSubTask()">
-        </div>
-        <div class="subtasks" id="subtask">
-
-        </div>
     </div>
-    <div class="task_buttons">
+    <div class="task_buttons" id="task_buttons">
         <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img
                 src="../img/clear.png"></button>
         <button class="create_button" id="createButton" onclick="createTask()">Create Task <img
                 src="..//img/create_task.png"></button>
     </div>
-</div>`
+</div>
+`
 }
 
 function clearAddTask() {
@@ -267,3 +276,20 @@ function clearAddTask() {
 function saveInitialsToTask() {
     document.getElementById
 }
+
+let mediaforBoard = window.matchMedia("(max-width: 992px)");
+
+function checkMediaforBoard(mediaforBoard) {
+
+    if (mediaforBoard.matches) {
+        document.querySelector('.board_content').classList.add('d-none');
+    } else {
+        document.querySelector('.board_content').classList.remove('d-none');
+    }
+  }
+
+ function restoreBoardContent() {
+    document.querySelector('.board_content').classList.remove('d-none');
+ }
+
+ // meckert auf der contact seite das er die ID von dem query nicht finden kann.
