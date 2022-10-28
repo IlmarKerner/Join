@@ -34,7 +34,7 @@ function createTask() {
     let assign = document.getElementById('assign');
     let date = document.getElementById('date');
 
-    let tasks = {
+    let taskCard = {
         "title": title.value,
         "description": description.value,
         "category": category.value,
@@ -42,7 +42,9 @@ function createTask() {
         "date": date.value,
     }
 
-    taskCard.push(tasks);
+    // taskProgress
+
+    tasks.push(taskCard);
 
     title.value = '';
     description.value = '';
@@ -50,33 +52,34 @@ function createTask() {
     assign.value = '';
     date.value = '';
 
-    document.getElementById('toDo').innerHTML += '';
-    for (let i = 0; i < taskCard.length; i++) {
-        document.getElementById('inProgress').innerHTML = `
-        <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
-            <span class="card_category" id="cardCategory">${category[i]}</span>
-            <span class="card_headline">${title[i]}</span>
-            <span class="card_description">${description[i]}</span>
-                <div class="board_progress_row">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                        <div class="board_progress"> 1/2 Done</div>
-                </div>
-                <div class="assinged_contacts_row">
-                    <div class="initials_contacts">
-                        <div class="assinged_contacts1">IK</div>
-                        <div class="assinged_contacts2">DF</div>
-                        <div class="assinged_contacts3">LN</div>
-                    </div>
-                     <div class="urgency_icon">
-                        <img src="../img/medium.png">
-                    </div>
-                </div>
-            </div>
-            <div id="inProgressDropPosition" class="div_border dNone"></div>`;
-    }
+    // document.getElementById('toDo').innerHTML += '';
+    // for (let i = 0; i < taskCard.length; i++) {
+    //     document.getElementById('inProgress').innerHTML = `
+    //     <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
+    //         <span class="card_category" id="cardCategory">${category[i]}</span>
+    //         <span class="card_headline">${title[i]}</span>
+    //         <span class="card_description">${description[i]}</span>
+    //             <div class="board_progress_row">
+    //                 <div class="progress">
+    //                     <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    //                 </div>
+    //                     <div class="board_progress"> 1/2 Done</div>
+    //             </div>
+    //             <div class="assinged_contacts_row">
+    //                 <div class="initials_contacts">
+    //                     <div class="assinged_contacts1">IK</div>
+    //                     <div class="assinged_contacts2">DF</div>
+    //                     <div class="assinged_contacts3">LN</div>
+    //                 </div>
+    //                  <div class="urgency_icon">
+    //                     <img src="../img/medium.png">
+    //                 </div>
+    //             </div>
+    //         </div>
+    //         <div id="inProgressDropPosition" class="div_border dNone"></div>`;
+    // }
     closeAddTaskPopup();
+    initBoard();
 }
 
 function showSelctedContacts() {
@@ -181,10 +184,7 @@ function closeAddTaskPopup() {
 let taskProgress;
 
 function checkProgress(progress) {
-    progress = taskProgress;
-    console.log(progress);
-    // hier noch weiter machen damit der task in der richtigen Spalte eingefügt wird.
-    // funktion soweit in ordnung. progress wird richtig erkannt aber nicht richtig ausgegeben.
+    taskProgress = progress;
 }
 
 function loadAddTaskPopupWindow() {
