@@ -436,3 +436,45 @@ function saveDescription(id, element) {
 function saveDate(id, element) {
     element['dueDate'] = document.getElementById(`dueDate${id}`).value;
 }
+
+
+
+// function filterTask() {
+//     const searchBar = document.getElementById('searchTasks').value;
+//     searchBar.addEventListener('onkeyup', (e) => {
+//         const searchString = e.target.value.toLowerCase();
+
+//         const filteredTasks = tasks.filter((character) => {
+//             return (
+//                 character.headline.toLowerCase().includes(searchString) ||
+//                 character.category.toLowerCase().includes(searchString)
+//             );
+
+//         });
+//     })
+// }
+
+function filterTask(event) {
+    let searchString = event.target.value.toLowerCase();
+    let filteredTasks = tasks.filter((taskcard) => {
+        return (
+            taskcard['headline'].toLowerCase().includes(searchString)
+        );
+    });
+    displayTasks(filteredTasks);
+
+}
+
+function displayTasks(filteredTasks) {
+    let htmlString = document.getElementById('boardOverview').innerHTML;
+    htmlString = filteredTasks.map((taskcard) => {
+            return cardContent(Element);
+
+        })
+        .join('');
+    initBoard();
+};
+
+function getPokemonIndex(taskcard) {
+    return tasks.indexOf(taskcard);
+}

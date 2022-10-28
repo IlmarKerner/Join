@@ -34,7 +34,7 @@
                 </h1>
                 <div class="dFlex">
                     <div class="board_searchbar" id="boardSearchbar">
-                        <input type="text" placeholder="Find Task">
+                        <input type="text" placeholder="Find Task" id="searchTasks" onkeyup="filterTask(event)">
                         <img src="../img/board_searchbar_icon.png">
                     </div>
 
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="board_overview">
+            <div class="board_overview" id="boardOverview">
 
                 <div class="board_column">
                     <div class="board_column_headline">
