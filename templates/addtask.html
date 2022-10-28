@@ -48,26 +48,6 @@
                         <div class="margin-top50">
                             <p>Category</p>
                         </div>
-                        <!-- <div class="select_task" id="selectTask" onclick="selectTaskCategory()">
-                            <div class="task" id="task">
-                                <p>Select task category</p>
-                                <img src="../img/down.png">
-                            </div>
-                            <div class="new_category" id="new_category" onclick="event.stopPropagation()">
-                                <p>New Category</p>
-                            </div>
-                            <div class="sales" id="sales" onclick="event.stopPropagation()">
-                                <p>Sales</p> <img src="../img/rosa.png"></div>
-                            <div class="backoffice" onclick="event.stopPropagation()">
-                                <p>Backoffice</p><img src="../img/hellblau.png"></div>
-                            <div class="design" onclick="event.stopPropagation()">
-                                <p>Design</p><img src="../img/orange.png"></div>
-                            <div class="marketing" onclick="event.stopPropagation()">
-                                <p>Marketing</p><img src="../img/blau.png"></div>
-                            <div class="media" onclick="event.stopPropagation()">
-                                <p>Media</p><img src="../img/green.png"></div>
-                        </div> -->
-
                         <select class="select_task" placeholder="Select task category" required id="addTaskSelectTask">
                             <option><div class="test">Select task category</div></option>
                             <option>New Category</option>
@@ -81,24 +61,6 @@
                         <div class="margin-top50">
                             <p>Assignet to</p>
                         </div>
-                        <!-- <div class="assigned" onclick="showSelctedContacts()">
-                            <div class="select">
-                                <p>Select contacts to assign</p>
-                                <img src="../img/down.png">
-                            </div>
-                            <div class="you" onclick="event.stopPropagation()">
-                                <p>You</p>
-                                <input type="checkbox">
-                            </div>
-                            <div id="invitedContact" class="invited_contact" onclick="event.stopPropagation()">
-                                <p>Maximilian Mustermann</p>
-                                <input type="checkbox">
-                            </div>
-                            <div id="invite" class="invite" onclick="invite(); event.stopPropagation()">
-                                <p>Invite new contact</p>
-                                <img src="../img/contactsblack.png">
-                            </div>
-                        </div> -->
                         <select class="select_assign" placeholder="Select task category" required>
                             <option value=""><div class="test">Ilmar Kerner</div></option>
                             <option value="New_Category"><div class="test">Dennis Frese</div></option>
@@ -139,7 +101,7 @@
     </div>
     <div class="task_buttons">
         <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img src="../img/clear.png"></button>
-        <button class="create_button" id="createButton" onclick="createTask()">Create Task <img src="..//img/create_task.png"></button>
+        <button class="create_button" id="createButton" onclick="createTask(i)">Create Task <img src="..//img/create_task.png"></button>
     </div>
 </body>
 

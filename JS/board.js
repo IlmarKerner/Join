@@ -70,6 +70,21 @@ let tasks = [{
         "tasksPercent": '',
         "assignet": "",
         "initials": '',
+    },
+    {
+        "id": 4,
+        "progress": "awaitingFeedback",
+        "category": "toDo",
+        "headline": "Test mit ID4",
+        "description": "Modify the contents of the main website test test test test",
+        "dueDate": "2022-12-04",
+        "prio": "low",
+        "subTask": "Make Icon",
+        "tasksOverall": 3,
+        "tasksDone": 2,
+        "tasksPercent": '',
+        "assignet": "",
+        "initials": '',
     }
 ];
 

@@ -27,14 +27,14 @@ function addSubTask() {
 
 }
 
-function createTask(i) {
+function createTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let category = document.getElementById('category');
     let assign = document.getElementById('assign');
     let date = document.getElementById('date');
 
-    let taskCardInfo = {
+    let tasks = {
         "title": title.value,
         "description": description.value,
         "category": category.value,
@@ -42,7 +42,7 @@ function createTask(i) {
         "date": date.value,
     }
 
-    taskCard.push(taskCardInfo);
+    taskCard.push(tasks);
 
     title.value = '';
     description.value = '';
@@ -50,7 +50,7 @@ function createTask(i) {
     assign.value = '';
     date.value = '';
 
-    document.getElementById('inProgress').innerHTML = '';
+    document.getElementById('toDo').innerHTML += '';
     for (let i = 0; i < taskCard.length; i++) {
         document.getElementById('inProgress').innerHTML = `
         <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
@@ -192,7 +192,7 @@ function loadAddTaskPopupWindow() {
 }
 
 function addTaskPopupWindowContent() {
-    return /*html*/`
+    return /*html*/ `
 
 <div class="tasks_popup">
     <h1>Add Task</h1>
@@ -286,10 +286,10 @@ function checkMediaforBoard(mediaforBoard) {
     } else {
         document.querySelector('.board_content').classList.remove('d-none');
     }
-  }
+}
 
- function restoreBoardContent() {
+function restoreBoardContent() {
     document.querySelector('.board_content').classList.remove('d-none');
- }
+}
 
- // meckert auf der contact seite das er die ID von dem query nicht finden kann.
+// meckert auf der contact seite das er die ID von dem query nicht finden kann.
