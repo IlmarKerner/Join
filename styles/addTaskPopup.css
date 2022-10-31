@@ -434,7 +434,8 @@
     }
 
     .tasks_popup {
-        margin-bottom: 60px; // HIEHIEHIEHEIHEIHEIHIHEIEHIEHIEHEIHEIHEIH
+        margin-bottom: 60px;
+        height: calc(100vh - 140px) !important;
     }
 
 }

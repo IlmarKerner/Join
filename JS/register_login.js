@@ -1,31 +1,37 @@
-setURL('http://gruppe-329.developerakademie.net/Join/smallest_backend_ever');
+let users = []; //= [
+//     {
+//     "name": "guest",
+//     "email": "guest@login.com",
+//     "password": "none"
+//     },
+// ];
 
+setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
 
-
-let users = [];
 
 async function init() {
     enableLoadingAnimation()
     await downloadFromServer();
-    let allUsersAsString = localStorage.getItem('users'); //ändern zu backend
-    users = JSON.parse(allUsersAsString);
-    // users = JSON.parse(backend.getItem('users')) || []; // load all users
+    // let allUsersAsString = localStorage.getItem('users');
+    // users = JSON.parse(allUsersAsString);
+    users = JSON.parse(backend.getItem('users')) || []; // load all users
     renderContent();
     checkIfAutocomplete();
     disableLoadingAnimation();
 }
 
-function addUser() {
+async function addUser() {
     let name = document.getElementById('register_name');
     let email = document.getElementById('register_email');
     let password = document.getElementById('register_password');
     users.push({name: name.value, email: email.value.toLowerCase(), password: password.value});
-    let allUsersAsString = JSON.stringify(users);
-    localStorage.setItem('users', allUsersAsString); // ändern zu backend
+    // let allUsersAsString = JSON.stringify(users);
+    // localStorage.setItem('users', allUsersAsString); // ändern zu backend
+    await backend.setItem('users', JSON.stringify(users)); // save users
     document.getElementById('success_animation').classList.remove('d-none');
 
     setTimeout(() => {
-        location.href = 'https://gruppe-329.developerakademie.net/Join/templates/index.html';
+        location.href = 'index.html';
       }, "1000")  
 }
 
@@ -40,9 +46,10 @@ function login() {
     if (user) {
         console.log('user gefunden');
         document.getElementById('wrong_login').classList.add('d-none');
-        location.href = 'https://gruppe-329.developerakademie.net/Join/templates/board.html';
+        activeUser = user['name'];
         counter = 0;
         rememberMe();
+        location.href = 'hello.html';
     } else {
         counter++;
         document.getElementById('wrong_login').classList.remove('d-none');
@@ -53,7 +60,8 @@ function login() {
 }
 
 function guestLogin() {
-    location.href = 'https://gruppe-329.developerakademie.net/Join/templates/board.html';
+    activeUser = 'guest';
+    location.href = 'hello.html';
 }
 
 function animateForgotPassword() {
@@ -111,3 +119,4 @@ function enableLoadingAnimation() {
 function disableLoadingAnimation() {
     document.getElementById('loading_animation').classList.add('d-none');
 }
+
