@@ -1,14 +1,16 @@
 let greetingTime;
 let activeUser;
 
-function initGreeting() {
+async function initGreeting() {
+    await downloadFromServer();
+    activeUser = JSON.parse(backend.getItem('currentUser')) || []; // load all users
     checkDayTime();
     replaceDayTime();
-    replaceName();
+    replaceName(activeUser);
 
-    // setTimeout(() => {
-    //     location.href = 'https://gruppe-329.developerakademie.net/Join/templates/summary.html';
-    //   }, "2000")  
+    setTimeout(() => {
+        location.href = 'https://gruppe-329.developerakademie.net/Join/templates/summary.html';
+      }, "2000")  
 
 }
 
@@ -31,6 +33,8 @@ function replaceDayTime() {
     document.getElementById('day_time').innerHTML = greetingTime;
 }
 
-function replaceName() {
-    document.getElementById('greetingName').innerHTML = activeUser;
+function replaceName(activeUser) {
+
+    console.log(activeUser[0]);
+    document.getElementById('greetingName').innerHTML = activeUser[0];
 }

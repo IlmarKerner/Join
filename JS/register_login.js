@@ -1,10 +1,5 @@
-let users = []; //= [
-//     {
-//     "name": "guest",
-//     "email": "guest@login.com",
-//     "password": "none"
-//     },
-// ];
+let users = [];
+let currentUser = [];
 
 setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
 
@@ -12,8 +7,6 @@ setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
 async function init() {
     enableLoadingAnimation()
     await downloadFromServer();
-    // let allUsersAsString = localStorage.getItem('users');
-    // users = JSON.parse(allUsersAsString);
     users = JSON.parse(backend.getItem('users')) || []; // load all users
     renderContent();
     checkIfAutocomplete();
@@ -25,8 +18,6 @@ async function addUser() {
     let email = document.getElementById('register_email');
     let password = document.getElementById('register_password');
     users.push({name: name.value, email: email.value.toLowerCase(), password: password.value});
-    // let allUsersAsString = JSON.stringify(users);
-    // localStorage.setItem('users', allUsersAsString); // ändern zu backend
     await backend.setItem('users', JSON.stringify(users)); // save users
     document.getElementById('success_animation').classList.remove('d-none');
 
@@ -37,7 +28,7 @@ async function addUser() {
 
 let counter = 0;
 
-function login() {
+async function login() {
 
     let email = document.getElementById('login_email');
     let password = document.getElementById('login_password');
@@ -46,7 +37,8 @@ function login() {
     if (user) {
         console.log('user gefunden');
         document.getElementById('wrong_login').classList.add('d-none');
-        activeUser = user['name'];
+        currentUser.push(user['name']);
+        await backend.setItem('currentUser', JSON.stringify(currentUser)); // save users
         counter = 0;
         rememberMe();
         location.href = 'hello.html';
@@ -118,5 +110,10 @@ function enableLoadingAnimation() {
 
 function disableLoadingAnimation() {
     document.getElementById('loading_animation').classList.add('d-none');
+}
+
+async function logout() {
+    users = JSON.parse(backend.getItem('users')) || []; // load all users
+    await backend.deleteItem('currentUser'); // delete current User
 }
 
