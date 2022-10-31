@@ -3,6 +3,7 @@ let selectTaskBoxOpen = false;
 let urgentImage = false;
 let mediumImage = false;
 let lowImage = false;
+let prio;
 let taskCard = [{
     "id": "1",
     "title": "toDo",
@@ -34,15 +35,22 @@ function createTask() {
     let assign = document.getElementById('assign');
     let date = document.getElementById('date');
 
-    let taskCard = {
-        "title": title.value,
-        "description": description.value,
-        "category": category.value,
-        "assign": assign.value,
-        "date": date.value,
-    }
 
-    // taskProgress
+    let taskCard = {
+        "id": 1,
+        "progress": taskProgress,
+        "category": category.value,
+        "headline": title.value,
+        "description": description.value,
+        "dueDate": date.value,
+        "prio": prio,
+        "subTask": "Make Icon", // ?
+        "tasksOverall": 2, // ?
+        "tasksDone": 1, // ?
+        "tasksPercent": '', // ?
+        "assignet": assign.value,
+        "initials": '',
+    }
 
     tasks.push(taskCard);
 
@@ -52,32 +60,7 @@ function createTask() {
     assign.value = '';
     date.value = '';
 
-    // document.getElementById('toDo').innerHTML += '';
-    // for (let i = 0; i < taskCard.length; i++) {
-    //     document.getElementById('inProgress').innerHTML = `
-    //     <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
-    //         <span class="card_category" id="cardCategory">${category[i]}</span>
-    //         <span class="card_headline">${title[i]}</span>
-    //         <span class="card_description">${description[i]}</span>
-    //             <div class="board_progress_row">
-    //                 <div class="progress">
-    //                     <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    //                 </div>
-    //                     <div class="board_progress"> 1/2 Done</div>
-    //             </div>
-    //             <div class="assinged_contacts_row">
-    //                 <div class="initials_contacts">
-    //                     <div class="assinged_contacts1">IK</div>
-    //                     <div class="assinged_contacts2">DF</div>
-    //                     <div class="assinged_contacts3">LN</div>
-    //                 </div>
-    //                  <div class="urgency_icon">
-    //                     <img src="../img/medium.png">
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         <div id="inProgressDropPosition" class="div_border dNone"></div>`;
-    // }
+   
     closeAddTaskPopup();
     initBoard();
 }
@@ -121,6 +104,7 @@ function changeImgUrgent() {
     document.getElementById('urgent').src = "../img/urgentbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
+    prio = 'urgent';
 }
 
 function changeImgMedium() {
@@ -136,6 +120,7 @@ function changeImgMedium() {
     document.getElementById('medium').src = "../img/mediumbutton.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
+    prio = 'medium';
 }
 
 function changeImgLow() {
@@ -151,6 +136,7 @@ function changeImgLow() {
     document.getElementById('low').src = "../img/lowbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
+    prio = 'low';
 }
 
 function openAddTaskPopup(progress) {
