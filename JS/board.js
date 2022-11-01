@@ -1,7 +1,7 @@
 let urgent = false;
 let medium = false;
 let low = false;
-let currentDraggedItem
+let currentDraggedItem;
 let tasks = [{
         "id": 0,
         "progress": "toDo",
@@ -28,6 +28,21 @@ let tasks = [{
     },
     {
         "id": 1,
+        "progress": "inProgress",
+        "category": "Sales",
+        "headline": "Test mit ID1",
+        "description": "Modify the contents of the main website test test test test",
+        "dueDate": "2022-12-02",
+        "prio": "urgent",
+        "subTask": "Make Icon",
+        "tasksOverall": 2,
+        "tasksDone": 1,
+        "tasksPercent": '',
+        "assignet": "",
+        "initials": '',
+    },
+    {
+        "id": 4,
         "progress": "inProgress",
         "category": "Sales",
         "headline": "Test mit ID1",
@@ -95,6 +110,7 @@ function initBoard() {
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
+    showNumberOfTasks();
     // renderContacts();
 }
 
