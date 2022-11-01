@@ -100,7 +100,6 @@ html {
 
 .board_column {
     width: 250px;
-
 }
 
 .board_column_content {
@@ -134,6 +133,7 @@ html {
     display: flex;
     flex-direction: column;
     min-height: 205px;
+    max-width: 250px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -274,125 +274,99 @@ html {
     transform: translate(-50%, 0);
 }
 
+
 /* ---------------------- Board Start ---------------------- */
 
 @media (max-width: 1350px) {
-
     .board_column {
         width: 22%;
-      }
-
-      .board_column_headline {
+    }
+    .board_column_headline {
         font-size: 17px;
-      }
-
+    }
 }
 
 @media (max-width: 1200px) {
-
     .board_column_headline {
-    font-size: 13px;
+        font-size: 13px;
     }
-
     .board_column img {
         width: 20px;
     }
-
 }
 
 @media (max-width: 992px) {
-
     .board_content_parent {
         left: 0;
     }
-
     .tool_description {
         display: block;
         padding: 0 50px;
         font-size: 16px;
     }
-
 }
 
 @media (max-width: 768px) {
-
     .board_searchbar {
         position: absolute;
         top: 90px;
         left: 0;
     }
-
     .board_add_task {
         width: 40px;
         height: 40px;
         justify-content: center;
     }
-
     .board_add_task button {
         display: none;
     }
-
     .board_add_task img {
         padding: 0;
         width: 20px;
     }
-
     .board_overview {
         flex-direction: column;
         align-items: center;
         margin-bottom: 80px;
     }
-
     .board_column {
         width: 70%;
     }
-
     .board_column img {
         width: 30px;
     }
-
     .board_column_headline {
         font-size: 21px;
     }
 }
 
 @media (max-height: 768px) {
-
     .board_content {
         margin-top: 30px;
     }
-
     .board_overview {
         margin-top: 80px;
         height: calc(100vh - 50px - 81.2px - 30px - 89px);
     }
-
     .board_column_content {
         height: 100%;
     }
-
 }
 
 @media (max-width: 600px) {
-
     .board_column {
         width: 90%;
     }
-
 }
 
 @media (max-width: 350px) {
-
     .tool_description {
         padding: 0 25px;
     }
-
     .board_content {
         padding: 0 25px;
     }
-
     .board_searchbar input {
         width: 100%;
     }
-
 }

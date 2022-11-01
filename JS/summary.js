@@ -5,16 +5,9 @@ let progressNumber = 0;
 let awaitingFeedback = 0;
 let toDo = 0;
 let tasksDone = 0;
-let urgent = 0;
 
-function fillSummaryInfos() {
-    for (i = 0; i < tasks.length; i++) {
-        if (tasks[i]['status'] == 'In progress') { tasksinProgress++; };
-        if (tasks[i]['status'] == 'Awaiting feedback') { tasksawaitingFeedback++; };
-        if (tasks[i]['priority'] == 'Urgent') { tasksUrgent++; if (transformDate(tasks[i]['dueDate']) > nextDeadlineofUrgentTasks) { nextDeadlineofUrgentTasks = transformDate(tasks[i]['dueDate']); }; };
-        if (tasks[i]['status'] == 'To do') { taskstoDo++; };
-        if (tasks[i]['status'] == 'Done') { tasksDone++; };
-    }
+function fillSummarywithInfos() {
+    document.getElementById('awaitingFeedback').innerHTML = awaitingFeedback;
 }
 
 function showNumberOfTasks() {
@@ -22,6 +15,17 @@ function showNumberOfTasks() {
     boardNumber.innerHTML = '';
     boardNumber.innerHTML = tasks.length;
 }
+
+function showNumberOfTasksAwaitingFeedback() {
+    let progressNumber = document.getElementById('awaitingFeedback');
+    progressNumber.innerHTML = '';
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i]['progress'] == 'awaitingFeedback') {
+            awaitingFeedback++;
+        }
+    }
+}
+
 
 // function showNumberOfTasksInProgress() {
 //     let progressNumber = document.getElementById('tasksInProgress');

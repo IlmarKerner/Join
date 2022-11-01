@@ -42,6 +42,21 @@ let tasks = [{
         "initials": '',
     },
     {
+        "id": 7,
+        "progress": "inProgress",
+        "category": "Sales",
+        "headline": "Test mit ID7",
+        "description": "Modify the contents of the main website test test test test",
+        "dueDate": "2022-12-02",
+        "prio": "urgent",
+        "subTask": "Make Icon",
+        "tasksOverall": 2,
+        "tasksDone": 1,
+        "tasksPercent": '',
+        "assignet": "",
+        "initials": '',
+    },
+    {
         "id": 4,
         "progress": "inProgress",
         "category": "Sales",
@@ -543,7 +558,7 @@ function getTaskIndex(taskcard) {
 
 function resetTasks() {
     let emptyTaskSearchInput = document.getElementById('searchTasks');
-    if (emptyTaskSearchInput = '') {
+    if (emptyTaskSearchInput.value = '') {
         initBoard();
     }
 }
