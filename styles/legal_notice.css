@@ -5,7 +5,6 @@
 }
 
 .legal_container h1 {
-
     font-size: 61px;
     font-weight: 700;
     color: #000000;
@@ -36,49 +35,49 @@
     font-size: 16px;
     color: #000000;
     font-style: normal;
+    margin: 0;
+}
+
+.subtitle_two li {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    font-style: normal;
+    margin: 0;
 }
 
 .arrow_back {
-    position: absolute;
+    position: fixed;
     top: 172px;
-    right: 128px;
+    right: 100px;
     cursor: pointer;
     z-index: 3;
 }
 
 @media (max-width: 992px) {
-
     .legal_notice_page {
         padding: 150px;
     }
-
 }
 
 @media (max-width: 768px) {
-
     .legal_notice_page {
         padding: 150px 60px;
     }
-
     .arrow_back {
         top: 100px;
         right: 50px;
     }
-
 }
 
 @media (max-width: 500px) {
-
     .legal_container h1 {
         font-size: 36px;
     }
-
 }
 
 @media (max-width: 350px) {
-
     .legal_container h1 {
         font-size: 26px;
     }
-
 }

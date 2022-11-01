@@ -2,11 +2,10 @@
 <html lang="en">
 
 <style>
-
     body {
         margin: 0;
     }
-
+    
     .headerbar {
         position: absolute;
         width: 100%;
@@ -24,6 +23,7 @@
         height: 89px;
         background-color: #ffffff;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+        position: fixed;
     }
     
     .profilebar p {
@@ -49,74 +49,60 @@
         height: 49px;
         border-radius: 100%;
     }
-
+    
     .profilebar_logo {
         display: none;
     }
-
+    
     @media (max-width: 992px) {
-
         .add_task_container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
         .addtask {
             width: 80%;
         }
-
         .headerbar {
             position: fixed;
         }
-
         .profilebar {
             height: 80px;
             position: relative;
             z-index: 4;
             filter: none !important;
         }
-
         .profilebar p {
             display: none;
         }
-
         .q_image {
             display: none;
         }
-
         .profilebar_logo {
             display: block;
             width: 32px;
             position: absolute;
             left: 5%;
         }
-
         .profile {
             right: 5%;
             width: unset;
         }
-
     }
-
-        @media (max-width: 400px) {
-
-            .menu {
-                height: 60px;
-            }
-
-            .dashboard {
-                height: 60px;
-            }
-
-            .dashboard img {
-                font-size: 12px;
-            }
-
-            .dashboard span {
-                font-size: 12px;
-            }
-
+    
+    @media (max-width: 400px) {
+        .menu {
+            height: 60px;
+        }
+        .dashboard {
+            height: 60px;
+        }
+        .dashboard img {
+            font-size: 12px;
+        }
+        .dashboard span {
+            font-size: 12px;
+        }
     }
 </style>
 
