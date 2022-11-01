@@ -14,16 +14,13 @@
 }
 
 .help_container h1 {
-    position: absolute;
     font-size: 61px;
     font-weight: 700;
     color: #000000;
 }
 
 .help_one {
-    position: absolute;
-    height: 127px;
-    top: 100px;
+    margin-top: 20px;
     font-size: 27px;
     font-weight: 700;
     color: #000000;
@@ -63,8 +60,17 @@
 }
 
 .help_two {
-    position: absolute;
-    top: 326px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.help_two p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    font-style: normal;
+    margin-left: 40px;
 }
 
 .help_two h2 {
@@ -79,45 +85,12 @@
 
 .first {
     display: flex;
-    position: absolute;
-    top: 70px;
-    width: 976px;
-}
-
-.first p {
-    font-weight: 400;
-    font-size: 16px;
-    color: #000000;
-    font-style: normal;
-    margin-left: 40px;
 }
 
 .second {
     display: flex;
-    position: absolute;
-    top: 150px;
-    width: 976px;
-}
-
-.second p {
-    font-weight: 400;
-    font-size: 16px;
-    color: #000000;
-    font-style: normal;
-    margin-left: 40px;
 }
 
 .third {
     display: flex;
-    position: absolute;
-    top: 225px;
-    width: 976px;
-}
-
-.third p {
-    font-weight: 400;
-    font-size: 16px;
-    color: #000000;
-    font-style: normal;
-    margin-left: 40px;
 }
