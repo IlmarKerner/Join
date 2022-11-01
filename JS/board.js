@@ -112,7 +112,6 @@ function initBoard() {
     // renderContacts();
 }
 
-
 function updateToDo() {
     let todos = tasks.filter(t => t['progress'] == 'toDo');
     document.getElementById('toDo').innerHTML = '';

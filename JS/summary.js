@@ -23,22 +23,22 @@ function showNumberOfTasks() {
     boardNumber.innerHTML = tasks.length;
 }
 
-function showNumberOfTasksInProgress() {
-    let progressNumber = document.getElementById('tasksInProgress');
-    progressNumber.innerHTML = tasks['progress'];
-}
+// function showNumberOfTasksInProgress() {
+//     let progressNumber = document.getElementById('tasksInProgress');
+//     progressNumber.innerHTML = tasks['progress'];
+// }
 
-function showNumberOfTasksAwaitingFeedback() {
-    let progressNumber = document.getElementById('awaitingFeedback');
-    progressNumber.innerHTML = '';
-}
+// function showNumberOfTasksAwaitingFeedback() {
+//     let awaitingFeedbackNumber = document.getElementById('awaitingFeedback');
+//     awaitingFeedbackNumber.innerHTML = '';
+// }
 
-function showNumberOfTasksToDo() {
-    let progressNumber = document.getElementById('toDo');
-    progressNumber.innerHTML = '';
-}
+// function showNumberOfTasksToDo() {
+//     let toDoNumber = document.getElementById('toDo');
+//     toDoNumber.innerHTML = '';
+// }
 
-function showNumberOfTasksDone() {
-    let progressNumber = document.getElementById('done');
-    progressNumber.innerHTML = '';
-}
+// function showNumberOfTasksDone() {
+//     let doneNumber = document.getElementById('done');
+//     doneNumber.innerHTML = '';
+// }
