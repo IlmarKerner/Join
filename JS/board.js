@@ -103,14 +103,12 @@ let tasks = [{
     }
 ];
 
-
 function initBoard() {
     updateTasksPercent();
     updateToDo();
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
-    showNumberOfTasks();
     // renderContacts();
 }
 
@@ -486,26 +484,67 @@ function saveDate(id, element) {
 // }
 
 function filterTask(event) {
+    let emptyTaskSearchInput = document.getElementById('searchTasks');
     let searchString = event.target.value.toLowerCase();
     let filteredTasks = tasks.filter((taskcard) => {
-        return (
-            taskcard['headline'].toLowerCase().includes(searchString)
-        );
+        if (emptyTaskSearchInput = '') {
+            initBoard();
+        } else {
+            return (
+                taskcard['headline'].toLowerCase().includes(searchString) ||
+                taskcard['category'].toLowerCase().includes(searchString) ||
+                taskcard['prio'].toLowerCase().includes(searchString)
+            );
+        }
     });
     displayTasks(filteredTasks);
-
 }
 
 function displayTasks(filteredTasks) {
-    let htmlString = document.getElementById('boardOverview').innerHTML;
-    htmlString = filteredTasks.map((taskcard) => {
-            return cardContent(Element);
+    let htmlString = document.getElementById('boardOverview');
+    htmlString.innerHTML = filteredTasks.map((taskcard) => {
+            return `<div id="${tasks[getTaskIndex(taskcard)]['id']}" onclick="openPopUp(${tasks[getTaskIndex(taskcard)]['id']})" draggable="true" ondragstart="startDragging(${tasks[getTaskIndex(taskcard)]['id']})"
+            ondragend="endDragging()" class="task_card">
+        <span class="card_category" id="cardCategory">
+            ${tasks[getTaskIndex(taskcard)]['category']}
+        </span>
+        <span class="card_headline">
+            ${tasks[getTaskIndex(taskcard)]['headline']}
+        </span>
+        <span class="card_description">
+            ${tasks[getTaskIndex(taskcard)]['description']}
+        </span>
+        <div class="board_progress_row">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: ${tasks[getTaskIndex(taskcard)]['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="board_progress">
+                ${tasks[getTaskIndex(taskcard)]['tasksDone']}/${tasks[getTaskIndex(taskcard)]['tasksOverall']} Done
+            </div>
+        </div>
+        <div class="assinged_contacts_row">
+            <div class="initials_contacts">
+                <div class="assinged_contacts1">LH</div>
+                <div class="assinged_contacts2">IK</div>
+                <div class="assinged_contacts3">DF</div>
+            </div>
+            <div class="urgency_icon">
+                <img src="../img/${tasks[getTaskIndex(taskcard)]['prio']}.png">
+            </div>
+    
+        </div>`;
 
         })
         .join('');
-    initBoard();
 };
 
-function getPokemonIndex(taskcard) {
+function getTaskIndex(taskcard) {
     return tasks.indexOf(taskcard);
+}
+
+function resetTasks() {
+    let emptyTaskSearchInput = document.getElementById('searchTasks');
+    if (emptyTaskSearchInput = '') {
+        initBoard();
+    }
 }

@@ -36,27 +36,7 @@ function createTask() {
     let date = document.getElementById('date');
 
 
-<<<<<<< HEAD
     taskCard.push(tasks);
-=======
-    let taskCard = {
-        "id": 1,
-        "progress": taskProgress,
-        "category": category.value,
-        "headline": title.value,
-        "description": description.value,
-        "dueDate": date.value,
-        "prio": prio,
-        "subTask": "Make Icon", // ?
-        "tasksOverall": 2, // ?
-        "tasksDone": 1, // ?
-        "tasksPercent": '', // ?
-        "assignet": assign.value,
-        "initials": '',
-    }
-
-    tasks.push(taskCard);
->>>>>>> 28e87f450a6581976500ddb8aeb92b5f0b102327
 
     title.value = '';
     description.value = '';
@@ -64,7 +44,6 @@ function createTask() {
     assign.value = '';
     date.value = '';
 
-<<<<<<< HEAD
     document.getElementById('toDo').innerHTML += '';
     for (let i = 0; i < taskCard.length; i++) {
         document.getElementById('inProgress').innerHTML = `
@@ -91,9 +70,6 @@ function createTask() {
             </div>
             <div id="inProgressDropPosition" class="div_border dNone"></div>`;
     }
-=======
-   
->>>>>>> 28e87f450a6581976500ddb8aeb92b5f0b102327
     closeAddTaskPopup();
 }
 
