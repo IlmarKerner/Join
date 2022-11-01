@@ -48,10 +48,18 @@
 
 .arrow_back {
     position: fixed;
-    top: 172px;
+    top: 159px;
     right: 100px;
     cursor: pointer;
     z-index: 3;
+}
+
+@media (max-width: 1150px) {
+
+    .legal_container h1 {
+        font-size: 45px;
+    }
+
 }
 
 @media (max-width: 992px) {
@@ -64,20 +72,29 @@
     .legal_notice_page {
         padding: 150px 60px;
     }
+
     .arrow_back {
         top: 100px;
         right: 50px;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
     .legal_container h1 {
         font-size: 36px;
     }
 }
 
-@media (max-width: 350px) {
+
+@media (max-width: 450px) {
     .legal_container h1 {
         font-size: 26px;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .legal_container h1 {
+        font-size: 18px;
     }
 }
