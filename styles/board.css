@@ -363,7 +363,7 @@ html {
     }
 
     .board_overview {
-        margin-top: 50px;
+        margin-top: 80px;
         height: calc(100vh - 50px - 81.2px - 30px - 89px);
     }
 
@@ -381,7 +381,18 @@ html {
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 350px) {
 
+    .tool_description {
+        padding: 0 25px;
+    }
+
+    .board_content {
+        padding: 0 25px;
+    }
+
+    .board_searchbar input {
+        width: 100%;
+    }
 
 }

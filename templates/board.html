@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+    <script src="../smallest_backend_ever/mini_backend.js"></script>
     <script src="../JS/addtask.js"></script>
     <script src="../JS/addcontact.js"></script>
     <script src="../JS/script.js"></script>
@@ -40,7 +41,7 @@
                     </div>
 
                     <div class="board_add_task" id="boardAddTask">
-                        <button onclick="openAddTaskPopup()">Add task</button>
+                        <button onclick="openAddTaskPopup('toDo')">Add task</button>
                         <img src="../img/board_addTask_icon.png">
                     </div>
                 </div>
@@ -51,7 +52,7 @@
                 <div class="board_column">
                     <div class="board_column_headline">
                         <span>To Do</span>
-                        <img onclick="openAddTaskPopup('to_do')" src="../img/plus_button.png">
+                        <img onclick="openAddTaskPopup('toDo')" src="../img/plus_button.png">
                     </div>
                     <div class="board_column_content" id="toDo" ondrop="drop('toDo')" ondragover="allowDrop(event)">
                         <!-- Cards get filled here -->
@@ -63,7 +64,7 @@
                 <div class="board_column">
                     <div class="board_column_headline">
                         <span>In progress</span>
-                        <img onclick="openAddTaskPopup('in_progress')" src="../img/plus_button.png">
+                        <img onclick="openAddTaskPopup('inProgress')" src="../img/plus_button.png">
                     </div>
                     <div class="board_column_content" id="inProgress" ondrop="drop('inProgress')" ondragover="allowDrop(event)">
                         <!-- Cards get filled here -->
@@ -75,7 +76,7 @@
                 <div class="board_column">
                     <div class="board_column_headline">
                         <span>Awaiting Feedback</span>
-                        <img onclick="openAddTaskPopup('awaiting_feedback')" src="../img/plus_button.png">
+                        <img onclick="openAddTaskPopup('awaitingFeedback')" src="../img/plus_button.png">
                     </div>
                     <div class="board_column_content" id="awaitingFeedback" ondrop="drop('awaitingFeedback')" ondragover="allowDrop(event)">
                         <!-- Cards get filled here -->

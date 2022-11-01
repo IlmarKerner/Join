@@ -3,6 +3,7 @@ let selectTaskBoxOpen = false;
 let urgentImage = false;
 let mediumImage = false;
 let lowImage = false;
+let prio;
 let taskCard = [{
     "id": "1",
     "title": "toDo",
@@ -34,15 +35,28 @@ function createTask() {
     let assign = document.getElementById('assign');
     let date = document.getElementById('date');
 
+
+<<<<<<< HEAD
+    taskCard.push(tasks);
+=======
     let taskCard = {
-        "title": title.value,
-        "description": description.value,
+        "id": 1,
+        "progress": taskProgress,
         "category": category.value,
-        "assign": assign.value,
-        "date": date.value,
+        "headline": title.value,
+        "description": description.value,
+        "dueDate": date.value,
+        "prio": prio,
+        "subTask": "Make Icon", // ?
+        "tasksOverall": 2, // ?
+        "tasksDone": 1, // ?
+        "tasksPercent": '', // ?
+        "assignet": assign.value,
+        "initials": '',
     }
 
-    taskCard.push(tasks);
+    tasks.push(taskCard);
+>>>>>>> 28e87f450a6581976500ddb8aeb92b5f0b102327
 
     title.value = '';
     description.value = '';
@@ -50,6 +64,7 @@ function createTask() {
     assign.value = '';
     date.value = '';
 
+<<<<<<< HEAD
     document.getElementById('toDo').innerHTML += '';
     for (let i = 0; i < taskCard.length; i++) {
         document.getElementById('inProgress').innerHTML = `
@@ -76,6 +91,9 @@ function createTask() {
             </div>
             <div id="inProgressDropPosition" class="div_border dNone"></div>`;
     }
+=======
+   
+>>>>>>> 28e87f450a6581976500ddb8aeb92b5f0b102327
     closeAddTaskPopup();
 }
 
@@ -118,6 +136,7 @@ function changeImgUrgent() {
     document.getElementById('urgent').src = "../img/urgentbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
+    prio = 'urgent';
 }
 
 function changeImgMedium() {
@@ -133,6 +152,7 @@ function changeImgMedium() {
     document.getElementById('medium').src = "../img/mediumbutton.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
+    prio = 'medium';
 }
 
 function changeImgLow() {
@@ -148,6 +168,7 @@ function changeImgLow() {
     document.getElementById('low').src = "../img/lowbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
+    prio = 'low';
 }
 
 function openAddTaskPopup(progress) {
