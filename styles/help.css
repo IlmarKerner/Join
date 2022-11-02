@@ -6,11 +6,7 @@
 }
 
 .help_container {
-    position: absolute;
-    width: 976px;
-    height: 411px;
-    left: 347px;
-    top: 171px;
+    padding: 150px 150px 150px 300px;
 }
 
 .help_container h1 {
@@ -20,15 +16,14 @@
 }
 
 .help_one {
-    margin-top: 20px;
+    margin: 24px 0;
     font-size: 27px;
     font-weight: 700;
     color: #000000;
 }
 
 .help_one h2 {
-    width: 346px;
-    height: 32px;
+    margin-bottom: 16px;
     color: black;
     font-family: 'Inter';
     font-style: normal;
@@ -38,12 +33,10 @@
 }
 
 .help_one p {
-    width: 969px;
     font-weight: 400;
     font-size: 16px;
     color: #000000;
     font-style: normal;
-    margin-right: 124px;
 }
 
 .menu {
@@ -83,14 +76,20 @@
     line-height: 120%;
 }
 
-.first {
-    display: flex;
+@media (max-width: 992px) {
+    .help_container {
+        padding: 150px;
+    }
 }
 
-.second {
-    display: flex;
+@media (max-width: 768px) {
+    .help_container {
+        padding: 150px 60px;
+    }
 }
 
-.third {
-    display: flex;
+@media (max-width: 400px) {
+    .help_container {
+        padding: 150px 20px;
+    }
 }

@@ -90,6 +90,10 @@
     .legal_container h1 {
         font-size: 26px;
     }
+
+    .legal_notice_page {
+        padding: 150px 20px;
+    }
 }
 
 
