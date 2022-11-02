@@ -205,30 +205,18 @@
 .edit_contact {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
+
 
 .edit_contact p {
     cursor: context-menu !important;
-    margin: 0 0 0 8px
+    margin: 0 0 0 8px;
 }
 
 .contact_information {
     cursor: context-menu;
 }
-
-body::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
-  }
-  
-  body::-webkit-scrollbar-track {
-    background: orange;        /* color of the tracking area */
-  }
-  
-  body::-webkit-scrollbar-thumb {
-    background-color: blue;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid orange;  /* creates padding around scroll thumb */
-  }
 
   .right_side {
     position: absolute;
@@ -358,7 +346,7 @@ body::-webkit-scrollbar {
 
     .contact_information_header {
         font-size: 20px;
-        width: 450px;
+        width: calc(100% - 20px);
     }
 
     .contact_information h2 {
