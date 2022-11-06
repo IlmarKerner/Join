@@ -23,6 +23,11 @@ let tasks = [{
                 "firstName": 'Ilmar',
                 "lastName": 'Kerner',
                 "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
             }
         ],
     },
@@ -38,8 +43,22 @@ let tasks = [{
         "tasksOverall": 2,
         "tasksDone": 1,
         "tasksPercent": '',
-        "assignet": "",
-        "initials": '',
+        "assignet": [{
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
+            }
+        ],
     },
     {
         "id": 7,
@@ -53,8 +72,23 @@ let tasks = [{
         "tasksOverall": 2,
         "tasksDone": 1,
         "tasksPercent": '',
-        "assignet": "",
-        "initials": '',
+        "assignet": [{
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
+            }
+        ],
+
     },
     {
         "id": 4,
@@ -68,8 +102,22 @@ let tasks = [{
         "tasksOverall": 2,
         "tasksDone": 1,
         "tasksPercent": '',
-        "assignet": "",
-        "initials": '',
+        "assignet": [{
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
+            }
+        ],
     },
     {
         "id": 2,
@@ -83,8 +131,22 @@ let tasks = [{
         "tasksOverall": 2,
         "tasksDone": 1,
         "tasksPercent": '',
-        "assignet": "",
-        "initials": '',
+        "assignet": [{
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
+            }
+        ],
     },
     {
         "id": 3,
@@ -98,8 +160,22 @@ let tasks = [{
         "tasksOverall": 3,
         "tasksDone": 2,
         "tasksPercent": '',
-        "assignet": "",
-        "initials": '',
+        "assignet": [{
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
+            }
+        ],
     },
     {
         "id": 8,
@@ -113,8 +189,22 @@ let tasks = [{
         "tasksOverall": 3,
         "tasksDone": 2,
         "tasksPercent": '',
-        "assignet": "",
-        "initials": '',
+        "assignet": [{
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
+            }
+        ],
     },
     {
         "id": 4,
@@ -128,8 +218,22 @@ let tasks = [{
         "tasksOverall": 3,
         "tasksDone": 2,
         "tasksPercent": '',
-        "assignet": "",
-        "initials": '',
+        "assignet": [{
+                "firstName": 'Lukas',
+                "lastName": 'Neureiter',
+                "initials": 'LN',
+            },
+            {
+                "firstName": 'Ilmar',
+                "lastName": 'Kerner',
+                "initials": 'IK',
+            },
+            {
+                "firstName": 'Dennis',
+                "lastName": 'Frese',
+                "initials": 'DF',
+            }
+        ],
     }
 ];
 
@@ -203,7 +307,6 @@ function updateTasksPercent() {
         let element = tasks[i];
         element['tasksPercent'] = '';
         element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
-
     }
 }
 

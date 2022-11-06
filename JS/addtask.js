@@ -44,9 +44,8 @@ function createTask() {
     assign.value = '';
     date.value = '';
 
-    document.getElementById('toDo').innerHTML += '';
     for (let i = 0; i < taskCard.length; i++) {
-        document.getElementById('inProgress').innerHTML = `
+        document.getElementById('inProgress').innerHTML += `
         <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
             <span class="card_category" id="cardCategory">${category[i]}</span>
             <span class="card_headline">${title[i]}</span>
