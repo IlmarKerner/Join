@@ -28,7 +28,7 @@ let tasks = [{
     },
     {
         "id": 1,
-        "progress": "inProgress",
+        "progress": "done",
         "category": "Sales",
         "headline": "Test mit ID1",
         "description": "Modify the contents of the main website test test test test",
@@ -73,7 +73,7 @@ let tasks = [{
     },
     {
         "id": 2,
-        "progress": "done",
+        "progress": "toDo",
         "category": "Sales",
         "headline": "Test mit ID2",
         "description": "Modify the contents of the main website test test test test",
@@ -88,6 +88,21 @@ let tasks = [{
     },
     {
         "id": 3,
+        "progress": "awaitingFeedback",
+        "category": "Design",
+        "headline": "Test mit ID3",
+        "description": "Modify the contents of the main website test test test test",
+        "dueDate": "2022-12-04",
+        "prio": "low",
+        "subTask": "Make Icon",
+        "tasksOverall": 3,
+        "tasksDone": 2,
+        "tasksPercent": '',
+        "assignet": "",
+        "initials": '',
+    },
+    {
+        "id": 8,
         "progress": "awaitingFeedback",
         "category": "Design",
         "headline": "Test mit ID3",
@@ -547,7 +562,6 @@ function displayTasks(filteredTasks) {
             </div>
     
         </div>`;
-
         })
         .join('');
 };
@@ -558,7 +572,7 @@ function getTaskIndex(taskcard) {
 
 function resetTasks() {
     let emptyTaskSearchInput = document.getElementById('searchTasks');
-    if (emptyTaskSearchInput.value = '') {
-        initBoard();
+    if (emptyTaskSearchInput = '') {
+        includeHTML();
     }
 }

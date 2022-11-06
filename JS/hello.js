@@ -10,7 +10,7 @@ async function initGreeting() {
 
     setTimeout(() => {
         location.href = 'https://gruppe-329.developerakademie.net/Join/templates/summary.html';
-      }, "2000")  
+    }, "2000")
 
 }
 
@@ -37,4 +37,13 @@ function replaceName(activeUser) {
 
     console.log(activeUser[0]);
     document.getElementById('greetingName').innerHTML = activeUser[0];
+}
+
+function replaceDayTimeInSummary() {
+    document.getElementById('dayTime').innerHTML = greetingTime;
+}
+
+function replaceNameInSummary(activeUser) {
+    console.log(activeUser[0]);
+    document.getElementById('greeting_Name').innerHTML = activeUser[0];
 }
