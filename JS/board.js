@@ -238,6 +238,7 @@ let tasks = [{
 ];
 
 function initBoard() {
+    checkIfLogged();
     updateTasksPercent();
     updateToDo();
     updateInProgress();

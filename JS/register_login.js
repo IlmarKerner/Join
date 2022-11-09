@@ -1,5 +1,6 @@
 let users = [];
 let currentUser = [];
+let loggedUser;
 
 setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
 
@@ -39,6 +40,7 @@ async function login() {
         document.getElementById('wrong_login').classList.add('d-none');
         currentUser.push(user['name']);
         await backend.setItem('currentUser', JSON.stringify(currentUser)); // save users
+        sessionStorage.setItem(loggedUser, 'logged');
         counter = 0;
         rememberMe();
         location.href = 'hello.html';
@@ -53,6 +55,8 @@ async function login() {
 
 function guestLogin() {
     activeUser = 'guest';
+    currentUser.push(['guest']);
+    sessionStorage.setItem(loggedUser, 'logged');
     location.href = 'hello.html';
 }
 

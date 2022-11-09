@@ -20,6 +20,7 @@ let contacts = [{
         "phone": "+49 123456789",
     }
 ];
+
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 let mediaForContact = window.matchMedia("(max-width: 992px)");
 
