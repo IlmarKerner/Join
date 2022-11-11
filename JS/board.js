@@ -244,6 +244,7 @@ function initBoard() {
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
+    initGreeting();
     // renderContacts();
 }
 
