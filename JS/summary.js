@@ -42,3 +42,25 @@ function showNumberOfTasksAwaitingFeedback() {
     taskDone.innerHTML = tasksDone;
     urgents.innerHTML = urgent;
 }
+
+function showNextCardAwaiting() {
+    nextcard = document.getElementById('deadlineDate');
+    nextcard.innerHTML = '';
+    for (let i = 0; i < tasks.length; i++) {
+        let nextdate = tasks[i]['dueDate'];
+        // var iso = (new Date(nextdate)).toISOString();
+        let today = date.getTime();
+        nextdateAsTime = date.getTime(nextdate);
+
+        console.log(today);
+        console.log(nextdateAsTime);
+        // nextcard.innerHTML =
+    }
+}
+
+var iso = (new Date()).toISOString();
+
+var dateObj = new Date(iso);
+
+
+//https://gruppe-2970.developerakademie.net/board.html
