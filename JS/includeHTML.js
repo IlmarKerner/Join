@@ -24,6 +24,4 @@ function includeHTML() {
             return;
         }
     }
-    getInfoFromNewContactField(); // MUSS DAS HIER HIN ?? FÜHRT ZU FEHLERN // DF 31.10.2022
-
 }
