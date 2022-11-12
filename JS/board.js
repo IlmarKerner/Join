@@ -244,7 +244,6 @@ function initBoard() {
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
-    initGreeting();
     // renderContacts();
 }
 
@@ -286,7 +285,6 @@ function updateDone() {
         document.getElementById('done').innerHTML += cardContent(element);
     }
 }
-
 
 function addDropPosition() {
     document.getElementById('toDoDropPosition').classList.remove('dNone');

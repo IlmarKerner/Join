@@ -2,11 +2,36 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
 ];
 
+function initSummary() {
+    checkIfLogged();
+    showNumberOfTasks();
+    showNumberOfTasksAwaitingFeedback();
+    initGreetingSummary();
+}
+
 function showNumberOfTasks() {
     let boardNumber = document.getElementById('tasksInBoard');
     boardNumber.innerHTML = '';
     boardNumber.innerHTML = tasks.length;
 }
+
+async function initGreetingSummary() {
+    let activeUser;
+    await downloadFromServer();
+    activeUser = JSON.parse(backend.getItem('currentUser')) || []; // load all users
+    checkDayTime();
+    replaceDayTimeSummary();
+    replaceNameSummary(activeUser);
+}
+
+function replaceDayTimeSummary() {
+    document.getElementById('dayTime').innerHTML = greetingTime;
+}
+
+function replaceNameSummary(activeUser) {
+    document.getElementById('greeting_Name').innerHTML = activeUser[0];
+}
+
 
 function showNumberOfTasksAwaitingFeedback() {
     let progressNumber = 0;
