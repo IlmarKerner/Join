@@ -16,9 +16,8 @@ function showNumberOfTasks() {
 }
 
 async function initGreetingSummary() {
-    let activeUser;
     await downloadFromServer();
-    activeUser = JSON.parse(backend.getItem('currentUser')) || []; // load all users
+    let activeUser = JSON.parse(backend.getItem('currentUser')) || []; // load all users
     checkDayTime();
     replaceDayTimeSummary();
     replaceNameSummary(activeUser);
@@ -86,6 +85,3 @@ function showNextCardAwaiting() {
 var iso = (new Date()).toISOString();
 
 var dateObj = new Date(iso);
-
-
-//https://gruppe-2970.developerakademie.net/board.html
