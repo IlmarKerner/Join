@@ -124,7 +124,7 @@ function showFullContactInfo(i) {
         </div>
         <div class="contact_information_header">
             <h2>Contact Information</h2>
-            <div class="edit_contact">
+            <div class="edit_contact" onclick="editContactPopup(${contacts[i]['first_name']}, ${contacts[i]['second_name']}, ${contacts[i]['email']}, ${contacts[i]['phone']})">
                 <img src="../img/pencil.png">
                 <p>Edit Contact</p>
             </div>
@@ -152,4 +152,8 @@ function checkMediaforExitButton(mediaForContact) {
     } else {
         btn.src = '../img/clear.png';
     }
+  }
+
+  function editContactPopup(firstname, lastname, email, phone) {
+    
   }
