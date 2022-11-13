@@ -20,11 +20,8 @@ body {
 }
 
 .summary_content {
-    position: absolute;
-    top: 89px;
-    left: 232px;
-    margin-left: 123px;
-    margin-top: 82px;
+    margin-left: 330px;
+    margin-top: 172px;
     background-color: #F6F7F8;
 }
 
