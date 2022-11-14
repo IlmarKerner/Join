@@ -6,6 +6,7 @@ function initSummary() {
     checkIfLogged();
     showNumberOfTasks();
     showNumberOfTasksAwaitingFeedback();
+    showNextCardAwaiting();
     initGreetingSummary();
 }
 
@@ -67,21 +68,20 @@ function showNumberOfTasksAwaitingFeedback() {
     urgents.innerHTML = urgent;
 }
 
-function showNextCardAwaiting() {
-    nextcard = document.getElementById('deadlineDate');
-    nextcard.innerHTML = '';
-    for (let i = 0; i < tasks.length; i++) {
-        let nextdate = tasks[i]['dueDate'];
-        // var iso = (new Date(nextdate)).toISOString();
-        let today = date.getTime();
-        nextdateAsTime = date.getTime(nextdate);
 
-        console.log(today);
-        console.log(nextdateAsTime);
-        // nextcard.innerHTML =
-    }
+function showNextCardAwaiting() {
+    let nextcard = document.getElementById('deadlineDate');
+    nextcard.innerHTML = `${findMinDate()}`;
 }
 
-var iso = (new Date()).toISOString();
+function findMinDate() {
+    let dates = tasks.map(({dueDate}) => new Date(dueDate));
+    let minDate = new Date(Math.min(...dates));
+    // let maxDate = new Date(Math.max(...dates)); not in use
 
-var dateObj = new Date(iso);
+    let month = monthNames[minDate.getMonth()];
+    let year = minDate.toISOString().split('T')[0].slice(0, 4);
+    let day = minDate.toISOString().split('T')[0].slice(-2);
+
+    return month + ' ' + day + ',' + ' ' + year;
+}
