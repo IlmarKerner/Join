@@ -232,7 +232,7 @@ body {
 @media (max-width: 992px) {
     .summary_content {
         position: relative;
-        margin: 0;
+        margin: 80px 0 0 20px;
         height: calc(100% - 90px - 79px);
         background-color: #F6F7F8;
         display: flex;
@@ -240,7 +240,6 @@ body {
         align-items: flex-start;
         top: unset !important;
         left: unset;
-        margin-top: 10px;
         overflow-y: scroll;
     }
     .summary_header {

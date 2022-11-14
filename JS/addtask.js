@@ -120,6 +120,7 @@ function openAddTaskPopup(progress) {
     checkProgress(progress);
     document.querySelector('.addtask_popup').classList.remove('d-none');
     document.querySelector('.blur_container').style = "filter: blur(5px);";
+    document.querySelector('.blur_container').classList.add('hidden');
     document.querySelector('.profilebar').style = "filter: blur(5px);";
     document.querySelector('.menu').style = "filter: blur(5px);";
     loadAddTaskPopupWindow();
@@ -137,6 +138,7 @@ function closeAddTaskPopup() {
     setTimeout(() => {
         document.querySelector('.addtask_popup').classList.add('d-none');
         document.querySelector('.blur_container').style = "filter: none;";
+        document.querySelector('.blur_container').classList.remove('hidden');
         document.querySelector('.menu').style = "filter: none;";
         document.querySelector('.profilebar').style = "filter: none;";
         document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";

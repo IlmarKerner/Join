@@ -1,7 +1,7 @@
 datum in summary                                    //DF ---
 'hello' greeting                                    //DF ---
 edit contact                                        //DF
-summary css zerschossen                             //DF ---
+komplette css zerschossen                           //DF 
 contacts nach alphabet                              //IK
 addTask select fenster update                       //IK
 tasks backend speichern                             //DF
