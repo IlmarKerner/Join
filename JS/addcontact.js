@@ -23,6 +23,7 @@ let contacts = [{
 
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 let mediaForContact = window.matchMedia("(max-width: 992px)");
+let contactID;
 
 function getInfoFromNewContactField() {
     let firstname = document.getElementById('firstname');
@@ -124,7 +125,7 @@ function showFullContactInfo(i) {
         </div>
         <div class="contact_information_header">
             <h2>Contact Information</h2>
-            <div class="edit_contact">
+            <div class="edit_contact" onclick="editContactPopup('${contacts[i]['first_name']}', '${contacts[i]['second_name']}', '${contacts[i]['email']}', '${contacts[i]['phone']}', '${i}')">
                 <img src="../img/pencil.png">
                 <p>Edit Contact</p>
             </div>
@@ -153,3 +154,59 @@ function checkMediaforExitButton(mediaForContact) {
         btn.src = '../img/clear.png';
     }
   }
+
+  function editContactPopup(firstname, lastname, email, phone, id) {
+    contactID = id;
+    openEditContactPopup();
+    fillInputfields(firstname, lastname, email, phone);
+  }
+
+  function openEditContactPopup() {
+    document.getElementById('popupEditContact').classList.remove('d-none');
+    document.getElementById('contactsContainer').style = "filter: blur(10px)";
+    document.getElementById('popupEditContact').classList.add('popup_window_slidein');
+    setTimeout(() => {
+        document.getElementById('popupEditContact').style = "transform: translateX(0vw)";
+    }, 300);
+  }
+
+  function closeEditContactPopup() {
+    document.getElementById('popupEditContact').style = "animation: slideout 0.3s;"
+    document.getElementById('popupEditContact').classList.remove('popup_window_slidein');
+    document.getElementById('popupEditContact').classList.remove('popup_window_slidein');
+    document.getElementById('popupEditContact').classList.add('popup_window_slideout');
+    document.getElementById('contactsContainer').style = "filter: none;";
+    setTimeout(() => {
+        document.getElementById('popupEditContact').classList.add('d-none');
+        document.getElementById('contactsContainer').style = "filter: none;";
+        document.getElementById('popupEditContact').style = "transform: translateX(100vw)";
+    }, 300);
+}
+
+function fillInputfields(firstname, lastname, email, phone) {
+    let actuallyFirstName = document.getElementById('edited_firstname');
+    let actuallySecondName = document.getElementById('edited_secondname');
+    let actuallyEmail = document.getElementById('edited_email');
+    let actuallyphoneNumber = document.getElementById('edited_phone');
+
+    actuallyFirstName.value = firstname;
+    actuallySecondName.value = lastname;
+    actuallyEmail.value = email;
+    actuallyphoneNumber.value = phone;
+}
+
+function saveEditedContact() {
+    let newFirstName = document.getElementById('edited_firstname').value;
+    let newSecondName = document.getElementById('edited_secondname').value;
+    let newEmail = document.getElementById('edited_email').value;
+    let newphoneNumber = document.getElementById('edited_phone').value;
+    let contact = contacts[contactID];
+
+    contact['first_name'] = newFirstName;
+    contact['second_name'] = newSecondName;
+    contact['email'] = newEmail;
+    contact['phone'] = newphoneNumber;
+
+    closeEditContactPopup();
+    // Seite muss danach noch aktualisiert werden. Array muss backend gespeichert werden. Logo muss geändert werden
+}

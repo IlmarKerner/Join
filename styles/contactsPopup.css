@@ -169,7 +169,7 @@
     margin: 0px;
 }
 
-.create_contact {
+.create_contact, .edit_contact_popup{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -183,7 +183,7 @@
     cursor: pointer;
 }
 
-.create_contact p {
+.create_contact p, .edit_contact_popup p {
     width: 154px;
     height: 25px;
     font-family: 'Inter';
@@ -193,6 +193,16 @@
     line-height: 120%;
     color: #FFFFFF;
     margin: 0px;
+}
+
+.edit_contact_popup {
+    width: 120px !important;
+    justify-content: center !important;
+}
+
+.edit_contact_popup p{
+    width: unset !important;
+
 }
 
 .fill_in_fields {
@@ -333,7 +343,7 @@
         font-size: 19px;
     }
 
-    .create_contact {
+    .create_contact, .edit_contact_popup {
         width: 193px;
         height: 51px;
         font-size: 19px;
@@ -343,7 +353,7 @@
         font-size: 19px;
     }
 
-    .create_contact p {
+    .create_contact p, .edit_contact_popup {
         font-size: 19px;
     }
   }

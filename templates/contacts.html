@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join - Contacts</title>
     <script src="../smallest_backend_ever/mini_backend.js"></script>
+    <script src="../JS/tasks.js"></script>
     <script src="../JS/addtask.js"></script>
     <script src="../JS/script.js"></script>
     <script src="../JS/includeHTML.js"></script>
@@ -105,6 +106,58 @@
             </div>
         </div>
     </div>
+
+
+    <div class="popup d-none" id="popupEditContact">
+        <div class="popup_window">
+            <div class="popup_left">
+                <div class="popup_left_img">
+                    <img src="../img/joinlogo4.png">
+                </div>
+                <h1>Edit contact</h1>
+                <div class="underline_img"><img src="../img/underline.png"></div>
+            </div>
+            <div class="close_contact_popup" id="closeContactWindow" onclick="closeEditContactPopup()">
+                <img id="close_contact_btn" src="../img/clear.png">
+            </div>
+            <div class="popup_right">
+                <div class="popup_right_profile">
+                    <img src="../img/profileicon2.png">
+                </div>
+                <div class="popup_right_buttons">
+                    <div class="cancel" onclick="closeEditContactPopup()">
+                        <p>Cancel</p>
+                        <img src="../img/clear.png">
+                    </div>
+                    <div class="edit_contact_popup" id="save_edited_contact" onclick="saveEditedContact()">
+                        <p>Save</p>
+                    </div>
+
+                </div>
+                <div class="fill_in_fields">
+                    <div class="first_name">
+                        <input type="text" placeholder="First name" required id="edited_firstname">
+                        <img src="../img/profileicon3.png">
+                    </div>
+                    <div class="last_name">
+                        <input type="text" placeholder="Last name" required id="edited_secondname">
+                        <img src="../img/profileicon3.png">
+                    </div>
+                    <div class="email_field">
+                        <input type="email" placeholder="Email" required id="edited_email">
+                        <img src="../img/mailicon.png">
+                    </div>
+                    <div class="phone_field">
+                        <input type="tel" placeholder="Phone" required id="edited_phone">
+                        <img src="../img/phone-line.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="addtask_popup d-none" id="addtaskPopupWindowForContact">
 
     </div>
