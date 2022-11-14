@@ -1,4 +1,3 @@
-
 let contactSectionOpen = false;
 let selectTaskBoxOpen = false;
 let urgentImage = false;
@@ -37,36 +36,40 @@ function createTask() {
     let date = document.getElementById('date');
 
 
-    let taskCard = {
-        "title": title.value,
-        "description": description.value,
-        "id": 1,
-        "progress": taskProgress,
-        "category": category.value,
-        "assign": assign.value,
-        "date": date.value,
-        "headline": title.value,
-        "description": description.value,
-        "dueDate": date.value,
-        "prio": prio,
-        "subTask": "Make Icon", // ?
-        "tasksOverall": 2, // ?
-        "tasksDone": 1, // ?
-        "tasksPercent": '', // ?
-        "assignet": assign.value,
-        "initials": '',
-    }
-
-    tasks.push(taskCard);
+    taskCard.push(tasks);
 
     title.value = '';
     description.value = '';
     category.value = '';
     assign.value = '';
     date.value = '';
-   
+
+    for (let i = 0; i < taskCard.length; i++) {
+        document.getElementById('inProgress').innerHTML += `
+        <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
+            <span class="card_category" id="cardCategory">${category[i]}</span>
+            <span class="card_headline">${title[i]}</span>
+            <span class="card_description">${description[i]}</span>
+                <div class="board_progress_row">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                        <div class="board_progress"> 1/2 Done</div>
+                </div>
+                <div class="assinged_contacts_row">
+                    <div class="initials_contacts">
+                        <div class="assinged_contacts1">IK</div>
+                        <div class="assinged_contacts2">DF</div>
+                        <div class="assinged_contacts3">LN</div>
+                    </div>
+                     <div class="urgency_icon">
+                        <img src="../img/medium.png">
+                    </div>
+                </div>
+            </div>
+            <div id="inProgressDropPosition" class="div_border dNone"></div>`;
+    }
     closeAddTaskPopup();
-    initBoard();
 }
 
 function showSelctedContacts() {
@@ -96,6 +99,15 @@ function selectTaskCategory() {
 }
 
 function changeImgUrgent() {
+    // let urgent = document.getElementById('urgent');
+    // urgent.src = "../img/urgentbutton.png";
+    // if (urgentImage) {
+    //     urgent.src = "../img/urgentbuttonwhite.png";
+    //     urgentImage = false;
+    // } else {
+    //     urgent.src = "../img/urgentbutton.png ";
+    //     urgentImage = true;
+    // }
     document.getElementById('urgent').src = "../img/urgentbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
@@ -103,6 +115,15 @@ function changeImgUrgent() {
 }
 
 function changeImgMedium() {
+    // let medium = document.getElementById('medium');
+    // medium.src = "../img/mediumbutton.png";
+    // if (mediumImage) {
+    //     medium.src = "../img/mediumbuttonwhite.png";
+    //     mediumImage = false;
+    // } else {
+    //     medium.src = "../img/mediumbutton.png ";
+    //     mediumImage = true;
+    // }
     document.getElementById('medium').src = "../img/mediumbutton.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
@@ -110,6 +131,15 @@ function changeImgMedium() {
 }
 
 function changeImgLow() {
+    // let low = document.getElementById('low');
+    // low.src = "../img/lowbutton.png";
+    // if (lowImage) {
+    //     low.src = "../img/lowbuttonwhite.png";
+    //     lowImage = false;
+    // } else {
+    //     low.src = "../img/lowbutton.png ";
+    //     lowImage = true;
+    // }
     document.getElementById('low').src = "../img/lowbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
@@ -254,3 +284,5 @@ function checkMediaforBoard(mediaforBoard) {
 function restoreBoardContent() {
     document.querySelector('.board_content').classList.remove('d-none');
 }
+
+// meckert auf der contact seite das er die ID von dem query nicht finden kann.
