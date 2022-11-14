@@ -138,6 +138,7 @@
     background: #2A3647;
     border: 1px solid #2A3647;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .new_contact_button p {
