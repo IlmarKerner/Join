@@ -1,3 +1,4 @@
+let firstLetter = [];
 let contacts = [{
         "first_name": "Ilmar",
         "second_name": "Kerner",
@@ -20,6 +21,7 @@ let contacts = [{
         "phone": "+49 123456789",
     }
 ];
+
 
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 let mediaForContact = window.matchMedia("(max-width: 992px)");
@@ -58,25 +60,15 @@ function getInfoFromNewContactField() {
     checkMediaforExitButton(mediaForContact);
 }
 
-function renderContacts() {
-    document.getElementById('listning').innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        let initials = contacts[i]['initials'];
-        document.getElementById('listning').innerHTML += `
-        <div class="full_listner">
-            <div class="contact_name_container" onclick="showFullContactInfo(${i})">
-                <span style="background-color:${getColorForName(initials)}">${initials}</span>
-                <div class="contact_name">
-                    <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
-                    <a href="#"><p>${contacts[i]['email']}</p></a>
-                </div>
-            </div>
-            <p style="font-size: 50px !important; margin: 0px">|</p>
-            <img src="../img/trash-can.png" onclick="removeContact(${i})">
-        </div>
-        `;
-    }
-}
+// function renderContacts() {
+//     document.getElementById('listning').innerHTML = '';
+//     for (let i = 0; i < contacts.length; i++) {
+//         let initials = contacts[i]['initials'];
+//         document.getElementById('listning').innerHTML += `
+
+//         `;
+//     }
+// }
 
 function loadAllTasks() {
     let allTasksAsString = localStorage.getItem('allTasks');
@@ -149,28 +141,28 @@ function checkMediaforExitButton(mediaForContact) {
     let btn = document.getElementById('close_contact_btn');
 
     if (mediaForContact.matches) {
-      btn.src = '../img/clear_white.png';
+        btn.src = '../img/clear_white.png';
     } else {
         btn.src = '../img/clear.png';
     }
-  }
+}
 
-  function editContactPopup(firstname, lastname, email, phone, id) {
+function editContactPopup(firstname, lastname, email, phone, id) {
     contactID = id;
     openEditContactPopup();
     fillInputfields(firstname, lastname, email, phone);
-  }
+}
 
-  function openEditContactPopup() {
+function openEditContactPopup() {
     document.getElementById('popupEditContact').classList.remove('d-none');
     document.getElementById('contactsContainer').style = "filter: blur(10px)";
     document.getElementById('popupEditContact').classList.add('popup_window_slidein');
     setTimeout(() => {
         document.getElementById('popupEditContact').style = "transform: translateX(0vw)";
     }, 300);
-  }
+}
 
-  function closeEditContactPopup() {
+function closeEditContactPopup() {
     document.getElementById('popupEditContact').style = "animation: slideout 0.3s;"
     document.getElementById('popupEditContact').classList.remove('popup_window_slidein');
     document.getElementById('popupEditContact').classList.remove('popup_window_slidein');
@@ -209,4 +201,54 @@ function saveEditedContact() {
 
     closeEditContactPopup();
     // Seite muss danach noch aktualisiert werden. Array muss backend gespeichert werden. Logo muss geändert werden
+}
+
+function renderContacts() {
+    document.getElementById('listning').innerHTML = ``;
+    let contactFirstLetterField = document.getElementById('listning');
+    let initials;
+    for (let i = 0; i < contacts.length; i++) {
+        initials = contacts[i]['initials']
+    }
+    document.getElementById('listning').innerHTML = ``;
+    for (let i = 0; i < contacts.length; i++) {
+        let user = contacts[i]['second_name'];
+        let firstsecondnameLetter = user.match(/\b(\w)/g).join('');
+        if (!firstLetter.includes(firstsecondnameLetter)) {
+            firstLetter.push(firstsecondnameLetter);
+            contactFirstLetterField.innerHTML += `
+    <div>
+        <div class="first_name_letter">
+            <h3>${firstsecondnameLetter}</h3>
+            <img src="../img/line.png">
+        </div>
+        <div id="${firstsecondnameLetter}">
+            <div class="full_listner">
+                <div class="contact_name_container" onclick="showFullContactInfo(${i})">
+                    <span style="background-color:${getColorForName(initials)}">${initials}</span>
+                    <div class="contact_name">
+                    <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
+                    <a href="#"><p>${contacts[i]['email']}</p></a>
+                    </div>
+                </div>
+                <p style="font-size: 50px !important; margin: 0px">|</p>
+                <img src="../img/trash-can.png" onclick="removeContact(${i})">
+            </div>
+        </div>
+    </div>`
+        } else {
+            document.getElementById(`${firstsecondnameLetter}`).innerHTML += `
+            <div class="full_listner">
+                <div class="contact_name_container" onclick="showFullContactInfo(${i})">
+                    <span style="background-color:${getColorForName(initials)}">${initials}</span>
+                    <div class="contact_name">
+                    <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
+                    <a href="#"><p>${contacts[i]['email']}</p></a>
+                    </div>
+                </div>
+                <p style="font-size: 50px !important; margin: 0px">|</p>
+                <img src="../img/trash-can.png" onclick="removeContact(${i})">
+            </div>`
+        }
+    }
 }

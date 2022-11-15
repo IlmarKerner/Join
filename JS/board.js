@@ -4,7 +4,7 @@ let low = false;
 let currentDraggedItem;
 
 function initBoard() {
-    checkIfLogged();
+    // checkIfLogged();
     updateTasksPercent();
     updateToDo();
     updateInProgress();
