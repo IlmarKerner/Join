@@ -20,11 +20,6 @@ let tasks = [{
             "lastName": 'Kerner',
             "initials": 'IK',
         },
-        {
-            "firstName": 'Dennis',
-            "lastName": 'Frese',
-            "initials": 'DF',
-        }
     ],
 },
 {
@@ -57,7 +52,7 @@ let tasks = [{
     ],
 },
 {
-    "id": 7,
+    "id": 2,
     "progress": "inProgress",
     "category": "Sales",
     "headline": "Test mit ID7",
@@ -87,7 +82,7 @@ let tasks = [{
 
 },
 {
-    "id": 4,
+    "id": 3,
     "progress": "inProgress",
     "category": "Sales",
     "headline": "Test mit ID1",
@@ -116,7 +111,7 @@ let tasks = [{
     ],
 },
 {
-    "id": 2,
+    "id": 4,
     "progress": "toDo",
     "category": "Sales",
     "headline": "Test mit ID2",
@@ -145,7 +140,7 @@ let tasks = [{
     ],
 },
 {
-    "id": 3,
+    "id": 5,
     "progress": "awaitingFeedback",
     "category": "Design",
     "headline": "Test mit ID3",
@@ -174,7 +169,7 @@ let tasks = [{
     ],
 },
 {
-    "id": 8,
+    "id": 6,
     "progress": "awaitingFeedback",
     "category": "Design",
     "headline": "Test mit ID3",
@@ -203,7 +198,7 @@ let tasks = [{
     ],
 },
 {
-    "id": 4,
+    "id": 7,
     "progress": "awaitingFeedback",
     "category": "toDo",
     "headline": "Test mit ID4",

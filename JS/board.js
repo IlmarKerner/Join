@@ -10,6 +10,7 @@ function initBoard() {
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
+    fillInAssinged();
     // renderContacts();
 }
 
@@ -193,6 +194,30 @@ function cardContent(Element, i) {
     </div>
     `;
 }
+
+// -------------------------------- TEST VON DF --------------------------------
+
+function fillInAssinged() {
+    clearInitialContainer();
+    for (let i = 0; i < tasks.length; i++) {
+        let taskContainer = document.getElementById(`${i}`);
+        let initialsContainer = taskContainer.children[4].children[0];
+        for (let j = 0; j < tasks[i]['assignet'].length; j++) {
+            let initials = tasks[i]['assignet'][j]['initials'];
+            initialsContainer.innerHTML += `<div class="assinged_contacts${j+1}">${initials}</div>`;
+        }
+    }
+}
+
+function clearInitialContainer() {
+    for (let i = 0; i < tasks.length; i++) {
+        let taskContainer = document.getElementById(`${i}`);
+        let initialsContainer = taskContainer.children[4].children[0];
+        initialsContainer.innerHTML = '';
+    }
+}
+
+// -------------------------------- TEST VON DF --------------------------------
 
 function popUpContent(id) {
     Element = tasks[id];
