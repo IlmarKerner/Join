@@ -195,7 +195,6 @@ function cardContent(Element, i) {
     `;
 }
 
-// -------------------------------- TEST VON DF --------------------------------
 
 function fillInAssinged() {
     clearInitialContainer();
@@ -217,7 +216,6 @@ function clearInitialContainer() {
     }
 }
 
-// -------------------------------- TEST VON DF --------------------------------
 
 function popUpContent(id) {
     Element = tasks[id];
@@ -425,6 +423,30 @@ function filterTask(event) {
     });
     displayTasks(filteredTasks, htmlString);
 }
+
+// function filterTask(event) {
+
+//     let toDo = document.getElementById('toDoContainer');
+//     let inProgress = document.getElementById('inProgressContainer');
+//     let awaitingFeedback = document.getElementById('awaitingFeedbackContainer');
+//     let done = document.getElementById('doneContainer');
+
+//     let emptyTaskSearchInput = document.getElementById('searchTasks');
+//     let searchString = event.target.value.toLowerCase();
+
+//     let filteredTasks = tasks.filter((taskcard) => {
+//         if (emptyTaskSearchInput.value == '') {
+//             initBoard();
+//         } else {
+//             return (
+//                 taskcard['headline'].toLowerCase().includes(searchString) ||
+//                 taskcard['category'].toLowerCase().includes(searchString) ||
+//                 taskcard['prio'].toLowerCase().includes(searchString)
+//             );
+//         }
+//     });
+//     displayTasks(filteredTasks, htmlString);
+// } TEST DF
 
 function displayTasks(filteredTasks, htmlString) {
     

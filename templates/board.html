@@ -53,7 +53,7 @@
 
                 <div class="filter_container dNone" id="filter_container"></div>
 
-                <div class="board_column">
+                <div class="board_column" id="toDoContainer">
                     <div class="board_column_headline">
                         <span>To Do</span>
                         <img onclick="openAddTaskPopup('toDo')" src="../img/plus_button.png">
@@ -65,7 +65,7 @@
                     <div id="toDoDropPosition" ondrop="drop('toDo')" ondragover="allowDrop(event)" class="div_border dNone"></div>
                 </div>
 
-                <div class="board_column">
+                <div class="board_column" id="inProgressContainer">
                     <div class="board_column_headline">
                         <span>In progress</span>
                         <img onclick="openAddTaskPopup('inProgress')" src="../img/plus_button.png">
@@ -77,7 +77,7 @@
                     <div id="inProgressDropPosition" class="div_border dNone" ondrop="drop('inProgress')" ondragover="allowDrop(event)"></div>
                 </div>
 
-                <div class="board_column">
+                <div class="board_column" id="awaitingFeedbackContainer">
                     <div class="board_column_headline">
                         <span>Awaiting Feedback</span>
                         <img onclick="openAddTaskPopup('awaitingFeedback')" src="../img/plus_button.png">
@@ -89,7 +89,7 @@
                     <div id="awaitingFeedbackDropPosition" ondrop="drop('awaitingFeedback')" ondragover="allowDrop(event)" class="div_border dNone"></div>
                 </div>
 
-                <div class="board_column">
+                <div class="board_column" id="doneContainer">
                     <div class="board_column_headline">
                         <span>Done</span>
                         <img onclick="openAddTaskPopup('done')" src="../img/plus_button.png">
