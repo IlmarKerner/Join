@@ -95,10 +95,21 @@ html {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 }
 
+.filter_container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    height: 100vh;
+    background-color: #F6F7F8;
+}
+
 .board_overview {
     display: flex;
     justify-content: space-between;
     margin-top: 100px;
+    position: relative;
 }
 
 .board_column {

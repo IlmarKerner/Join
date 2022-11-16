@@ -4,7 +4,7 @@ let low = false;
 let currentDraggedItem;
 
 function initBoard() {
-    // checkIfLogged();
+    // checkIfLogged(); -----------------------------------WIEDER AKTIVIEREN
     updateTasksPercent();
     updateToDo();
     updateInProgress();
@@ -407,12 +407,15 @@ function saveDate(id, element) {
 // }
 
 function filterTask(event) {
+    let htmlString = document.getElementById('filter_container');
     let emptyTaskSearchInput = document.getElementById('searchTasks');
     let searchString = event.target.value.toLowerCase();
     let filteredTasks = tasks.filter((taskcard) => {
-        if (emptyTaskSearchInput = '') {
+        if (emptyTaskSearchInput.value == '') {
             initBoard();
+            htmlString.classList.add('dNone');
         } else {
+            htmlString.classList.remove('dNone');
             return (
                 taskcard['headline'].toLowerCase().includes(searchString) ||
                 taskcard['category'].toLowerCase().includes(searchString) ||
@@ -420,11 +423,11 @@ function filterTask(event) {
             );
         }
     });
-    displayTasks(filteredTasks);
+    displayTasks(filteredTasks, htmlString);
 }
 
-function displayTasks(filteredTasks) {
-    let htmlString = document.getElementById('boardOverview');
+function displayTasks(filteredTasks, htmlString) {
+    
     htmlString.innerHTML = filteredTasks.map((taskcard) => {
             return `<div id="${tasks[getTaskIndex(taskcard)]['id']}" onclick="openPopUp(${tasks[getTaskIndex(taskcard)]['id']})" draggable="true" ondragstart="startDragging(${tasks[getTaskIndex(taskcard)]['id']})"
             ondragend="endDragging()" class="task_card">

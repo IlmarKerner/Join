@@ -6,5 +6,5 @@ tasks backend speichern                             //DF am Ende
 contacts nach alphabet                              //IK
 addTask select fenster update                       //IK
 board drag&drop                                     //LN
-board abspeichern der initialien geht nicht         //LN
+board abspeichern der initialien geht nicht         //DF ---
 board karte ändern funktioniert nicht               //LN
