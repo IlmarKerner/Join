@@ -204,19 +204,33 @@ function saveEditedContact() {
 }
 
 function renderContacts() {
-    document.getElementById('listning').innerHTML = ``;
+    sortContacts();
     let contactFirstLetterField = document.getElementById('listning');
-    let initials;
-    for (let i = 0; i < contacts.length; i++) {
-        initials = contacts[i]['initials']
-    }
+    contactFirstLetterField.innerHTML = '';
     document.getElementById('listning').innerHTML = ``;
+    
     for (let i = 0; i < contacts.length; i++) {
+        let initials = contacts[i]['initials'];
         let user = contacts[i]['second_name'];
         let firstsecondnameLetter = user.match(/\b(\w)/g).join('');
         if (!firstLetter.includes(firstsecondnameLetter)) {
             firstLetter.push(firstsecondnameLetter);
-            contactFirstLetterField.innerHTML += `
+            contactFirstLetterField.innerHTML += 
+                letterNotExist(i, initials, firstsecondnameLetter);
+        } else {
+            document.getElementById(`${firstsecondnameLetter}`).innerHTML += 
+                letterAlreadyExist(i, initials);
+        }
+    }
+    firstLetter = [];
+}
+
+function sortContacts() {
+    contacts.sort((a, b) => a.second_name.localeCompare(b.second_name));
+}
+
+function letterNotExist(i, initials, firstsecondnameLetter) {
+    return `
     <div>
         <div class="first_name_letter">
             <h3>${firstsecondnameLetter}</h3>
@@ -236,19 +250,19 @@ function renderContacts() {
             </div>
         </div>
     </div>`
-        } else {
-            document.getElementById(`${firstsecondnameLetter}`).innerHTML += `
-            <div class="full_listner">
-                <div class="contact_name_container" onclick="showFullContactInfo(${i})">
-                    <span style="background-color:${getColorForName(initials)}">${initials}</span>
-                    <div class="contact_name">
-                    <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
-                    <a href="#"><p>${contacts[i]['email']}</p></a>
-                    </div>
-                </div>
-                <p style="font-size: 50px !important; margin: 0px">|</p>
-                <img src="../img/trash-can.png" onclick="removeContact(${i})">
-            </div>`
-        }
-    }
+}
+
+function letterAlreadyExist(i, initials) {
+    return `
+    <div class="full_listner">
+        <div class="contact_name_container" onclick="showFullContactInfo(${i})">
+            <span style="background-color:${getColorForName(initials)}">${initials}</span>
+            <div class="contact_name">
+            <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
+            <a href="#"><p>${contacts[i]['email']}</p></a>
+            </div>
+        </div>
+        <p style="font-size: 50px !important; margin: 0px">|</p>
+        <img src="../img/trash-can.png" onclick="removeContact(${i})">
+    </div>`
 }
