@@ -108,6 +108,7 @@ function openPopUp(id) {
     document.getElementById('popUpArea').classList.remove('dNone');
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpContent(id);
+    fillInTaskAssign(id);
 }
 
 
@@ -216,11 +217,16 @@ function clearInitialContainer() {
     }
 }
 
+function clearInitialContainerTaskPopup() {
+    let taskAssign = document.getElementById('taskAssignContainer');
+    taskAssign.innerHTML = '';
+}
+
 
 function popUpContent(id) {
     Element = tasks[id];
     return `
-    <div class="dragcard_popup">
+    <div class="dragcard_popup" id="dragcard_popup">
         <div class="categorycard">
             <p>${Element['category']}</p>
         </div>
@@ -245,7 +251,7 @@ function popUpContent(id) {
             <h2>Assignet To:</h2>
         </div>
         <div class="dragcard_popup_frame_4" id="dragcardPopupListning">
-            <div class="underframe1">
+            <div class="underframe1" id="taskAssignContainer">
                 <div>
                     <h4>DE</h4>
                 </div>
@@ -257,6 +263,35 @@ function popUpContent(id) {
         </div>
     </div>
     `;
+}
+
+function fillInTaskAssign(id) {
+    let taskAssign = document.getElementById('taskAssignContainer');
+    clearInitialContainerTaskPopup();
+    for (let i = 0; i < tasks[id]['assignet'].length; i++) {
+        let initials = tasks[id]['assignet'][i]['initials'];
+        let firstName = tasks[id]['assignet'][i]['firstName'];
+        let lastname = tasks[id]['assignet'][i]['lastName'];
+
+        taskAssign.innerHTML += `
+        <div>
+            <h4>${initials}</h4>
+        </div>
+        <p>${firstName} ${lastname}</p>
+        `;
+    }
+
+    
+
+    for (let i = 0; i < tasks.length; i++) {
+        let taskContainer = document.getElementById(`${i}`);
+        let initialsContainer = taskContainer.children[4].children[0];
+        for (let j = 0; j < tasks[i]['assignet'].length; j++) {
+            let initials = tasks[i]['assignet'][j]['initials'];
+            initialsContainer.innerHTML += `<div class="assinged_contacts${j+1}">${initials}</div>`;
+        }
+    }
+
 }
 
 
@@ -302,7 +337,6 @@ function popUpEditContent(id) {
     </div>
     `;
 }
-
 
 function updatePrio(id) {
     let element = tasks[id];

@@ -99,15 +99,6 @@ function selectTaskCategory() {
 }
 
 function changeImgUrgent() {
-    // let urgent = document.getElementById('urgent');
-    // urgent.src = "../img/urgentbutton.png";
-    // if (urgentImage) {
-    //     urgent.src = "../img/urgentbuttonwhite.png";
-    //     urgentImage = false;
-    // } else {
-    //     urgent.src = "../img/urgentbutton.png ";
-    //     urgentImage = true;
-    // }
     document.getElementById('urgent').src = "../img/urgentbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
@@ -115,15 +106,6 @@ function changeImgUrgent() {
 }
 
 function changeImgMedium() {
-    // let medium = document.getElementById('medium');
-    // medium.src = "../img/mediumbutton.png";
-    // if (mediumImage) {
-    //     medium.src = "../img/mediumbuttonwhite.png";
-    //     mediumImage = false;
-    // } else {
-    //     medium.src = "../img/mediumbutton.png ";
-    //     mediumImage = true;
-    // }
     document.getElementById('medium').src = "../img/mediumbutton.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
@@ -131,15 +113,6 @@ function changeImgMedium() {
 }
 
 function changeImgLow() {
-    // let low = document.getElementById('low');
-    // low.src = "../img/lowbutton.png";
-    // if (lowImage) {
-    //     low.src = "../img/lowbuttonwhite.png";
-    //     lowImage = false;
-    // } else {
-    //     low.src = "../img/lowbutton.png ";
-    //     lowImage = true;
-    // }
     document.getElementById('low').src = "../img/lowbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";

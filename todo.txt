@@ -1,10 +1,10 @@
-datum in summary                                    //DF ---
-'hello' greeting                                    //DF ---
-edit contact                                        //DF ---
-komplette css zerschossen                           //DF ---
+datum in summary                                    //DF --- DF
+'hello' greeting                                    //DF --- DF
+edit contact                                        //DF --- DF
+komplette css zerschossen                           //DF --- DF
 tasks backend speichern                             //DF am Ende 
 contacts nach alphabet                              //IK
 addTask select fenster update                       //IK
 board drag&drop                                     //LN
-board abspeichern der initialien geht nicht         //DF ---
-board karte ändern funktioniert nicht               //LN
+board abspeichern der initialien geht nicht         //DF --- DF
+board karte ändern funktioniert nicht               //LN --- DF
