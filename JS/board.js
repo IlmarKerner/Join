@@ -106,7 +106,7 @@ function openPopUp(id) {
     document.getElementById('popUpArea').classList.remove('dNone');
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpContent(id);
-    fillInTaskAssign(id);
+    // fillInTaskAssign(id); bei der funktion verschiwndn wieder die assigns aus der task übersicht 
 }
 
 
@@ -198,8 +198,8 @@ function fillInAssinged() {
     for (let i = 0; i < tasks.length; i++) {
         let taskContainer = document.getElementById(`${i}`);
         let initialsContainer = taskContainer.children[4].children[0];
-        for (let j = 0; j < tasks[i]['assignet'].length; j++) {
-            let initials = tasks[i]['assignet'][j]['initials'];
+        for (let j = 0; j < tasks[i]['initials'].length; j++) {
+            let initials = tasks[i]['initials'][j];
             initialsContainer.innerHTML += `<div class="assinged_contacts${j+1}">${initials}</div>`;
         }
     }

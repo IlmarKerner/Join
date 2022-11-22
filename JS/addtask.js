@@ -59,6 +59,7 @@ function addSubTask() {
 }
 
 let globalIdForTaskCard = 0;
+let initialsForTaskCard = [];
 
 function createTask() {
     let title = document.getElementById('title');
@@ -66,7 +67,8 @@ function createTask() {
     let category = document.getElementById('category');
     let assign = document.getElementById('select_assign');
     let date = document.getElementById('date');
-    let initials = 
+    checkWhichIdIsFree();
+    getInitialsFromContacts();
 
     let taskCard = {
         "title": title.value,
@@ -85,7 +87,7 @@ function createTask() {
         "tasksDone": 1, // ?
         "tasksPercent": '', // ?
         "assignet": assignedPersons,
-        "initials": '',
+        "initials": initialsForTaskCard,
     }
 
     tasks.push(taskCard);
@@ -100,6 +102,29 @@ function createTask() {
    
     closeAddTaskPopup();
     initBoard();
+}
+
+function getInitialsFromContacts() {
+    for (let i = 0; i < assignedPersons.length; i++) {
+        const assignedPerson = assignedPersons[i];
+        for (let j = 0; j < contacts.length; j++) {
+            const contact = contacts[j];
+            if(assignedPerson == contact['full_name']) {
+                initialsForTaskCard.push(contact['initials'])
+            }
+        }
+    }
+}
+
+function checkWhichIdIsFree() {
+    for (let i = 0; i < tasks.length; i++) {
+        const element = tasks[i];
+        if (globalIdForTaskCard == element['id']) {
+            globalIdForTaskCard++;
+        } else {
+            globalIdForTaskCard = i;
+        }
+    }
 }
 
 function showSelctedContacts() {

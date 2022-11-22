@@ -1,2 +1,36 @@
 let tasks = [
+    {
+        assignet: [ "Greta Korn", "Peter Schleich" ],
+        category: "Media",
+        date: "2022-11-30",
+        description: "make many of tests",
+        dueDate: "2022-11-30",
+        headline: "Test this Website",
+        id: 0,
+        initials: [ "GK", "PS" ],
+        prio: "urgent",
+        progress: "toDo",
+        subTask: "Make Icon",
+        tasksDone: 1,
+        tasksOverall: 2,
+        tasksPercent: 50,
+        title: "Test this Website"
+    },
+    {
+        assignet: [ "Peter Schleich" ],
+        category: "Media",
+        date: "2022-11-30",
+        description: "test if responsive",
+        dueDate: "2022-11-30",
+        headline: "Test responsive",
+        id: 1,
+        initials: [ "PS" ],
+        prio: "medium",
+        progress: "inProgress",
+        subTask: "Make Icon",
+        tasksDone: 1,
+        tasksOverall: 2,
+        tasksPercent: 50,
+        title: "Test Responsive"
+    },
 ];

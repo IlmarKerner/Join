@@ -9,3 +9,6 @@ addTask select fenster update                       //IK
 board drag&drop                                     //LN
 board abspeichern der initialien geht nicht         //DF --- DF
 board karte ändern funktioniert nicht               //LN --- DF
+
+
+board js openpopuop weiter machen

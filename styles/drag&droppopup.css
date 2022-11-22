@@ -15,9 +15,8 @@
 
 .categorycard {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 4px 36.5px;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     width: 142px;
     height: 40px;
@@ -30,8 +29,10 @@
 }
 
 .categorycard p {
-    width: 69px;
-    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
