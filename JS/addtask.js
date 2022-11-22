@@ -4,17 +4,48 @@ let urgentImage = false;
 let mediumImage = false;
 let lowImage = false;
 let prio;
-let taskCard = [{
-    "id": "1",
-    "title": "toDo",
-    "category": "Sales",
-    "description": "",
-    "assignet": "",
-    "date": "22.12.2022",
-    "prio": "urgent",
-    "subTask": "Make Icon",
-}, ];
 let subtask = [];
+let assignedPersons = [];
+
+function renderAddTask() {
+    let select = document.getElementById('select_assign');
+    select.innerHTML = '';
+    sortContacts();
+    
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        select.innerHTML += `<option value="" onclick="addAssign(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
+    }
+}
+
+function addAssign(i) {
+    let option = document.getElementById(`option${i}`);
+
+    if(!assignedPersons.includes(option.innerHTML)){
+        assignedPersons.push(option.innerHTML);
+        visualAssignedPerson();
+    }
+}
+
+function visualAssignedPerson() {
+    let container = document.getElementById('visual_assign');
+    container.innerHTML = '';
+    for (let i = 0; i < assignedPersons.length; i++) {
+        const person = assignedPersons[i];
+        container.innerHTML += `
+        <div class="assigned_person">
+            <span id="assigned_person${i}">${person}</span>
+            <b class="delete_btn_assigned_person" onclick="deleteAssignedPerson(${i})">x<b>
+        </div>`
+    }
+}
+
+function deleteAssignedPerson(i) {
+    let select = document.getElementById(`assigned_person${i}`).innerHTML;
+    let index = assignedPersons.indexOf(select, 0);
+    assignedPersons.splice(index, 1);
+    visualAssignedPerson();
+}
 
 function addSubTask() {
     subtasks = document.getElementById('addNewSubtask').value;
@@ -25,51 +56,50 @@ function addSubTask() {
         document.getElementById('subtask').innerHTML += `
         <div><input type="checkbox">${subtask[i]}</div>`;
     }
-
 }
+
+let globalIdForTaskCard = 0;
 
 function createTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let category = document.getElementById('category');
-    let assign = document.getElementById('assign');
+    let assign = document.getElementById('select_assign');
     let date = document.getElementById('date');
+    let initials = 
 
+    let taskCard = {
+        "title": title.value,
+        "description": description.value,
+        "id": globalIdForTaskCard,
+        "progress": taskProgress,
+        "category": category.value,
+        // "assign": assignedPersons,
+        "date": date.value,
+        "headline": title.value,
+        "description": description.value,
+        "dueDate": date.value,
+        "prio": prio,
+        "subTask": "Make Icon", // ?
+        "tasksOverall": 2, // ?
+        "tasksDone": 1, // ?
+        "tasksPercent": '', // ?
+        "assignet": assignedPersons,
+        "initials": '',
+    }
 
-    taskCard.push(tasks);
+    tasks.push(taskCard);
+
+    globalIdForTaskCard++;
 
     title.value = '';
     description.value = '';
     category.value = '';
     assign.value = '';
     date.value = '';
-
-    for (let i = 0; i < taskCard.length; i++) {
-        document.getElementById('inProgress').innerHTML += `
-        <div id="testID" draggable="true" ondragstart="addDropPosition()" ondragend="removeDropPosition()" class="task_card">
-            <span class="card_category" id="cardCategory">${category[i]}</span>
-            <span class="card_headline">${title[i]}</span>
-            <span class="card_description">${description[i]}</span>
-                <div class="board_progress_row">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                        <div class="board_progress"> 1/2 Done</div>
-                </div>
-                <div class="assinged_contacts_row">
-                    <div class="initials_contacts">
-                        <div class="assinged_contacts1">IK</div>
-                        <div class="assinged_contacts2">DF</div>
-                        <div class="assinged_contacts3">LN</div>
-                    </div>
-                     <div class="urgency_icon">
-                        <img src="../img/medium.png">
-                    </div>
-                </div>
-            </div>
-            <div id="inProgressDropPosition" class="div_border dNone"></div>`;
-    }
+   
     closeAddTaskPopup();
+    initBoard();
 }
 
 function showSelctedContacts() {
@@ -128,6 +158,7 @@ function openAddTaskPopup(progress) {
     document.querySelector('.menu').style = "filter: blur(5px);";
     loadAddTaskPopupWindow();
     checkMediaforBoard(mediaforBoard);
+    renderAddTask();
     document.querySelector('.addtask_popup').classList.add('popup_window_slidein');
     setTimeout(() => {
         document.querySelector('.addtask_popup').style = "transform: translateX(0vw)";
@@ -191,12 +222,10 @@ function addTaskPopupWindowContent() {
             <div class="margin-top50">
                 <p>Assignet to</p>
             </div>
-            <select class="select_assign" id="assign" placeholder="Assignet to" required>
-                <option>Select contacts to assign</option>
-                <option>Lukas Neureiter</option>
-                <option>Dennis Frese</option>
-                <option>Ilmar Kerner</option>
+            <select class="select_assign" id="select_assign" placeholder="Assignet to" required>
+
             </select>
+            <div class="visual_assign" id="visual_assign"></div>
         </div>
         <div class="bar">
             <img src="../img/bar.png">
@@ -259,5 +288,3 @@ function checkMediaforBoard(mediaforBoard) {
 function restoreBoardContent() {
     document.querySelector('.board_content').classList.remove('d-none');
 }
-
-// meckert auf der contact seite das er die ID von dem query nicht finden kann.

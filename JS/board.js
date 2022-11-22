@@ -14,6 +14,14 @@ function initBoard() {
     // renderContacts();
 }
 
+function updateTasksPercent() {
+    for (let i = 0; i < tasks.length; i++) {
+        let element = tasks[i];
+        element['tasksPercent'] = '';
+        element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
+    }
+}
+
 function updateToDo() {
     let todos = tasks.filter(t => t['progress'] == 'toDo');
     document.getElementById('toDo').innerHTML = '';
@@ -67,16 +75,6 @@ function removeDropPosition() {
     document.getElementById('awaitingFeedbackDropPosition').classList.add('dNone');
     document.getElementById('doneDropPosition').classList.add('dNone');
 }
-
-
-function updateTasksPercent() {
-    for (let i = 0; i < tasks.length; i++) {
-        let element = tasks[i];
-        element['tasksPercent'] = '';
-        element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
-    }
-}
-
 
 function startDragging(id) {
     currentDraggedItem = id;
@@ -162,36 +160,34 @@ function openPopUpEdit(id) {
 
 
 function cardContent(Element, i) {
-    return `
+    return /*html*/`
     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
         ondragend="endDragging()" class="task_card">
-    <span class="card_category" id="cardCategory">
-        ${Element['category']}
-    </span>
-    <span class="card_headline">
-        ${Element['headline']}
-    </span>
-    <span class="card_description">
-        ${Element['description']}
-    </span>
-    <div class="board_progress_row">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: ${Element['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        <span class="card_category" id="cardCategory">
+            ${Element['category']}
+        </span>
+        <span class="card_headline">
+            ${Element['headline']}
+        </span>
+        <span class="card_description">
+            ${Element['description']}
+        </span>
+        <div class="board_progress_row">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: ${Element['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="board_progress">
+                ${Element['tasksDone']}/${Element['tasksOverall']} Done
+            </div>
         </div>
-        <div class="board_progress">
-            ${Element['tasksDone']}/${Element['tasksOverall']} Done
+        <div class="assinged_contacts_row">
+            <div class="initials_contacts">
+                
+            </div>
+            <div class="urgency_icon">
+                <img src="../img/${Element['prio']}.png">
+            </div>
         </div>
-    </div>
-    <div class="assinged_contacts_row">
-        <div class="initials_contacts">
-            <div class="assinged_contacts1">LH</div>
-            <div class="assinged_contacts2">IK</div>
-            <div class="assinged_contacts3">DF</div>
-        </div>
-        <div class="urgency_icon">
-            <img src="../img/${Element['prio']}.png">
-        </div>
-
     </div>
     `;
 }
@@ -224,28 +220,28 @@ function clearInitialContainerTaskPopup() {
 
 
 function popUpContent(id) {
-    Element = tasks[id];
+    element = tasks[id];
     return `
     <div class="dragcard_popup" id="dragcard_popup">
         <div class="categorycard">
-            <p>${Element['category']}</p>
+            <p>${element['category']}</p>
         </div>
         <div onclick="closePopUp()" class="closebutton">
             <img src="../img/clear.png">
         </div>
         <div class="headerdescription">
-            <h1>${Element['headline']}</h1>
+            <h1>${element['headline']}</h1>
         </div>
         <div class="description_dragcard_pupup">
-            <p>${Element['description']}</p>
+            <p>${element['description']}</p>
         </div>
         <div class="dragcard_popup_frame_1">
             <h2>Due date:</h2>
-            <p id="dueDate">${Element['dueDate']}</p>
+            <p id="dueDate">${element['dueDate']}</p>
         </div>
         <div class="dragcard_popup_frame_2">
             <h2>Priority:</h2>
-            <img src="../img/${Element['prio']}button.png">
+            <img src="../img/${element['prio']}button.png">
         </div>
         <div class="dragcard_popup_frame_3">
             <h2>Assignet To:</h2>
@@ -281,8 +277,6 @@ function fillInTaskAssign(id) {
         `;
     }
 
-    
-
     for (let i = 0; i < tasks.length; i++) {
         let taskContainer = document.getElementById(`${i}`);
         let initialsContainer = taskContainer.children[4].children[0];
@@ -291,7 +285,6 @@ function fillInTaskAssign(id) {
             initialsContainer.innerHTML += `<div class="assinged_contacts${j+1}">${initials}</div>`;
         }
     }
-
 }
 
 
@@ -506,9 +499,7 @@ function displayTasks(filteredTasks, htmlString) {
         </div>
         <div class="assinged_contacts_row">
             <div class="initials_contacts">
-                <div class="assinged_contacts1">LH</div>
-                <div class="assinged_contacts2">IK</div>
-                <div class="assinged_contacts3">DF</div>
+
             </div>
             <div class="urgency_icon">
                 <img src="../img/${tasks[getTaskIndex(taskcard)]['prio']}.png">
