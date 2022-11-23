@@ -225,49 +225,38 @@ html {
     height: 35px;
 }
 
-.assinged_contacts1 {
+.assinged_contacts {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: #29ABE2;
+    border: 1px solid white;
+    color: white;
+}
+
+#assinged_contacts1 {
     left: 0;
-    width: 35px;
-    height: 35px;
-    border-radius: 20px;
-    background-color: #29ABE2;
-    border: 1px solid white;
-    color: white;
 }
 
-.assinged_contacts2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
+#assinged_contacts2 {
     left: 30px;
-    width: 35px;
-    height: 35px;
-    border-radius: 20px;
-    background-color: #29ABE2;
-    border: 1px solid white;
-    color: white;
 }
 
-.assinged_contacts3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
+#assinged_contacts3 {
     left: 60px;
-    width: 35px;
-    height: 35px;
-    border-radius: 20px;
-    background-color: #29ABE2;
-    border: 1px solid white;
-    color: white;
+}
+
+#assinged_contacts4 {
+    left: 90px;
+}
+
+#assinged_contacts5, #assinged_contacts6, #assinged_contacts7, #assinged_contacts8, #assinged_contacts9, #assinged_contacts10, #assinged_contacts11, #assinged_contacts12 {
+    left: 90px;
 }
 
 .div_border {

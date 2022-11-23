@@ -33,4 +33,21 @@ let tasks = [
         tasksPercent: 50,
         title: "Test Responsive"
     },
+    {
+        assignet: [ "Jörg Abratis", "Celine Holzinger", "Greta Korn",  "Pia Rose","Peter Schleich",  "Timm Schwarz"],
+        category: "Marketing",
+        date: "2022-11-30",
+        description: "promote this Website",
+        dueDate: "2022-11-30",
+        headline: "Promotion",
+        id: 2,
+        initials: [ "JA", "CH", "GK", "PR", "PS", "TS" ],
+        prio: "low",
+        progress: "toDo",
+        subTask: "Make Icon",
+        tasksDone: 1,
+        tasksOverall: 2,
+        tasksPercent: 50,
+        title: "Promotion"
+    },
 ];

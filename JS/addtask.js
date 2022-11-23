@@ -294,11 +294,6 @@ function clearAddTask() {
     openAddTaskPopup();
 }
 
-
-function saveInitialsToTask() {
-    document.getElementById
-}
-
 let mediaforBoard = window.matchMedia("(max-width: 992px)");
 
 function checkMediaforBoard(mediaforBoard) {

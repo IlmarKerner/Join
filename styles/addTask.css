@@ -343,11 +343,16 @@
     display: flex;
     gap: 12px;
     width: 422px;
+    flex-wrap: wrap;
 }
 
 .assigned_person {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     gap: 5px;
+    width: 30%;
+    height: 13px;
 }
 
 .assigned_person span {
@@ -357,6 +362,13 @@
     cursor: unset;
     display: flex;
     opacity: 0.5;
+    font-size: 12px;
+}
+
+.assigned_person b {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .test {

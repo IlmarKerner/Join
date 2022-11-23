@@ -106,7 +106,7 @@ function openPopUp(id) {
     document.getElementById('popUpArea').classList.remove('dNone');
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpContent(id);
-    // fillInTaskAssign(id); bei der funktion verschiwndn wieder die assigns aus der task übersicht 
+    fillInTaskAssignPopup(id);
 }
 
 
@@ -200,7 +200,7 @@ function fillInAssinged() {
         let initialsContainer = taskContainer.children[4].children[0];
         for (let j = 0; j < tasks[i]['initials'].length; j++) {
             let initials = tasks[i]['initials'][j];
-            initialsContainer.innerHTML += `<div class="assinged_contacts${j+1}">${initials}</div>`;
+            initialsContainer.innerHTML += `<div class="assinged_contacts" id="assinged_contacts${j+1}" style="background-color:${getColorForName(initials)}">${initials}</div>`;
         }
     }
 }
@@ -261,28 +261,29 @@ function popUpContent(id) {
     `;
 }
 
-function fillInTaskAssign(id) {
+function fillInTaskAssignPopup(id) {
     let taskAssign = document.getElementById('taskAssignContainer');
     clearInitialContainerTaskPopup();
     for (let i = 0; i < tasks[id]['assignet'].length; i++) {
-        let initials = tasks[id]['assignet'][i]['initials'];
-        let firstName = tasks[id]['assignet'][i]['firstName'];
-        let lastname = tasks[id]['assignet'][i]['lastName'];
+        let initials = tasks[id]['initials'][i];
+        let fullName = tasks[id]['assignet'][i];
 
         taskAssign.innerHTML += `
-        <div>
-            <h4>${initials}</h4>
+        <div style="background-color:${getColorForName(initials)}">
+            <h4 >${initials}</h4>
         </div>
-        <p>${firstName} ${lastname}</p>
+        <p>${fullName}</p>
         `;
     }
+}
 
+function fillInTaskAssign() {
     for (let i = 0; i < tasks.length; i++) {
         let taskContainer = document.getElementById(`${i}`);
         let initialsContainer = taskContainer.children[4].children[0];
         for (let j = 0; j < tasks[i]['assignet'].length; j++) {
             let initials = tasks[i]['assignet'][j]['initials'];
-            initialsContainer.innerHTML += `<div class="assinged_contacts${j+1}">${initials}</div>`;
+            initialsContainer.innerHTML += `<div class="assinged_contacts" id="assinged_contacts${j+1}">${initials}</div>`;
         }
     }
 }

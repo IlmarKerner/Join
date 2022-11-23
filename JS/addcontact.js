@@ -3,7 +3,8 @@ let contacts = [{
         addetAt: 1669134223018,
         email: "PiaRose@web.de",
         first_name: "Pia",
-        full_name: "Rose",
+        full_name: "Pia Rose",
+        color: "blueviolet",
         initials: "PR",
         phone: "015201187695",
         second_name: "Rose",
@@ -13,6 +14,7 @@ let contacts = [{
         email: "PeterSchleich@gmail.de",
         first_name: "Peter",
         full_name: "Peter Schleich",
+        color: "brown",
         initials: "PS",
         phone: "01727738327",
         second_name: "Schleich",
@@ -22,10 +24,41 @@ let contacts = [{
         email: "GretaKorn@yahoo.com",
         first_name: "Greta",
         full_name: "Greta Korn",
+        color: "azure",
         initials: "GK",
         phone: "0160480984",
         second_name: "Korn",
-    }
+    },
+    {
+        addetAt: 1669134223018,
+        email: "CelineHolzinger@yahoo.com",
+        first_name: "Celine",
+        full_name: "Celine Holzinger",
+        color: "deeppink",
+        initials: "CH",
+        phone: "01604485945",
+        second_name: "Holzinger",
+    },
+    {
+        addetAt: 1669134223018,
+        email: "JörgAbratis@gweb.de",
+        first_name: "Jörg",
+        full_name: "Jörg Abratis",
+        color: "deeppink",
+        initials: "JA",
+        phone: "017298498136",
+        second_name: "Abratis",
+    },
+    {
+        addetAt: 1669134223018,
+        email: "TimmSchwarz@gmail.de",
+        first_name: "Timm",
+        full_name: "Timm Schwarz",
+        color: "aqua",
+        initials: "TS",
+        phone: "0170486798889",
+        second_name: "Schwarz",
+    },
 ];
 
 
@@ -34,16 +67,26 @@ let mediaForContact = window.matchMedia("(max-width: 992px)");
 let contactID;
 
 function getInfoFromNewContactField() {
+    let allTasksAsString = JSON.stringify(contacts);
+    localStorage.setItem('allTasks', allTasksAsString);
+    renderContacts();
+    checkMediaforExitButton(mediaForContact);
+}
+
+function addContact() {
+
     let firstname = document.getElementById('firstname');
     let secondname = document.getElementById('secondname');
     let email = document.getElementById('email');
     let phone = document.getElementById('phone');
+    let initials = (firstname.value.charAt(0) + secondname.value.charAt(0)).toUpperCase();
 
     let contactInfo = {
         "first_name": firstname.value,
         "second_name": secondname.value,
         "initials": (firstname.value.charAt(0) + secondname.value.charAt(0)).toUpperCase(),
         "full_name": firstname.value + ' ' + secondname.value,
+        "color": getColorForName(initials),
         "email": email.value,
         "phone": phone.value,
         "addetAt": new Date().getTime(),
@@ -52,10 +95,6 @@ function getInfoFromNewContactField() {
     if (!firstname.value == '') {
         contacts.push(contactInfo);
     }
-
-    let allTasksAsString = JSON.stringify(contacts);
-    localStorage.setItem('allTasks', allTasksAsString);
-
 
     firstname.value = '';
     secondname.value = '';
