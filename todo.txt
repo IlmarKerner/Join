@@ -5,10 +5,7 @@ komplette css zerschossen                           //DF --- DF
 tasks backend speichern                             //DF am Ende 
 contacts backend speichern                          //DF am Ende
 contacts nach alphabet                              //IK --- IK/DF
-addTask select fenster update                       //IK
+addTask select fenster update                       //IK --- DF
 board drag&drop                                     //LN
 board abspeichern der initialien geht nicht         //DF --- DF
 board karte ändern funktioniert nicht               //LN --- DF
-
-
-board js openpopuop weiter machen
