@@ -178,25 +178,34 @@
     color: #000000;
 }
 
-.underframe1 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 25px;
-    width: 450px;
-    height: 45px;
+.dragcard_popup_frame_4 {
+    width: 100%;
 }
 
-.underframe1 div {
+.underframe1 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0px;
+    gap: 25px;
+    width: 100%;
+}
+
+.assign_container_popup {
+    display: flex;
+    align-items: center;
+    width: 47%;
+}
+
+.assign_container_popup div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px 8px;
-    gap: 10px;
     width: 45px;
     height: 45px;
+    margin-right: 3px;
     background: #9327FF;
     border: 2px solid #FFFFFF;
     border-radius: 58px;
@@ -215,7 +224,6 @@
 }
 
 .underframe1 p {
-    width: 161px;
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
@@ -347,7 +355,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 18px 21px;
+    padding: 0 21px;
     gap: 10px;
     isolation: isolate;
     width: 422px;
@@ -415,12 +423,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 18px 21px;
+    padding: 0 21px;
     gap: 10px;
     isolation: isolate;
     width: 422px;
     height: 57px;
     background: #FFFFFF;
+    border: 1px solid #D1D1D1;
     border-radius: 10px;
 }
 

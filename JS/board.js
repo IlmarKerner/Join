@@ -118,6 +118,8 @@ function closePopUp() {
 function openPopUpEdit(id) {
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
+    renderEditTaskCard(id);
+    visualAssignedPerson(id)
     updatePrio(id);
 
 }
@@ -221,7 +223,7 @@ function clearInitialContainerTaskPopup() {
 
 function popUpContent(id) {
     element = tasks[id];
-    return `
+    return /*html*/`
     <div class="dragcard_popup" id="dragcard_popup">
         <div class="categorycard">
             <p>${element['category']}</p>
@@ -248,10 +250,7 @@ function popUpContent(id) {
         </div>
         <div class="dragcard_popup_frame_4" id="dragcardPopupListning">
             <div class="underframe1" id="taskAssignContainer">
-                <div>
-                    <h4>DE</h4>
-                </div>
-                <p>David Eisenberg</p>
+                 <!-- JAVASCRIPT fillInTaskAssignPopup   -->
             </div>
         </div>
         <div onclick="openPopUpEdit(${id})" class="edit_button_dragcard_popup">
@@ -268,11 +267,13 @@ function fillInTaskAssignPopup(id) {
         let initials = tasks[id]['initials'][i];
         let fullName = tasks[id]['assignet'][i];
 
-        taskAssign.innerHTML += `
-        <div style="background-color:${getColorForName(initials)}">
-            <h4 >${initials}</h4>
+        taskAssign.innerHTML += /*html*/`
+        <div class="assign_container_popup">
+            <div style="background-color:${getColorForName(initials)}">
+                <h4 >${initials}</h4>
+            </div>
+            <p>${fullName}</p>
         </div>
-        <p>${fullName}</p>
         `;
     }
 }
@@ -290,23 +291,23 @@ function fillInTaskAssign() {
 
 
 function popUpEditContent(id) {
-    Element = tasks[id];
-    return `
+    element = tasks[id];
+    return /*html*/`
     <div class="task_popup_window_2">
         <div onclick="closePopUp()" class="closebutton">
             <img src="../img/clear.png">
         </div>
         <div class="task_popup_window_2_title">
             <h3>Title</h3>
-            <input id="title${id}" value="${Element['headline']}" type="text" placeholder="Title....">
+            <input id="title${id}" value="${element['headline']}" type="text" placeholder="Title....">
         </div>
         <div class="task_popup_window_2_description">
             <h3>Description</h3>
-            <textarea id="description${id}" cols="30" rows="10" placeholder="Description....">${Element['description']}</textarea>
+            <textarea id="description${id}" cols="30" rows="10" placeholder="Description....">${element['description']}</textarea>
         </div>
         <div class="task_popup_window_2_date">
             <h3>Due date</h3>
-            <input id="dueDate${id}" value="${Element['dueDate']}" type="date">
+            <input id="dueDate${id}" value="${element['dueDate']}" type="date">
         </div>
         <div class="task_popup_window_2_prio">
             <h3>Prio</h3>
@@ -318,18 +319,50 @@ function popUpEditContent(id) {
         </div>
         <div class="task_popup_window_2_assign">
             <h3>Assigned to</h3>
-            <select>
-                <option>Select contacts to assign</option>
-                <option value="ilmar">Ilmar Kerner</option>
-                <option value="max">Lucas Neureiter</option>
-                <option value="dennis">Dennis Frese</option>
+            <select class="select_assign" id="select_assign_edit">
+                <!-- JAVASCRIPT renderEditTaskCard -->
             </select>
+            <div class="visual_assign" id="visual_assign_edit">
+                <!-- JAVASCRIPT visualAssignedPerson -->
+            </div>
         </div>
         <div onclick="popUpEditSave(${id})"class="accept_button">
             <img src="../img/Primary check button V1.png">
         </div>
     </div>
     `;
+}
+
+function renderEditTaskCard() {
+    let select = document.getElementById('select_assign_edit');
+    select.innerHTML = '';
+    sortContacts();
+    
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        select.innerHTML += `<option value="" onclick="addAssign(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
+    }
+}
+
+function visualAssignedPerson(id) {
+    let container = document.getElementById('visual_assign_edit');
+    let assignedPerson = tasks[id]['assignet'];
+    container.innerHTML = '';
+    for (let i = 0; i < assignedPerson.length; i++) {
+        const person = assignedPerson[i];
+        container.innerHTML += `
+        <div class="assigned_person">
+            <span id="assigned_person${i}">${person}</span>
+            <b class="delete_btn_assigned_person" onclick="deleteAssignedPersonBoard(${id}, ${i})">x<b>
+        </div>`
+    }
+}
+
+function deleteAssignedPersonBoard(id, i) {
+    tasks[id]['assignet'].splice(i, 1);
+    tasks[id]['initials'].splice(i, 1);
+    visualAssignedPerson(id);
+    initBoard();
 }
 
 function updatePrio(id) {
