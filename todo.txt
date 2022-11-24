@@ -4,6 +4,7 @@ edit contact                                        //DF --- DF
 komplette css zerschossen                           //DF --- DF
 tasks backend speichern                             //DF am Ende 
 contacts backend speichern                          //DF am Ende
+task popup responsive                               //DF
 contacts nach alphabet                              //IK --- IK/DF
 addTask select fenster update                       //IK --- DF
 board drag&drop                                     //LN

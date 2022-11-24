@@ -299,9 +299,9 @@ let mediaforBoard = window.matchMedia("(max-width: 992px)");
 function checkMediaforBoard(mediaforBoard) {
 
     if (mediaforBoard.matches) {
-        document.querySelector('.board_content').classList.add('d-none');
+        document.querySelector('.board_content').classList.add('dNone');
     } else {
-        document.querySelector('.board_content').classList.remove('d-none');
+        document.querySelector('.board_content').classList.remove('dNone');
     }
 }
 

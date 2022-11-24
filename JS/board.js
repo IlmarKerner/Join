@@ -106,12 +106,14 @@ function openPopUp(id) {
     document.getElementById('popUpArea').classList.remove('dNone');
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpContent(id);
+    checkMediaforBoard(mediaforBoard);
     fillInTaskAssignPopup(id);
 }
 
 
 function closePopUp() {
     document.getElementById('popUpArea').classList.add('dNone');
+    document.querySelector('.board_content').classList.remove('dNone');
 }
 
 
