@@ -299,19 +299,19 @@ function popUpEditContent(id) {
         <div onclick="closePopUp()" class="closebutton">
             <img src="../img/clear.png">
         </div>
-        <div class="task_popup_window_2_title">
+        <div class="task_popup_window_2_title task_popup_window_2_container">
             <h3>Title</h3>
             <input id="title${id}" value="${element['headline']}" type="text" placeholder="Title....">
         </div>
-        <div class="task_popup_window_2_description">
+        <div class="task_popup_window_2_description task_popup_window_2_container">
             <h3>Description</h3>
             <textarea id="description${id}" cols="30" rows="10" placeholder="Description....">${element['description']}</textarea>
         </div>
-        <div class="task_popup_window_2_date">
+        <div class="task_popup_window_2_date task_popup_window_2_container">
             <h3>Due date</h3>
             <input id="dueDate${id}" value="${element['dueDate']}" type="date">
         </div>
-        <div class="task_popup_window_2_prio">
+        <div class="task_popup_window_2_prio task_popup_window_2_container">
             <h3>Prio</h3>
             <div class="task_popup_window_2_prio_images">
                 <div onclick="changeUrgent(${id})"><img src="../img/Urgentbuttonwhite.png" id="urgentimg"></div>
@@ -319,7 +319,7 @@ function popUpEditContent(id) {
                 <div onclick="changeLow(${id})"><img src="../img/lowbuttonwhite.png" id="lowimg"></div>
             </div>
         </div>
-        <div class="task_popup_window_2_assign">
+        <div class="task_popup_window_2_assign task_popup_window_2_container">
             <h3>Assigned to</h3>
             <select class="select_assign" id="select_assign_edit">
                 <!-- JAVASCRIPT renderEditTaskCard -->
