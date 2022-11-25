@@ -83,8 +83,8 @@ function createTask() {
         "dueDate": date.value,
         "prio": prio,
         "subTask": "Make Icon", // ?
-        "tasksOverall": 2, // ?
-        "tasksDone": 1, // ?
+        "tasksOverall": 3, // ?
+        "tasksDone": 0, // ?
         "tasksPercent": '', // ?
         "assignet": assignedPersons,
         "initials": initialsForTaskCard,

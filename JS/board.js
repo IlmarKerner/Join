@@ -11,7 +11,7 @@ function initBoard() {
     updateAwaitingFeedback();
     updateDone();
     fillInAssinged();
-    // renderContacts();
+    checkProgressBar();
 }
 
 function updateTasksPercent() {
@@ -88,6 +88,8 @@ function startDragging(id) {
 function endDragging() {
     removeDropPosition();
     console.log('end');
+    checkProgressBar();
+    initBoard();
 }
 
 
@@ -125,42 +127,6 @@ function openPopUpEdit(id) {
     updatePrio(id);
 
 }
-
-
-// function cardContent(Element, i) {
-//     return `
-//     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
-//         ondragend="endDragging()" class="task_card">
-//     <span class="card_category" id="cardCategory">
-//         ${Element['category']}
-//     </span>
-//     <span class="card_headline">
-//         ${Element['headline']}
-//     </span>
-//     <span class="card_description">
-//         ${Element['description']}
-//     </span>
-//     <div class="board_progress_row">
-//         <div class="progress">
-//             <div class="progress-bar" role="progressbar" style="width: ${Element['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-//         </div>
-//         <div class="board_progress">
-//             ${Element['tasksDone']}/${Element['tasksOverall']} Done
-//         </div>
-//     </div>
-//     <div class="assinged_contacts_row">
-//         <div class="initials_contacts">
-//             <div class="assinged_contacts1">LH</div>
-//             <div class="assinged_contacts2">IK</div>
-//             <div class="assinged_contacts3">DF</div>
-//         </div>
-//         <div class="urgency_icon">
-//             <img src="../img/${Element['prio']}.png">
-//         </div>
-
-//     </div>
-//     `;
-// }
 
 
 function cardContent(Element, i) {
@@ -451,101 +417,6 @@ function saveDate(id, element) {
 }
 
 
-
-// function filterTask() {
-//     const searchBar = document.getElementById('searchTasks').value;
-//     searchBar.addEventListener('onkeyup', (e) => {
-//         const searchString = e.target.value.toLowerCase();
-
-//         const filteredTasks = tasks.filter((character) => {
-//             return (
-//                 character.headline.toLowerCase().includes(searchString) ||
-//                 character.category.toLowerCase().includes(searchString)
-//             );
-
-//         });
-//     })
-// }
-
-function filterTask(event) {
-    let htmlString = document.getElementById('filter_container');
-    let emptyTaskSearchInput = document.getElementById('searchTasks');
-    let searchString = event.target.value.toLowerCase();
-    let filteredTasks = tasks.filter((taskcard) => {
-        if (emptyTaskSearchInput.value == '') {
-            initBoard();
-            htmlString.classList.add('dNone');
-        } else {
-            htmlString.classList.remove('dNone');
-            return (
-                taskcard['headline'].toLowerCase().includes(searchString) ||
-                taskcard['category'].toLowerCase().includes(searchString) ||
-                taskcard['prio'].toLowerCase().includes(searchString)
-            );
-        }
-    });
-    displayTasks(filteredTasks, htmlString);
-}
-
-// function filterTask(event) {
-
-//     let toDo = document.getElementById('toDoContainer');
-//     let inProgress = document.getElementById('inProgressContainer');
-//     let awaitingFeedback = document.getElementById('awaitingFeedbackContainer');
-//     let done = document.getElementById('doneContainer');
-
-//     let emptyTaskSearchInput = document.getElementById('searchTasks');
-//     let searchString = event.target.value.toLowerCase();
-
-//     let filteredTasks = tasks.filter((taskcard) => {
-//         if (emptyTaskSearchInput.value == '') {
-//             initBoard();
-//         } else {
-//             return (
-//                 taskcard['headline'].toLowerCase().includes(searchString) ||
-//                 taskcard['category'].toLowerCase().includes(searchString) ||
-//                 taskcard['prio'].toLowerCase().includes(searchString)
-//             );
-//         }
-//     });
-//     displayTasks(filteredTasks, htmlString);
-// } TEST DF
-
-function displayTasks(filteredTasks, htmlString) {
-    
-    htmlString.innerHTML = filteredTasks.map((taskcard) => {
-            return `<div id="${tasks[getTaskIndex(taskcard)]['id']}" onclick="openPopUp(${tasks[getTaskIndex(taskcard)]['id']})" draggable="true" ondragstart="startDragging(${tasks[getTaskIndex(taskcard)]['id']})"
-            ondragend="endDragging()" class="task_card">
-        <span class="card_category" id="cardCategory">
-            ${tasks[getTaskIndex(taskcard)]['category']}
-        </span>
-        <span class="card_headline">
-            ${tasks[getTaskIndex(taskcard)]['headline']}
-        </span>
-        <span class="card_description">
-            ${tasks[getTaskIndex(taskcard)]['description']}
-        </span>
-        <div class="board_progress_row">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: ${tasks[getTaskIndex(taskcard)]['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="board_progress">
-                ${tasks[getTaskIndex(taskcard)]['tasksDone']}/${tasks[getTaskIndex(taskcard)]['tasksOverall']} Done
-            </div>
-        </div>
-        <div class="assinged_contacts_row">
-            <div class="initials_contacts">
-
-            </div>
-            <div class="urgency_icon">
-                <img src="../img/${tasks[getTaskIndex(taskcard)]['prio']}.png">
-            </div>
-    
-        </div>`;
-        })
-        .join('');
-};
-
 function getTaskIndex(taskcard) {
     return tasks.indexOf(taskcard);
 }
@@ -554,5 +425,114 @@ function resetTasks() {
     let emptyTaskSearchInput = document.getElementById('searchTasks');
     if (emptyTaskSearchInput = '') {
         includeHTML();
+    }
+}
+
+function checkProgressBar() {
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        if (task['progress'] == 'toDo') {
+            task['tasksDone'] = '0';
+        } else if (task['progress'] == 'inProgress') {
+            task['tasksDone'] = '1';
+        } else if (task['progress'] == 'awaitingFeedback') {
+            task['tasksDone'] = '2';
+        } else {
+            task['tasksDone'] = '3';
+        }
+    }
+}
+
+function updateTasksPercent() {
+    for (let i = 0; i < tasks.length; i++) {
+        let element = tasks[i];
+        element['tasksPercent'] = '';
+        element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
+    }
+}
+
+function filterTask(event) {
+    let emptyTaskSearchInput = document.getElementById('searchTasks');
+    let searchString = event.target.value.toLowerCase();
+    
+    if (emptyTaskSearchInput.value == '') {
+        initBoard();
+    } else {
+        let filteredTasks = tasks.filter((taskcard) => {
+            return (
+                taskcard['headline'].toLowerCase().includes(searchString) ||
+                taskcard['category'].toLowerCase().includes(searchString) ||
+                taskcard['prio'].toLowerCase().includes(searchString)
+            );
+        });
+        updateToDoFilteredTasks(filteredTasks);
+        updateInProgressFilteredTasks(filteredTasks);
+        updateAwaitingFeedbackFilteredTasks(filteredTasks);
+        updateDoneFilteredTasks(filteredTasks);
+        fillInAssingedFilteredTasks();
+    }
+}
+
+
+function updateToDoFilteredTasks(filteredTasks) {
+    let todos = filteredTasks.filter(t => t['progress'] == 'toDo');
+    document.getElementById('toDo').innerHTML = '';
+    for (let i = 0; i < todos.length; i++) {
+        let element = todos[i];
+        document.getElementById('toDo').innerHTML += cardContent(element);
+    }
+}
+
+
+function updateInProgressFilteredTasks(filteredTasks) {
+    let inProgress = filteredTasks.filter(t => t['progress'] == 'inProgress');
+    document.getElementById('inProgress').innerHTML = '';
+    for (let i = 0; i < inProgress.length; i++) {
+        let element = inProgress[i];
+        document.getElementById('inProgress').innerHTML += cardContent(element);
+    }
+}
+
+
+function updateAwaitingFeedbackFilteredTasks(filteredTasks) {
+    let awaitingFeedbacks = filteredTasks.filter(t => t['progress'] == 'awaitingFeedback');
+    document.getElementById('awaitingFeedback').innerHTML = '';
+    for (let i = 0; i < awaitingFeedbacks.length; i++) {
+        let element = awaitingFeedbacks[i];
+        document.getElementById('awaitingFeedback').innerHTML += cardContent(element);
+    }
+}
+
+
+function updateDoneFilteredTasks(filteredTasks) {
+    let dones = filteredTasks.filter(t => t['progress'] == 'done');
+    document.getElementById('done').innerHTML = '';
+    for (let i = 0; i < dones.length; i++) {
+        let element = dones[i];
+        document.getElementById('done').innerHTML += cardContent(element);
+    }
+}
+
+function fillInAssingedFilteredTasks() {
+    clearInitialContainerFilteredTasks();
+    for (let i = 0; i < tasks.length; i++) {
+        if (document.getElementById(`${i}`)) {
+        let taskContainer = document.getElementById(`${i}`);
+        let initialsContainer = taskContainer.children[4].children[0];
+        for (let j = 0; j < tasks[i]['initials'].length; j++) {
+            let initials = tasks[i]['initials'][j];
+            initialsContainer.innerHTML += `<div class="assinged_contacts" id="assinged_contacts${j+1}" style="background-color:${getColorForName(initials)}">${initials}</div>`;
+        }
+    }
+    }
+}
+
+function clearInitialContainerFilteredTasks() {
+    for (let i = 0; i < tasks.length; i++) {
+        if (document.getElementById(`${i}`)) {
+        let taskContainer = document.getElementById(`${i}`);
+        let initialsContainer = taskContainer.children[4].children[0];
+        initialsContainer.innerHTML = '';
+        }
     }
 }
