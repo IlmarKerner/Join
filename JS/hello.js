@@ -7,6 +7,8 @@ async function initGreeting() {
     checkDayTime();
     replaceDayTime();
     replaceName(activeUser);
+    saveContacts();
+    saveTasks();
 
     setTimeout(() => {
         location.href = 'https://gruppe-329.developerakademie.net/Join/templates/summary.html';
@@ -34,9 +36,7 @@ function replaceDayTime() {
 }
 
 function replaceName(activeUser) {
-
-    console.log(activeUser[0]);
-    document.getElementById('greetingName').innerHTML = activeUser[0];
+    document.getElementById('greetingName').innerHTML = activeUser;
 }
 
 function replaceDayTimeInSummary() {
@@ -44,6 +44,5 @@ function replaceDayTimeInSummary() {
 }
 
 function replaceNameInSummary(activeUser) {
-    console.log(activeUser[0]);
-    document.getElementById('greeting_Name').innerHTML = activeUser[0];
+    document.getElementById('greeting_Name').innerHTML = activeUser;
 }

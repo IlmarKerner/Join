@@ -3,8 +3,10 @@ let medium = false;
 let low = false;
 let currentDraggedItem;
 
-function initBoard() {
-    // checkIfLogged(); -----------------------------------WIEDER AKTIVIEREN
+async function initBoard() {
+    checkIfLogged();
+    await downloadFromServer();
+    loadTasks();
     updateTasksPercent();
     updateToDo();
     updateInProgress();
@@ -308,11 +310,20 @@ function renderEditTaskCard() {
     
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        select.innerHTML += `<option value="" onclick="addAssign(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
+        select.innerHTML += `<option value="" onclick="addAssignEdit(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
     }
 }
 
-function visualAssignedPerson(id) {
+function addAssignEdit(i) {
+    let option = document.getElementById(`option${i}`);
+
+    if(!assignedPersons.includes(option.innerHTML)){
+        assignedPersons.push(option.innerHTML);
+        visualAssignedPersonEdit(i);
+    }
+}
+
+function visualAssignedPersonEdit(id) {
     let container = document.getElementById('visual_assign_edit');
     let assignedPerson = tasks[id]['assignet'];
     container.innerHTML = '';
@@ -378,13 +389,14 @@ function changeLow() {
 }
 
 
-function popUpEditSave(id) {
+async function popUpEditSave(id) {
     let element = tasks[id]
     savePrio(element);
     saveHeadline(id, element);
     saveDescription(id, element);
     saveDate(id, element);
     closePopUp();
+    await saveTasks();
     initBoard();
 }
 

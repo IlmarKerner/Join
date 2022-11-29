@@ -6,15 +6,15 @@ function loadMenuBar() {
     document.getElementById('menubar').load("menu.html");
 }
 
-// let loggedUser;
+function checkIfLogged() {
 
-// function checkIfLogged() {
+    let loggedUser;
 
-//     let loggedUser;
-
-//     if (!sessionStorage.getItem(loggedUser, 'logged')) {
-//         localStorage.removeItem('token')
-//         navigator.sendBeacon('api/logout')
-//         location.href = 'index.html';
-//       }
-// }
+    if (!sessionStorage.getItem(loggedUser, 'logged')) {
+        localStorage.removeItem('token')
+        navigator.sendBeacon('api/logout')
+        location.href = 'index.html';
+        clearTasks();
+        clearContacts();
+      }
+}

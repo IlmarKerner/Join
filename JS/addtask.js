@@ -8,6 +8,7 @@ let subtask = [];
 let assignedPersons = [];
 
 function renderAddTask() {
+    loadTasks();
     let select = document.getElementById('select_assign');
     select.innerHTML = '';
     sortContacts();
@@ -48,7 +49,7 @@ function deleteAssignedPerson(i) {
 }
 
 function addSubTask() {
-    subtasks = document.getElementById('addNewSubtask').value;
+    let subtasks = document.getElementById('addNewSubtask').value;
     subtask.push(subtasks);
     subtasks.value = '';
     document.getElementById('subtask').innerHTML = '';
@@ -76,32 +77,42 @@ function createTask() {
         "id": globalIdForTaskCard,
         "progress": taskProgress,
         "category": category.value,
-        // "assign": assignedPersons,
         "date": date.value,
         "headline": title.value,
         "description": description.value,
         "dueDate": date.value,
         "prio": prio,
-        "subTask": "Make Icon", // ?
-        "tasksOverall": 3, // ?
-        "tasksDone": 0, // ?
-        "tasksPercent": '', // ?
+        "subTask": "Make Icon",
+        "tasksOverall": 3,
+        "tasksDone": 0,
+        "tasksPercent": '',
         "assignet": assignedPersons,
         "initials": initialsForTaskCard,
     }
 
     tasks.push(taskCard);
-
     globalIdForTaskCard++;
 
+    clearInputFieldsAddTask(title, description, category, assign, date);
+    closeAddTaskPopup();
+    saveTasks();
+    initBoard();
+}
+
+async function saveTasks() {
+    await backend.setItem('modyfiedTasks', JSON.stringify(tasks));
+}
+
+async function loadTasks() {
+    tasks = JSON.parse(backend.getItem('modyfiedTasks')) || [];
+}
+
+function clearInputFieldsAddTask(title, description, category, assign, date) {
     title.value = '';
     description.value = '';
     category.value = '';
     assign.value = '';
     date.value = '';
-   
-    closeAddTaskPopup();
-    initBoard();
 }
 
 function getInitialsFromContacts() {
@@ -290,14 +301,12 @@ function addTaskPopupWindowContent() {
 }
 
 function clearAddTask() {
-
     openAddTaskPopup();
 }
 
 let mediaforBoard = window.matchMedia("(max-width: 992px)");
 
 function checkMediaforBoard(mediaforBoard) {
-
     if (mediaforBoard.matches) {
         document.querySelector('.board_content').classList.add('dNone');
     } else {

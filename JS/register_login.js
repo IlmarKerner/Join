@@ -53,10 +53,11 @@ async function login() {
     }
 }
 
-function guestLogin() {
+async function guestLogin() {
     activeUser = 'guest';
     currentUser.push(['guest']);
     sessionStorage.setItem(loggedUser, 'logged');
+    await backend.setItem('currentUser', JSON.stringify(activeUser));
     location.href = 'hello.html';
 }
 

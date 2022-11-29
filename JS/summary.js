@@ -29,7 +29,7 @@ function replaceDayTimeSummary() {
 }
 
 function replaceNameSummary(activeUser) {
-    document.getElementById('greeting_Name').innerHTML = activeUser[0];
+    document.getElementById('greeting_Name').innerHTML = activeUser;
 }
 
 

@@ -1,80 +1,19 @@
+setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
+
 let firstLetter = [];
-let contacts = [{
-        addetAt: 1669134223018,
-        email: "PiaRose@web.de",
-        first_name: "Pia",
-        full_name: "Pia Rose",
-        color: "blueviolet",
-        initials: "PR",
-        phone: "015201187695",
-        second_name: "Rose",
-    },
-    {
-        addetAt: 1669134223018,
-        email: "PeterSchleich@gmail.de",
-        first_name: "Peter",
-        full_name: "Peter Schleich",
-        color: "brown",
-        initials: "PS",
-        phone: "01727738327",
-        second_name: "Schleich",
-    },
-    {
-        addetAt: 1669134223018,
-        email: "GretaKorn@yahoo.com",
-        first_name: "Greta",
-        full_name: "Greta Korn",
-        color: "azure",
-        initials: "GK",
-        phone: "0160480984",
-        second_name: "Korn",
-    },
-    {
-        addetAt: 1669134223018,
-        email: "CelineHolzinger@yahoo.com",
-        first_name: "Celine",
-        full_name: "Celine Holzinger",
-        color: "deeppink",
-        initials: "CH",
-        phone: "01604485945",
-        second_name: "Holzinger",
-    },
-    {
-        addetAt: 1669134223018,
-        email: "JörgAbratis@gweb.de",
-        first_name: "Jörg",
-        full_name: "Jörg Abratis",
-        color: "deeppink",
-        initials: "JA",
-        phone: "017298498136",
-        second_name: "Abratis",
-    },
-    {
-        addetAt: 1669134223018,
-        email: "TimmSchwarz@gmail.de",
-        first_name: "Timm",
-        full_name: "Timm Schwarz",
-        color: "aqua",
-        initials: "TS",
-        phone: "0170486798889",
-        second_name: "Schwarz",
-    },
-];
-
-
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 let mediaForContact = window.matchMedia("(max-width: 992px)");
 let contactID;
 
-function getInfoFromNewContactField() {
-    let allTasksAsString = JSON.stringify(contacts);
-    localStorage.setItem('allTasks', allTasksAsString);
+async function getInfoFromNewContactField() {
+    checkIfLogged();
+    await downloadFromServer();
+    await loadContacts();
     renderContacts();
     checkMediaforExitButton(mediaForContact);
 }
 
 function addContact() {
-
     let firstname = document.getElementById('firstname');
     let secondname = document.getElementById('secondname');
     let email = document.getElementById('email');
@@ -96,30 +35,26 @@ function addContact() {
         contacts.push(contactInfo);
     }
 
-    firstname.value = '';
-    secondname.value = '';
-    email.value = '';
-    phone.value = '';
-
+    clearInputFieldsAddTask(firstname, secondname, email, phone)
     closeNewContactWindow();
+    saveContacts();
     renderContacts();
     checkMediaforExitButton(mediaForContact);
 }
 
-// function renderContacts() {
-//     document.getElementById('listning').innerHTML = '';
-//     for (let i = 0; i < contacts.length; i++) {
-//         let initials = contacts[i]['initials'];
-//         document.getElementById('listning').innerHTML += `
+function loadContacts() {
+    contacts = JSON.parse(backend.getItem('modyfiedContacts')) || [];
+}
 
-//         `;
-//     }
-// }
+async function saveContacts() {
+    await backend.setItem('modyfiedContacts', JSON.stringify(contacts));
+}
 
-function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('allTasks');
-    contacts = JSON.parse(allTasksAsString);
-
+function clearInputFieldsAddTask(firstname, secondname, email, phone) {
+    firstname.value = '';
+    secondname.value = '';
+    email.value = '';
+    phone.value = '';
 }
 
 function openNewContactWindow() {
@@ -246,7 +181,9 @@ function saveEditedContact() {
     contact['phone'] = newphoneNumber;
 
     closeEditContactPopup();
-    // Seite muss danach noch aktualisiert werden. Array muss backend gespeichert werden. Logo muss geändert werden
+    saveContacts();
+    getInfoFromNewContactField();
+    // Logo muss geändert werden
 }
 
 function renderContacts() {
