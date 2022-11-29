@@ -125,43 +125,9 @@ function openPopUpEdit(id) {
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
     renderEditTaskCard(id);
-    visualAssignedPerson(id)
+    visualAssignedPersonEdit(id);
     updatePrio(id);
 
-}
-
-
-function cardContent(Element, i) {
-    return /*html*/`
-    <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
-        ondragend="endDragging()" class="task_card">
-        <span class="card_category" id="cardCategory">
-            ${Element['category']}
-        </span>
-        <span class="card_headline">
-            ${Element['headline']}
-        </span>
-        <span class="card_description">
-            ${Element['description']}
-        </span>
-        <div class="board_progress_row">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: ${Element['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="board_progress">
-                ${Element['tasksDone']}/${Element['tasksOverall']} Done
-            </div>
-        </div>
-        <div class="assinged_contacts_row">
-            <div class="initials_contacts">
-                
-            </div>
-            <div class="urgency_icon">
-                <img src="../img/${Element['prio']}.png">
-            </div>
-        </div>
-    </div>
-    `;
 }
 
 
@@ -172,7 +138,7 @@ function fillInAssinged() {
         let initialsContainer = taskContainer.children[4].children[0];
         for (let j = 0; j < tasks[i]['initials'].length; j++) {
             let initials = tasks[i]['initials'][j];
-            initialsContainer.innerHTML += `<div class="assinged_contacts" id="assinged_contacts${j+1}" style="background-color:${getColorForName(initials)}">${initials}</div>`;
+            initialsContainer.innerHTML += assignHtml(j, initials);
         }
     }
 }
@@ -190,46 +156,6 @@ function clearInitialContainerTaskPopup() {
     taskAssign.innerHTML = '';
 }
 
-
-function popUpContent(id) {
-    element = tasks[id];
-    return /*html*/`
-    <div class="dragcard_popup" id="dragcard_popup">
-        <div class="categorycard">
-            <p>${element['category']}</p>
-        </div>
-        <div onclick="closePopUp()" class="closebutton">
-            <img src="../img/clear.png">
-        </div>
-        <div class="headerdescription">
-            <h1>${element['headline']}</h1>
-        </div>
-        <div class="description_dragcard_pupup">
-            <p>${element['description']}</p>
-        </div>
-        <div class="dragcard_popup_frame_1">
-            <h2>Due date:</h2>
-            <p id="dueDate">${element['dueDate']}</p>
-        </div>
-        <div class="dragcard_popup_frame_2">
-            <h2>Priority:</h2>
-            <img src="../img/${element['prio']}button.png">
-        </div>
-        <div class="dragcard_popup_frame_3">
-            <h2>Assignet To:</h2>
-        </div>
-        <div class="dragcard_popup_frame_4" id="dragcardPopupListning">
-            <div class="underframe1" id="taskAssignContainer">
-                 <!-- JAVASCRIPT fillInTaskAssignPopup   -->
-            </div>
-        </div>
-        <div onclick="openPopUpEdit(${id})" class="edit_button_dragcard_popup">
-            <img src="../img/edit button.png">
-        </div>
-    </div>
-    `;
-}
-
 function fillInTaskAssignPopup(id) {
     let taskAssign = document.getElementById('taskAssignContainer');
     clearInitialContainerTaskPopup();
@@ -237,14 +163,7 @@ function fillInTaskAssignPopup(id) {
         let initials = tasks[id]['initials'][i];
         let fullName = tasks[id]['assignet'][i];
 
-        taskAssign.innerHTML += /*html*/`
-        <div class="assign_container_popup">
-            <div style="background-color:${getColorForName(initials)}">
-                <h4 >${initials}</h4>
-            </div>
-            <p>${fullName}</p>
-        </div>
-        `;
+        taskAssign.innerHTML += assignPopupHtml(initials, fullName);
     }
 }
 
@@ -254,53 +173,9 @@ function fillInTaskAssign() {
         let initialsContainer = taskContainer.children[4].children[0];
         for (let j = 0; j < tasks[i]['assignet'].length; j++) {
             let initials = tasks[i]['assignet'][j]['initials'];
-            initialsContainer.innerHTML += `<div class="assinged_contacts" id="assinged_contacts${j+1}">${initials}</div>`;
+            initialsContainer.innerHTML += assignTaskHtml(j, initials);
         }
     }
-}
-
-
-function popUpEditContent(id) {
-    element = tasks[id];
-    return /*html*/`
-    <div class="task_popup_window_2">
-        <div onclick="closePopUp()" class="closebutton">
-            <img src="../img/clear.png">
-        </div>
-        <div class="task_popup_window_2_title task_popup_window_2_container">
-            <h3>Title</h3>
-            <input id="title${id}" value="${element['headline']}" type="text" placeholder="Title....">
-        </div>
-        <div class="task_popup_window_2_description task_popup_window_2_container">
-            <h3>Description</h3>
-            <textarea id="description${id}" cols="30" rows="10" placeholder="Description....">${element['description']}</textarea>
-        </div>
-        <div class="task_popup_window_2_date task_popup_window_2_container">
-            <h3>Due date</h3>
-            <input id="dueDate${id}" value="${element['dueDate']}" type="date">
-        </div>
-        <div class="task_popup_window_2_prio task_popup_window_2_container">
-            <h3>Prio</h3>
-            <div class="task_popup_window_2_prio_images">
-                <div onclick="changeUrgent(${id})"><img src="../img/Urgentbuttonwhite.png" id="urgentimg"></div>
-                <div onclick="changeMedium(${id})"><img src="../img/mediumbuttonwhite.png" id="mediumimg"></div>
-                <div onclick="changeLow(${id})"><img src="../img/lowbuttonwhite.png" id="lowimg"></div>
-            </div>
-        </div>
-        <div class="task_popup_window_2_assign task_popup_window_2_container">
-            <h3>Assigned to</h3>
-            <select class="select_assign" id="select_assign_edit">
-                <!-- JAVASCRIPT renderEditTaskCard -->
-            </select>
-            <div class="visual_assign" id="visual_assign_edit">
-                <!-- JAVASCRIPT visualAssignedPerson -->
-            </div>
-        </div>
-        <div onclick="popUpEditSave(${id})"class="accept_button">
-            <img src="../img/Primary check button V1.png">
-        </div>
-    </div>
-    `;
 }
 
 function renderEditTaskCard() {
@@ -310,7 +185,7 @@ function renderEditTaskCard() {
     
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        select.innerHTML += `<option value="" onclick="addAssignEdit(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
+        select.innerHTML += editTaskSelectHtml(contact, i);
     }
 }
 
@@ -329,11 +204,7 @@ function visualAssignedPersonEdit(id) {
     container.innerHTML = '';
     for (let i = 0; i < assignedPerson.length; i++) {
         const person = assignedPerson[i];
-        container.innerHTML += `
-        <div class="assigned_person">
-            <span id="assigned_person${i}">${person}</span>
-            <b class="delete_btn_assigned_person" onclick="deleteAssignedPersonBoard(${id}, ${i})">x<b>
-        </div>`
+        container.innerHTML += assignEditHtml(id, i, person);
     }
 }
 
@@ -533,7 +404,7 @@ function fillInAssingedFilteredTasks() {
         let initialsContainer = taskContainer.children[4].children[0];
         for (let j = 0; j < tasks[i]['initials'].length; j++) {
             let initials = tasks[i]['initials'][j];
-            initialsContainer.innerHTML += `<div class="assinged_contacts" id="assinged_contacts${j+1}" style="background-color:${getColorForName(initials)}">${initials}</div>`;
+            initialsContainer.innerHTML += assignHtml(j, initials);
         }
     }
     }
