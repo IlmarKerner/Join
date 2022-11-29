@@ -18,3 +18,6 @@ look Projektabgabe                                  //DF
 addTask new Category                                //DF
 board scroll to new task                            //DF --- DF
 animate all sucess buttons                          //DF
+no create task if inputs empty                      //DF
+deactive login button while loading                 //DF
+html out of template folder                         //DF
