@@ -14,6 +14,7 @@ async function initBoard() {
     updateDone();
     fillInAssinged();
     checkProgressBar();
+    animateNewTask();
 }
 
 function updateTasksPercent() {
@@ -417,5 +418,24 @@ function clearInitialContainerFilteredTasks() {
         let initialsContainer = taskContainer.children[4].children[0];
         initialsContainer.innerHTML = '';
         }
+    }
+}
+
+async function animateNewTask() {
+    newTask = JSON.parse(backend.getItem('newTask'));
+    await backend.setItem('modyfiedTasks', JSON.stringify(tasks));
+    if (newTask == true) {
+        let taskId = tasks.length - 1;
+        let taskContainer = document.getElementById(`${taskId}`);
+        let containerId = tasks[taskId]['progress'];
+        let id = document.getElementById(`${containerId}`);
+        id.scrollTo({top: id.scrollHeight, behavior: 'smooth'});
+        let task = document.getElementById(`${id}`);
+        setTimeout(() => {
+            taskContainer.classList.add('new-task');
+        }, "800");
+        newTask = false;
+        taskContainer.classList.remove('new-task');
+        await backend.setItem('newTask', JSON.stringify(newTask));
     }
 }

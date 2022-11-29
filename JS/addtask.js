@@ -3,6 +3,7 @@ let selectTaskBoxOpen = false;
 let urgentImage = false;
 let mediumImage = false;
 let lowImage = false;
+let newTask = false;
 let prio;
 let taskProgress = 'toDo';
 let mediaforBoard = window.matchMedia("(max-width: 992px)");
@@ -66,6 +67,7 @@ async function createTask() {
     let category = document.getElementById('category');
     let assign = document.getElementById('select_assign');
     let date = document.getElementById('date');
+    let succesAnimation = document.getElementById('success_animation');
     checkWhichIdIsFree();
     getInitialsFromContacts();
 
@@ -94,7 +96,13 @@ async function createTask() {
     clearInputFieldsAddTask(title, description, category, assign, date);
     closeAddTaskPopup();
     await saveTasks();
-    location.href = 'board.html';
+    if (succesAnimation) {succesAnimation.classList.remove('d-none')};
+    newTask = true;
+    await backend.setItem('newTask', JSON.stringify(newTask));
+
+    setTimeout(() => {
+        location.href = 'board.html';
+      }, "1000")  
 }
 
 async function saveTasks() {

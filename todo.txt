@@ -15,3 +15,6 @@ filter tasks                                        //IK --- DF
 clear tasks after exit                              //DF --- DF
 clear contacts after exit                           //DF --- DF
 look Projektabgabe                                  //DF
+addTask new Category                                //DF
+board scroll to new task                            //DF --- DF
+animate all sucess buttons                          //DF

@@ -277,6 +277,10 @@ html {
     transform: translate(-50%, 0);
 }
 
+.new-task {
+    animation: wiggle 1.5s linear;
+}
+
 
 /* ---------------------- Board Start ---------------------- */
 

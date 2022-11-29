@@ -333,3 +333,53 @@
   }
 
 /*--------------- LOADING ANIMATION END ---------------*/
+
+/*--------------- WIGGLE ANIMATION START ---------------*/
+
+
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(15deg);
+  }
+  25% {
+    transform: rotateZ(-12deg);
+  }
+  30% {
+    transform: rotateZ(12deg);
+  }
+  35% {
+    transform: rotateZ(-9deg);
+  }
+  40% {
+      transform: rotateZ(9deg);
+  }
+  45% {
+  transform: rotateZ(-6deg);
+  }
+  50% {
+      transform: rotateZ(6deg);
+  }
+  45% {
+  transform: rotateZ(-6deg);
+  }
+  50% {
+      transform: rotateZ(6deg);
+  }
+  55% {
+  transform: rotateZ(-3deg);
+  }
+  60% {
+      transform: rotateZ(3deg);
+  }
+  65%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
+/*--------------- WIGGLE ANIMATION END ---------------*/
