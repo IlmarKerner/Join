@@ -6,7 +6,7 @@ let currentDraggedItem;
 async function initBoard() {
     checkIfLogged();
     await downloadFromServer();
-    loadTasks();
+    await loadTasks();
     updateTasksPercent();
     updateToDo();
     updateInProgress();

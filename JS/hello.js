@@ -7,8 +7,8 @@ async function initGreeting() {
     checkDayTime();
     replaceDayTime();
     replaceName(activeUser);
-    saveContacts();
-    saveTasks();
+    await saveContacts();
+    await saveTasks();
 
     setTimeout(() => {
         location.href = 'https://gruppe-329.developerakademie.net/Join/templates/summary.html';

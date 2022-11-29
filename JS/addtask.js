@@ -4,10 +4,13 @@ let urgentImage = false;
 let mediumImage = false;
 let lowImage = false;
 let prio;
+let taskProgress = 'toDo';
+let mediaforBoard = window.matchMedia("(max-width: 992px)");
 let subtask = [];
 let assignedPersons = [];
 
-function renderAddTask() {
+async function renderAddTask() {
+    await downloadFromServer();
     loadTasks();
     let select = document.getElementById('select_assign');
     select.innerHTML = '';
@@ -15,7 +18,7 @@ function renderAddTask() {
     
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        select.innerHTML += `<option value="" onclick="addAssign(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
+        select.innerHTML += displayContactsforInput(contact, i);
     }
 }
 
@@ -33,11 +36,7 @@ function visualAssignedPerson() {
     container.innerHTML = '';
     for (let i = 0; i < assignedPersons.length; i++) {
         const person = assignedPersons[i];
-        container.innerHTML += `
-        <div class="assigned_person">
-            <span id="assigned_person${i}">${person}</span>
-            <b class="delete_btn_assigned_person" onclick="deleteAssignedPerson(${i})">x<b>
-        </div>`
+        container.innerHTML += visualPersonHtml(i, person);
     }
 }
 
@@ -54,15 +53,14 @@ function addSubTask() {
     subtasks.value = '';
     document.getElementById('subtask').innerHTML = '';
     for (let i = 0; i < subtask.length; i++) {
-        document.getElementById('subtask').innerHTML += `
-        <div><input type="checkbox">${subtask[i]}</div>`;
+        document.getElementById('subtask').innerHTML += subtaskHtml(i);
     }
 }
 
 let globalIdForTaskCard = 0;
 let initialsForTaskCard = [];
 
-function createTask() {
+async function createTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let category = document.getElementById('category');
@@ -95,8 +93,8 @@ function createTask() {
 
     clearInputFieldsAddTask(title, description, category, assign, date);
     closeAddTaskPopup();
-    saveTasks();
-    initBoard();
+    await saveTasks();
+    location.href = 'board.html';
 }
 
 async function saveTasks() {
@@ -199,24 +197,23 @@ function openAddTaskPopup(progress) {
     setTimeout(() => {
         document.querySelector('.addtask_popup').style = "transform: translateX(0vw)";
     }, 300);
-
 }
 
 function closeAddTaskPopup() {
-    document.querySelector('.addtask_popup').style = "animation: slideout 0.3s;"
-    document.querySelector('.addtask_popup').classList.remove('popup_window_slidein');
-    setTimeout(() => {
-        document.querySelector('.addtask_popup').classList.add('d-none');
-        document.querySelector('.blur_container').style = "filter: none;";
-        document.querySelector('.blur_container').classList.remove('hidden');
-        document.querySelector('.menu').style = "filter: none;";
-        document.querySelector('.profilebar').style = "filter: none;";
-        document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";
-        restoreBoardContent();
-    }, 300);
+    if (document.querySelector('.addtask_popup')) {
+        document.querySelector('.addtask_popup').style = "animation: slideout 0.3s;"
+        document.querySelector('.addtask_popup').classList.remove('popup_window_slidein');
+        setTimeout(() => {
+            document.querySelector('.addtask_popup').classList.add('d-none');
+            document.querySelector('.blur_container').style = "filter: none;";
+            document.querySelector('.blur_container').classList.remove('hidden');
+            document.querySelector('.menu').style = "filter: none;";
+            document.querySelector('.profilebar').style = "filter: none;";
+            document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";
+            restoreBoardContent();
+        }, 300);
+    }
 }
-
-let taskProgress;
 
 function checkProgress(progress) {
     taskProgress = progress;
@@ -226,85 +223,9 @@ function loadAddTaskPopupWindow() {
     document.querySelector('.addtask_popup').innerHTML = addTaskPopupWindowContent();
 }
 
-function addTaskPopupWindowContent() {
-    return /*html*/ `
-
-<div class="tasks_popup">
-    <h1>Add Task</h1>
-    <div class="tasks_content">
-        <div class="close_addtask_popup" id="closeAddTaskWindow" onclick="closeAddTaskPopup()">
-            <img src="../img/clear.png">
-        </div>
-        <div class="left_task">
-            <div class="title">
-                <p>Title</p>
-                <input type="text" placeholder="Enter a title" id="title">
-            </div>
-            <div class="description">
-                <p>Description</p>
-                <textarea type="text" placeholder="Enter a description" id="description"></textarea>
-            </div>
-            <div class="margin-top50">
-                <p>Category</p>
-            </div>
-            <select class="select_task" id="category" placeholder="Select task category" required>
-                <option>Select task category</option>
-                <option>New Category</option>
-                <option>Backoffice</option>
-                <option>Design</option>
-                <option>Marketing</option>
-                <option>Media</option>
-            </select>
-            <div class="margin-top50">
-                <p>Assignet to</p>
-            </div>
-            <select class="select_assign" id="select_assign" placeholder="Assignet to" required>
-
-            </select>
-            <div class="visual_assign" id="visual_assign"></div>
-        </div>
-        <div class="bar">
-            <img src="../img/bar.png">
-        </div>
-        <div class="right-task">
-            <div class="date">
-                <p>Due date</p>
-                <input type="date" placeholder="dd/mm/yyyy" id="date">
-            </div>
-            <div class="prio">
-                <p>Prio</p>
-                <div class="devision" id="devision">
-                    <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="../img/Urgentbuttonwhite.png"></div>
-                    <div onclick="changeImgMedium()" class="medium"><img id="medium" src="../img/mediumbuttonwhite.png"></div>
-                    <div onclick="changeImgLow()" class="low"><img id="low" src="../img/lowbuttonwhite.png"></div>
-                </div>
-            </div>
-                <div class="subtask_container">
-                <p class="subtaskheader">Subtasks</p>
-                <div class="subtask">
-                    <input type="text" id="addNewSubtask" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addSubTask()">
-                </div>
-                <div class="subtasks" id="subtask">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="task_buttons" id="task_buttons">
-        <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img
-                src="../img/clear.png"></button>
-        <button class="create_button" id="createButton" onclick="createTask()">Create Task <img
-                src="..//img/create_task.png"></button>
-    </div>
-</div>
-`
-}
-
 function clearAddTask() {
     openAddTaskPopup();
 }
-
-let mediaforBoard = window.matchMedia("(max-width: 992px)");
 
 function checkMediaforBoard(mediaforBoard) {
     if (mediaforBoard.matches) {

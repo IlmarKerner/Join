@@ -2,8 +2,8 @@ datum in summary                                    //DF --- DF
 'hello' greeting                                    //DF --- DF
 edit contact                                        //DF --- DF
 komplette css zerschossen                           //DF --- DF
-tasks backend speichern                             //DF am Ende 
-contacts backend speichern                          //DF am Ende
+tasks backend speichern                             //DF --- DF
+contacts backend speichern                          //DF --- DF
 task popup responsive                               //DF --- DF
 status progress Bar                                 //DF --- DF
 contacts nach alphabet                              //IK --- IK/DF
@@ -12,6 +12,6 @@ board drag&drop                                     //LN --- DF
 board abspeichern der initialien geht nicht         //DF --- DF
 board karte ändern funktioniert nicht               //LN --- DF
 filter tasks                                        //IK --- DF
-clear tasks after exit                              //DF
-clear contacts after exit                           //DF
+clear tasks after exit                              //DF --- DF
+clear contacts after exit                           //DF --- DF
 look Projektabgabe                                  //DF

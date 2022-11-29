@@ -1,5 +1,3 @@
-setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
-
 let firstLetter = [];
 let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'azure', 'aqua', 'orange', 'deeppink'];
 let mediaForContact = window.matchMedia("(max-width: 992px)");
@@ -31,10 +29,7 @@ function addContact() {
         "addetAt": new Date().getTime(),
     };
 
-    if (!firstname.value == '') {
-        contacts.push(contactInfo);
-    }
-
+    contacts.push(contactInfo);
     clearInputFieldsAddTask(firstname, secondname, email, phone)
     closeNewContactWindow();
     saveContacts();
@@ -86,31 +81,8 @@ function removeContact(i) {
 
 function showFullContactInfo(i) {
     let fullContactInfo = document.getElementById('full_contact_Info_Container');
-    let initials = contacts[i]['initials'];
     fullContactInfo.innerHTML = '';
-    fullContactInfo.innerHTML += `
-        <div class="full_contact_info">
-            <h2 style="background-color:${getColorForName(initials)}">${initials}</h2>
-            <div class="contact_info_add_task">
-                <h1>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h1>
-                <p onclick="openAddTaskPopup('toDo')" style="cursor: pointer;">+ Add Task</p>
-            </div>
-        </div>
-        <div class="contact_information_header">
-            <h2>Contact Information</h2>
-            <div class="edit_contact" onclick="editContactPopup('${contacts[i]['first_name']}', '${contacts[i]['second_name']}', '${contacts[i]['email']}', '${contacts[i]['phone']}', '${i}')">
-                <img src="../img/pencil.png">
-                <p>Edit Contact</p>
-            </div>
-        </div>
-        <div class="contact_information">
-            <h2>Email</h2>
-            <a href="#">
-                <p>${contacts[i]['email']}</p>
-            </a>
-            <h2>Phone</h2>
-            <p>${contacts[i]['phone']}</p>
-        </div>`;
+    fullContactInfo.innerHTML += contactInfo(i);
 }
 
 function getColorForName(initials) {
@@ -183,7 +155,6 @@ function saveEditedContact() {
     closeEditContactPopup();
     saveContacts();
     getInfoFromNewContactField();
-    // Logo muss geändert werden
 }
 
 function renderContacts() {
@@ -210,42 +181,4 @@ function renderContacts() {
 
 function sortContacts() {
     contacts.sort((a, b) => a.second_name.localeCompare(b.second_name));
-}
-
-function letterNotExist(i, initials, firstsecondnameLetter) {
-    return `
-    <div>
-        <div class="first_name_letter">
-            <h3>${firstsecondnameLetter}</h3>
-            <img src="../img/line.png">
-        </div>
-        <div id="${firstsecondnameLetter}">
-            <div class="full_listner">
-                <div class="contact_name_container" onclick="showFullContactInfo(${i})">
-                    <span style="background-color:${getColorForName(initials)}">${initials}</span>
-                    <div class="contact_name">
-                    <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
-                    <a href="#"><p>${contacts[i]['email']}</p></a>
-                    </div>
-                </div>
-                <p style="font-size: 50px !important; margin: 0px">|</p>
-                <img src="../img/trash-can.png" onclick="removeContact(${i})">
-            </div>
-        </div>
-    </div>`
-}
-
-function letterAlreadyExist(i, initials) {
-    return `
-    <div class="full_listner">
-        <div class="contact_name_container" onclick="showFullContactInfo(${i})">
-            <span style="background-color:${getColorForName(initials)}">${initials}</span>
-            <div class="contact_name">
-            <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
-            <a href="#"><p>${contacts[i]['email']}</p></a>
-            </div>
-        </div>
-        <p style="font-size: 50px !important; margin: 0px">|</p>
-        <img src="../img/trash-can.png" onclick="removeContact(${i})">
-    </div>`
 }
