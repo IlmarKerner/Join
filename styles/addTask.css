@@ -321,9 +321,33 @@
     padding: 0 21px;
 }
 
+.new_category_container{
+    display: flex;
+    align-items: center;
+    padding: 0 21px;
+    gap: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 422px;
+    height: 51px;
+    background-color: white;
+    outline: none;
+    margin-top: 8px;
+}
+
+.new_category_input {
+    border: none;
+    width: 90%;
+    outline: none;
+}
+
 .select_assign_container {
     width: 100%;
     position: relative;
+}
+
+#color_picker {
+    width: 10%;
 }
 
 .select_assign {

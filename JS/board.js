@@ -13,6 +13,7 @@ async function initBoard() {
     updateAwaitingFeedback();
     updateDone();
     fillInAssinged();
+    fillInCategory();
     checkProgressBar();
     animateNewTask();
 }
@@ -92,7 +93,6 @@ function endDragging() {
     removeDropPosition();
     console.log('end');
     checkProgressBar();
-    initBoard();
 }
 
 
@@ -103,6 +103,7 @@ function allowDrop(ev) {
 
 function drop(progress) {
     tasks[currentDraggedItem]['progress'] = progress;
+    saveTasks();
     initBoard();
 }
 
@@ -129,6 +130,24 @@ function openPopUpEdit(id) {
     visualAssignedPersonEdit(id);
     updatePrio(id);
 
+}
+
+function fillInCategory() {
+    loadCategories(); // HIER NOCH WAS MAHCEN VLEAR
+
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        let categoryContainer = document.getElementById(`cardCategory${i}`);
+        let category = tasks[i]['category'];
+
+        for (let j = 0; j < categories.length; j++) {
+            const element = categories[j];
+            if (category == element[['name']]) {
+                let color = element['color'];
+                categoryContainer.style['background-color'] = color;
+            }
+        }
+    }
 }
 
 

@@ -4,6 +4,7 @@ let urgentImage = false;
 let mediumImage = false;
 let lowImage = false;
 let newTask = false;
+let newCategory = false;
 let prio;
 let taskProgress = 'toDo';
 let mediaforBoard = window.matchMedia("(max-width: 992px)");
@@ -14,12 +15,19 @@ async function renderAddTask() {
     await downloadFromServer();
     loadTasks();
     let select = document.getElementById('select_assign');
+    let selectCategory = document.getElementById('category');
     select.innerHTML = '';
+    selectCategory.innerHTML = '';
     sortContacts();
     
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         select.innerHTML += displayContactsforInput(contact, i);
+    }
+
+    for (let i = 0; i < categories.length; i++) {
+        const category = categories[i]['name'];
+        selectCategory.innerHTML += displayCategoriesForInput(category, i);
     }
 }
 
@@ -64,10 +72,11 @@ let initialsForTaskCard = [];
 async function createTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
-    let category = document.getElementById('category');
     let assign = document.getElementById('select_assign');
     let date = document.getElementById('date');
     let succesAnimation = document.getElementById('success_animation');
+    let category = checkCategoryInput();
+    checkIfNewCategory(category);
     checkWhichIdIsFree();
     getInitialsFromContacts();
 
@@ -76,7 +85,7 @@ async function createTask() {
         "description": description.value,
         "id": globalIdForTaskCard,
         "progress": taskProgress,
-        "category": category.value,
+        "category": category,
         "date": date.value,
         "headline": title.value,
         "description": description.value,
@@ -111,6 +120,14 @@ async function saveTasks() {
 
 async function loadTasks() {
     tasks = JSON.parse(backend.getItem('modyfiedTasks')) || [];
+}
+
+async function saveCategories() {
+    await backend.setItem('categories', JSON.stringify(categories));
+}
+
+async function loadCategories() {
+    categories = JSON.parse(backend.getItem('categories')) || [];
 }
 
 function clearInputFieldsAddTask(title, description, category, assign, date) {
@@ -245,4 +262,50 @@ function checkMediaforBoard(mediaforBoard) {
 
 function restoreBoardContent() {
     document.querySelector('.board_content').classList.remove('d-none');
+}
+
+function checkCategory() {
+    let category = document.getElementById('category');
+    let newCategoryContainer = document.getElementById('new_category_container');
+    if (category.value == 'New Category') {
+        newCategoryContainer.classList.remove('dNone');
+        newCategory = true;
+    } else {
+        newCategoryContainer.classList.add('dNone');
+        newCategory = false;
+    }
+}
+
+function checkCategoryInput() {
+    let category
+    if (document.getElementById('new_category_container').classList.contains('dNone')) {
+        category = document.getElementById('category').value;
+    } else {
+        category = document.getElementById('new_category').value;
+    }
+    return category
+}
+
+function checkIfNewCategory(category) {
+    let getCategory = false
+    for (let i = 0; i < categories.length; i++) {
+        const element = categories[i]['name'];
+        if (!element.includes(category)) {
+            getCategory = true;
+          } 
+    }
+    if (getCategory == true){
+        getNewCategory();
+    }
+}
+
+async function getNewCategory() {
+    let category = document.getElementById('new_category');
+    let color = document.getElementById('color_picker');
+
+    categories.push({
+        "name": category.value,
+        "color": color.value,
+    })
+    saveCategories();
 }

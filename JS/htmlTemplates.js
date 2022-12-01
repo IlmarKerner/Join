@@ -75,6 +75,10 @@ function displayContactsforInput(contact, i) {
     return /*html*/`<option value="" onclick="addAssign(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
 }
 
+function displayCategoriesForInput(category, i) {
+    return /*html*/`<option onclick="checkCategory()">${category}</option>`
+}
+
 function visualPersonHtml(i, person) {
     return /*html*/`
     <div class="assigned_person">
@@ -95,7 +99,7 @@ function addTaskPopupWindowContent() {
         <div class="left_task">
             <div class="title">
                 <p>Title</p>
-                <input type="text" placeholder="Enter a title" id="title">
+                <input type="text" placeholder="Enter a title" id="title" required>
             </div>
             <div class="description">
                 <p>Description</p>
@@ -105,18 +109,17 @@ function addTaskPopupWindowContent() {
                 <p>Category</p>
             </div>
             <select class="select_task" id="category" placeholder="Select task category" required>
-                <option>Select task category</option>
-                <option>New Category</option>
-                <option>Backoffice</option>
-                <option>Design</option>
-                <option>Marketing</option>
-                <option>Media</option>
+                <!-- JAVASCRIPT -->
             </select>
+            <div class="new_category_container dNone" id="new_category_container">
+                <input class="new_category_input" id="new_category" placeholder="type in new category">
+                <input id="color_picker" type="color">
+            </div>
             <div class="margin-top50">
                 <p>Assignet to</p>
             </div>
             <select class="select_assign" id="select_assign" placeholder="Assignet to" required>
-
+                <!-- JAVASCRIPT -->
             </select>
             <div class="visual_assign" id="visual_assign"></div>
         </div>
@@ -126,7 +129,7 @@ function addTaskPopupWindowContent() {
         <div class="right-task">
             <div class="date">
                 <p>Due date</p>
-                <input type="date" placeholder="dd/mm/yyyy" id="date">
+                <input type="date" placeholder="dd/mm/yyyy" id="date" required>
             </div>
             <div class="prio">
                 <p>Prio</p>
@@ -169,7 +172,7 @@ function cardContent(Element) {
     return /*html*/`
     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
         ondragend="endDragging()" class="task_card">
-        <span class="card_category" id="cardCategory">
+        <span class="card_category" id="cardCategory${Element['id']}">
             ${Element['category']}
         </span>
         <span class="card_headline">
