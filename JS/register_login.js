@@ -12,6 +12,7 @@ async function init() {
     renderContent();
     checkIfAutocomplete();
     disableLoadingAnimation();
+    enableLoginButtons();
 }
 
 async function addUser() {
@@ -120,5 +121,15 @@ function disableLoadingAnimation() {
 async function logout() {
     users = JSON.parse(backend.getItem('users')) || []; // load all users
     await backend.deleteItem('currentUser'); // delete current User
+}
+
+function enableLoginButtons() {
+    let loginBtn = document.getElementById('logInButton');
+    let guestLoginBtn = document.getElementById('guestLogInButton');
+
+    loginBtn.disabled = false;
+    guestLoginBtn.disabled = false;
+    loginBtn.classList.remove('disabled');
+    guestLoginBtn.classList.remove('disabled');
 }
 

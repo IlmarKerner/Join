@@ -3,6 +3,14 @@
     display: none;
 }
 
+.dNone{
+    display: none !important;
+}
+
+.empty {
+    border: solid 1px red !important;
+}
+
 .add_task_container {
     margin-top: 80px;
     position: relative;

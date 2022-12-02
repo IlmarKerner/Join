@@ -9,7 +9,7 @@ async function initGreeting() {
     replaceName(activeUser);
     await saveContacts();
     await saveTasks();
-    // await saveCategories();
+    await saveCategories();
 
     setTimeout(() => {
         location.href = 'https://gruppe-329.developerakademie.net/Join/templates/summary.html';

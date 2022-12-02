@@ -58,20 +58,19 @@
                             <p>Category</p>
                         </div>
                         <select class="select_task" placeholder="Select task category" required id="category">
-                            <option><div class="test">Select task category</div></option>
-                            <option>New Category</option>
-                            <option>Backoffice</option>
-                            <option>Design</option>
-                            <option>Marketing</option>
-                            <option>Media</option>
+                            <!-- JAVASCRIPT -->
                         </select>
+                        <div class="new_category_container dNone" id="new_category_container">
+                            <input class="new_category_input" id="new_category" placeholder="type in new category">
+                            <input id="color_picker" type="color">
+                        </div>
                     </div>
                     <div class="select_assign_container" id="select_assign_container">
                         <div class="margin-top50">
                             <p>Assignet to</p>
                         </div>
                         <select class="select_assign" placeholder="Select task category" id="select_assign" required>
-
+                            <!-- JAVASCRIPT -->
                         </select>
                         <div class="visual_assign" id="visual_assign"></div>
                     </div>
@@ -111,13 +110,11 @@
         <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img src="../img/clear.png"></button>
         <button class="create_button" id="createButton" onclick="createTask()">Create Task <img src="..//img/create_task.png"></button>
     </div>
-    <div class="success-checkmark d-none" id="success_animation">
-        <div class="check-icon">
-            <span class="icon-line line-tip"></span>
-            <span class="icon-line line-long"></span>
-            <div class="icon-circle"></div>
-            <div class="icon-fix"></div>
-        </div>
+    <div class="wrapper d-none" id="success_animation"> 
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> 
+            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/> 
+            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
     </div>
 </body>
 

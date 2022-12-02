@@ -15,9 +15,9 @@ filter tasks                                        //IK --- DF
 clear tasks after exit                              //DF --- DF
 clear contacts after exit                           //DF --- DF
 look Projektabgabe                                  //DF
-addTask new Category                                //DF
+addTask new Category                                //DF --- DF
 board scroll to new task                            //DF --- DF
-animate all sucess buttons                          //DF
+animate all sucess buttons                          //DF --- DF
 no create task if inputs empty                      //DF
-deactive login button while loading                 //DF
+deactive login button while loading                 //DF --- DF
 html out of template folder                         //DF

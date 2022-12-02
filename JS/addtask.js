@@ -14,6 +14,7 @@ let assignedPersons = [];
 async function renderAddTask() {
     await downloadFromServer();
     loadTasks();
+    loadCategories();
     let select = document.getElementById('select_assign');
     let selectCategory = document.getElementById('category');
     select.innerHTML = '';
@@ -74,51 +75,70 @@ async function createTask() {
     let description = document.getElementById('description');
     let assign = document.getElementById('select_assign');
     let date = document.getElementById('date');
-    let succesAnimation = document.getElementById('success_animation');
     let category = checkCategoryInput();
-    checkIfNewCategory(category);
-    checkWhichIdIsFree();
-    getInitialsFromContacts();
+    if (!checkInputs(title, date)) {
+        checkIfNewCategory(category);
+        checkWhichIdIsFree();
+        getInitialsFromContacts();
 
-    let taskCard = {
-        "title": title.value,
-        "description": description.value,
-        "id": globalIdForTaskCard,
-        "progress": taskProgress,
-        "category": category,
-        "date": date.value,
-        "headline": title.value,
-        "description": description.value,
-        "dueDate": date.value,
-        "prio": prio,
-        "subTask": "Make Icon",
-        "tasksOverall": 3,
-        "tasksDone": 0,
-        "tasksPercent": '',
-        "assignet": assignedPersons,
-        "initials": initialsForTaskCard,
+        let taskCard = {
+            "title": title.value,
+            "description": description.value,
+            "id": globalIdForTaskCard,
+            "progress": taskProgress,
+            "category": category,
+            "date": date.value,
+            "headline": title.value,
+            "description": description.value,
+            "dueDate": date.value,
+            "prio": prio,
+            "subTask": "Make Icon",
+            "tasksOverall": 3,
+            "tasksDone": 0,
+            "tasksPercent": '',
+            "assignet": assignedPersons,
+            "initials": initialsForTaskCard,
+        }
+
+        tasks.push(taskCard);
+        globalIdForTaskCard++;
+
+        clearInputFieldsAddTask(title, description, category, assign, date);
+        successAnimationAddTask();
+        successAnimationAddTaskPopup();
+        await saveTasks();
+        newTask = true;
+        await backend.setItem('newTask', JSON.stringify(newTask));
+
+        setTimeout(() => {
+            location.href = 'board.html';
+        }, "1000")  
     }
+}
 
-    tasks.push(taskCard);
-    globalIdForTaskCard++;
 
-    clearInputFieldsAddTask(title, description, category, assign, date);
-    closeAddTaskPopup();
-    await saveTasks();
-    if (succesAnimation) {succesAnimation.classList.remove('d-none')};
-    newTask = true;
-    await backend.setItem('newTask', JSON.stringify(newTask));
+function successAnimationAddTask() {
+    let succesAnimation = document.getElementById('success_animation');
 
-    setTimeout(() => {
-        location.href = 'board.html';
-      }, "1000")  
+    if (succesAnimation) {
+        succesAnimation.classList.remove('d-none')
+    }
+}
+
+function successAnimationAddTaskPopup() {
+    let succesAnimationPopup = document.getElementById('success_animation_popup');
+
+    if (succesAnimationPopup) {
+        succesAnimationPopup.classList.remove('d-none');
+        setTimeout(() => {closeAddTaskPopup()}, "1300")  
+    };
 }
 
 async function saveTasks() {
     await backend.setItem('modyfiedTasks', JSON.stringify(tasks));
 }
 
-async function loadTasks() {
+function loadTasks() {
     tasks = JSON.parse(backend.getItem('modyfiedTasks')) || [];
 }
 
@@ -126,7 +146,7 @@ async function saveCategories() {
     await backend.setItem('categories', JSON.stringify(categories));
 }
 
-async function loadCategories() {
+function loadCategories() {
     categories = JSON.parse(backend.getItem('categories')) || [];
 }
 
@@ -191,6 +211,10 @@ function changeImgUrgent() {
     document.getElementById('urgent').src = "../img/urgentbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
+
+    document.getElementById('urgent').classList.add('active');
+    document.getElementById('medium').classList.remove('active');
+    document.getElementById('low').classList.remove('active');
     prio = 'urgent';
 }
 
@@ -198,6 +222,10 @@ function changeImgMedium() {
     document.getElementById('medium').src = "../img/mediumbutton.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
     document.getElementById('low').src = "../img/lowbuttonwhite.png";
+
+    document.getElementById('medium').classList.add('active');
+    document.getElementById('urgent').classList.remove('active');
+    document.getElementById('low').classList.remove('active');
     prio = 'medium';
 }
 
@@ -205,6 +233,10 @@ function changeImgLow() {
     document.getElementById('low').src = "../img/lowbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
+
+    document.getElementById('low').classList.add('active');
+    document.getElementById('medium').classList.remove('active');
+    document.getElementById('urgent').classList.remove('active');
     prio = 'low';
 }
 
@@ -253,10 +285,12 @@ function clearAddTask() {
 }
 
 function checkMediaforBoard(mediaforBoard) {
-    if (mediaforBoard.matches) {
-        document.querySelector('.board_content').classList.add('dNone');
-    } else {
-        document.querySelector('.board_content').classList.remove('dNone');
+    if (document.querySelector('.board_content')) {
+        if (mediaforBoard.matches) {
+                document.querySelector('.board_content').classList.add('dNone');
+            } else {
+                document.querySelector('.board_content').classList.remove('dNone');
+            }
     }
 }
 
@@ -287,14 +321,14 @@ function checkCategoryInput() {
 }
 
 function checkIfNewCategory(category) {
-    let getCategory = false
+    let getNoCategory = false
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i]['name'];
-        if (!element.includes(category)) {
-            getCategory = true;
+        if (element == category) {
+            getNoCategory = true;
           } 
     }
-    if (getCategory == true){
+    if (getNoCategory == false){
         getNewCategory();
     }
 }
@@ -308,4 +342,44 @@ async function getNewCategory() {
         "color": color.value,
     })
     saveCategories();
+}
+
+function checkInputs(title, date) {
+    let assign = document.getElementById('visual_assign');
+    let urgentBtn = document.getElementById('urgent');
+    let mediumBtn = document.getElementById('medium');
+    let lowBtn = document.getElementById('low');
+    let emptyInput = false;
+
+    if (title.value == '') {
+        title.classList.add('empty');
+    } else {
+        title.classList.remove('empty');
+    }
+
+    if (date.value == '') {
+        date.classList.add('empty');
+    } else {
+        date.classList.remove('empty');
+    }
+
+    if (assign.innerHTML == '') {
+        document.getElementById('select_assign').classList.add('empty');
+    } else {
+        document.getElementById('select_assign').classList.remove('empty')
+    }
+
+    if (urgentBtn.classList.contains('active') || mediumBtn.classList.contains('active') || lowBtn.classList.contains('active')) {
+    } else {
+        document.getElementById('devision').classList.add('empty');
+    }
+
+    if (!title.value == '' && !date.value == '' && !assign.innerHTML == '' && urgentBtn.classList.contains('active') || mediumBtn.classList.contains('active') || lowBtn.classList.contains('active')) {
+        emptyInput = false;
+    } else {
+        emptyInput = true;
+    }
+            // funktion noch nicht ganz paasend return schon bei prio btn false
+
+    return emptyInput;
 }

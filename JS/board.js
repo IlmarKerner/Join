@@ -120,6 +120,9 @@ function openPopUp(id) {
 function closePopUp() {
     document.getElementById('popUpArea').classList.add('dNone');
     document.querySelector('.board_content').classList.remove('dNone');
+    if (succesAnimationPopup) {
+        succesAnimationPopup.classList.remove('d-none');
+    }
 }
 
 
@@ -132,8 +135,8 @@ function openPopUpEdit(id) {
 
 }
 
-function fillInCategory() {
-    loadCategories(); // HIER NOCH WAS MAHCEN VLEAR
+async function fillInCategory() {
+    await loadCategories();
 
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
@@ -286,9 +289,18 @@ async function popUpEditSave(id) {
     saveHeadline(id, element);
     saveDescription(id, element);
     saveDate(id, element);
-    closePopUp();
+    successAnimationEditTaskPopup();
     await saveTasks();
     initBoard();
+}
+
+function successAnimationEditTaskPopup() {
+    let succesAnimationPopup = document.getElementById('success_animation_edit_popup');
+
+    if (succesAnimationPopup) {
+        succesAnimationPopup.classList.remove('d-none');
+        setTimeout(() => {closePopUp(succesAnimationPopup)}, "1300")  
+    };
 }
 
 
