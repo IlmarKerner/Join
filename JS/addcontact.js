@@ -3,6 +3,9 @@ let contactColors = ['green', 'blue', 'blueviolet', 'brown', 'red', 'yellow', 'a
 let mediaForContact = window.matchMedia("(max-width: 992px)");
 let contactID;
 
+/**
+ * initialize and rener contact page
+ */
 async function getInfoFromNewContactField() {
     checkIfLogged();
     await downloadFromServer();
@@ -11,6 +14,9 @@ async function getInfoFromNewContactField() {
     checkMediaforExitButton(mediaForContact);
 }
 
+/**
+ * add a new contact
+ */
 function addContact() {
     let firstname = document.getElementById('firstname');
     let secondname = document.getElementById('secondname');
@@ -39,14 +45,23 @@ function addContact() {
     }
 }
 
+/**
+ * load contacts from server
+ */
 function loadContacts() {
     contacts = JSON.parse(backend.getItem('modyfiedContacts')) || [];
 }
 
+/**
+ * save contacts to server
+ */
 async function saveContacts() {
     await backend.setItem('modyfiedContacts', JSON.stringify(contacts));
 }
 
+/**
+ * clearing the inputfields on addTask page
+ */
 function clearInputFieldsAddTask(firstname, secondname, email, phone) {
     firstname.value = '';
     secondname.value = '';
@@ -54,6 +69,9 @@ function clearInputFieldsAddTask(firstname, secondname, email, phone) {
     phone.value = '';
 }
 
+/**
+ * add style propertys to open the new contact popup
+ */
 function openNewContactWindow() {
     document.getElementById('popupAddContact').classList.remove('d-none');
     document.getElementById('contactsContainer').style = "filter: blur(10px)";
@@ -63,6 +81,9 @@ function openNewContactWindow() {
     }, 300);
 }
 
+/**
+ * remove style propertys to close the new contact popup
+ */
 function closeNewContactWindow(succesAnimationContact) {
     document.getElementById('popupAddContact').style = "animation: slideout 0.3s;"
     document.getElementById('popupAddContact').classList.remove('popup_window_slidein');
@@ -77,22 +98,34 @@ function closeNewContactWindow(succesAnimationContact) {
     }, 300);
 }
 
+/**
+ * delete contact by click on trash on contact page
+ */
 function removeContact(i) {
     contacts.splice(i, 1);
     renderContacts();
 }
 
+/**
+ * show full info of contact with phone, mail...
+ */
 function showFullContactInfo(i) {
     let fullContactInfo = document.getElementById('full_contact_Info_Container');
     fullContactInfo.innerHTML = '';
     fullContactInfo.innerHTML += contactInfo(i);
 }
 
+/**
+ * generate color for contact
+ */
 function getColorForName(initials) {
     let number = (initials.charCodeAt(0) + initials.charCodeAt(1)) % contactColors.length;
     return contactColors[number];
 }
 
+/**
+ * check the window with and height to 
+ */
 function checkMediaforExitButton(mediaForContact) {
     let btn = document.getElementById('close_contact_btn');
 

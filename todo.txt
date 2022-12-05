@@ -18,6 +18,14 @@ look Projektabgabe                                  //DF
 addTask new Category                                //DF --- DF
 board scroll to new task                            //DF --- DF
 animate all sucess buttons                          //DF --- DF
-no create task if inputs empty                      //DF
+no create task if inputs empty                      //DF --- DF
 deactive login button while loading                 //DF --- DF
 html out of template folder                         //DF
+cheack favicon                                      //DF --- DF
+max 400 lines 
+JSDoc document
+validation new contact                              //DF --- DF
+
+
+
+https://gruppe-329.developerakademie.net/Join/templates/board.html

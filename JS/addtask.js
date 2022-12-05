@@ -349,7 +349,9 @@ function checkInputs(title, date) {
     let urgentBtn = document.getElementById('urgent');
     let mediumBtn = document.getElementById('medium');
     let lowBtn = document.getElementById('low');
-    let emptyInput = false;
+    let emptyInput = true;
+    let emptyPrio = true;
+    let empty = true;
 
     if (title.value == '') {
         title.classList.add('empty');
@@ -370,16 +372,25 @@ function checkInputs(title, date) {
     }
 
     if (urgentBtn.classList.contains('active') || mediumBtn.classList.contains('active') || lowBtn.classList.contains('active')) {
+        document.getElementById('devision').classList.remove('empty');
     } else {
         document.getElementById('devision').classList.add('empty');
     }
 
-    if (!title.value == '' && !date.value == '' && !assign.innerHTML == '' && urgentBtn.classList.contains('active') || mediumBtn.classList.contains('active') || lowBtn.classList.contains('active')) {
+    if (!title.value == '' && !date.value == '' && !assign.innerHTML == '') {
         emptyInput = false;
     } else {
         emptyInput = true;
     }
-            // funktion noch nicht ganz paasend return schon bei prio btn false
 
-    return emptyInput;
+    if (urgentBtn.classList.contains('active') || mediumBtn.classList.contains('active') || lowBtn.classList.contains('active')) {
+        emptyPrio = false;
+    } else {
+        emptyPrio = true;
+    }
+
+    if (!emptyInput && !emptyPrio) {
+        empty = false
+    }
+    return empty;
 }
