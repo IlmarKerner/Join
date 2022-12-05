@@ -14,7 +14,7 @@ board karte ändern funktioniert nicht               //LN --- DF
 filter tasks                                        //IK --- DF
 clear tasks after exit                              //DF --- DF
 clear contacts after exit                           //DF --- DF
-look Projektabgabe                                  //DF
+look Projektabgabe                                  //DF --- DF
 addTask new Category                                //DF --- DF
 board scroll to new task                            //DF --- DF
 animate all sucess buttons                          //DF --- DF
@@ -22,9 +22,33 @@ no create task if inputs empty                      //DF --- DF
 deactive login button while loading                 //DF --- DF
 html out of template folder                         //DF
 cheack favicon                                      //DF --- DF
-max 400 lines 
-JSDoc document
 validation new contact                              //DF --- DF
+
+max 400 lines                                       //DF
+    -> addcontact.js --- DF
+    -> addtask.js
+    -> board.js
+    -> categories.js
+    -> hello.js
+    -> htmlTemplates.js
+    -> includeHTML.js
+    -> register_login.js
+    -> script.js
+    -> summary.js
+    -> tasks.js
+
+JSDoc document                                      //DF
+    -> addcontact.js --- DF
+    -> addtask.js
+    -> board.js
+    -> categories.js
+    -> hello.js
+    -> htmlTemplates.js
+    -> includeHTML.js
+    -> register_login.js
+    -> script.js
+    -> summary.js
+    -> tasks.js
 
 
 

@@ -61,6 +61,10 @@ async function saveContacts() {
 
 /**
  * clearing the inputfields on addTask page
+ * @param {string} firstname - first name from input field
+ * @param {string} secondname - second name from input field
+ * @param {string} email - email from input field
+ * @param {string} phone - phone number from input field
  */
 function clearInputFieldsAddTask(firstname, secondname, email, phone) {
     firstname.value = '';
@@ -83,6 +87,7 @@ function openNewContactWindow() {
 
 /**
  * remove style propertys to close the new contact popup
+ * @param {string} succesAnimationContact - id of container for the success animation if contact was created
  */
 function closeNewContactWindow(succesAnimationContact) {
     document.getElementById('popupAddContact').style = "animation: slideout 0.3s;"
@@ -100,6 +105,7 @@ function closeNewContactWindow(succesAnimationContact) {
 
 /**
  * delete contact by click on trash on contact page
+ * @param {number} i - number of position in contacts Array
  */
 function removeContact(i) {
     contacts.splice(i, 1);
@@ -108,6 +114,7 @@ function removeContact(i) {
 
 /**
  * show full info of contact with phone, mail...
+ * @param {number} i - number of position in contacts Array
  */
 function showFullContactInfo(i) {
     let fullContactInfo = document.getElementById('full_contact_Info_Container');
@@ -116,7 +123,9 @@ function showFullContactInfo(i) {
 }
 
 /**
- * generate color for contact
+ * generate color for contact profile picture
+ * @param {string} initials - initials from contact
+ * @returns - generated color
  */
 function getColorForName(initials) {
     let number = (initials.charCodeAt(0) + initials.charCodeAt(1)) % contactColors.length;
@@ -124,7 +133,8 @@ function getColorForName(initials) {
 }
 
 /**
- * check the window with and height to 
+ * check the window with and height to use the right exit button 
+ * @param {boolean} mediaForContact - check if media > 992px
  */
 function checkMediaforExitButton(mediaForContact) {
     let btn = document.getElementById('close_contact_btn');
@@ -136,12 +146,23 @@ function checkMediaforExitButton(mediaForContact) {
     }
 }
 
+/**
+ * open the popup to edit contacts
+ * @param {string} firstname - first name from input field
+ * @param {string} lastname - second name from input field
+ * @param {string} email - email from input field
+ * @param {string} phone - phone number from input field
+ * @param {number} id - number of position in contacs Array
+ */
 function editContactPopup(firstname, lastname, email, phone, id) {
     contactID = id;
     openEditContactPopup();
     fillInputfields(firstname, lastname, email, phone);
 }
 
+/**
+ * open the popup to edit contact
+ */
 function openEditContactPopup() {
     document.getElementById('popupEditContact').classList.remove('d-none');
     document.getElementById('contactsContainer').style = "filter: blur(10px)";
@@ -151,6 +172,10 @@ function openEditContactPopup() {
     }, 300);
 }
 
+/**
+ * close the popup to edit contact
+ * @param {string} succesAnimationContact - id of container for the success animation if contact was created
+ */
 function closeEditContactPopup(succesAnimationContact) {
     document.getElementById('popupEditContact').style = "animation: slideout 0.3s;"
     document.getElementById('popupEditContact').classList.remove('popup_window_slidein');
@@ -165,6 +190,13 @@ function closeEditContactPopup(succesAnimationContact) {
     }, 300);
 }
 
+/**
+ * fill the input fields from edit contact popup
+ * @param {string} firstname - first name from input field
+ * @param {string} secondname - second name from input field
+ * @param {string} email - email from input field
+ * @param {string} phone - phone number from input field
+ */
 function fillInputfields(firstname, lastname, email, phone) {
     let actuallyFirstName = document.getElementById('edited_firstname');
     let actuallySecondName = document.getElementById('edited_secondname');
@@ -177,6 +209,9 @@ function fillInputfields(firstname, lastname, email, phone) {
     actuallyphoneNumber.value = phone;
 }
 
+/**
+ * save the contact which was edited
+ */
 function saveEditedContact() {
     let firstName = document.getElementById('edited_firstname');
     let secondName = document.getElementById('edited_secondname');
@@ -198,6 +233,12 @@ function saveEditedContact() {
     }
 }
 
+/**
+ * check if all impotant input fields filled from user to create or edit contact
+ * @param {string} firstname - first name from input field
+ * @param {string} secondname - second name from input field
+ * @returns - boolean; true if one important input is empty / false if all importnant inputs are filled
+ */
 function checkContactInputs(firstname, secondname) {
     let emptyInput = false;
 
@@ -220,6 +261,9 @@ function checkContactInputs(firstname, secondname) {
     return emptyInput;
 }
 
+/**
+ * reder all contacts in contact page
+ */
 function renderContacts() {
     sortContacts();
     let contactFirstLetterField = document.getElementById('listning');
@@ -242,19 +286,27 @@ function renderContacts() {
     firstLetter = [];
 }
 
+/**
+ * sort all contacts by alphabet
+ */
 function sortContacts() {
     contacts.sort((a, b) => a.second_name.localeCompare(b.second_name));
 }
 
+/**
+ * animation to disyplay succesfull create contact
+ */
 function successAnimationForNewContact() {
     let succesAnimationContact = document.getElementById('success_animation_contact');
     succesAnimationContact.classList.remove('d-none');
     setTimeout(() => {closeNewContactWindow(succesAnimationContact)}, "1300"); 
 }
 
+/**
+ * animation to disyplay succesfull edit contact
+ */
 function successAnimationForEditContact() {
     let succesAnimationContact = document.getElementById('success_animation_contact');
     succesAnimationContact.classList.remove('d-none');
     setTimeout(() => {closeEditContactPopup(succesAnimationContact)}, "1300");
 }
-
