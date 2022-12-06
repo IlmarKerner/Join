@@ -1,8 +1,6 @@
-let urgent = false;
-let medium = false;
-let low = false;
-let currentDraggedItem;
-
+/**
+ * load content of board page
+ */
 async function initBoard() {
     checkIfLogged();
     await downloadFromServer();
@@ -18,6 +16,9 @@ async function initBoard() {
     animateNewTask();
 }
 
+/**
+ * update percantage of every task
+ */
 function updateTasksPercent() {
     for (let i = 0; i < tasks.length; i++) {
         let element = tasks[i];
@@ -26,6 +27,9 @@ function updateTasksPercent() {
     }
 }
 
+/**
+ * update category to do
+ */
 function updateToDo() {
     let todos = tasks.filter(t => t['progress'] == 'toDo');
     document.getElementById('toDo').innerHTML = '';
@@ -35,7 +39,9 @@ function updateToDo() {
     }
 }
 
-
+/**
+ * update category in progress
+ */
 function updateInProgress() {
     let inProgress = tasks.filter(t => t['progress'] == 'inProgress');
     document.getElementById('inProgress').innerHTML = '';
@@ -45,7 +51,9 @@ function updateInProgress() {
     }
 }
 
-
+/**
+ * update category awaiting feedback
+ */
 function updateAwaitingFeedback() {
     let awaitingFeedbacks = tasks.filter(t => t['progress'] == 'awaitingFeedback');
     document.getElementById('awaitingFeedback').innerHTML = '';
@@ -55,7 +63,9 @@ function updateAwaitingFeedback() {
     }
 }
 
-
+/**
+ * update category done
+ */
 function updateDone() {
     let dones = tasks.filter(t => t['progress'] == 'done');
     document.getElementById('done').innerHTML = '';
@@ -65,49 +75,43 @@ function updateDone() {
     }
 }
 
-function addDropPosition() {
-    document.getElementById('toDoDropPosition').classList.remove('dNone');
-    document.getElementById('inProgressDropPosition').classList.remove('dNone');
-    document.getElementById('awaitingFeedbackDropPosition').classList.remove('dNone');
-    document.getElementById('doneDropPosition').classList.remove('dNone');
-}
-
-
-function removeDropPosition() {
-    document.getElementById('toDoDropPosition').classList.add('dNone');
-    document.getElementById('inProgressDropPosition').classList.add('dNone');
-    document.getElementById('awaitingFeedbackDropPosition').classList.add('dNone');
-    document.getElementById('doneDropPosition').classList.add('dNone');
-}
-
+/**
+ * get information to start drag and drop
+ * @param {number} id - id of tasks which start drag & drop
+ */
 function startDragging(id) {
     currentDraggedItem = id;
-    addDropPosition();
-
-    console.log(currentDraggedItem);
-    console.log('start');
 }
 
-
+/**
+ * update tasks after dragging
+ */
 function endDragging() {
-    removeDropPosition();
-    console.log('end');
     checkProgressBar();
 }
 
-
+/**
+ * need to allow drag & drop
+ * @param {*} ev - event
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-
+/**
+ * update task category after dragging
+ * @param {string} progress - category of task after dragging
+ */
 function drop(progress) {
     tasks[currentDraggedItem]['progress'] = progress;
     saveTasks();
     initBoard();
 }
 
-
+/**
+ * open popup of task to see more informations
+ * @param {number} id - number of position of task in array, tasks
+ */
 function openPopUp(id) {
     document.getElementById('popUpArea').classList.remove('dNone');
     document.getElementById('popUpArea').innerHTML = '';
@@ -116,7 +120,9 @@ function openPopUp(id) {
     fillInTaskAssignPopup(id);
 }
 
-
+/**
+ * close popup of task
+ */
 function closePopUp() {
     document.getElementById('popUpArea').classList.add('dNone');
     document.querySelector('.board_content').classList.remove('dNone');
@@ -125,7 +131,10 @@ function closePopUp() {
     }
 }
 
-
+/**
+ * open popup of task to edit it
+ * @param {number} id - number of position of task in array, tasks
+ */
 function openPopUpEdit(id) {
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
@@ -135,9 +144,11 @@ function openPopUpEdit(id) {
 
 }
 
+/**
+ * fill in the category of every task
+ */
 async function fillInCategory() {
     await loadCategories();
-
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
         let categoryContainer = document.getElementById(`cardCategory${i}`);
@@ -153,8 +164,29 @@ async function fillInCategory() {
     }
 }
 
+/**
+ * clear the initials of assigned persons in every task
+ */
+function clearInitialContainer() {
+    for (let i = 0; i < tasks.length; i++) {
+        let taskContainer = document.getElementById(`${i}`);
+        let initialsContainer = taskContainer.children[4].children[0];
+        initialsContainer.innerHTML = '';
+    }
+}
 
-function fillInAssinged() {
+/**
+ * clear the initials of assigned persons in every task in the popup
+ */
+function clearInitialContainerTaskPopup() {
+    let taskAssign = document.getElementById('taskAssignContainer');
+    taskAssign.innerHTML = '';
+}
+
+/**
+ * fill in the initials of assigned persons in every task
+ */
+ function fillInAssinged() {
     clearInitialContainer();
     for (let i = 0; i < tasks.length; i++) {
         let taskContainer = document.getElementById(`${i}`);
@@ -166,52 +198,36 @@ function fillInAssinged() {
     }
 }
 
-function clearInitialContainer() {
-    for (let i = 0; i < tasks.length; i++) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        initialsContainer.innerHTML = '';
-    }
-}
-
-function clearInitialContainerTaskPopup() {
-    let taskAssign = document.getElementById('taskAssignContainer');
-    taskAssign.innerHTML = '';
-}
-
+/**
+ * fill in the initials of assigned persons in every task in the popup
+ */
 function fillInTaskAssignPopup(id) {
     let taskAssign = document.getElementById('taskAssignContainer');
     clearInitialContainerTaskPopup();
     for (let i = 0; i < tasks[id]['assignet'].length; i++) {
         let initials = tasks[id]['initials'][i];
         let fullName = tasks[id]['assignet'][i];
-
         taskAssign.innerHTML += assignPopupHtml(initials, fullName);
     }
 }
 
-function fillInTaskAssign() {
-    for (let i = 0; i < tasks.length; i++) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        for (let j = 0; j < tasks[i]['assignet'].length; j++) {
-            let initials = tasks[i]['assignet'][j]['initials'];
-            initialsContainer.innerHTML += assignTaskHtml(j, initials);
-        }
-    }
-}
-
+/**
+ * get all informations for edit task
+ */
 function renderEditTaskCard() {
     let select = document.getElementById('select_assign_edit');
     select.innerHTML = '';
     sortContacts();
-    
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         select.innerHTML += editTaskSelectHtml(contact, i);
     }
 }
 
+/**
+ * render all assigned persons for edit task popup
+ * @param {number} i - number of position of task in array, tasks
+ */
 function addAssignEdit(i) {
     let option = document.getElementById(`option${i}`);
 
@@ -221,6 +237,10 @@ function addAssignEdit(i) {
     }
 }
 
+/**
+ * visualisieze all assigned contacts in edit task
+ * @param {number} id - number of position of task in array, tasks
+ */
 function visualAssignedPersonEdit(id) {
     let container = document.getElementById('visual_assign_edit');
     let assignedPerson = tasks[id]['assignet'];

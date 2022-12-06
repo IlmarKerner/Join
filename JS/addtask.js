@@ -1,16 +1,6 @@
-let contactSectionOpen = false;
-let selectTaskBoxOpen = false;
-let urgentImage = false;
-let mediumImage = false;
-let lowImage = false;
-let newTask = false;
-let newCategory = false;
-let prio;
-let taskProgress = 'toDo';
-let mediaforBoard = window.matchMedia("(max-width: 992px)");
-let subtask = [];
-let assignedPersons = [];
-
+/**
+ * render add task page, fill in options for inputs
+ */
 async function renderAddTask() {
     await downloadFromServer();
     loadTasks();
@@ -20,27 +10,31 @@ async function renderAddTask() {
     select.innerHTML = '';
     selectCategory.innerHTML = '';
     sortContacts();
-    
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         select.innerHTML += displayContactsforInput(contact, i);
     }
-
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i]['name'];
         selectCategory.innerHTML += displayCategoriesForInput(category, i);
     }
 }
 
+/**
+ * add a person to the task 
+ * @param {number} i - position in contatcs Array
+ */
 function addAssign(i) {
     let option = document.getElementById(`option${i}`);
-
     if(!assignedPersons.includes(option.innerHTML)){
         assignedPersons.push(option.innerHTML);
         visualAssignedPerson();
     }
 }
 
+/**
+ * display all persons who was added to the task
+ */
 function visualAssignedPerson() {
     let container = document.getElementById('visual_assign');
     container.innerHTML = '';
@@ -50,6 +44,10 @@ function visualAssignedPerson() {
     }
 }
 
+/**
+ * delete a person from the task 
+ * @param {number} i - position in contatcs Array
+ */
 function deleteAssignedPerson(i) {
     let select = document.getElementById(`assigned_person${i}`).innerHTML;
     let index = assignedPersons.indexOf(select, 0);
@@ -57,6 +55,9 @@ function deleteAssignedPerson(i) {
     visualAssignedPerson();
 }
 
+/**
+ * add a subtask to the task
+ */
 function addSubTask() {
     let subtasks = document.getElementById('addNewSubtask').value;
     subtask.push(subtasks);
@@ -67,9 +68,9 @@ function addSubTask() {
     }
 }
 
-let globalIdForTaskCard = 0;
-let initialsForTaskCard = [];
-
+/**
+ * create new task
+ */
 async function createTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
@@ -102,54 +103,76 @@ async function createTask() {
 
         tasks.push(taskCard);
         globalIdForTaskCard++;
-
         clearInputFieldsAddTask(title, description, category, assign, date);
         successAnimationAddTask();
         successAnimationAddTaskPopup();
         await saveTasks();
         newTask = true;
         await backend.setItem('newTask', JSON.stringify(newTask));
-
+        assignedPersons = [];
         setTimeout(() => {
             location.href = 'board.html';
         }, "1000")  
     }
 }
 
-
+/**
+ * succes animation on add task page if task created successful
+ */
 function successAnimationAddTask() {
     let succesAnimation = document.getElementById('success_animation');
-
     if (succesAnimation) {
         succesAnimation.classList.remove('d-none')
     }
 }
 
+/**
+ * succes animation onn add task popup if task created successful
+ */
 function successAnimationAddTaskPopup() {
     let succesAnimationPopup = document.getElementById('success_animation_popup');
-
     if (succesAnimationPopup) {
         succesAnimationPopup.classList.remove('d-none');
         setTimeout(() => {closeAddTaskPopup()}, "1300")  
     };
 }
 
+/**
+ * save tasks Array to server
+ */
 async function saveTasks() {
     await backend.setItem('modyfiedTasks', JSON.stringify(tasks));
 }
 
+/**
+ * load tasks Array from server
+ */
 function loadTasks() {
     tasks = JSON.parse(backend.getItem('modyfiedTasks')) || [];
 }
 
+/**
+ * save categories Array to server
+ */
 async function saveCategories() {
     await backend.setItem('categories', JSON.stringify(categories));
 }
 
+/**
+ * load categories Array from server
+ */
 function loadCategories() {
     categories = JSON.parse(backend.getItem('categories')) || [];
 }
 
+/**
+ * clear input fields after succesfull added task on add task page
+ * @param {string} title - title of task
+ * @param {string} description - description of task
+ * @param {string} category - category of task
+ * @param {string} assign - assign input
+ * @param {string} date - date input
+ */
 function clearInputFieldsAddTask(title, description, category, assign, date) {
     title.value = '';
     description.value = '';
@@ -158,6 +181,9 @@ function clearInputFieldsAddTask(title, description, category, assign, date) {
     date.value = '';
 }
 
+/**
+ * get initials from contact from Array to create Task
+ */
 function getInitialsFromContacts() {
     for (let i = 0; i < assignedPersons.length; i++) {
         const assignedPerson = assignedPersons[i];
@@ -170,6 +196,9 @@ function getInitialsFromContacts() {
     }
 }
 
+/**
+ * get a new unique id for Task
+ */
 function checkWhichIdIsFree() {
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
@@ -181,32 +210,9 @@ function checkWhichIdIsFree() {
     }
 }
 
-function showSelctedContacts() {
-    let selectbox = document.getElementById('assigned');
-    if (!contactSectionOpen) {
-        selectbox.classList.add('height210');
-        selectbox.classList.add('transition');
-        contactSectionOpen = true;
-    } else {
-        selectbox.classList.remove('height210');
-        selectbox.classList.add('height51');
-        contactSectionOpen = false;
-    }
-}
-
-function selectTaskCategory() {
-    let selectTaskBox = document.getElementById('selectTask');
-    if (!selectTaskBoxOpen) {
-        selectTaskBox.classList.add('height360');
-        selectTaskBox.classList.add('transition');
-        selectTaskBoxOpen = true;
-    } else {
-        selectTaskBox.classList.remove('height360');
-        selectTaskBox.classList.add('height51');
-        selectTaskBoxOpen = false;
-    }
-}
-
+/**
+ * switch the image of selected prio to urgent
+ */
 function changeImgUrgent() {
     document.getElementById('urgent').src = "../img/urgentbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
@@ -218,6 +224,9 @@ function changeImgUrgent() {
     prio = 'urgent';
 }
 
+/**
+ * switch the image of selected prio to medium
+ */
 function changeImgMedium() {
     document.getElementById('medium').src = "../img/mediumbutton.png";
     document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
@@ -229,6 +238,9 @@ function changeImgMedium() {
     prio = 'medium';
 }
 
+/**
+ * switch the image of selected prio to low
+ */
 function changeImgLow() {
     document.getElementById('low').src = "../img/lowbutton.png";
     document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
@@ -240,50 +252,26 @@ function changeImgLow() {
     prio = 'low';
 }
 
-function openAddTaskPopup(progress) {
-    checkProgress(progress);
-    document.querySelector('.addtask_popup').classList.remove('d-none');
-    document.querySelector('.blur_container').style = "filter: blur(5px);";
-    document.querySelector('.blur_container').classList.add('hidden');
-    document.querySelector('.profilebar').style = "filter: blur(5px);";
-    document.querySelector('.menu').style = "filter: blur(5px);";
-    loadAddTaskPopupWindow();
-    checkMediaforBoard(mediaforBoard);
-    renderAddTask();
-    document.querySelector('.addtask_popup').classList.add('popup_window_slidein');
-    setTimeout(() => {
-        document.querySelector('.addtask_popup').style = "transform: translateX(0vw)";
-    }, 300);
-}
-
-function closeAddTaskPopup() {
-    if (document.querySelector('.addtask_popup')) {
-        document.querySelector('.addtask_popup').style = "animation: slideout 0.3s;"
-        document.querySelector('.addtask_popup').classList.remove('popup_window_slidein');
-        setTimeout(() => {
-            document.querySelector('.addtask_popup').classList.add('d-none');
-            document.querySelector('.blur_container').style = "filter: none;";
-            document.querySelector('.blur_container').classList.remove('hidden');
-            document.querySelector('.menu').style = "filter: none;";
-            document.querySelector('.profilebar').style = "filter: none;";
-            document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";
-            restoreBoardContent();
-        }, 300);
-    }
-}
-
-function checkProgress(progress) {
-    taskProgress = progress;
-}
-
-function loadAddTaskPopupWindow() {
-    document.querySelector('.addtask_popup').innerHTML = addTaskPopupWindowContent();
-}
-
+/**
+ * clear all inputs on add task page
+ */
 function clearAddTask() {
-    openAddTaskPopup();
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('select_assign').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('low').src = "../img/lowbuttonwhite.png";
+    document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
+    document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
+    document.getElementById('visual_assign').innerHTML = '';
+    assignedPersons = [];
 }
 
+/**
+ * check if media of window >992px
+ * @param {*} mediaforBoard 
+ */
 function checkMediaforBoard(mediaforBoard) {
     if (document.querySelector('.board_content')) {
         if (mediaforBoard.matches) {
@@ -294,10 +282,9 @@ function checkMediaforBoard(mediaforBoard) {
     }
 }
 
-function restoreBoardContent() {
-    document.querySelector('.board_content').classList.remove('d-none');
-}
-
+/**
+ * check if new category selectet and display a new input if it's selected
+ */
 function checkCategory() {
     let category = document.getElementById('category');
     let newCategoryContainer = document.getElementById('new_category_container');
@@ -310,6 +297,10 @@ function checkCategory() {
     }
 }
 
+/**
+ * get the value of category or new category
+ * @returns - ovalue of the category
+ */
 function checkCategoryInput() {
     let category
     if (document.getElementById('new_category_container').classList.contains('dNone')) {
@@ -320,6 +311,10 @@ function checkCategoryInput() {
     return category
 }
 
+/**
+ * check if user selected a new category
+ * @param {string} category - value of input in add task
+ */
 function checkIfNewCategory(category) {
     let getNoCategory = false
     for (let i = 0; i < categories.length; i++) {
@@ -333,10 +328,12 @@ function checkIfNewCategory(category) {
     }
 }
 
+/**
+ * create a new category, push in Array and save on server
+ */
 async function getNewCategory() {
     let category = document.getElementById('new_category');
     let color = document.getElementById('color_picker');
-
     categories.push({
         "name": category.value,
         "color": color.value,
@@ -344,6 +341,12 @@ async function getNewCategory() {
     saveCategories();
 }
 
+/**
+ * validation for inputs add task
+ * @param {string} title - title of task
+ * @param {string} date - deadline of task
+ * @returns - boolean if every important input are filled or not
+ */
 function checkInputs(title, date) {
     let assign = document.getElementById('visual_assign');
     let urgentBtn = document.getElementById('urgent');
@@ -358,37 +361,31 @@ function checkInputs(title, date) {
     } else {
         title.classList.remove('empty');
     }
-
     if (date.value == '') {
         date.classList.add('empty');
     } else {
         date.classList.remove('empty');
     }
-
     if (assign.innerHTML == '') {
         document.getElementById('select_assign').classList.add('empty');
     } else {
         document.getElementById('select_assign').classList.remove('empty')
     }
-
     if (urgentBtn.classList.contains('active') || mediumBtn.classList.contains('active') || lowBtn.classList.contains('active')) {
         document.getElementById('devision').classList.remove('empty');
     } else {
         document.getElementById('devision').classList.add('empty');
     }
-
     if (!title.value == '' && !date.value == '' && !assign.innerHTML == '') {
         emptyInput = false;
     } else {
         emptyInput = true;
     }
-
     if (urgentBtn.classList.contains('active') || mediumBtn.classList.contains('active') || lowBtn.classList.contains('active')) {
         emptyPrio = false;
     } else {
         emptyPrio = true;
     }
-
     if (!emptyInput && !emptyPrio) {
         empty = false
     }
