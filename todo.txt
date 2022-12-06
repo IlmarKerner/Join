@@ -23,10 +23,12 @@ deactive login button while loading                 //DF --- DF
 html out of template folder                         //DF
 cheack favicon                                      //DF --- DF
 validation new contact                              //DF --- DF
+push gloabalvariables, addtaskpopup to html files   //DF --- DF
 
 max 400 lines                                       //DF
     -> addcontact.js --- DF
-    -> addtask.js
+    -> addtask.js --- DF
+    -> addtask_popup.js --- DF
     -> board.js
     -> categories.js
     -> hello.js
@@ -39,7 +41,8 @@ max 400 lines                                       //DF
 
 JSDoc document                                      //DF
     -> addcontact.js --- DF
-    -> addtask.js
+    -> addtask.js --- DF
+    -> addtask_popup.js --- DF
     -> board.js
     -> categories.js
     -> hello.js

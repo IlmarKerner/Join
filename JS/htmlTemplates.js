@@ -261,10 +261,6 @@ function assignPopupHtml(initials, fullName) {
         `;
 }
 
-function assignTaskHtml(i, initials) {
-    return/*html*/`<div class="assinged_contacts" id="assinged_contacts${j+1}">${initials}</div>`
-}
-
 function popUpEditContent(id) {
     element = tasks[id];
     return /*html*/`
