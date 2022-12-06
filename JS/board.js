@@ -4,7 +4,7 @@ let low = false;
 let currentDraggedItem;
 
 async function initBoard() {
-    checkIfLogged();
+    // checkIfLogged();
     await downloadFromServer();
     await loadTasks();
     updateTasksPercent();
@@ -205,7 +205,7 @@ function renderEditTaskCard() {
     let select = document.getElementById('select_assign_edit');
     select.innerHTML = '';
     sortContacts();
-    
+
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         select.innerHTML += editTaskSelectHtml(contact, i);
@@ -215,7 +215,7 @@ function renderEditTaskCard() {
 function addAssignEdit(i) {
     let option = document.getElementById(`option${i}`);
 
-    if(!assignedPersons.includes(option.innerHTML)){
+    if (!assignedPersons.includes(option.innerHTML)) {
         assignedPersons.push(option.innerHTML);
         visualAssignedPersonEdit(i);
     }
@@ -299,7 +299,7 @@ function successAnimationEditTaskPopup() {
 
     if (succesAnimationPopup) {
         succesAnimationPopup.classList.remove('d-none');
-        setTimeout(() => {closePopUp(succesAnimationPopup)}, "1300")  
+        setTimeout(() => { closePopUp(succesAnimationPopup) }, "1300")
     };
 }
 
@@ -369,7 +369,7 @@ function updateTasksPercent() {
 function filterTask(event) {
     let emptyTaskSearchInput = document.getElementById('searchTasks');
     let searchString = event.target.value.toLowerCase();
-    
+
     if (emptyTaskSearchInput.value == '') {
         initBoard();
     } else {
@@ -432,22 +432,22 @@ function fillInAssingedFilteredTasks() {
     clearInitialContainerFilteredTasks();
     for (let i = 0; i < tasks.length; i++) {
         if (document.getElementById(`${i}`)) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        for (let j = 0; j < tasks[i]['initials'].length; j++) {
-            let initials = tasks[i]['initials'][j];
-            initialsContainer.innerHTML += assignHtml(j, initials);
+            let taskContainer = document.getElementById(`${i}`);
+            let initialsContainer = taskContainer.children[4].children[0];
+            for (let j = 0; j < tasks[i]['initials'].length; j++) {
+                let initials = tasks[i]['initials'][j];
+                initialsContainer.innerHTML += assignHtml(j, initials);
+            }
         }
-    }
     }
 }
 
 function clearInitialContainerFilteredTasks() {
     for (let i = 0; i < tasks.length; i++) {
         if (document.getElementById(`${i}`)) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        initialsContainer.innerHTML = '';
+            let taskContainer = document.getElementById(`${i}`);
+            let initialsContainer = taskContainer.children[4].children[0];
+            initialsContainer.innerHTML = '';
         }
     }
 }
@@ -460,7 +460,7 @@ async function animateNewTask() {
         let taskContainer = document.getElementById(`${taskId}`);
         let containerId = tasks[taskId]['progress'];
         let id = document.getElementById(`${containerId}`);
-        id.scrollTo({top: id.scrollHeight, behavior: 'smooth'});
+        id.scrollTo({ top: id.scrollHeight, behavior: 'smooth' });
         let task = document.getElementById(`${id}`);
         setTimeout(() => {
             taskContainer.classList.add('new-task');
