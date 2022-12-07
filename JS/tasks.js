@@ -1,3 +1,6 @@
+/**
+ * - all tasks
+ */
 let tasks = [
     {
         assignet: [ "Greta Korn", "Peter Schleich" ],

@@ -30,8 +30,11 @@ function updateTasksPercent() {
 /**
  * update category to do
  */
-function updateToDo() {
-    let todos = tasks.filter(t => t['progress'] == 'toDo');
+function updateToDo(filteredTasks) {
+    let todos;
+    if (filteredTasks){todos = filteredTasks.filter(t => t['progress'] == 'toDo')}
+    else              {todos = tasks.filter(t => t['progress'] == 'toDo')}
+
     document.getElementById('toDo').innerHTML = '';
     for (let i = 0; i < todos.length; i++) {
         let element = todos[i];
@@ -42,8 +45,11 @@ function updateToDo() {
 /**
  * update category in progress
  */
-function updateInProgress() {
-    let inProgress = tasks.filter(t => t['progress'] == 'inProgress');
+function updateInProgress(filteredTasks) {
+    let inProgress;
+    if (filteredTasks){inProgress = filteredTasks.filter(t => t['progress'] == 'inProgress')}
+    else              {inProgress = tasks.filter(t => t['progress'] == 'inProgress')}
+
     document.getElementById('inProgress').innerHTML = '';
     for (let i = 0; i < inProgress.length; i++) {
         let element = inProgress[i];
@@ -54,8 +60,11 @@ function updateInProgress() {
 /**
  * update category awaiting feedback
  */
-function updateAwaitingFeedback() {
-    let awaitingFeedbacks = tasks.filter(t => t['progress'] == 'awaitingFeedback');
+function updateAwaitingFeedback(filteredTasks) {
+    let awaitingFeedbacks;
+    if (filteredTasks){awaitingFeedbacks = filteredTasks.filter(t => t['progress'] == 'awaitingFeedback')}
+    else              {awaitingFeedbacks = tasks.filter(t => t['progress'] == 'awaitingFeedback')}
+
     document.getElementById('awaitingFeedback').innerHTML = '';
     for (let i = 0; i < awaitingFeedbacks.length; i++) {
         let element = awaitingFeedbacks[i];
@@ -66,8 +75,11 @@ function updateAwaitingFeedback() {
 /**
  * update category done
  */
-function updateDone() {
-    let dones = tasks.filter(t => t['progress'] == 'done');
+function updateDone(filteredTasks) {
+    let dones;
+    if (filteredTasks){dones = filteredTasks.filter(t => t['progress'] == 'done')}
+    else              {dones = tasks.filter(t => t['progress'] == 'done')}
+
     document.getElementById('done').innerHTML = '';
     for (let i = 0; i < dones.length; i++) {
         let element = dones[i];
@@ -126,9 +138,6 @@ function openPopUp(id) {
 function closePopUp() {
     document.getElementById('popUpArea').classList.add('dNone');
     document.querySelector('.board_content').classList.remove('dNone');
-    if (succesAnimationPopup) {
-        succesAnimationPopup.classList.remove('d-none');
-    }
 }
 
 /**
@@ -140,8 +149,6 @@ function openPopUpEdit(id) {
     document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
     renderEditTaskCard(id);
     visualAssignedPersonEdit(id);
-    updatePrio(id);
-
 }
 
 /**
@@ -169,9 +176,11 @@ async function fillInCategory() {
  */
 function clearInitialContainer() {
     for (let i = 0; i < tasks.length; i++) {
+        if (document.getElementById(`${i}`)) {
         let taskContainer = document.getElementById(`${i}`);
         let initialsContainer = taskContainer.children[4].children[0];
         initialsContainer.innerHTML = '';
+        }
     }
 }
 
@@ -189,12 +198,14 @@ function clearInitialContainerTaskPopup() {
  function fillInAssinged() {
     clearInitialContainer();
     for (let i = 0; i < tasks.length; i++) {
+        if (document.getElementById(`${i}`)) {
         let taskContainer = document.getElementById(`${i}`);
         let initialsContainer = taskContainer.children[4].children[0];
         for (let j = 0; j < tasks[i]['initials'].length; j++) {
             let initials = tasks[i]['initials'][j];
             initialsContainer.innerHTML += assignHtml(j, initials);
         }
+    }
     }
 }
 
@@ -251,28 +262,22 @@ function visualAssignedPersonEdit(id) {
     }
 }
 
+/**
+ * delete assigned person in the popup of edit task
+ * @param {number} id - number of position of task in array, tasks
+ * @param {number} i - number of position of person in array, assignedPerson
+ */
 function deleteAssignedPersonBoard(id, i) {
     tasks[id]['assignet'].splice(i, 1);
     tasks[id]['initials'].splice(i, 1);
-    visualAssignedPerson(id);
+    visualAssignedPersonEdit(id);
+    saveTasks();
     initBoard();
 }
 
-function updatePrio(id) {
-    let element = tasks[id];
-    if (element['prio'] == "urgent") {
-        document.getElementById('urgentimg').src = "../img/urgentbutton.png";
-    }
-    if (element['prio'] == "medium") {
-        document.getElementById('mediumimg').src = "../img/mediumbutton.png";
-    }
-    if (element['prio'] == "low") {
-        document.getElementById('lowimg').src = "../img/lowbutton.png";
-    }
-    console.log(document.getElementById('urgentimg').src);
-}
-
-
+/**
+ * change the prio in edit task popup to urgent
+ */
 function changeUrgent() {
     document.getElementById('urgentimg').src = "../img/urgentbutton.png";
     document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
@@ -282,7 +287,9 @@ function changeUrgent() {
     low = false;
 }
 
-
+/**
+ * change the prio in edit task popup to medium
+ */
 function changeMedium() {
     document.getElementById('mediumimg').src = "../img/mediumbutton.png";
     document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
@@ -292,7 +299,9 @@ function changeMedium() {
     low = false;
 }
 
-
+/**
+ * change the prio in edit task popup to low
+ */
 function changeLow() {
     document.getElementById('lowimg').src = "../img/lowbutton.png";
     document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
@@ -302,29 +311,38 @@ function changeLow() {
     low = true;
 }
 
-
+/**
+ * save all new specifications to server if click the 'ok'-button in edit task popup
+ * @param {number} id - number of position of task in array, tasks
+ */
 async function popUpEditSave(id) {
-    let element = tasks[id]
-    savePrio(element);
-    saveHeadline(id, element);
-    saveDescription(id, element);
-    saveDate(id, element);
+    saveChanges(id);
     successAnimationEditTaskPopup();
     await saveTasks();
     initBoard();
 }
 
+/**
+ * animation for successfull change task specifications
+ */
 function successAnimationEditTaskPopup() {
     let succesAnimationPopup = document.getElementById('success_animation_edit_popup');
-
     if (succesAnimationPopup) {
         succesAnimationPopup.classList.remove('d-none');
         setTimeout(() => {closePopUp(succesAnimationPopup)}, "1300")  
     };
 }
 
+/**
+ * save changes in edit task 
+ * @param {number} id - number of position of task in array, tasks
+ */
+function saveChanges(id) {
+    let element = tasks[id]
+    element['headline'] = document.getElementById(`title${id}`).value;
+    element['description'] = document.getElementById(`description${id}`).value;
+    element['dueDate'] = document.getElementById(`dueDate${id}`).value;
 
-function savePrio(element) {
     if (urgent == true) {
         element['prio'] = 'urgent';
     }
@@ -336,33 +354,9 @@ function savePrio(element) {
     }
 }
 
-
-function saveHeadline(id, element) {
-    element['headline'] = document.getElementById(`title${id}`).value;
-}
-
-
-function saveDescription(id, element) {
-    element['description'] = document.getElementById(`description${id}`).value;
-}
-
-
-function saveDate(id, element) {
-    element['dueDate'] = document.getElementById(`dueDate${id}`).value;
-}
-
-
-function getTaskIndex(taskcard) {
-    return tasks.indexOf(taskcard);
-}
-
-function resetTasks() {
-    let emptyTaskSearchInput = document.getElementById('searchTasks');
-    if (emptyTaskSearchInput = '') {
-        includeHTML();
-    }
-}
-
+/**
+ * check and update progress bar in the tasks on the board page
+ */
 function checkProgressBar() {
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
@@ -378,14 +372,10 @@ function checkProgressBar() {
     }
 }
 
-function updateTasksPercent() {
-    for (let i = 0; i < tasks.length; i++) {
-        let element = tasks[i];
-        element['tasksPercent'] = '';
-        element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
-    }
-}
-
+/**
+ * filter task overview on board page by fill in search input
+ * @param {*} event 
+ */
 function filterTask(event) {
     let emptyTaskSearchInput = document.getElementById('searchTasks');
     let searchString = event.target.value.toLowerCase();
@@ -400,78 +390,18 @@ function filterTask(event) {
                 taskcard['prio'].toLowerCase().includes(searchString)
             );
         });
-        updateToDoFilteredTasks(filteredTasks);
-        updateInProgressFilteredTasks(filteredTasks);
-        updateAwaitingFeedbackFilteredTasks(filteredTasks);
-        updateDoneFilteredTasks(filteredTasks);
-        fillInAssingedFilteredTasks();
+        updateToDo(filteredTasks);
+        updateInProgress(filteredTasks);
+        updateAwaitingFeedback(filteredTasks);
+        updateDone(filteredTasks);
+        fillInCategory();
+        fillInAssinged();
     }
 }
 
-
-function updateToDoFilteredTasks(filteredTasks) {
-    let todos = filteredTasks.filter(t => t['progress'] == 'toDo');
-    document.getElementById('toDo').innerHTML = '';
-    for (let i = 0; i < todos.length; i++) {
-        let element = todos[i];
-        document.getElementById('toDo').innerHTML += cardContent(element);
-    }
-}
-
-
-function updateInProgressFilteredTasks(filteredTasks) {
-    let inProgress = filteredTasks.filter(t => t['progress'] == 'inProgress');
-    document.getElementById('inProgress').innerHTML = '';
-    for (let i = 0; i < inProgress.length; i++) {
-        let element = inProgress[i];
-        document.getElementById('inProgress').innerHTML += cardContent(element);
-    }
-}
-
-
-function updateAwaitingFeedbackFilteredTasks(filteredTasks) {
-    let awaitingFeedbacks = filteredTasks.filter(t => t['progress'] == 'awaitingFeedback');
-    document.getElementById('awaitingFeedback').innerHTML = '';
-    for (let i = 0; i < awaitingFeedbacks.length; i++) {
-        let element = awaitingFeedbacks[i];
-        document.getElementById('awaitingFeedback').innerHTML += cardContent(element);
-    }
-}
-
-
-function updateDoneFilteredTasks(filteredTasks) {
-    let dones = filteredTasks.filter(t => t['progress'] == 'done');
-    document.getElementById('done').innerHTML = '';
-    for (let i = 0; i < dones.length; i++) {
-        let element = dones[i];
-        document.getElementById('done').innerHTML += cardContent(element);
-    }
-}
-
-function fillInAssingedFilteredTasks() {
-    clearInitialContainerFilteredTasks();
-    for (let i = 0; i < tasks.length; i++) {
-        if (document.getElementById(`${i}`)) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        for (let j = 0; j < tasks[i]['initials'].length; j++) {
-            let initials = tasks[i]['initials'][j];
-            initialsContainer.innerHTML += assignHtml(j, initials);
-        }
-    }
-    }
-}
-
-function clearInitialContainerFilteredTasks() {
-    for (let i = 0; i < tasks.length; i++) {
-        if (document.getElementById(`${i}`)) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        initialsContainer.innerHTML = '';
-        }
-    }
-}
-
+/**
+ * animation to display a new task on board page
+ */
 async function animateNewTask() {
     newTask = JSON.parse(backend.getItem('newTask'));
     await backend.setItem('modyfiedTasks', JSON.stringify(tasks));
@@ -481,7 +411,6 @@ async function animateNewTask() {
         let containerId = tasks[taskId]['progress'];
         let id = document.getElementById(`${containerId}`);
         id.scrollTo({top: id.scrollHeight, behavior: 'smooth'});
-        let task = document.getElementById(`${id}`);
         setTimeout(() => {
             taskContainer.classList.add('new-task');
         }, "800");

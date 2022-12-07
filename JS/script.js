@@ -1,11 +1,13 @@
-function renderContent() {
-    console.log('just do IT');
-}
-
+/**
+ * load the menu bar
+ */
 function loadMenuBar() {
     document.getElementById('menubar').load("menu.html");
 }
 
+/**
+ * check if user already logged
+ */
 function checkIfLogged() {
 
     let loggedUser;

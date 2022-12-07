@@ -1,3 +1,6 @@
+/**
+ * all contacts
+ */
 let contacts = [{
     addetAt: 1669134223018,
     email: "PiaRose@web.de",

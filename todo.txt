@@ -24,34 +24,37 @@ html out of template folder                         //DF
 cheack favicon                                      //DF --- DF
 validation new contact                              //DF --- DF
 push gloabalvariables, addtaskpopup to html files   //DF --- DF
+logout                                              //DF
 
 max 400 lines                                       //DF
-    -> addcontact.js --- DF
-    -> addtask.js --- DF
-    -> addtask_popup.js --- DF
-    -> board.js
-    -> categories.js
-    -> hello.js
-    -> htmlTemplates.js
-    -> includeHTML.js
-    -> register_login.js
-    -> script.js
+    -> addcontact.js        --- DF
+    -> addtask.js           --- DF
+    -> addtask_popup.js     --- DF
+    -> board.js             --- DF
+    -> categories.js        --- DF
+    -> hello.js             --- DF
+    -> htmlTemplates.js     --- DF
+    -> includeHTML.js       --- DF
+    -> register_login.js    --- DF
+    -> script.js            --- DF
     -> summary.js
-    -> tasks.js
+    -> tasks.js             --- DF
+    -> contacts.js          --- DF
 
 JSDoc document                                      //DF
-    -> addcontact.js --- DF
-    -> addtask.js --- DF
-    -> addtask_popup.js --- DF
-    -> board.js
-    -> categories.js
-    -> hello.js
-    -> htmlTemplates.js
-    -> includeHTML.js
-    -> register_login.js
-    -> script.js
+    -> addcontact.js        --- DF
+    -> addtask.js           --- DF
+    -> addtask_popup.js     --- DF
+    -> board.js             --- DF
+    -> categories.js        --- DF
+    -> hello.js             --- DF
+    -> htmlTemplates.js     --- DF
+    -> includeHTML.js       --- DF
+    -> register_login.js    --- DF
+    -> script.js            --- DF
     -> summary.js
-    -> tasks.js
+    -> tasks.js             --- DF
+    -> contacts.js          --- DF
 
 
 
