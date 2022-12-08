@@ -7,7 +7,6 @@ async function init() {
     enableLoadingAnimation()
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || []; // load all users
-    renderContent();
     checkIfAutocomplete();
     disableLoadingAnimation();
     enableLoginButtons();
@@ -136,14 +135,6 @@ function enableLoadingAnimation() {
  */
 function disableLoadingAnimation() {
     document.getElementById('loading_animation').classList.add('d-none');
-}
-
-/**
- * logout current user and go to index
- */
-async function logout() {
-    users = JSON.parse(backend.getItem('users')) || []; // load all users
-    await backend.deleteItem('currentUser'); // delete current User
 }
 
 /**

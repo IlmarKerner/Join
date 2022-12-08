@@ -15,6 +15,7 @@ let newCategory = false;
 let prio;
 let taskProgress = 'toDo';
 let mediaforBoard = window.matchMedia("(max-width: 992px)");
+
 let subtask = [];
 let assignedPersons = [];
 let globalIdForTaskCard = 0;
@@ -29,3 +30,8 @@ let currentDraggedItem;
 // hello.js
 let greetingTime;
 let activeUser;
+
+//summary.js
+const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];

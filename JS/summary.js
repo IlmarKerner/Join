@@ -1,7 +1,6 @@
-const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-];
-
+/**
+ * - render summary page
+ */
 function initSummary() {
     checkIfLogged();
     showNumberOfTasks();
@@ -10,12 +9,18 @@ function initSummary() {
     initGreetingSummary();
 }
 
+/**
+ * - displays the number of all tasks
+ */
 function showNumberOfTasks() {
     let boardNumber = document.getElementById('tasksInBoard');
     boardNumber.innerHTML = '';
     boardNumber.innerHTML = tasks.length;
 }
 
+/**
+ * - greeting the user with the actually day time
+ */
 async function initGreetingSummary() {
     await downloadFromServer();
     let activeUser = JSON.parse(backend.getItem('currentUser')) || []; // load all users
@@ -24,15 +29,24 @@ async function initGreetingSummary() {
     replaceNameSummary(activeUser);
 }
 
+/**
+ * - render the actually day time
+ */
 function replaceDayTimeSummary() {
     document.getElementById('dayTime').innerHTML = greetingTime;
 }
 
+/**
+ * - render the actually user
+ * @param {string} activeUser - logged user
+ */
 function replaceNameSummary(activeUser) {
     document.getElementById('greeting_Name').innerHTML = activeUser;
 }
 
-
+/**
+ * - render the number of the tasks splitted in categories
+ */
 function showNumberOfTasksAwaitingFeedback() {
     let progressNumber = 0;
     let awaitingFeedback = 0;
@@ -68,12 +82,18 @@ function showNumberOfTasksAwaitingFeedback() {
     urgents.innerHTML = urgent;
 }
 
-
+/**
+ * - displays the next deadline of tasks
+ */
 function showNextCardAwaiting() {
     let nextcard = document.getElementById('deadlineDate');
     nextcard.innerHTML = `${findMinDate()}`;
 }
 
+/**
+ * - calculate the next deadline of tasks
+ * @returns - date of the next deadline of tasks
+ */
 function findMinDate() {
     let dates = tasks.map(({dueDate}) => new Date(dueDate));
     let minDate = new Date(Math.min(...dates));
