@@ -1,3 +1,6 @@
+/**
+ * categories which can used by add a new task
+ */
 let categories = [{
     name: "Backoffice",
     color: "orange",

@@ -123,6 +123,7 @@ html {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+    height: 100%;
 }
 
 .board_column_content::-webkit-scrollbar {
@@ -354,9 +355,6 @@ html {
     .board_overview {
         margin-top: 80px;
         height: calc(100vh - 50px - 81.2px - 30px - 89px);
-    }
-    .board_column_content {
-        height: 100%;
     }
 }
 

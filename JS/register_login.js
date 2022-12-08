@@ -1,20 +1,20 @@
-let users = [];
-let currentUser = [];
-let loggedUser;
-
 setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
 
-
+/**
+ * initialisize content for Index
+ */
 async function init() {
     enableLoadingAnimation()
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || []; // load all users
-    renderContent();
     checkIfAutocomplete();
     disableLoadingAnimation();
     enableLoginButtons();
 }
 
+/**
+ * - register user
+ */
 async function addUser() {
     let name = document.getElementById('register_name');
     let email = document.getElementById('register_email');
@@ -28,8 +28,9 @@ async function addUser() {
       }, "1000")  
 }
 
-let counter = 0;
-
+/**
+ * - login and go to the next page
+ */
 async function login() {
 
     let email = document.getElementById('login_email');
@@ -54,6 +55,9 @@ async function login() {
     }
 }
 
+/**
+ * - guest login works without sign up
+ */
 async function guestLogin() {
     activeUser = 'guest';
     currentUser.push(['guest']);
@@ -62,6 +66,9 @@ async function guestLogin() {
     location.href = 'hello.html';
 }
 
+/**
+ * - animation that highlight the forgot password button
+ */
 function animateForgotPassword() {
     document.getElementById('forgot_password_link').animate(
         [
@@ -77,6 +84,9 @@ function animateForgotPassword() {
     );
 }
 
+/**
+ * - function for autofill login at the next time
+ */
 function rememberMe() {
 
     let checkBox = document.getElementById('remember_me');
@@ -94,6 +104,9 @@ function rememberMe() {
       }
 }
 
+/**
+ * - check if remember me button was clicked last time
+ */
 function checkIfAutocomplete() {
 
     let email = document.getElementById('login_email');
@@ -110,19 +123,23 @@ function checkIfAutocomplete() {
     }
 }
 
+/**
+ * loading animation while downloading all informations from server
+ */
 function enableLoadingAnimation() {
     document.getElementById('loading_animation').classList.remove('d-none');
 }
 
+/**
+ * disable loading animation if download from server was succesfull
+ */
 function disableLoadingAnimation() {
     document.getElementById('loading_animation').classList.add('d-none');
 }
 
-async function logout() {
-    users = JSON.parse(backend.getItem('users')) || []; // load all users
-    await backend.deleteItem('currentUser'); // delete current User
-}
-
+/**
+ * - enable login buttons if download from server was succesfull
+ */
 function enableLoginButtons() {
     let loginBtn = document.getElementById('logInButton');
     let guestLoginBtn = document.getElementById('guestLogInButton');

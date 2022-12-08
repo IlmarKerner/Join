@@ -44,15 +44,45 @@
         right: 10%;
         gap: 26px;
     }
+
+    .profilepicture {
+        position: relative;
+    }
     
     .profilepicture img {
         width: 49px;
         height: 49px;
         border-radius: 100%;
+        cursor: pointer;
     }
     
     .profilebar_logo {
         display: none;
+    }
+    
+    .profile_information {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #2A3647;
+        width: 100px;
+        height: 30px;
+        position: absolute;
+        right: 50%;
+        top: 64px;
+        color: white;
+        border-radius: 5px 0 5px 5px;
+    }
+
+    .profile_information a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .profile_information div:hover, a:hover{
+        cursor: pointer;
+        color: #29ABE2;
     }
     
     @media (max-width: 992px) {
@@ -88,6 +118,10 @@
             right: 5%;
             width: unset;
         }
+
+        .profile_information {
+        height: 70px;
+        }
     }
     
     @media (max-width: 400px) {
@@ -115,7 +149,10 @@
                 <a href="help.html"><img src="../img/q-image.png"></a>
             </div>
             <div class="profilepicture">
-                <img src="../img/profile.png">
+                <img src="../img/profile.png" onclick="openProfilInformationPopUp()">
+                <div class="profile_information d-none" id="profile_information">
+                    <div onclick="logout()">logout</div>
+                </div>
             </div>
         </div>
     </div>

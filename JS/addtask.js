@@ -16,7 +16,7 @@ async function renderAddTask() {
     }
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i]['name'];
-        selectCategory.innerHTML += displayCategoriesForInput(category, i);
+        selectCategory.innerHTML += displayCategoriesForInput(category);
     }
 }
 
@@ -53,6 +53,7 @@ function deleteAssignedPerson(i) {
     let index = assignedPersons.indexOf(select, 0);
     assignedPersons.splice(index, 1);
     visualAssignedPerson();
+    saveTasks();
 }
 
 /**

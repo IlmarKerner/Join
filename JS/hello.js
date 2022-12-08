@@ -1,6 +1,6 @@
-let greetingTime;
-let activeUser;
-
+/**
+ * initialisize greeting animation for current user 
+ */
 async function initGreeting() {
     await downloadFromServer();
     activeUser = JSON.parse(backend.getItem('currentUser')) || []; // load all users
@@ -17,9 +17,10 @@ async function initGreeting() {
 
 }
 
-
+/**
+ * get the actually time of the day
+ */
 function checkDayTime() {
-
     let today = new Date()
     let curHr = today.getHours()
 
@@ -32,18 +33,32 @@ function checkDayTime() {
     }
 }
 
+/**
+ * fill the actually greeting day time
+ */
 function replaceDayTime() {
     document.getElementById('day_time').innerHTML = greetingTime;
 }
 
+/**
+ * fill the actually user in the greetin
+ * @param {string} activeUser - logged user
+ */
 function replaceName(activeUser) {
     document.getElementById('greetingName').innerHTML = activeUser;
 }
 
+/**
+ * fill the actually greeting day time on board page
+ */
 function replaceDayTimeInSummary() {
     document.getElementById('dayTime').innerHTML = greetingTime;
 }
 
+/**
+ * fill the actually user in the greeting on board page
+ * @param {string} activeUser - logged user
+ */
 function replaceNameInSummary(activeUser) {
     document.getElementById('greeting_Name').innerHTML = activeUser;
 }
