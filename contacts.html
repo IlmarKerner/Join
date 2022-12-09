@@ -93,24 +93,24 @@
                     </div>
 
                 </div>
-                <div class="fill_in_fields">
+                <form class="fill_in_fields">
                     <div class="first_name">
-                        <input type="text" placeholder="First name" required id="firstname">
+                        <input type="text" placeholder="First name" id="firstname">
                         <img src="img/profileicon3.png">
                     </div>
                     <div class="last_name">
-                        <input type="text" placeholder="Last name" required id="secondname">
+                        <input type="text" placeholder="Last name" id="secondname">
                         <img src="img/profileicon3.png">
                     </div>
                     <div class="email_field">
-                        <input type="email" placeholder="Email" required id="email" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/">
+                        <input type="email" placeholder="Email" id="email">
                         <img src="img/mailicon.png">
                     </div>
                     <div class="phone_field">
-                        <input type="number" placeholder="Phone" required id="phone" minlength="10" maxlength="12">
+                        <input type="number" placeholder="Phone" id="phone" minlength="10" maxlength="12">
                         <img src="img/phone-line.png">
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -152,7 +152,7 @@
                         <img src="img/profileicon3.png">
                     </div>
                     <div class="email_field">
-                        <input type="email" placeholder="Email" required id="edited_email">
+                        <input type="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required id="edited_email">
                         <img src="img/mailicon.png">
                     </div>
                     <div class="phone_field">

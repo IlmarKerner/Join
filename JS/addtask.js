@@ -24,10 +24,10 @@ async function renderAddTask() {
  * add a person to the task 
  * @param {number} i - position in contatcs Array
  */
-function addAssign(i) {
-    let option = document.getElementById(`option${i}`);
-    if(!assignedPersons.includes(option.innerHTML)){
-        assignedPersons.push(option.innerHTML);
+function addAssign() {
+    let option = document.getElementById('select_assign');
+    if(!assignedPersons.includes(option.value)){
+        assignedPersons.push(option.value);
         visualAssignedPerson();
     }
 }

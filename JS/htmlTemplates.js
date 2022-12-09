@@ -94,7 +94,7 @@ function letterAlreadyExist(i, initials) {
  * @returns - HTML
  */
 function displayContactsforInput(contact, i) {
-    return /*html*/`<option value="" onclick="addAssign(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
+    return /*html*/`<option value="${contact['first_name']} ${contact['second_name']}" onchange="addAssign()" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
 }
 
 /**
@@ -155,7 +155,7 @@ function addTaskPopupWindowContent() {
             <div class="margin-top50">
                 <p>Assignet to</p>
             </div>
-            <select class="select_assign" id="select_assign" placeholder="Assignet to" required>
+            <select class="select_assign" id="select_assign" placeholder="Assignet to" onchange="addAssign()" required>
                 <!-- JAVASCRIPT -->
             </select>
             <div class="visual_assign" id="visual_assign"></div>

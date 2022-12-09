@@ -28,17 +28,13 @@
     margin-left: 20%;
 }
 
-.dashboard span {
-    margin-right: 20%;
-}
-
 .dashboard a {
     text-decoration: none;
 }
 
-.dashboard div {
+.summary, .board, .add_task, .contacts, .legal_notice {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 232px;
     height: 46px;
@@ -48,6 +44,20 @@
 .dashboard div:hover {
     background-color: #344459;
     transition: all 125ms ease-in-out;
+}
+
+.menu_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.menu_text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 60%;
 }
 
 .dashboard span {
@@ -72,7 +82,6 @@
     align-items: center;
     justify-content: center;
     padding: 8px;
-    gap: 20px;
     width: 232px;
     height: 46px;
     cursor: pointer;

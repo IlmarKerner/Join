@@ -82,6 +82,7 @@
     width: 422px;
     height: 51px;
     background-color: white;
+    outline: none;
 }
 
 .description textarea {
@@ -95,6 +96,7 @@
     width: 422px;
     height: 119px;
     background-color: white;
+    outline: none;
 }
 
 .description p {
@@ -139,6 +141,7 @@
     width: 422px;
     height: 51px;
     background-color: white;
+    outline: none;
 }
 
 .date p {
@@ -327,7 +330,8 @@
     font-size: 18px;
     border: 1px solid #D1D1D1;
     border-radius: 10px;
-    padding: 0 21px;
+    padding: 8px 21px;
+    outline: none;
 }
 
 .new_category_container{
@@ -370,6 +374,7 @@
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 0 21px;
+    outline: none;
 }
 
 .visual_assign {

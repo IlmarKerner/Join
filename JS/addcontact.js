@@ -23,7 +23,7 @@ function addContact() {
     let email = document.getElementById('email');
     let phone = document.getElementById('phone');
     let initials = (firstname.value.charAt(0) + secondname.value.charAt(0)).toUpperCase();
-    if (!checkContactInputs(firstname, secondname)) {
+    if (!checkContactInputs(firstname, secondname) && checkPhoneNumber() && checkEmail()) {
 
         let contactInfo = {
             "first_name": firstname.value,
@@ -95,11 +95,11 @@ function closeNewContactWindow(succesAnimationContact) {
     document.getElementById('popupAddContact').classList.remove('popup_window_slidein');
     document.getElementById('popupAddContact').classList.add('popup_window_slideout');
     document.getElementById('contactsContainer').style = "filter: none;";
+    if (succesAnimationContact){succesAnimationContact.classList.add('d-none')}
     setTimeout(() => {
         document.getElementById('popupAddContact').classList.add('d-none');
         document.getElementById('contactsContainer').style = "filter: none;";
         document.getElementById('popupAddContact').style = "transform: translateX(100vw)";
-        if (succesAnimationContact){succesAnimationContact.classList.add('d-none')}
     }, 300);
 }
 
@@ -183,11 +183,11 @@ function closeEditContactPopup(succesAnimationContact) {
     document.getElementById('popupEditContact').classList.remove('popup_window_slidein');
     document.getElementById('popupEditContact').classList.add('popup_window_slideout');
     document.getElementById('contactsContainer').style = "filter: none;";
+    if(succesAnimationContact){succesAnimationContact.classList.add('d-none')}
     setTimeout(() => {
         document.getElementById('popupEditContact').classList.add('d-none');
         document.getElementById('contactsContainer').style = "filter: none;";
         document.getElementById('popupEditContact').style = "transform: translateX(100vw)";
-        if(succesAnimationContact){succesAnimationContact.classList.add('d-none')}
     }, 300);
 }
 
@@ -311,3 +311,53 @@ function successAnimationForEditContact() {
     succesAnimationContact.classList.remove('d-none');
     setTimeout(() => {closeEditContactPopup(succesAnimationContact)}, "1300");
 }
+
+/**
+ * check the phone number for validation
+ * @returns - boolean
+ */
+function checkPhoneNumber() {
+    let phoneNumber = false;
+    let input;
+
+    if (document.getElementById("phone")) {
+        input = document.getElementById("phone");
+    } else {
+        input = document.getElementById("edited_phone");
+    }
+
+    if (input.value.length < 10 || input.value.length > 14) {
+        input.value = '';
+        input.placeholder = 'please use a valid phone number';
+        phoneNumber = false
+    } else {
+        input.placeholder = 'Phone';
+        phoneNumber = true
+    }
+    return phoneNumber;
+}
+
+/**
+ * check the email for validation
+ * @returns - boolean
+ */
+function checkEmail() {
+    let email = false;
+    let input;
+
+    if (document.getElementById("email")) {
+        input = document.getElementById("email");
+    } else {
+        input = document.getElementById("edited_email");
+    }
+  
+    if (input.value == "" || input.value.indexOf("@", 0) < 0 || input.value.indexOf(".", 0) < 0) {
+        input.value = '';
+        input.placeholder = 'please use a valid email';
+        email = false
+    } else {
+        input.placeholder = 'Email';
+        email = true;
+    }
+    return email;
+  }
