@@ -171,6 +171,7 @@
     justify-content: space-between;
     width: 422px;
     margin-top: 8px;
+    border-radius: 10px;
 }
 
 .urgent {

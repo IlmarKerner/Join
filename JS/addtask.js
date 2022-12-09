@@ -215,9 +215,9 @@ function checkWhichIdIsFree() {
  * switch the image of selected prio to urgent
  */
 function changeImgUrgent() {
-    document.getElementById('urgent').src = "../img/urgentbutton.png";
-    document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
-    document.getElementById('low').src = "../img/lowbuttonwhite.png";
+    document.getElementById('urgent').src = "img/urgentbutton.png";
+    document.getElementById('medium').src = "img/mediumbuttonwhite.png";
+    document.getElementById('low').src = "img/lowbuttonwhite.png";
 
     document.getElementById('urgent').classList.add('active');
     document.getElementById('medium').classList.remove('active');
@@ -229,9 +229,9 @@ function changeImgUrgent() {
  * switch the image of selected prio to medium
  */
 function changeImgMedium() {
-    document.getElementById('medium').src = "../img/mediumbutton.png";
-    document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
-    document.getElementById('low').src = "../img/lowbuttonwhite.png";
+    document.getElementById('medium').src = "img/mediumbutton.png";
+    document.getElementById('urgent').src = "img/urgentbuttonwhite.png";
+    document.getElementById('low').src = "img/lowbuttonwhite.png";
 
     document.getElementById('medium').classList.add('active');
     document.getElementById('urgent').classList.remove('active');
@@ -243,9 +243,9 @@ function changeImgMedium() {
  * switch the image of selected prio to low
  */
 function changeImgLow() {
-    document.getElementById('low').src = "../img/lowbutton.png";
-    document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
-    document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
+    document.getElementById('low').src = "img/lowbutton.png";
+    document.getElementById('medium').src = "img/mediumbuttonwhite.png";
+    document.getElementById('urgent').src = "img/urgentbuttonwhite.png";
 
     document.getElementById('low').classList.add('active');
     document.getElementById('medium').classList.remove('active');
@@ -262,9 +262,9 @@ function clearAddTask() {
     document.getElementById('select_assign').value = '';
     document.getElementById('date').value = '';
     document.getElementById('date').value = '';
-    document.getElementById('low').src = "../img/lowbuttonwhite.png";
-    document.getElementById('medium').src = "../img/mediumbuttonwhite.png";
-    document.getElementById('urgent').src = "../img/urgentbuttonwhite.png";
+    document.getElementById('low').src = "img/lowbuttonwhite.png";
+    document.getElementById('medium').src = "img/mediumbuttonwhite.png";
+    document.getElementById('urgent').src = "img/urgentbuttonwhite.png";
     document.getElementById('visual_assign').innerHTML = '';
     assignedPersons = [];
 }

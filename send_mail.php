@@ -3,7 +3,7 @@
 ########### CONFIG ###############
 
 $recipient = $_POST['name'];
-$redirect = 'http://gruppe-329.developerakademie.net/Join/templates/success.html';
+$redirect = 'http://gruppe-329.developerakademie.net/Join/success.html';
 
 $htmlContent = ' 
     <html> 
@@ -12,7 +12,7 @@ $htmlContent = '
     </head> 
     <body> 
     <section style="display: flex; justify-content: center; align-items: center; flex-direction: column; background-color: #F2F3F8;">
-        <div class="logo"><img src="../img/Capa 1.png" style="height: 100px; margin-bottom: 36px;"></div>
+        <div class="logo"><img src="img/Capa 1.png" style="height: 100px; margin-bottom: 36px;"></div>
         <div class="content" style="width: 650px; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background-color: #ffffff; gap: 16px;">
             <div class="headline">
                 <h2>You have requested to reset your password</h2>

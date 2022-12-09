@@ -19,7 +19,7 @@ function contactInfo(i) {
         <div class="contact_information_header">
             <h2>Contact Information</h2>
             <div class="edit_contact" onclick="editContactPopup('${contact['first_name']}', '${contact['second_name']}', '${contact['email']}', '${contact['phone']}', '${i}')">
-                <img src="../img/pencil.png">
+                <img src="img/pencil.png">
                 <p>Edit Contact</p>
             </div>
         </div>
@@ -45,7 +45,7 @@ function letterNotExist(i, initials, firstsecondnameLetter) {
     <div>
         <div class="first_name_letter">
             <h3>${firstsecondnameLetter}</h3>
-            <img src="../img/line.png">
+            <img src="img/line.png">
         </div>
         <div id="${firstsecondnameLetter}">
             <div class="full_listner">
@@ -57,7 +57,7 @@ function letterNotExist(i, initials, firstsecondnameLetter) {
                     </div>
                 </div>
                 <p style="font-size: 50px !important; margin: 0px">|</p>
-                <img src="../img/trash-can.png" onclick="removeContact(${i})">
+                <img src="img/trash-can.png" onclick="removeContact(${i})">
             </div>
         </div>
     </div>`
@@ -80,7 +80,7 @@ function letterAlreadyExist(i, initials) {
             </div>
         </div>
         <p style="font-size: 50px !important; margin: 0px">|</p>
-        <img src="../img/trash-can.png" onclick="removeContact(${i})">
+        <img src="img/trash-can.png" onclick="removeContact(${i})">
     </div>`
 }
 
@@ -131,7 +131,7 @@ function addTaskPopupWindowContent() {
     <h1>Add Task</h1>
     <div class="tasks_content">
         <div class="close_addtask_popup" id="closeAddTaskWindow" onclick="closeAddTaskPopup()">
-            <img src="../img/clear.png">
+            <img src="img/clear.png">
         </div>
         <div class="left_task">
             <div class="title">
@@ -161,7 +161,7 @@ function addTaskPopupWindowContent() {
             <div class="visual_assign" id="visual_assign"></div>
         </div>
         <div class="bar">
-            <img src="../img/bar.png">
+            <img src="img/bar.png">
         </div>
         <div class="right-task">
             <div class="date">
@@ -171,15 +171,15 @@ function addTaskPopupWindowContent() {
             <div class="prio">
                 <p>Prio</p>
                 <div class="devision" id="devision">
-                    <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="../img/Urgentbuttonwhite.png"></div>
-                    <div onclick="changeImgMedium()" class="medium"><img id="medium" src="../img/mediumbuttonwhite.png"></div>
-                    <div onclick="changeImgLow()" class="low"><img id="low" src="../img/lowbuttonwhite.png"></div>
+                    <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="img/Urgentbuttonwhite.png"></div>
+                    <div onclick="changeImgMedium()" class="medium"><img id="medium" src="img/mediumbuttonwhite.png"></div>
+                    <div onclick="changeImgLow()" class="low"><img id="low" src="img/lowbuttonwhite.png"></div>
                 </div>
             </div>
                 <div class="subtask_container">
                 <p class="subtaskheader">Subtasks</p>
                 <div class="subtask">
-                    <input type="text" id="addNewSubtask" placeholder="Add new subtask"><img src="../img/addsubtask.png" id="addTask" onclick="addSubTask()">
+                    <input type="text" id="addNewSubtask" placeholder="Add new subtask"><img src="img/addsubtask.png" id="addTask" onclick="addSubTask()">
                 </div>
                 <div class="subtasks" id="subtask">
                     
@@ -189,9 +189,9 @@ function addTaskPopupWindowContent() {
     </div>
     <div class="task_buttons" id="task_buttons">
         <button class="clear_button" id="clearButton" onclick="clearAddTask()">Clear<img
-                src="../img/clear.png"></button>
+                src="img/clear.png"></button>
         <button class="create_button" id="createButton" onclick="createTask()">Create Task <img
-                src="..//img/create_task.png"></button>
+                src="img/create_task.png"></button>
     </div>
     <div class="wrapper d-none" id="success_animation_popup"> 
         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> 
@@ -246,7 +246,7 @@ function cardContent(Element) {
                 
             </div>
             <div class="urgency_icon">
-                <img src="../img/${Element['prio']}.png">
+                <img src="img/${Element['prio']}.png">
             </div>
         </div>
     </div>
@@ -266,7 +266,7 @@ function popUpContent(id) {
             <p>${element['category']}</p>
         </div>
         <div onclick="closePopUp()" class="closebutton">
-            <img src="../img/clear.png">
+            <img src="img/clear.png">
         </div>
         <div class="headerdescription">
             <h1>${element['headline']}</h1>
@@ -280,7 +280,7 @@ function popUpContent(id) {
         </div>
         <div class="dragcard_popup_frame_2">
             <h2>Priority:</h2>
-            <img src="../img/${element['prio']}button.png">
+            <img src="img/${element['prio']}button.png">
         </div>
         <div class="dragcard_popup_frame_3">
             <h2>Assignet To:</h2>
@@ -291,7 +291,7 @@ function popUpContent(id) {
             </div>
         </div>
         <div onclick="openPopUpEdit(${id})" class="edit_button_dragcard_popup">
-            <img src="../img/edit button.png">
+            <img src="img/edit button.png">
         </div>
     </div>
     `;
@@ -334,7 +334,7 @@ function popUpEditContent(id) {
     return /*html*/`
     <div class="task_popup_window_2">
         <div onclick="closePopUp()" class="closebutton">
-            <img src="../img/clear.png">
+            <img src="img/clear.png">
         </div>
         <div class="task_popup_window_2_title task_popup_window_2_container">
             <h3>Title</h3>
@@ -351,9 +351,9 @@ function popUpEditContent(id) {
         <div class="task_popup_window_2_prio task_popup_window_2_container">
             <h3>Prio</h3>
             <div class="task_popup_window_2_prio_images">
-                <div onclick="changeUrgent(${id})"><img src="../img/Urgentbuttonwhite.png" id="urgentimg"></div>
-                <div onclick="changeMedium(${id})"><img src="../img/mediumbuttonwhite.png" id="mediumimg"></div>
-                <div onclick="changeLow(${id})"><img src="../img/lowbuttonwhite.png" id="lowimg"></div>
+                <div onclick="changeUrgent(${id})"><img src="img/Urgentbuttonwhite.png" id="urgentimg"></div>
+                <div onclick="changeMedium(${id})"><img src="img/mediumbuttonwhite.png" id="mediumimg"></div>
+                <div onclick="changeLow(${id})"><img src="img/lowbuttonwhite.png" id="lowimg"></div>
             </div>
         </div>
         <div class="task_popup_window_2_assign task_popup_window_2_container">
@@ -366,7 +366,7 @@ function popUpEditContent(id) {
             </div>
         </div>
         <div onclick="popUpEditSave(${id})"class="accept_button">
-            <img src="../img/Primary check button V1.png">
+            <img src="img/Primary check button V1.png">
         </div>
         <div class="wrapper d-none" id="success_animation_edit_popup"> 
             <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> 

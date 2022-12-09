@@ -279,9 +279,9 @@ function deleteAssignedPersonBoard(id, i) {
  * change the prio in edit task popup to urgent
  */
 function changeUrgent() {
-    document.getElementById('urgentimg').src = "../img/urgentbutton.png";
-    document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
-    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
+    document.getElementById('urgentimg').src = "img/urgentbutton.png";
+    document.getElementById('mediumimg').src = "img/mediumbuttonwhite.png";
+    document.getElementById('lowimg').src = "img/lowbuttonwhite.png";
     urgent = true;
     medium = false;
     low = false;
@@ -291,9 +291,9 @@ function changeUrgent() {
  * change the prio in edit task popup to medium
  */
 function changeMedium() {
-    document.getElementById('mediumimg').src = "../img/mediumbutton.png";
-    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
-    document.getElementById('lowimg').src = "../img/lowbuttonwhite.png";
+    document.getElementById('mediumimg').src = "img/mediumbutton.png";
+    document.getElementById('urgentimg').src = "img/urgentbuttonwhite.png";
+    document.getElementById('lowimg').src = "img/lowbuttonwhite.png";
     urgent = false;
     medium = true;
     low = false;
@@ -303,9 +303,9 @@ function changeMedium() {
  * change the prio in edit task popup to low
  */
 function changeLow() {
-    document.getElementById('lowimg').src = "../img/lowbutton.png";
-    document.getElementById('mediumimg').src = "../img/mediumbuttonwhite.png";
-    document.getElementById('urgentimg').src = "../img/urgentbuttonwhite.png";
+    document.getElementById('lowimg').src = "img/lowbutton.png";
+    document.getElementById('mediumimg').src = "img/mediumbuttonwhite.png";
+    document.getElementById('urgentimg').src = "img/urgentbuttonwhite.png";
     urgent = false;
     medium = false;
     low = true;

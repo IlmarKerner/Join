@@ -12,7 +12,7 @@ async function initGreeting() {
     await saveCategories();
 
     setTimeout(() => {
-        location.href = 'https://gruppe-329.developerakademie.net/Join/templates/summary.html';
+        location.href = 'summary.html';
     }, "2000")
 
 }

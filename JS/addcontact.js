@@ -99,7 +99,7 @@ function closeNewContactWindow(succesAnimationContact) {
         document.getElementById('popupAddContact').classList.add('d-none');
         document.getElementById('contactsContainer').style = "filter: none;";
         document.getElementById('popupAddContact').style = "transform: translateX(100vw)";
-        succesAnimationContact.classList.add('d-none');
+        if (succesAnimationContact){succesAnimationContact.classList.add('d-none')}
     }, 300);
 }
 
@@ -109,6 +109,7 @@ function closeNewContactWindow(succesAnimationContact) {
  */
 function removeContact(i) {
     contacts.splice(i, 1);
+    saveContacts();
     renderContacts();
 }
 
@@ -140,9 +141,9 @@ function checkMediaforExitButton(mediaForContact) {
     let btn = document.getElementById('close_contact_btn');
 
     if (mediaForContact.matches) {
-        btn.src = '../img/clear_white.png';
+        btn.src = 'img/clear_white.png';
     } else {
-        btn.src = '../img/clear.png';
+        btn.src = 'img/clear.png';
     }
 }
 
@@ -186,7 +187,7 @@ function closeEditContactPopup(succesAnimationContact) {
         document.getElementById('popupEditContact').classList.add('d-none');
         document.getElementById('contactsContainer').style = "filter: none;";
         document.getElementById('popupEditContact').style = "transform: translateX(100vw)";
-        succesAnimationContact.classList.add('d-none');
+        if(succesAnimationContact){succesAnimationContact.classList.add('d-none')}
     }, 300);
 }
 
