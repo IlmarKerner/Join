@@ -2,7 +2,7 @@
  * - render summary page
  */
 function initSummary() {
-    checkIfLogged();
+    // checkIfLogged();
     showNumberOfTasks();
     showNumberOfTasksAwaitingFeedback();
     showNextCardAwaiting();
@@ -95,7 +95,7 @@ function showNextCardAwaiting() {
  * @returns - date of the next deadline of tasks
  */
 function findMinDate() {
-    let dates = tasks.map(({dueDate}) => new Date(dueDate));
+    let dates = tasks.map(({ dueDate }) => new Date(dueDate));
     let minDate = new Date(Math.min(...dates));
     // let maxDate = new Date(Math.max(...dates)); not in use
 

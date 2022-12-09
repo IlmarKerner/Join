@@ -2,7 +2,7 @@
  * load content of board page
  */
 async function initBoard() {
-    checkIfLogged();
+    // checkIfLogged();
     await downloadFromServer();
     await loadTasks();
     updateTasksPercent();
@@ -32,8 +32,7 @@ function updateTasksPercent() {
  */
 function updateToDo(filteredTasks) {
     let todos;
-    if (filteredTasks){todos = filteredTasks.filter(t => t['progress'] == 'toDo')}
-    else              {todos = tasks.filter(t => t['progress'] == 'toDo')}
+    if (filteredTasks) { todos = filteredTasks.filter(t => t['progress'] == 'toDo') } else { todos = tasks.filter(t => t['progress'] == 'toDo') }
 
     document.getElementById('toDo').innerHTML = '';
     for (let i = 0; i < todos.length; i++) {
@@ -47,8 +46,7 @@ function updateToDo(filteredTasks) {
  */
 function updateInProgress(filteredTasks) {
     let inProgress;
-    if (filteredTasks){inProgress = filteredTasks.filter(t => t['progress'] == 'inProgress')}
-    else              {inProgress = tasks.filter(t => t['progress'] == 'inProgress')}
+    if (filteredTasks) { inProgress = filteredTasks.filter(t => t['progress'] == 'inProgress') } else { inProgress = tasks.filter(t => t['progress'] == 'inProgress') }
 
     document.getElementById('inProgress').innerHTML = '';
     for (let i = 0; i < inProgress.length; i++) {
@@ -62,8 +60,7 @@ function updateInProgress(filteredTasks) {
  */
 function updateAwaitingFeedback(filteredTasks) {
     let awaitingFeedbacks;
-    if (filteredTasks){awaitingFeedbacks = filteredTasks.filter(t => t['progress'] == 'awaitingFeedback')}
-    else              {awaitingFeedbacks = tasks.filter(t => t['progress'] == 'awaitingFeedback')}
+    if (filteredTasks) { awaitingFeedbacks = filteredTasks.filter(t => t['progress'] == 'awaitingFeedback') } else { awaitingFeedbacks = tasks.filter(t => t['progress'] == 'awaitingFeedback') }
 
     document.getElementById('awaitingFeedback').innerHTML = '';
     for (let i = 0; i < awaitingFeedbacks.length; i++) {
@@ -77,8 +74,7 @@ function updateAwaitingFeedback(filteredTasks) {
  */
 function updateDone(filteredTasks) {
     let dones;
-    if (filteredTasks){dones = filteredTasks.filter(t => t['progress'] == 'done')}
-    else              {dones = tasks.filter(t => t['progress'] == 'done')}
+    if (filteredTasks) { dones = filteredTasks.filter(t => t['progress'] == 'done') } else { dones = tasks.filter(t => t['progress'] == 'done') }
 
     document.getElementById('done').innerHTML = '';
     for (let i = 0; i < dones.length; i++) {
@@ -177,9 +173,9 @@ async function fillInCategory() {
 function clearInitialContainer() {
     for (let i = 0; i < tasks.length; i++) {
         if (document.getElementById(`${i}`)) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        initialsContainer.innerHTML = '';
+            let taskContainer = document.getElementById(`${i}`);
+            let initialsContainer = taskContainer.children[4].children[0];
+            initialsContainer.innerHTML = '';
         }
     }
 }
@@ -195,17 +191,17 @@ function clearInitialContainerTaskPopup() {
 /**
  * fill in the initials of assigned persons in every task
  */
- function fillInAssinged() {
+function fillInAssinged() {
     clearInitialContainer();
     for (let i = 0; i < tasks.length; i++) {
         if (document.getElementById(`${i}`)) {
-        let taskContainer = document.getElementById(`${i}`);
-        let initialsContainer = taskContainer.children[4].children[0];
-        for (let j = 0; j < tasks[i]['initials'].length; j++) {
-            let initials = tasks[i]['initials'][j];
-            initialsContainer.innerHTML += assignHtml(j, initials);
+            let taskContainer = document.getElementById(`${i}`);
+            let initialsContainer = taskContainer.children[4].children[0];
+            for (let j = 0; j < tasks[i]['initials'].length; j++) {
+                let initials = tasks[i]['initials'][j];
+                initialsContainer.innerHTML += assignHtml(j, initials);
+            }
         }
-    }
     }
 }
 
@@ -229,6 +225,7 @@ function renderEditTaskCard() {
     let select = document.getElementById('select_assign_edit');
     select.innerHTML = '';
     sortContacts();
+
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
         select.innerHTML += editTaskSelectHtml(contact, i);
@@ -242,7 +239,7 @@ function renderEditTaskCard() {
 function addAssignEdit(i) {
     let option = document.getElementById(`option${i}`);
 
-    if(!assignedPersons.includes(option.innerHTML)){
+    if (!assignedPersons.includes(option.innerHTML)) {
         assignedPersons.push(option.innerHTML);
         visualAssignedPersonEdit(i);
     }
@@ -329,7 +326,7 @@ function successAnimationEditTaskPopup() {
     let succesAnimationPopup = document.getElementById('success_animation_edit_popup');
     if (succesAnimationPopup) {
         succesAnimationPopup.classList.remove('d-none');
-        setTimeout(() => {closePopUp(succesAnimationPopup)}, "1300")  
+        setTimeout(() => { closePopUp(succesAnimationPopup) }, "1300")
     };
 }
 
@@ -379,7 +376,7 @@ function checkProgressBar() {
 function filterTask(event) {
     let emptyTaskSearchInput = document.getElementById('searchTasks');
     let searchString = event.target.value.toLowerCase();
-    
+
     if (emptyTaskSearchInput.value == '') {
         initBoard();
     } else {
@@ -410,7 +407,8 @@ async function animateNewTask() {
         let taskContainer = document.getElementById(`${taskId}`);
         let containerId = tasks[taskId]['progress'];
         let id = document.getElementById(`${containerId}`);
-        id.scrollTo({top: id.scrollHeight, behavior: 'smooth'});
+        id.scrollTo({ top: id.scrollHeight, behavior: 'smooth' });
+        let task = document.getElementById(`${id}`);
         setTimeout(() => {
             taskContainer.classList.add('new-task');
         }, "800");
