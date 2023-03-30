@@ -302,7 +302,8 @@ function cardContent(Element, allTasks) {
 function popUpContent(id) {
     element = tasks[id];
     return /*html*/ `
-    <div class="dragcard_popup" id="dragcard_popup">
+    <div class="dragcard_popup_background" onclick="closePopUp()">    
+    <div class="dragcard_popup" id="dragcard_popup" onclick="event.stopPropagation()">
         <div class="categorycard">
             <p>${element['category']}</p>
         </div>
@@ -342,6 +343,7 @@ function popUpContent(id) {
             <hr>
             <span onclick="deleteTask(${id})">Delete task</span>
         </div>
+    </div>
     </div>
     `;
 }
@@ -413,7 +415,8 @@ function assignPopupHtml(initials, fullName) {
 function popUpEditContent(id) {
     element = tasks[id];
     return /*html*/ `
-    <div class="task_popup_window_2">
+    <div class="dragcard_popup_background" onclick="closePopUp()">
+    <div class="task_popup_window_2" onclick="event.stopPropagation()">
         <div onclick="closePopUp()" class="closebutton">
             <img src="img/clear.png">
         </div>
@@ -468,6 +471,8 @@ function popUpEditContent(id) {
             </svg>
         </div>
     </div>
+    </div>
+
     `;
 }
 

@@ -375,6 +375,7 @@
     gap: 12px;
     width: 422px;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .assigned_person {
@@ -763,6 +764,7 @@
         overflow-x: scroll;
         flex-wrap: nowrap;
         overflow: auto;
+        margin-top: 10px;
     }
     .assigned_person {
         width: unset;
